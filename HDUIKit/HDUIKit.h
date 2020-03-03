@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"0.3.1";
+static NSString *const HDUIKit_VERSION = @"0.3.2";
 
 #if __has_include("HDHelperFunction.h")
 #import "HDHelperFunction.h"
