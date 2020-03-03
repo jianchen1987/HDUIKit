@@ -52,10 +52,11 @@
 }
 
 - (void)setupUI {
-    self.title = @"ViPay 组件";
+
+    self.hd_navigationItem.title = @"ViPay 组件";
     self.view.backgroundColor = UIColor.whiteColor;
 
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0, CGRectGetMaxY(self.hd_navigationBar.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.hd_navigationBar.frame)}];
     [self.view addSubview:tableView];
 
     tableView.dataSource = self;

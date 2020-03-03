@@ -16,7 +16,7 @@ echo "podspec版本:$version"
 
 echo "开始打包 framework"
 pod package ${podspec_name} --no-mangle --exclude-deps --force --spec-sources=https://github.com/CocoaPods/Specs.git,git@git.vipaylife.com:wangwanjie/tianxu-specs.git
-echo "打包 framework 结束"
+echo "打包 framework 结束\n"
 
 echo "开始提交代码并打 tag：$version"
 filename=$(echo $podspec_name | cut -d . -f1)
@@ -30,11 +30,11 @@ git push origin :refs/tags/$version
 
 git tag -a $version -m "$version"
 git push origin --tags
-echo "提交及推送代码、tags 结束"
+echo "提交及推送代码、tags 结束\n"
 
 echo "开始发布 $filename 版本 $version 到 Chaos"
 # 清除缓存
 pod cache clean --all
 
-pod repo push Chaos "${push_podspec_name}" --allow-warnings --verbose --sources=https://github.com/CocoaPods/Specs.git,git@git.vipaylife.com:wangwanjie/tianxu-specs.git
-echo "发布 $filename 版本 $version 到 Chaos 结束"
+pod repo push Chaos "${podspec_name}" --allow-warnings --verbose --sources=https://github.com/CocoaPods/Specs.git,git@git.vipaylife.com:wangwanjie/tianxu-specs.git
+echo "发布 $filename 版本 $version 到 Chaos 结束\n"

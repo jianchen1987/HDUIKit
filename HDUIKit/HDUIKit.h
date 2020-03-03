@@ -174,6 +174,70 @@ static NSString *const HDUIKit_VERSION = @"0.3.1";
 #import "HDAppTheme.h"
 #endif
 
+#if __has_include("HDCommonViewController.h")
+#import "HDCommonViewController.h"
+#endif
+
+#if __has_include("HDNavigationBar.h")
+#import "HDNavigationBar.h"
+#endif
+
+#if __has_include("UIScrollView+HDNavigationBar.h")
+#import "UIScrollView+HDNavigationBar.h"
+#endif
+
+#if __has_include("UINavigationController+HDNavigationBar.h")
+#import "UINavigationController+HDNavigationBar.h"
+#endif
+
+#if __has_include("UIViewController+HDNavigationBar.h")
+#import "UIViewController+HDNavigationBar.h"
+#endif
+
+#if __has_include("UINavigationItem+HDNavigationBar.h")
+#import "UINavigationItem+HDNavigationBar.h"
+#endif
+
+#if __has_include("HDCustomNavigationBar.h")
+#import "HDCustomNavigationBar.h"
+#endif
+
+#if __has_include("HDNavigationBarCategory.h")
+#import "HDNavigationBarCategory.h"
+#endif
+
+#if __has_include("UIImage+HDNavigationBar.h")
+#import "UIImage+HDNavigationBar.h"
+#endif
+
+#if __has_include("UIBarButtonItem+HDNavigationBar.h")
+#import "UIBarButtonItem+HDNavigationBar.h"
+#endif
+
+#if __has_include("HDNavigationBarDefine.h")
+#import "HDNavigationBarDefine.h"
+#endif
+
+#if __has_include("HDNavigationBarConfigure.h")
+#import "HDNavigationBarConfigure.h"
+#endif
+
+#if __has_include("HDNavigationBarTransitionDelegateHandler.h")
+#import "HDNavigationBarTransitionDelegateHandler.h"
+#endif
+
+#if __has_include("HDNavigationBarBaseAnimatedTransition.h")
+#import "HDNavigationBarBaseAnimatedTransition.h"
+#endif
+
+#if __has_include("HDNavigationBarPopAnimatedTransition.h")
+#import "HDNavigationBarPopAnimatedTransition.h"
+#endif
+
+#if __has_include("HDNavigationBarPushAnimatedTransition.h")
+#import "HDNavigationBarPushAnimatedTransition.h"
+#endif
+
 #if __has_include("NSArray+HDUIKit.h")
 #import "NSArray+HDUIKit.h"
 #endif

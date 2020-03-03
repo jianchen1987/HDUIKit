@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.3.1"
+  s.version          = "0.3.2"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -24,6 +24,17 @@ Pod::Spec.new do |s|
     ss.dependency 'HDUIKit/HDWeakObjectContainer'
     ss.dependency 'HDUIKit/HDLog'
     ss.dependency 'HDUIKit/HDRuntime'
+  end
+
+  s.subspec 'MainFrame' do |ss|
+    ss.source_files = 'HDUIKit/MainFrame'
+    ss.dependency 'HDUIKit/HDNavigationBar'
+    ss.dependency 'HDUIKit/HDAppTheme'
+    ss.dependency 'HDUIKit/UIKitExtensions/UIImage'
+  end
+
+  s.subspec 'HDNavigationBar' do |ss|
+    ss.source_files = 'HDUIKit/MainFrame/HDNavigationBar', 'HDUIKit/MainFrame/HDNavigationBar/*/*'
   end
 
   s.subspec 'HDRuntime' do |ss|
