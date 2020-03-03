@@ -1,0 +1,6 @@
+framework module HDUIKit {
+  umbrella header "HDUIKit.h"
+
+  export *
+  module * { export * }
+}

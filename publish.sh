@@ -1,35 +1,40 @@
 #!/bin/bash
 
-pod_name=HDUIKit
+directory="$(pwd)"
+# 文件后缀名，自动查找
+file_extension="podspec"
+podspec_path=`find $directory -name "*.$file_extension" -maxdepth 1 -print`
 
-push_podspec_name=$pod_name.podspec
+echo "podspec路径:$podspec_path"
 
-subspecs=($pod_name)
-
-podspec_path=$PWD/$push_podspec_name
+podspec_name=$(basename $podspec_path)
+echo "podspec名称:$podspec_name"
 
 # 获取版本号
 version=`grep -E "s.version |s.version=" $podspec_path | head -1 | sed 's/'s.version'//g' | sed 's/'='//g'| sed 's/'\"'//g'| sed 's/'\''//g' | sed 's/'[[:space:]]'//g'`
+echo "podspec版本:$version"
 
+echo "开始打包 framework"
+pod package ${podspec_name} --no-mangle --exclude-deps --force --spec-sources=https://github.com/CocoaPods/Specs.git,git@git.vipaylife.com:wangwanjie/tianxu-specs.git
+echo "打包 framework 结束"
 
-for subspec in ${subspecs[@]}
-do
-  # 打包指令
-  subspec="${subspec}" pod package $pod_name.podspec --subspecs="${subspec}" --no-mangle --exclude-deps --force  --spec-sources=https://github.com/CocoaPods/Specs.git,git@git.vipaylife.com:wangwanjie/tianxu-specs.git
-
-  # 打包完 commit，避免 package 时还是使用旧的代码
-  git add .
-  git commit -m "package ${subspec}"
-done
-
+echo "开始提交代码并打 tag：$version"
+filename=$(echo $podspec_name | cut -d . -f1)
+git add .
+git commit -m "published $filename $version"
 
 git push origin master
 
 git tag -d $version
 git push origin :refs/tags/$version
 
-git tag -a $version -m $version
+git tag -a $version -m "$version"
 git push origin --tags
+echo "提交及推送代码、tags 结束"
+
+echo "开始发布 $filename 版本 $version 到 Chaos"
+# 清除缓存
 pod cache clean --all
 
 pod repo push Chaos "${push_podspec_name}" --allow-warnings --verbose --sources=https://github.com/CocoaPods/Specs.git,git@git.vipaylife.com:wangwanjie/tianxu-specs.git
+echo "发布 $filename 版本 $version 到 Chaos 结束"
