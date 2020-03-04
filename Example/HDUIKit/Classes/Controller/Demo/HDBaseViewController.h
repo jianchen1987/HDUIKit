@@ -6,7 +6,6 @@
 //  Copyright © 2020 wangwanjie. All rights reserved.
 //
 
-#import <HDUIKit/HDCommonViewController.h>
 #import <HDUIKit/HDUIKit.h>
 #import <Masonry/Masonry.h>
 

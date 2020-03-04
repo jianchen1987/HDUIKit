@@ -44,8 +44,6 @@
 }
 
 - (void)updateViewConstraints {
-    HDLog(@"布局");
-
     [self.barCodeImageV mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view).multipliedBy(0.8);
         make.height.mas_equalTo(60);

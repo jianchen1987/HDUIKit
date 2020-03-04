@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.3.3"
+  s.version          = "0.4.0"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -44,6 +44,10 @@ Pod::Spec.new do |s|
 
   s.subspec 'MethodSwizzle' do |ss|
     ss.source_files = 'HDUIKit/UIKitExtensions/NSObject/NSObject+HD_Swizzle.{h,m}'
+  end
+
+  s.subspec 'set' do |ss|
+    ss.source_files = 'HDUIKit/DispatchMainQueueSafe'
   end
 
   s.subspec 'HDAppTheme' do |ss|
@@ -150,6 +154,24 @@ Pod::Spec.new do |s|
 
     ss.subspec 'ToastView' do |sss|
       sss.source_files = 'HDUIKit/Components/ToastView', 'HDUIKit/Components/HDVisualEffectView'
+    end
+
+    ss.subspec 'HDActionAlertView' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDActionAlertView'
+      sss.dependency 'HDUIKit/DispatchMainQueueSafe'
+    end
+
+    ss.subspec 'HDAlertView' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDAlertView'
+      sss.dependency 'HDUIKit/Components/HDActionAlertView'
+      sss.dependency 'HDUIKit/HDAppTheme'
+      sss.dependency 'HDUIKit/WJFrameLayout'
+    end
+
+    ss.subspec 'NAT' do |sss|
+      sss.source_files = 'HDUIKit/Components/NAT'
+      sss.dependency 'FFToast', '~> 1.2.0'
+      sss.dependency 'HDUIKit/Components/HDAlertView'
     end
 
   end

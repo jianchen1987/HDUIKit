@@ -12,7 +12,11 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"0.3.2";
+static NSString *const HDUIKit_VERSION = @"0.4.0";
+
+#if __has_include("HDDispatchMainQueueSafe.h")
+#import "HDDispatchMainQueueSafe.h"
+#endif
 
 #if __has_include("HDHelperFunction.h")
 #import "HDHelperFunction.h"
@@ -98,12 +102,40 @@ static NSString *const HDUIKit_VERSION = @"0.3.2";
 #import "HDTips.h"
 #endif
 
+#if __has_include("NAT.h")
+#import "NAT.h"
+#endif
+
 #if __has_include("HDUIButton.h")
 #import "HDUIButton.h"
 #endif
 
 #if __has_include("HDUIGhostButton.h")
 #import "HDUIGhostButton.h"
+#endif
+
+#if __has_include("HDActionAlertView.h")
+#import "HDActionAlertView.h"
+#endif
+
+#if __has_include("UIWindow+HDUtils.h")
+#import "UIWindow+HDUtils.h"
+#endif
+
+#if __has_include("HDActionAlertViewController.h")
+#import "HDActionAlertViewController.h"
+#endif
+
+#if __has_include("HDAlertViewConfig.h")
+#import "HDAlertViewConfig.h"
+#endif
+
+#if __has_include("HDAlertView.h")
+#import "HDAlertView.h"
+#endif
+
+#if __has_include("HDAlertViewButton.h")
+#import "HDAlertViewButton.h"
 #endif
 
 #if __has_include("HDGridView.h")
