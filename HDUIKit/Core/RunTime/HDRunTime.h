@@ -38,8 +38,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
-
 #pragma mark - Method
 // clang-format off
 CG_INLINE BOOL
@@ -328,3 +326,5 @@ typedef struct classref *classref_t;
 FOUNDATION_EXPORT int hd_getProjectClassList(classref_t **classes);
 
 // clang-format on
+
+NS_ASSUME_NONNULL_END

@@ -16,6 +16,8 @@ typedef NS_ENUM(NSInteger, HDUIImageResizingMode) {
     HDUIImageResizingModeScaleAspectFillBottom  // 将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），若有内容超出则会被裁剪。若裁剪则水平居中、垂直居下裁剪。
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface UIImage (Bundle)
 
 /// 加载 HDUIKit.bundle 里的图片
@@ -232,3 +234,5 @@ typedef NS_ENUM(NSInteger, HDUIImageResizingMode) {
  */
 - (nullable UIImage *)hd_imageWithImageAbove:(UIImage *)image atPoint:(CGPoint)point;
 @end
+
+NS_ASSUME_NONNULL_END

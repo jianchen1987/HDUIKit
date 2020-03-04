@@ -276,7 +276,7 @@ static char kAssociatedObjectKey_navBackgroundColor;
 - (void)setHd_navBackgroundColor:(UIColor *)hd_navBackgroundColor {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_navBackgroundColor, hd_navBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
-    [self.hd_navigationBar setBackgroundImage:[UIImage hd_imageWithColor:hd_navBackgroundColor] forBarMetrics:UIBarMetricsDefault];
+    [self.hd_navigationBar setBackgroundImage:[UIImage hd_imagePiexOneWithColor:hd_navBackgroundColor] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (UIColor *)hd_navBackgroundColor {
@@ -299,7 +299,7 @@ static char kAssociatedObjectKey_navShadowColor;
 - (void)setHd_navShadowColor:(UIColor *)hd_navShadowColor {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_navShadowColor, hd_navShadowColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
-    self.hd_navigationBar.shadowImage = [UIImage hd_changeImage:[UIImage hd_imageWithColor:UIColor.whiteColor] color:hd_navShadowColor];
+    self.hd_navigationBar.shadowImage = [UIImage hd_changeImage:[UIImage hd_imagePiexOneWithColor:UIColor.whiteColor] color:hd_navShadowColor];
 }
 
 - (UIColor *)hd_navShadowColor {

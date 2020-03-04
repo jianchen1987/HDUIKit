@@ -24,6 +24,8 @@
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		959AE6EB240E04D600D3E3AE /* HDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE6E6240E04D600D3E3AE /* HDViewController.m */; };
 		959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE6E9240E04D600D3E3AE /* ExampleItem.m */; };
+		959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */; };
+		959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,10 @@
 		959AE6E6240E04D600D3E3AE /* HDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDViewController.m; sourceTree = "<group>"; };
 		959AE6E8240E04D600D3E3AE /* ExampleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleItem.h; sourceTree = "<group>"; };
 		959AE6E9240E04D600D3E3AE /* ExampleItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleItem.m; sourceTree = "<group>"; };
+		959AE720240F3CDC00D3E3AE /* HDBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDBaseViewController.h; sourceTree = "<group>"; };
+		959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDBaseViewController.m; sourceTree = "<group>"; };
+		959AE723240F3D2400D3E3AE /* HDCodeGeneratorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCodeGeneratorViewController.h; sourceTree = "<group>"; };
+		959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCodeGeneratorViewController.m; sourceTree = "<group>"; };
 		A88E61FF828E8CF0B8287AD2 /* HDUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HDUIKit.podspec; path = ../HDUIKit.podspec; sourceTree = "<group>"; };
 		B45EFE5CC5B5FBA60A4F5D5E /* Pods_HDUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HDUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C24C1D09C49B829C0DE69F /* Pods-HDUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HDUIKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-HDUIKit_Tests/Pods-HDUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				959AE6E4240E04D600D3E3AE /* Code */,
+				959AE720240F3CDC00D3E3AE /* HDBaseViewController.h */,
+				959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -215,6 +223,8 @@
 		959AE6E4240E04D600D3E3AE /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				959AE723240F3D2400D3E3AE /* HDCodeGeneratorViewController.h */,
+				959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -400,10 +410,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HDUIKit_Example/Pods-HDUIKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/HDUIKit/HDUIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,8 +448,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				959AE6EB240E04D600D3E3AE /* HDViewController.m in Sources */,
+				959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */,
 				959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */,
 				6003F59E195388D20070C39A /* HDAppDelegate.m in Sources */,
+				959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,7 +586,7 @@
 				GCC_PREFIX_HEADER = "HDUIKit/HDUIKit-Prefix.pch";
 				INFOPLIST_FILE = "HDUIKit/HDUIKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MARKETING_VERSION = 0.3.2;
+				MARKETING_VERSION = 0.3.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -592,7 +606,7 @@
 				GCC_PREFIX_HEADER = "HDUIKit/HDUIKit-Prefix.pch";
 				INFOPLIST_FILE = "HDUIKit/HDUIKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MARKETING_VERSION = 0.3.2;
+				MARKETING_VERSION = 0.3.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

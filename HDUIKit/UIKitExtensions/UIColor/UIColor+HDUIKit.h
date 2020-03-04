@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 /// 将原本的 dynamic color 绑定到 CGColorRef 上的 key
 extern NSString *const HDCGColorOriginalColorBindKey;
 
@@ -158,3 +160,5 @@ typedef struct
 + (UIColor *)hd_randomColor;
 
 @end
+
+NS_ASSUME_NONNULL_END

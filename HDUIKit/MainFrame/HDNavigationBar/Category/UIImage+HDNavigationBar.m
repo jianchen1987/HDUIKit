@@ -10,11 +10,11 @@
 
 @implementation UIImage (HDNavigationBar)
 
-+ (UIImage *)hd_imageWithColor:(UIColor *)color {
-    return [self hd_imageWithColor:color size:CGSizeMake(1, 1)];
++ (UIImage *)hd_imagePiexOneWithColor:(UIColor *)color {
+    return [self hd_nav_imageWithColor:color size:CGSizeMake(1, 1)];
 }
 
-+ (UIImage *)hd_imageWithColor:(UIColor *)color size:(CGSize)size {
++ (UIImage *)hd_nav_imageWithColor:(UIColor *)color size:(CGSize)size {
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
 
     UIGraphicsBeginImageContext(size);

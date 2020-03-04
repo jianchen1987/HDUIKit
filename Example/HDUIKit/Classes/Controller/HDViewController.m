@@ -48,7 +48,7 @@
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"全局窗口管理" destVcName:@"HDViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"线程安全键值存储方案" destVcName:@"HDViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"应用内服务器域名切换" destVcName:@"HDViewController"]];
-    [self.dataSource addObject:[ExampleItem itemWithDesc:@"条形码/二维码生成" destVcName:@"HDCodeViewController"]];
+    [self.dataSource addObject:[ExampleItem itemWithDesc:@"条形码/二维码生成" destVcName:@"HDCodeGeneratorViewController"]];
 }
 
 - (void)setupUI {

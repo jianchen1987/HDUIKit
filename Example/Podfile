@@ -4,6 +4,7 @@ platform :ios, '9.0'
 
 target 'HDUIKit_Example' do
   pod 'HDUIKit', :path => '../'
+  pod 'Masonry'
 
   target 'HDUIKit_Tests' do
     inherit! :search_paths

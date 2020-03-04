@@ -350,32 +350,4 @@ static NSString *const HDUIKit_VERSION = @"0.3.2";
 #import "HDCodeGenerator.h"
 #endif
 
-#if __has_include("mask.h")
-#import "mask.h"
-#endif
-
-#if __has_include("qrinput.h")
-#import "qrinput.h"
-#endif
-
-#if __has_include("qrspec.h")
-#import "qrspec.h"
-#endif
-
-#if __has_include("rscode.h")
-#import "rscode.h"
-#endif
-
-#if __has_include("bitstream.h")
-#import "bitstream.h"
-#endif
-
-#if __has_include("qrencode.h")
-#import "qrencode.h"
-#endif
-
-#if __has_include("split.h")
-#import "split.h"
-#endif
-
 #endif /* HDUIKit_h */

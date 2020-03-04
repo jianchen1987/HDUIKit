@@ -14,12 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 根据颜色生成size为(1, 1)的纯色图片
 /// @param color 图片颜色
-+ (UIImage *)hd_imageWithColor:(UIColor *)color;
++ (UIImage *)hd_imagePiexOneWithColor:(UIColor *)color;
 
 /// 根据颜色生成指定size的纯色图片
 /// @param color 图片颜色
 /// @param size 图片大小
-+ (UIImage *)hd_imageWithColor:(UIColor *)color size:(CGSize)size;
++ (UIImage *)hd_nav_imageWithColor:(UIColor *)color size:(CGSize)size;
 
 /// 修改指定图片颜色生成新的图片
 /// @param image 原图片
