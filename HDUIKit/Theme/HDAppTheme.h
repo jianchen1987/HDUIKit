@@ -99,10 +99,6 @@ NS_ASSUME_NONNULL_BEGIN
 /** 一像素的大小 */
 + (CGFloat)pixelOne;
 
-+ (NSMutableAttributedString *)formatNormalLabelText:(NSString *)str textFont:(UIFont *)font textColor:(UIColor *)color textAlignment:(NSTextAlignment)alignment;
-
-+ (CGFloat)calText:(NSString *)text WidthByFont:(UIFont *)font maxWidth:(CGFloat)width maxHeight:(CGFloat)height;
-
 + (CGFloat)statusBarHeight;
 @end
 

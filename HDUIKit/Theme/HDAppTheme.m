@@ -227,31 +227,6 @@
     return 1.0 / UIScreen.mainScreen.scale;
 }
 
-+ (NSMutableAttributedString *)formatNormalLabelText:(NSString *)str textFont:(UIFont *)font textColor:(UIColor *)color textAlignment:(NSTextAlignment)alignment {
-
-    NSMutableAttributedString *attributeString = [[NSMutableAttributedString alloc] initWithString:str];
-    NSMutableParagraphStyle *paragraphStype = [[NSMutableParagraphStyle alloc] init];
-    paragraphStype.lineSpacing = 5;
-    paragraphStype.alignment = alignment;
-    NSRange range = NSMakeRange(0, [str length]);
-
-    [attributeString addAttributes:@{NSParagraphStyleAttributeName: paragraphStype,
-                                     NSFontAttributeName: font,
-                                     NSForegroundColorAttributeName: color}
-                             range:range];
-
-    return attributeString;
-}
-
-+ (CGFloat)calText:(NSString *)text WidthByFont:(UIFont *)font maxWidth:(CGFloat)width maxHeight:(CGFloat)height {
-
-    NSDictionary *attribute = @{NSFontAttributeName: font};
-    NSStringDrawingOptions option = (NSStringDrawingOptions)(NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading);
-    CGSize size = [text boundingRectWithSize:CGSizeMake(width, height) options:option attributes:attribute context:nil].size;
-
-    return size.width;
-}
-
 + (CGFloat)statusBarHeight {
     return CGRectGetHeight(UIApplication.sharedApplication.statusBarFrame);
 }

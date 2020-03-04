@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
     ss.source_files = 'HDUIKit/UIKitExtensions/NSObject/NSObject+HD_Swizzle.{h,m}'
   end
 
-  s.subspec 'set' do |ss|
+  s.subspec 'DispatchMainQueueSafe' do |ss|
     ss.source_files = 'HDUIKit/DispatchMainQueueSafe'
   end
 
