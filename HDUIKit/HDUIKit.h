@@ -318,6 +318,10 @@ static NSString *const HDUIKit_VERSION = @"0.4.1";
 #import "UIViewController+HDUIKit.h"
 #endif
 
+#if __has_include("NSBundle+HDUIKit.h")
+#import "NSBundle+HDUIKit.h"
+#endif
+
 #if __has_include("NSMethodSignature+HDUIKit.h")
 #import "NSMethodSignature+HDUIKit.h"
 #endif

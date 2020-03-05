@@ -18,3 +18,9 @@
 
 #define HDLogInfo(_name, ...) [[HDLogger sharedInstance] printLogWithFile:__FILE__ line:__LINE__ func:__FUNCTION__ logItem:[HDLogItem logItemWithLevel:HDLogLevelInfo name:_name logString:__VA_ARGS__]]
 #define HDLogWarn(_name, ...) [[HDLogger sharedInstance] printLogWithFile:__FILE__ line:__LINE__ func:__FUNCTION__ logItem:[HDLogItem logItemWithLevel:HDLogLevelWarn name:_name logString:__VA_ARGS__]]
+
+#ifdef DEBUG
+#define HDLog(...) [[HDLogger sharedInstance] printLogWithFile:__FILE__ line:__LINE__ func:__FUNCTION__ logItem:[HDLogItem logItemWithLevel:HDLogLevelDefault name:@"HDUIKit" logString:__VA_ARGS__]]
+#else
+#define HDLog(...) ;
+#endif

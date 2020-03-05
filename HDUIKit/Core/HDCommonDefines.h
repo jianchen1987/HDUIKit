@@ -111,18 +111,12 @@
 #define EndIgnoreDeprecatedWarning EndIgnoreClangWarning
 // clang-format on
 
-#pragma mark - Log
+#pragma mark - ENV
 
 #ifdef DEBUG
-
 #define IS_DEBUG YES
-#define HDLog(...) [[HDLogger sharedInstance] printLogWithFile:__FILE__ line:__LINE__ func:__FUNCTION__ logItem:[HDLogItem logItemWithLevel:HDLogLevelDefault name:@"HDUIKit" logString:__VA_ARGS__]]
-
 #else
-
 #define IS_DEBUG NO
-#define HDLog(...) ;
-
 #endif
 
 #pragma mark - 判断

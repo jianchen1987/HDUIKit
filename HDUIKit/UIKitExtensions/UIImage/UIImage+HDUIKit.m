@@ -8,6 +8,7 @@
 
 #import "HDCommonDefines.h"
 #import "HDHelper.h"
+#import "NSBundle+HDUIKit.h"
 #import "UIBezierPath+HDUIKit.h"
 #import "UIColor+HDUIKit.h"
 #import "UIImage+HDUIKit.h"
@@ -30,16 +31,7 @@ CGSizeFlatSpecificScale(CGSize size, float scale) {
 
 @implementation UIImage (Bundle)
 + (nullable UIImage *)hd_imageNamed:(nonnull NSString *)name {
-    static NSBundle *resourceBundle = nil;
-    if (!resourceBundle) {
-        NSBundle *mainBundle = [NSBundle mainBundle];
-        NSString *resourcePath = [mainBundle pathForResource:@"Frameworks/HDUIKit.framework/HDResources" ofType:@"bundle"];
-        if (!resourcePath) {
-            resourcePath = [mainBundle pathForResource:@"HDResources" ofType:@"bundle"];
-        }
-        resourceBundle = [NSBundle bundleWithPath:resourcePath] ?: mainBundle;
-    }
-    UIImage *image = [UIImage imageNamed:name inBundle:resourceBundle compatibleWithTraitCollection:nil];
+    UIImage *image = [UIImage imageNamed:name inBundle:[NSBundle hd_UIKitBundle] compatibleWithTraitCollection:nil];
     return image;
 }
 @end
