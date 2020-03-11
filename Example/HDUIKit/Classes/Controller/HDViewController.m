@@ -53,7 +53,7 @@
 
 - (void)setupUI {
 
-    self.hd_navigationItem.title = @"ViPay 组件";
+    self.hd_navigationItem.title = @"混沌组件";
     self.view.backgroundColor = UIColor.whiteColor;
 
     UITableView *tableView = [[UITableView alloc] initWithFrame:(CGRect){0, CGRectGetMaxY(self.hd_navigationBar.frame), CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame) - CGRectGetMaxY(self.hd_navigationBar.frame)}];

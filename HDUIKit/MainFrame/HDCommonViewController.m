@@ -39,17 +39,17 @@
     if (HDViewControllerNavigationBarStyleWhite == style) {
         self.hd_navBackgroundColor = UIColor.whiteColor;
         self.hd_navTitleColor = [HDAppTheme HDColorC1];
-        image = [UIImage imageNamed:@"ic-return-red" inBundle:bundle withConfiguration:nil];
+        image = [UIImage imageNamed:@"ic-return-red" inBundle:bundle compatibleWithTraitCollection:nil];
     } else if (HDViewControllerNavigationBarStyleTheme == style) {
         self.hd_navBackgroundColor = [HDAppTheme HDColorC1];
         self.hd_navTitleColor = UIColor.whiteColor;
-        image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle withConfiguration:nil];
+        image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
     } else if (HDViewControllerNavigationBarStyleHidden == style) {
         self.hd_navigationBar.hidden = true;
     } else if (HDViewControllerNavigationBarStyleOther == style) {
         self.hd_navBackgroundColor = [HDAppTheme HDColorC1];
         self.hd_navTitleColor = UIColor.whiteColor;
-        image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle withConfiguration:nil];
+        image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
     }
     if (image) {
         self.hd_backButtonImage = image;

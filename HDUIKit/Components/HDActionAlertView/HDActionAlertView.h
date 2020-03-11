@@ -21,6 +21,8 @@
 
 UIKIT_EXTERN const UIWindowLevel HDActionAlertViewWindowLevel;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @class HDActionAlertView;
 typedef void (^HDActionAlertViewHandler)(HDActionAlertView *alertView);
 typedef void (^HDActionAlertViewStringHandler)(HDActionAlertView *alertView, NSString *string);
@@ -111,3 +113,5 @@ typedef NS_ENUM(NSInteger, HDActionAlertViewTransitionStyle) {
 /// 获取自定义 View，不存在返回 nil
 - (UIView *__nullable)getCustomView;
 @end
+
+NS_ASSUME_NONNULL_END

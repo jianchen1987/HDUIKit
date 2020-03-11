@@ -17,9 +17,9 @@ typedef NS_ENUM(NSInteger, HDAlertViewButtonType) {
 @class HDAlertView;
 @class HDAlertViewButton;
 
-typedef void (^HDAlertViewButtonHandler)(HDAlertView *alertView, HDAlertViewButton *button);
-
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^HDAlertViewButtonHandler)(HDAlertView *alertView, HDAlertViewButton *button);
 
 @interface HDAlertViewButton : UIButton
 @property (nonatomic, assign) HDAlertViewButtonType type;      ///< 类型
