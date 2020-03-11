@@ -21,6 +21,10 @@
     [super viewDidLoad];
 
     [self baseSetupUI];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 
     [self setupNavigationBarStyle];
 }
