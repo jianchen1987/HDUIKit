@@ -12,8 +12,8 @@
 #import "HDToastAnimator.h"
 #import "HDToastBackgroundView.h"
 #import "HDToastContentView.h"
+#import "NSBundle+HDUIKit.h"
 #import "NSString+HDUIKit.h"
-#import "UIImage+HDUIKit.h"
 #import "UIImage+HD_GIF.h"
 
 const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
@@ -97,7 +97,8 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
 }
 
 - (void)showSuccess:(NSString *)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay needShow:(BOOL)needShow {
-    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage hd_imageNamed:@"success"]];
+    NSBundle *bundle = [NSBundle hd_UIKitTipsResourcesBundle];
+    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"success" inBundle:bundle withConfiguration:nil]];
     [self showTipWithText:text detailText:detailText hideAfterDelay:delay needShow:needShow];
 }
 
@@ -115,7 +116,8 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
 }
 
 - (void)showError:(NSString *)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay {
-    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage hd_imageNamed:@"fail"]];
+    NSBundle *bundle = [NSBundle hd_UIKitTipsResourcesBundle];
+    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fail" inBundle:bundle withConfiguration:nil]];
     [self showTipWithText:text detailText:detailText hideAfterDelay:delay];
 }
 
@@ -133,7 +135,8 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
 }
 
 - (void)showInfo:(NSString *)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay {
-    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage hd_imageNamed:@"info"]];
+    NSBundle *bundle = [NSBundle hd_UIKitTipsResourcesBundle];
+    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"info" inBundle:bundle withConfiguration:nil]];
     [self showTipWithText:text detailText:detailText hideAfterDelay:delay];
 }
 
@@ -151,7 +154,8 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
 }
 
 - (void)showWarning:(NSString *)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay {
-    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage hd_imageNamed:@"warning"]];
+    NSBundle *bundle = [NSBundle hd_UIKitTipsResourcesBundle];
+    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning" inBundle:bundle withConfiguration:nil]];
     [self showTipWithText:text detailText:detailText hideAfterDelay:delay];
 }
 

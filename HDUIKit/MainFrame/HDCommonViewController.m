@@ -1,4 +1,5 @@
 
+
 //
 //  HDCommonViewController.m
 //  HDUIKit
@@ -8,7 +9,7 @@
 
 #import "HDCommonViewController.h"
 #import "HDAppTheme.h"
-#import "UIImage+HDUIKit.h"
+#import "NSBundle+HDUIKit.h"
 
 @interface HDCommonViewController ()
 
@@ -32,20 +33,26 @@
 - (void)setupNavigationBarStyle {
     HDViewControllerNavigationBarStyle style = self.hd_preferredNavigationBarStyle;
 
+    NSBundle *bundle = [NSBundle hd_UIKitMainFrameResourcesBundle];
+
+    UIImage *image;
     if (HDViewControllerNavigationBarStyleWhite == style) {
         self.hd_navBackgroundColor = UIColor.whiteColor;
         self.hd_navTitleColor = [HDAppTheme HDColorC1];
-        self.hd_backButtonImage = [UIImage hd_imageNamed:@"ic-return-red"];
+        image = [UIImage imageNamed:@"ic-return-red" inBundle:bundle withConfiguration:nil];
     } else if (HDViewControllerNavigationBarStyleTheme == style) {
         self.hd_navBackgroundColor = [HDAppTheme HDColorC1];
         self.hd_navTitleColor = UIColor.whiteColor;
-        self.hd_backButtonImage = [UIImage hd_imageNamed:@"ic-return-white"];
+        image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle withConfiguration:nil];
     } else if (HDViewControllerNavigationBarStyleHidden == style) {
         self.hd_navigationBar.hidden = true;
     } else if (HDViewControllerNavigationBarStyleOther == style) {
         self.hd_navBackgroundColor = [HDAppTheme HDColorC1];
         self.hd_navTitleColor = UIColor.whiteColor;
-        self.hd_backButtonImage = [UIImage hd_imageNamed:@"ic-return-white"];
+        image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle withConfiguration:nil];
+    }
+    if (image) {
+        self.hd_backButtonImage = image;
     }
     self.hd_navLineHidden = self.hd_shouldHideNavigationBarBottomLine;
 

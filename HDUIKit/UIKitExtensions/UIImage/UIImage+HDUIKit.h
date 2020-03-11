@@ -18,13 +18,6 @@ typedef NS_ENUM(NSInteger, HDUIImageResizingMode) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface UIImage (Bundle)
-
-/// 加载 HDUIKit.bundle 里的图片
-/// @param name 图片名
-+ (nullable UIImage *)hd_imageNamed:(nonnull NSString *)name;
-@end
-
 @interface UIImage (Color)
 /**
  *  创建一个size为(4, 4)的纯色的UIImage

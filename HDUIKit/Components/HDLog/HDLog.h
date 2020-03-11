@@ -22,5 +22,5 @@
 #ifdef DEBUG
 #define HDLog(...) [[HDLogger sharedInstance] printLogWithFile:__FILE__ line:__LINE__ func:__FUNCTION__ logItem:[HDLogItem logItemWithLevel:HDLogLevelDefault name:@"HDUIKit" logString:__VA_ARGS__]]
 #else
-#define HDLog(...) ;
+#define HDLog(...)
 #endif

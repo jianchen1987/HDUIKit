@@ -29,13 +29,6 @@ CGSizeFlatSpecificScale(CGSize size, float scale) {
     return CGSizeMake(flatSpecificScale(size.width, scale), flatSpecificScale(size.height, scale));
 }
 
-@implementation UIImage (Bundle)
-+ (nullable UIImage *)hd_imageNamed:(nonnull NSString *)name {
-    UIImage *image = [UIImage imageNamed:name inBundle:[NSBundle hd_UIKitBundle] compatibleWithTraitCollection:nil];
-    return image;
-}
-@end
-
 @implementation UIImage (Color)
 
 + (UIImage *)hd_imageWithColor:(UIColor *)color size:(CGSize)size {

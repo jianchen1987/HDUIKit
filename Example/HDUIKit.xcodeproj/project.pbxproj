@@ -70,7 +70,7 @@
 		959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDBaseViewController.m; sourceTree = "<group>"; };
 		959AE723240F3D2400D3E3AE /* HDCodeGeneratorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCodeGeneratorViewController.h; sourceTree = "<group>"; };
 		959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCodeGeneratorViewController.m; sourceTree = "<group>"; };
-		A88E61FF828E8CF0B8287AD2 /* HDUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HDUIKit.podspec; path = ../HDUIKit.podspec; sourceTree = "<group>"; };
+		A88E61FF828E8CF0B8287AD2 /* HDUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HDUIKit.podspec; path = ../HDUIKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B45EFE5CC5B5FBA60A4F5D5E /* Pods_HDUIKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HDUIKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6C24C1D09C49B829C0DE69F /* Pods-HDUIKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HDUIKit_Tests.release.xcconfig"; path = "Target Support Files/Pods-HDUIKit_Tests/Pods-HDUIKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		FDE080A16772EA9999F7C615 /* Pods-HDUIKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HDUIKit_Example.debug.xcconfig"; path = "Target Support Files/Pods-HDUIKit_Example/Pods-HDUIKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -588,7 +588,7 @@
 				GCC_PREFIX_HEADER = "HDUIKit/HDUIKit-Prefix.pch";
 				INFOPLIST_FILE = "HDUIKit/HDUIKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MARKETING_VERSION = 0.4.2;
+				MARKETING_VERSION = 0.4.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -608,7 +608,7 @@
 				GCC_PREFIX_HEADER = "HDUIKit/HDUIKit-Prefix.pch";
 				INFOPLIST_FILE = "HDUIKit/HDUIKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MARKETING_VERSION = 0.4.2;
+				MARKETING_VERSION = 0.4.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.4.2"
+  s.version          = "0.4.3"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -15,15 +15,16 @@ Pod::Spec.new do |s|
   s.screenshot       = 'https://xxx.png'
 
   s.platform         = :ios, '9.0'
-  s.frameworks       = 'AVFoundation', 'Foundation', 'UIKit', 'CoreGraphics'
+  s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics'
   s.source_files     = 'HDUIKit/HDUIKit.h'
-  s.resource_bundles = {'HDResources' => ['HDUIKit/HDResources/*.*']}
+  s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
 
   s.subspec 'Core' do |ss|
     ss.source_files = 'HDUIKit/HDUIKit.h', 'HDUIKit/Core','HDUIKit/UIKitExtensions', 'HDUIKit/UIKitExtensions/*/*'
     ss.dependency 'HDUIKit/HDWeakObjectContainer'
     ss.dependency 'HDUIKit/HDLog'
     ss.dependency 'HDUIKit/HDRuntime'
+    ss.frameworks = 'AVFoundation'
   end
 
   s.subspec 'MainFrame' do |ss|
@@ -31,6 +32,7 @@ Pod::Spec.new do |s|
     ss.dependency 'HDUIKit/HDNavigationBar'
     ss.dependency 'HDUIKit/HDAppTheme'
     ss.dependency 'HDUIKit/UIKitExtensions/UIImage'
+    ss.resource_bundles = {'HDUIKitMainFrameResources' => ['HDUIKit/MainFrame/Resources/*.*']}
   end
 
   s.subspec 'HDNavigationBar' do |ss|
@@ -142,6 +144,7 @@ Pod::Spec.new do |s|
       sss.source_files = 'HDUIKit/Components/HDTips'
       sss.dependency 'HDUIKit/Components/ToastView'
       sss.dependency 'HDUIKit/Components/ProgressView'
+      sss.resource_bundles = {'HDUIKitTipsResources' => ['HDUIKit/Components/HDTips/Resources/*.*']}
     end
 
     ss.subspec 'MultipleDelegates' do |sss|
