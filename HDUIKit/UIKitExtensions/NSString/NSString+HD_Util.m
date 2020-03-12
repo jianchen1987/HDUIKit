@@ -1,6 +1,6 @@
 //
 //  NSString+HD_Util.m
-//  ViPay
+//  HDUIKit
 //
 //  Created by VanJay on 2019/6/18.
 //  Copyright © 2019 chaos network technology. All rights reserved.
