@@ -1,6 +1,6 @@
 //
 //  HDDispatchMainQueueSafe.h
-//  customer
+//  HDUIKit
 //
 //  Created by VanJay on 2018/8/18.
 //  Copyright © 2018年 chaos network technology. All rights reserved.

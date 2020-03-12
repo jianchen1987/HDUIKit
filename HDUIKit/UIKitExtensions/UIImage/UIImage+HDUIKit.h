@@ -9,11 +9,29 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, HDUIImageResizingMode) {
-    HDUIImageResizingModeScaleToFill = 0,       // 将图片缩放到给定的大小，不考虑宽高比例
-    HDUIImageResizingModeScaleAspectFit = 10,   // 默认的缩放方式，将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），不会产生空白也不会产生裁剪
-    HDUIImageResizingModeScaleAspectFill = 20,  // 将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），若有内容超出则会被裁剪。若裁剪则上下居中裁剪。
-    HDUIImageResizingModeScaleAspectFillTop,    // 将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），若有内容超出则会被裁剪。若裁剪则水平居中、垂直居上裁剪。
-    HDUIImageResizingModeScaleAspectFillBottom  // 将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），若有内容超出则会被裁剪。若裁剪则水平居中、垂直居下裁剪。
+    HDUIImageResizingModeScaleToFill = 0,       ///< 将图片缩放到给定的大小，不考虑宽高比例
+    HDUIImageResizingModeScaleAspectFit = 10,   ///< 默认的缩放方式，将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），不会产生空白也不会产生裁剪
+    HDUIImageResizingModeScaleAspectFill = 20,  ///< 将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），若有内容超出则会被裁剪。若裁剪则上下居中裁剪。
+    HDUIImageResizingModeScaleAspectFillTop,    ///< 将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），若有内容超出则会被裁剪。若裁剪则水平居中、垂直居上裁剪。
+    HDUIImageResizingModeScaleAspectFillBottom  ///< 将图片保持宽高比例不变的情况下缩放到不超过给定的大小（但缩放后的大小不一定与给定大小相等），若有内容超出则会被裁剪。若裁剪则水平居中、垂直居下裁剪。
+};
+
+typedef NS_ENUM(NSInteger, HDUIImageShape) {
+    HDUIImageShapeOval,                 ///< 椭圆
+    HDUIImageShapeTriangle,             ///< 三角形
+    HDUIImageShapeDisclosureIndicator,  ///< 列表 cell 右边的箭头
+    HDUIImageShapeCheckmark,            ///< 列表 cell 右边的checkmark
+    HDUIImageShapeDetailButtonImage,    ///< 列表 cell 右边的 i 按钮图片
+    HDUIImageShapeNavBack,              ///< 返回按钮的箭头
+    HDUIImageShapeNavClose              ///< 导航栏的关闭icon
+};
+
+typedef NS_OPTIONS(NSInteger, HDUIImageBorderPosition) {
+    HDUIImageBorderPositionAll = 0,
+    HDUIImageBorderPositionTop = 1 << 0,
+    HDUIImageBorderPositionLeft = 1 << 1,
+    HDUIImageBorderPositionBottom = 1 << 2,
+    HDUIImageBorderPositionRight = 1 << 3,
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -226,6 +244,61 @@ NS_ASSUME_NONNULL_BEGIN
  *  @return 返回一张与原图大小一致的图片，所叠加的图片若超出原图大小，则超出部分被截掉
  */
 - (nullable UIImage *)hd_imageWithImageAbove:(UIImage *)image atPoint:(CGPoint)point;
+
+/**
+ *  创建一个带边框路径，没有背景色的路径图片，border的路径为path
+ *
+ *  @param strokeColor  border的颜色
+ *  @param path         border的路径
+ *  @param addClip      是否要调path的addClip
+ *
+ *  @return 带border的UIImage
+ */
++ (nullable UIImage *)hd_imageWithStrokeColor:(nullable UIColor *)strokeColor size:(CGSize)size path:(nullable UIBezierPath *)path addClip:(BOOL)addClip;
+
+/**
+ *  创建一个带边框路径，没有背景色的路径图片，border的路径为strokeColor、cornerRadius和lineWidth所创建的path
+ *
+ *  @param strokeColor  border的颜色
+ *  @param lineWidth    border的宽度
+ *  @param cornerRadius border的圆角
+ *
+ *  @return 带border的UIImage
+ */
++ (nullable UIImage *)hd_imageWithStrokeColor:(nullable UIColor *)strokeColor size:(CGSize)size lineWidth:(CGFloat)lineWidth cornerRadius:(CGFloat)cornerRadius;
+
+/**
+ *  创建一个带边框路径，没有背景色的路径图片（可以是任意一条边，也可以是多条组合；只能创建矩形的border，不能添加圆角）
+ *
+ *  @param strokeColor        路径的颜色
+ *  @param size               图片的大小
+ *  @param lineWidth          路径的大小
+ *  @param borderPosition     图片的路径位置，上左下右
+ *
+ *  @return 带路径，没有背景色的UIImage
+ */
++ (nullable UIImage *)hd_imageWithStrokeColor:(nullable UIColor *)strokeColor size:(CGSize)size lineWidth:(CGFloat)lineWidth borderPosition:(HDUIImageBorderPosition)borderPosition;
+/**
+ *  创建一个指定大小和颜色的形状图片
+ *  @param shape 图片形状
+ *  @param size 图片大小
+ *  @param tintColor 图片颜色
+ */
++ (nullable UIImage *)hd_imageWithShape:(HDUIImageShape)shape size:(CGSize)size tintColor:(nullable UIColor *)tintColor;
+
+/**
+ *  创建一个指定大小和颜色的形状图片
+ *  @param shape 图片形状
+ *  @param size 图片大小
+ *  @param lineWidth 路径大小，不会影响最终size
+ *  @param tintColor 图片颜色
+ */
++ (nullable UIImage *)hd_imageWithShape:(HDUIImageShape)shape size:(CGSize)size lineWidth:(CGFloat)lineWidth tintColor:(nullable UIColor *)tintColor;
+
+/**
+ *  将文字渲染成图片，最终图片和文字一样大
+ */
++ (nullable UIImage *)hd_imageWithAttributedString:(NSAttributedString *)attributedString;
 @end
 
 NS_ASSUME_NONNULL_END

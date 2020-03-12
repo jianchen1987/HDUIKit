@@ -22,6 +22,12 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		95676364241A03DA00374171 /* HDCountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676363241A03DA00374171 /* HDCountDownViewController.m */; };
+		95676370241A0EDB00374171 /* HDGridViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567636F241A0EDB00374171 /* HDGridViewViewController.m */; };
+		95676377241A1E2300374171 /* HDFlowLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676376241A1E2300374171 /* HDFlowLayoutViewController.m */; };
+		9567637A241A1E7800374171 /* HDProgressViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676379241A1E7800374171 /* HDProgressViewViewController.m */; };
+		9567637D241A286500374171 /* HDInputFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567637C241A286500374171 /* HDInputFieldViewController.m */; };
+		95676380241A297A00374171 /* HDKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567637F241A297A00374171 /* HDKeyboardViewController.m */; };
 		959AE6EB240E04D600D3E3AE /* HDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE6E6240E04D600D3E3AE /* HDViewController.m */; };
 		959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE6E9240E04D600D3E3AE /* ExampleItem.m */; };
 		959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */; };
@@ -62,6 +68,18 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		802109401837E11DF00C7703 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		89B045890A63CAA363CB40B3 /* Pods_HDUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HDUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95676362241A03DA00374171 /* HDCountDownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCountDownViewController.h; sourceTree = "<group>"; };
+		95676363241A03DA00374171 /* HDCountDownViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCountDownViewController.m; sourceTree = "<group>"; };
+		9567636E241A0EDB00374171 /* HDGridViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDGridViewViewController.h; sourceTree = "<group>"; };
+		9567636F241A0EDB00374171 /* HDGridViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDGridViewViewController.m; sourceTree = "<group>"; };
+		95676375241A1E2300374171 /* HDFlowLayoutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDFlowLayoutViewController.h; sourceTree = "<group>"; };
+		95676376241A1E2300374171 /* HDFlowLayoutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDFlowLayoutViewController.m; sourceTree = "<group>"; };
+		95676378241A1E7800374171 /* HDProgressViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDProgressViewViewController.h; sourceTree = "<group>"; };
+		95676379241A1E7800374171 /* HDProgressViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDProgressViewViewController.m; sourceTree = "<group>"; };
+		9567637B241A286500374171 /* HDInputFieldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDInputFieldViewController.h; sourceTree = "<group>"; };
+		9567637C241A286500374171 /* HDInputFieldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDInputFieldViewController.m; sourceTree = "<group>"; };
+		9567637E241A297A00374171 /* HDKeyboardViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDKeyboardViewController.h; sourceTree = "<group>"; };
+		9567637F241A297A00374171 /* HDKeyboardViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDKeyboardViewController.m; sourceTree = "<group>"; };
 		959AE6E5240E04D600D3E3AE /* HDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HDViewController.h; sourceTree = "<group>"; };
 		959AE6E6240E04D600D3E3AE /* HDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HDViewController.m; sourceTree = "<group>"; };
 		959AE6E8240E04D600D3E3AE /* ExampleItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleItem.h; sourceTree = "<group>"; };
@@ -190,6 +208,24 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		95676361241A03CC00374171 /* CountDown */ = {
+			isa = PBXGroup;
+			children = (
+				95676362241A03DA00374171 /* HDCountDownViewController.h */,
+				95676363241A03DA00374171 /* HDCountDownViewController.m */,
+			);
+			path = CountDown;
+			sourceTree = "<group>";
+		};
+		9567636D241A0ECC00374171 /* GridView */ = {
+			isa = PBXGroup;
+			children = (
+				9567636E241A0EDB00374171 /* HDGridViewViewController.h */,
+				9567636F241A0EDB00374171 /* HDGridViewViewController.m */,
+			);
+			path = GridView;
+			sourceTree = "<group>";
+		};
 		959AE6E1240E04D600D3E3AE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,20 +249,30 @@
 		959AE6E3240E04D600D3E3AE /* Demo */ = {
 			isa = PBXGroup;
 			children = (
-				959AE6E4240E04D600D3E3AE /* Code */,
+				9567636D241A0ECC00374171 /* GridView */,
+				95676361241A03CC00374171 /* CountDown */,
+				959AE6E4240E04D600D3E3AE /* BarQRCode */,
 				959AE720240F3CDC00D3E3AE /* HDBaseViewController.h */,
 				959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */,
+				95676375241A1E2300374171 /* HDFlowLayoutViewController.h */,
+				95676376241A1E2300374171 /* HDFlowLayoutViewController.m */,
+				95676378241A1E7800374171 /* HDProgressViewViewController.h */,
+				95676379241A1E7800374171 /* HDProgressViewViewController.m */,
+				9567637B241A286500374171 /* HDInputFieldViewController.h */,
+				9567637C241A286500374171 /* HDInputFieldViewController.m */,
+				9567637E241A297A00374171 /* HDKeyboardViewController.h */,
+				9567637F241A297A00374171 /* HDKeyboardViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
 		};
-		959AE6E4240E04D600D3E3AE /* Code */ = {
+		959AE6E4240E04D600D3E3AE /* BarQRCode */ = {
 			isa = PBXGroup;
 			children = (
 				959AE723240F3D2400D3E3AE /* HDCodeGeneratorViewController.h */,
 				959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */,
 			);
-			path = Code;
+			path = BarQRCode;
 			sourceTree = "<group>";
 		};
 		959AE6E7240E04D600D3E3AE /* Model */ = {
@@ -411,12 +457,14 @@
 				"${PODS_ROOT}/Target Support Files/Pods-HDUIKit_Example/Pods-HDUIKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FFToast/FFToast.framework",
 				"${BUILT_PRODUCTS_DIR}/HDUIKit/HDUIKit.framework",
+				"${BUILT_PRODUCTS_DIR}/HDVendorKit/HDVendorKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFToast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDVendorKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,10 +498,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				959AE6EB240E04D600D3E3AE /* HDViewController.m in Sources */,
+				95676370241A0EDB00374171 /* HDGridViewViewController.m in Sources */,
 				959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */,
 				959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */,
+				95676364241A03DA00374171 /* HDCountDownViewController.m in Sources */,
+				95676380241A297A00374171 /* HDKeyboardViewController.m in Sources */,
 				6003F59E195388D20070C39A /* HDAppDelegate.m in Sources */,
+				95676377241A1E2300374171 /* HDFlowLayoutViewController.m in Sources */,
 				959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */,
+				9567637D241A286500374171 /* HDInputFieldViewController.m in Sources */,
+				9567637A241A1E7800374171 /* HDProgressViewViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

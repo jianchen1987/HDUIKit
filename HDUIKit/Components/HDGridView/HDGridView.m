@@ -80,6 +80,48 @@
     self.separatorLayer.strokeColor = _separatorColor.CGColor;
 }
 
+- (void)setSubViewHMargin:(CGFloat)subViewHMargin {
+    if (_subViewHMargin == subViewHMargin) return;
+
+    _subViewHMargin = subViewHMargin;
+    [self setNeedsLayout];
+}
+
+- (void)setSubViewVMargin:(CGFloat)subViewVMargin {
+    if (_subViewVMargin == subViewVMargin) return;
+
+    _subViewVMargin = subViewVMargin;
+    [self setNeedsLayout];
+}
+
+- (void)setColumnCount:(NSInteger)columnCount {
+    if (_columnCount == columnCount) return;
+
+    _columnCount = columnCount;
+    [self setNeedsLayout];
+}
+
+- (void)setRowHeight:(CGFloat)rowHeight {
+    if (_rowHeight == rowHeight) return;
+
+    _rowHeight = rowHeight;
+    [self setNeedsLayout];
+}
+
+- (void)setEdgeInsets:(UIEdgeInsets)edgeInsets {
+    if (UIEdgeInsetsEqualToEdgeInsets(_edgeInsets, edgeInsets)) return;
+
+    _edgeInsets = edgeInsets;
+    [self setNeedsLayout];
+}
+
+- (void)setSeparatorEdgeInsets:(UIEdgeInsets)separatorEdgeInsets {
+    if (UIEdgeInsetsEqualToEdgeInsets(_separatorEdgeInsets, separatorEdgeInsets)) return;
+
+    _separatorEdgeInsets = separatorEdgeInsets;
+    [self setNeedsLayout];
+}
+
 // 返回最接近平均列宽的值，保证其为整数，因此所有columnWidth加起来可能比总宽度要小
 - (CGFloat)stretchColumnWidth {
     return floor((CGRectGetWidth(self.bounds) - (self.edgeInsets.left + self.edgeInsets.right) - self.subViewHMargin * (self.columnCount - 1)) / self.columnCount);

@@ -1,6 +1,6 @@
 //
 //  HDKeyBoard.m
-//  customer
+//  HDUIKit
 //
 //  Created by VanJay on 2019/5/18.
 //  Copyright © 2019 chaos network technology. All rights reserved.
@@ -10,6 +10,7 @@
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
 #import "HDUIButton.h"
+#import "NSBundle+HDUIKit.h"
 #import "NSString+HD_Size.h"
 #import "UIView+HD_Extension.h"
 #import "WJFrameLayout.h"
@@ -167,7 +168,7 @@
             [button setTitle:buttonModel.showText forState:UIControlStateNormal];
             button.titleLabel.font = self.theme.letterButtonFont;
         } else if (buttonModel.type == HDKeyBoardButtonTypeDelete) {
-            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage inBundle:[NSBundle hd_UIKitKeyboardResources] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         }
 
         SEL selector = [self selectorFromModel:buttonModel];
@@ -207,7 +208,7 @@
             [button setTitle:buttonModel.showText forState:UIControlStateNormal];
             button.titleLabel.font = self.theme.letterButtonFont;
         } else if (buttonModel.type == HDKeyBoardButtonTypeDelete) {
-            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage inBundle:[NSBundle hd_UIKitKeyboardResources] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         }
 
         SEL selector = [self selectorFromModel:buttonModel];
@@ -260,9 +261,9 @@
             [button setTitle:buttonModel.showText forState:UIControlStateNormal];
             button.titleLabel.font = self.theme.letterButtonFont;
         } else if (buttonModel.type == HDKeyBoardButtonTypeShift) {
-            [button setImage:[UIImage imageNamed:self.theme.shiftButtonImage] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:self.theme.shiftButtonImage inBundle:[NSBundle hd_UIKitKeyboardResources] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         } else if (buttonModel.type == HDKeyBoardButtonTypeDelete) {
-            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage inBundle:[NSBundle hd_UIKitKeyboardResources] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         }
 
         SEL selector = [self selectorFromModel:buttonModel];
@@ -370,7 +371,7 @@
             [button setTitle:buttonModel.showText forState:UIControlStateNormal];
             button.titleLabel.font = self.theme.letterButtonFont;
         } else if (buttonModel.type == HDKeyBoardButtonTypeDelete) {
-            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage] forState:UIControlStateNormal];
+            [button setImage:[UIImage imageNamed:self.theme.deleteButtonImage inBundle:[NSBundle hd_UIKitKeyboardResources] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         }
 
         SEL selector = [self selectorFromModel:buttonModel];
@@ -558,10 +559,11 @@
 - (void)clickedShiftBtn:(HDKeyBoardButton *)button {
     button.selected = !button.isSelected;
     self.isCapital = button.isSelected;
+    NSBundle *bundle = [NSBundle hd_UIKitKeyboardResources];
     if (button.isSelected) {
-        [button setImage:[UIImage imageNamed:self.theme.shiftButtonSelectedImage] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:self.theme.shiftButtonSelectedImage inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     } else {
-        [button setImage:[UIImage imageNamed:self.theme.shiftButtonImage] forState:UIControlStateNormal];
+        [button setImage:[UIImage imageNamed:self.theme.shiftButtonImage inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     }
 
     for (HDKeyBoardButton *btn in self.containerView.subviews) {

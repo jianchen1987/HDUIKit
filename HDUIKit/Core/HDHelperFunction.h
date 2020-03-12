@@ -3,7 +3,7 @@
 //  HDUIKit
 //
 //  Created by VanJay on 2020/2/26.
-//  Copyright © 2020 VanJay. All rights reserved.
+//  Copyright © 2019 chaos network technology. All rights reserved.
 //
 
 #ifndef HDHelperFunction_h

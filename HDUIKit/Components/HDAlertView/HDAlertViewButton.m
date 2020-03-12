@@ -1,6 +1,6 @@
 //
 //  HDAlertViewButton.m
-//  ViPay
+//  HDUIKit
 //
 //  Created by VanJay on 2019/8/1.
 //  Copyright © 2019 chaos network technology. All rights reserved.

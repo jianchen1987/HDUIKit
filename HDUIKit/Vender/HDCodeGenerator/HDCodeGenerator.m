@@ -1,6 +1,6 @@
 //
 //  HDCodeGenerator.m
-//  ViPay
+//  HDUIKit
 //
 //  Created by VanJay on 2019/8/2.
 //  Copyright © 2019 chaos network technology. All rights reserved.

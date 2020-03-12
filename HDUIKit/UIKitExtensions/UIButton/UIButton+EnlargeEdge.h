@@ -1,6 +1,6 @@
 //
 //  UIButton+EnlargeEdge.h
-//  customer
+//  HDUIKit
 //
 //  Created by VanJay on 2017/8/4.
 //  Copyright © 2017年 chaos network technology. All rights reserved.

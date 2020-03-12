@@ -1,6 +1,6 @@
 //
 //  HDAppTheme.h
-//  customer
+//  HDUIKit
 //
 //  Created by 帅呆 on 2019/1/28.
 //  Copyright © 2019 chaos network technology. All rights reserved.

@@ -24,6 +24,8 @@
     }
 #endif
 
+#define CGSizeMax CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+
 CG_INLINE CGSize
 CGSizeFlatSpecificScale(CGSize size, float scale) {
     return CGSizeMake(flatSpecificScale(size.width, scale), flatSpecificScale(size.height, scale));
@@ -670,6 +672,187 @@ CGSizeFlatSpecificScale(CGSize size, float scale) {
                              actions:^(CGContextRef contextRef) {
                                  [self drawInRect:CGRectMakeWithSize(self.size)];
                                  [image drawAtPoint:point];
+                             }];
+}
+
++ (UIImage *)hd_imageWithStrokeColor:(UIColor *)strokeColor size:(CGSize)size path:(UIBezierPath *)path addClip:(BOOL)addClip {
+    size = CGSizeFlatted(size);
+    return [UIImage hd_imageWithSize:size
+                              opaque:NO
+                               scale:0
+                             actions:^(CGContextRef contextRef) {
+                                 CGContextSetStrokeColorWithColor(contextRef, strokeColor.CGColor);
+                                 if (addClip) [path addClip];
+                                 [path stroke];
+                             }];
+}
+
++ (UIImage *)hd_imageWithStrokeColor:(UIColor *)strokeColor size:(CGSize)size lineWidth:(CGFloat)lineWidth cornerRadius:(CGFloat)cornerRadius {
+    CGContextInspectSize(size);
+    // 往里面缩一半的lineWidth，应为stroke绘制线的时候是往两边绘制的
+    // 如果cornerRadius为0的时候使用bezierPathWithRoundedRect:cornerRadius:会有问题，左上角老是会多出一点，所以区分开
+    UIBezierPath *path;
+    CGRect rect = CGRectInset(CGRectMakeWithSize(size), lineWidth / 2, lineWidth / 2);
+    if (cornerRadius > 0) {
+        path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius];
+    } else {
+        path = [UIBezierPath bezierPathWithRect:rect];
+    }
+    [path setLineWidth:lineWidth];
+    return [UIImage hd_imageWithStrokeColor:strokeColor size:size path:path addClip:NO];
+}
+
++ (UIImage *)hd_imageWithStrokeColor:(UIColor *)strokeColor size:(CGSize)size lineWidth:(CGFloat)lineWidth borderPosition:(HDUIImageBorderPosition)borderPosition {
+    CGContextInspectSize(size);
+    if (borderPosition == HDUIImageBorderPositionAll) {
+        return [UIImage hd_imageWithStrokeColor:strokeColor size:size lineWidth:lineWidth cornerRadius:0];
+    } else {
+        // TODO 使用bezierPathWithRoundedRect:byRoundingCorners:cornerRadii:这个系统接口
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        if ((HDUIImageBorderPositionBottom & borderPosition) == HDUIImageBorderPositionBottom) {
+            [path moveToPoint:CGPointMake(0, size.height - lineWidth / 2)];
+            [path addLineToPoint:CGPointMake(size.width, size.height - lineWidth / 2)];
+        }
+        if ((HDUIImageBorderPositionTop & borderPosition) == HDUIImageBorderPositionTop) {
+            [path moveToPoint:CGPointMake(0, lineWidth / 2)];
+            [path addLineToPoint:CGPointMake(size.width, lineWidth / 2)];
+        }
+        if ((HDUIImageBorderPositionLeft & borderPosition) == HDUIImageBorderPositionLeft) {
+            [path moveToPoint:CGPointMake(lineWidth / 2, 0)];
+            [path addLineToPoint:CGPointMake(lineWidth / 2, size.height)];
+        }
+        if ((HDUIImageBorderPositionRight & borderPosition) == HDUIImageBorderPositionRight) {
+            [path moveToPoint:CGPointMake(size.width - lineWidth / 2, 0)];
+            [path addLineToPoint:CGPointMake(size.width - lineWidth / 2, size.height)];
+        }
+        [path setLineWidth:lineWidth];
+        [path closePath];
+        return [UIImage hd_imageWithStrokeColor:strokeColor size:size path:path addClip:NO];
+    }
+}
+
++ (UIImage *)hd_imageWithShape:(HDUIImageShape)shape size:(CGSize)size lineWidth:(CGFloat)lineWidth tintColor:(UIColor *)tintColor {
+    size = CGSizeFlatted(size);
+    CGContextInspectSize(size);
+
+    tintColor = tintColor ?: [UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+
+    return [UIImage hd_imageWithSize:size
+                              opaque:NO
+                               scale:0
+                             actions:^(CGContextRef contextRef) {
+                                 UIBezierPath *path = nil;
+                                 BOOL drawByStroke = NO;
+                                 CGFloat drawOffset = lineWidth / 2;
+                                 switch (shape) {
+                                     case HDUIImageShapeOval: {
+                                         path = [UIBezierPath bezierPathWithOvalInRect:CGRectMakeWithSize(size)];
+                                     } break;
+                                     case HDUIImageShapeTriangle: {
+                                         path = [UIBezierPath bezierPath];
+                                         [path moveToPoint:CGPointMake(0, size.height)];
+                                         [path addLineToPoint:CGPointMake(size.width / 2, 0)];
+                                         [path addLineToPoint:CGPointMake(size.width, size.height)];
+                                         [path closePath];
+                                     } break;
+                                     case HDUIImageShapeNavBack: {
+                                         drawByStroke = YES;
+                                         path = [UIBezierPath bezierPath];
+                                         path.lineWidth = lineWidth;
+                                         [path moveToPoint:CGPointMake(size.width - drawOffset, drawOffset)];
+                                         [path addLineToPoint:CGPointMake(0 + drawOffset, size.height / 2.0)];
+                                         [path addLineToPoint:CGPointMake(size.width - drawOffset, size.height - drawOffset)];
+                                     } break;
+                                     case HDUIImageShapeDisclosureIndicator: {
+                                         drawByStroke = YES;
+                                         path = [UIBezierPath bezierPath];
+                                         path.lineWidth = lineWidth;
+                                         [path moveToPoint:CGPointMake(drawOffset, drawOffset)];
+                                         [path addLineToPoint:CGPointMake(size.width - drawOffset, size.height / 2)];
+                                         [path addLineToPoint:CGPointMake(drawOffset, size.height - drawOffset)];
+                                     } break;
+                                     case HDUIImageShapeCheckmark: {
+                                         CGFloat lineAngle = M_PI_4;
+                                         path = [UIBezierPath bezierPath];
+                                         [path moveToPoint:CGPointMake(0, size.height / 2)];
+                                         [path addLineToPoint:CGPointMake(size.width / 3, size.height)];
+                                         [path addLineToPoint:CGPointMake(size.width, lineWidth * sin(lineAngle))];
+                                         [path addLineToPoint:CGPointMake(size.width - lineWidth * cos(lineAngle), 0)];
+                                         [path addLineToPoint:CGPointMake(size.width / 3, size.height - lineWidth / sin(lineAngle))];
+                                         [path addLineToPoint:CGPointMake(lineWidth * sin(lineAngle), size.height / 2 - lineWidth * sin(lineAngle))];
+                                         [path closePath];
+                                     } break;
+                                     case HDUIImageShapeDetailButtonImage: {
+                                         drawByStroke = YES;
+                                         path = [UIBezierPath bezierPathWithOvalInRect:CGRectInset(CGRectMakeWithSize(size), drawOffset, drawOffset)];
+                                         path.lineWidth = lineWidth;
+                                     } break;
+                                     case HDUIImageShapeNavClose: {
+                                         drawByStroke = YES;
+                                         path = [UIBezierPath bezierPath];
+                                         [path moveToPoint:CGPointMake(0, 0)];
+                                         [path addLineToPoint:CGPointMake(size.width, size.height)];
+                                         [path closePath];
+                                         [path moveToPoint:CGPointMake(size.width, 0)];
+                                         [path addLineToPoint:CGPointMake(0, size.height)];
+                                         [path closePath];
+                                         path.lineWidth = lineWidth;
+                                         path.lineCapStyle = kCGLineCapRound;
+                                     } break;
+                                     default:
+                                         break;
+                                 }
+
+                                 if (drawByStroke) {
+                                     CGContextSetStrokeColorWithColor(contextRef, tintColor.CGColor);
+                                     [path stroke];
+                                 } else {
+                                     CGContextSetFillColorWithColor(contextRef, tintColor.CGColor);
+                                     [path fill];
+                                 }
+
+                                 if (shape == HDUIImageShapeDetailButtonImage) {
+                                     CGFloat fontPointSize = flat(size.height * 0.8);
+                                     UIFont *font = [UIFont fontWithName:@"Georgia" size:fontPointSize];
+                                     NSAttributedString *string = [[NSAttributedString alloc] initWithString:@"i" attributes:@{NSFontAttributeName: font, NSForegroundColorAttributeName: tintColor}];
+                                     CGSize stringSize = [string boundingRectWithSize:size options:NSStringDrawingUsesFontLeading context:nil].size;
+                                     [string drawAtPoint:CGPointMake(CGFloatGetCenter(size.width, stringSize.width), CGFloatGetCenter(size.height, stringSize.height))];
+                                 }
+                             }];
+}
+
++ (UIImage *)hd_imageWithShape:(HDUIImageShape)shape size:(CGSize)size tintColor:(UIColor *)tintColor {
+    CGFloat lineWidth = 0;
+    switch (shape) {
+        case HDUIImageShapeNavBack:
+            lineWidth = 2.0f;
+            break;
+        case HDUIImageShapeDisclosureIndicator:
+            lineWidth = 1.5f;
+            break;
+        case HDUIImageShapeCheckmark:
+            lineWidth = 1.5f;
+            break;
+        case HDUIImageShapeDetailButtonImage:
+            lineWidth = 1.0f;
+            break;
+        case HDUIImageShapeNavClose:
+            lineWidth = 1.2f;  // 取消icon默认的lineWidth
+            break;
+        default:
+            break;
+    }
+    return [UIImage hd_imageWithShape:shape size:size lineWidth:lineWidth tintColor:tintColor];
+}
+
++ (UIImage *)hd_imageWithAttributedString:(NSAttributedString *)attributedString {
+    CGSize stringSize = [attributedString boundingRectWithSize:CGSizeMax options:NSStringDrawingUsesLineFragmentOrigin context:nil].size;
+    stringSize = CGSizeCeil(stringSize);
+    return [UIImage hd_imageWithSize:stringSize
+                              opaque:NO
+                               scale:0
+                             actions:^(CGContextRef contextRef) {
+                                 [attributedString drawInRect:CGRectMakeWithSize(stringSize)];
                              }];
 }
 @end

@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// HDUIKitTipsResources
 + (NSBundle *)hd_UIKitTipsResourcesBundle;
+
+/// HDUIKitKeyboardResources
++ (NSBundle *)hd_UIKitKeyboardResources;
 @end
 
 NS_ASSUME_NONNULL_END

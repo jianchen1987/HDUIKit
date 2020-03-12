@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"0.4.6";
+static NSString *const HDUIKit_VERSION = @"0.5.0";
 
 #if __has_include("HDDispatchMainQueueSafe.h")
 #import "HDDispatchMainQueueSafe.h"
@@ -66,6 +66,14 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 #import "CALayer+WJFrameLayout.h"
 #endif
 
+#if __has_include("HDUIButton.h")
+#import "HDUIButton.h"
+#endif
+
+#if __has_include("HDUIGhostButton.h")
+#import "HDUIGhostButton.h"
+#endif
+
 #if __has_include("HDToastBackgroundView.h")
 #import "HDToastBackgroundView.h"
 #endif
@@ -106,14 +114,6 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 #import "NAT.h"
 #endif
 
-#if __has_include("HDUIButton.h")
-#import "HDUIButton.h"
-#endif
-
-#if __has_include("HDUIGhostButton.h")
-#import "HDUIGhostButton.h"
-#endif
-
 #if __has_include("HDActionAlertView.h")
 #import "HDActionAlertView.h"
 #endif
@@ -150,6 +150,10 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 #import "HDRatingStarView.h"
 #endif
 
+#if __has_include("HDCountDownButton.h")
+#import "HDCountDownButton.h"
+#endif
+
 #if __has_include("HDKeyBoard.h")
 #import "HDKeyBoard.h"
 #endif
@@ -160,6 +164,10 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 
 #if __has_include("HDFloatLayoutView.h")
 #import "HDFloatLayoutView.h"
+#endif
+
+#if __has_include("HDUISlider.h")
+#import "HDUISlider.h"
 #endif
 
 #if __has_include("HDVisualEffectView.h")
@@ -202,8 +210,20 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 #import "HDCyclePagerView.h"
 #endif
 
+#if __has_include("HDUITextField.h")
+#import "HDUITextField.h"
+#endif
+
+#if __has_include("HDUITextFieldConfig.h")
+#import "HDUITextFieldConfig.h"
+#endif
+
 #if __has_include("HDAppTheme.h")
 #import "HDAppTheme.h"
+#endif
+
+#if __has_include("HDCommonViewController+NAT.h")
+#import "HDCommonViewController+NAT.h"
 #endif
 
 #if __has_include("HDCommonViewController.h")
@@ -282,6 +302,10 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 #import "UINavigationController+HDUIKit.h"
 #endif
 
+#if __has_include("UITextField+HDUIKit.h")
+#import "UITextField+HDUIKit.h"
+#endif
+
 #if __has_include("NSParagraphStyle+HDUIKit.h")
 #import "NSParagraphStyle+HDUIKit.h"
 #endif
@@ -308,6 +332,10 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 
 #if __has_include("CALayer+HDUIKit.h")
 #import "CALayer+HDUIKit.h"
+#endif
+
+#if __has_include("CAAnimation+HDUIKit.h")
+#import "CAAnimation+HDUIKit.h"
 #endif
 
 #if __has_include("UIInterface+HDUIKit.h")
@@ -372,6 +400,10 @@ static NSString *const HDUIKit_VERSION = @"0.4.6";
 
 #if __has_include("NSString+HD_Size.h")
 #import "NSString+HD_Size.h"
+#endif
+
+#if __has_include("NSString+HD_Util.h")
+#import "NSString+HD_Util.h"
 #endif
 
 #if __has_include("NSObject+HDUIKit.h")

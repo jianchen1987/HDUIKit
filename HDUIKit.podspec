@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.4.6"
+  s.version          = "0.5.0"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.screenshot       = 'https://xxx.png'
 
   s.platform         = :ios, '9.0'
-  s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics'
+  s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore'
   s.source_files     = 'HDUIKit/HDUIKit.h'
   s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
 
@@ -109,8 +109,8 @@ Pod::Spec.new do |s|
     ss.dependency 'HDUIKit/Core'
     ss.dependency 'HDUIKit/HDAppTheme'
 
-    ss.subspec 'HDButton' do |sss|
-      sss.source_files = 'HDUIKit/Components/HDButton'
+    ss.subspec 'HDUIButton' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDUIButton'
     end
 
     ss.subspec 'HDCyclePagerView' do |sss|
@@ -127,8 +127,9 @@ Pod::Spec.new do |s|
 
     ss.subspec 'HDKeyBoard' do |sss|
       sss.source_files = 'HDUIKit/Components/HDKeyBoard'
-      sss.dependency 'HDUIKit/Components/HDButton'
+      sss.dependency 'HDUIKit/Components/HDUIButton'
       sss.dependency 'HDUIKit/WJFrameLayout'
+      sss.resource_bundles = {'HDUIKitKeyboardResources' => ['HDUIKit/Components/HDKeyBoard/Resources/*.*']}
     end
 
     ss.subspec 'HDRatingStarView' do |sss|
@@ -175,6 +176,22 @@ Pod::Spec.new do |s|
       sss.source_files = 'HDUIKit/Components/NAT'
       sss.dependency 'FFToast', '~> 1.2.0'
       sss.dependency 'HDUIKit/Components/HDAlertView'
+    end
+
+    ss.subspec 'HDCountDownButton' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDCountDownButton'
+      sss.dependency 'HDVendorKit/HDWeakTimer'
+      sss.dependency 'HDUIKit/Components/HDUIButton'
+    end
+
+    ss.subspec 'HDUISlider' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDUISlider'
+    end
+
+    ss.subspec 'HDUITextField' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDUITextField'
+      sss.dependency 'HDVendorKit/KVOController'
+      sss.dependency 'Masonry'
     end
 
   end

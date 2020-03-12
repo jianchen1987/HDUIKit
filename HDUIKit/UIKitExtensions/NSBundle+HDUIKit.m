@@ -33,4 +33,17 @@
     }
     return resourceBundle;
 }
+
++ (NSBundle *)hd_UIKitKeyboardResources {
+    static NSBundle *resourceBundle = nil;
+    if (!resourceBundle) {
+        NSBundle *mainBundle = [NSBundle mainBundle];
+        NSString *resourcePath = [mainBundle pathForResource:@"Frameworks/HDUIKit.framework/HDUIKitKeyboardResources" ofType:@"bundle"];
+        if (!resourcePath) {
+            resourcePath = [mainBundle pathForResource:@"HDUIKitKeyboardResources" ofType:@"bundle"];
+        }
+        resourceBundle = [NSBundle bundleWithPath:resourcePath] ?: mainBundle;
+    }
+    return resourceBundle;
+}
 @end
