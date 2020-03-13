@@ -46,18 +46,17 @@
     return jsonString;
 }
 
-+ (NSDictionary *)hd_dictionaryWithJsonString:(NSString *)jsonString {
-    if (jsonString == nil) {
+- (NSDictionary *)hd_dictionary {
+    if (self == nil) {
         return nil;
     }
-
-    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
     NSError *err;
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
                                                         options:NSJSONReadingMutableContainers
                                                           error:&err];
     if (err) {
-        HDLog(@"json解析失败：%@", err);
+        NSLog(@"json解析失败：%@", err);
         return nil;
     }
     return dic;
@@ -211,22 +210,6 @@
     }
 
     return [surStrArr componentsJoinedByString:separator];
-}
-
-- (NSDictionary *)hd_dictionary {
-    if (self == nil) {
-        return nil;
-    }
-    NSData *jsonData = [self dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                        options:NSJSONReadingMutableContainers
-                                                          error:&err];
-    if (err) {
-        NSLog(@"json解析失败：%@", err);
-        return nil;
-    }
-    return dic;
 }
 
 - (NSString *)hd_timeTo12HoursFormat {

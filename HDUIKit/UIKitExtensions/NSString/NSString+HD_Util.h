@@ -20,7 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)hd_convertWithJSONData:(id)infoDict;
 
-+ (NSDictionary *)hd_dictionaryWithJsonString:(NSString *)jsonString;
+/// 转字典
+@property (nonatomic, copy, readonly) NSDictionary *hd_dictionary;
 
 @end
 
@@ -60,9 +61,6 @@ NS_ASSUME_NONNULL_BEGIN
  @param unitLength 单位长度
  */
 - (NSString *)hd_componentsSeparatedStringByString:(NSString *)separator unitLength:(NSInteger)unitLength;
-
-/// 转字典
-@property (nonatomic, copy, readonly) NSDictionary *hd_dictionary;
 
 /** 时间转12小时制 */
 @property (nullable, readonly, copy) NSString *hd_timeTo12HoursFormat;
