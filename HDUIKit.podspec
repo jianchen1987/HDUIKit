@@ -32,6 +32,7 @@ Pod::Spec.new do |s|
     ss.dependency 'HDUIKit/HDNavigationBar'
     ss.dependency 'HDUIKit/HDAppTheme'
     ss.dependency 'HDUIKit/UIKitExtensions/UIImage'
+    ss.dependency 'HDUIKit/Components/HDTips'
     ss.resource_bundles = {'HDUIKitMainFrameResources' => ['HDUIKit/MainFrame/Resources/*.*']}
   end
 
