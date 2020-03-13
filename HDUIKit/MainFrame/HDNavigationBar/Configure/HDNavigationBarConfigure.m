@@ -38,8 +38,8 @@
     self.hd_disableFixSpace = NO;
     self.hd_navItemLeftSpace = 0;
     self.hd_navItemRightSpace = 0;
-    self.navItemLeftSpace = 0;
-    self.navItemRightSpace = 0;
+    self.navItemLeftSpace = 12.f;
+    self.navItemRightSpace = 12.f;
 
     self.statusBarHidden = NO;
     self.statusBarStyle = UIStatusBarStyleDefault;
