@@ -38,6 +38,7 @@
     [self.passwordTF setCustomRightView:self.passwordTFRightView];
 
     HDUITextField *textField = [[HDUITextField alloc] initWithPlaceholder:@"输入手机号码" leftLabelString:@"+855"];
+
     HDUITextFieldConfig *config = [textField getCurrentConfig];
     config.font = [UIFont systemFontOfSize:23.0f weight:UIFontWeightBold];
     config.leftLabelFont = [UIFont systemFontOfSize:23.0f weight:UIFontWeightBold];

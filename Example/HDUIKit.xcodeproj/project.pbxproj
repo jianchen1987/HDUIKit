@@ -22,6 +22,7 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		9533F5D6241CB44300BD0741 /* HDStarRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9533F5D5241CB44300BD0741 /* HDStarRatingViewController.m */; };
 		95676364241A03DA00374171 /* HDCountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676363241A03DA00374171 /* HDCountDownViewController.m */; };
 		95676370241A0EDB00374171 /* HDGridViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567636F241A0EDB00374171 /* HDGridViewViewController.m */; };
 		95676377241A1E2300374171 /* HDFlowLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676376241A1E2300374171 /* HDFlowLayoutViewController.m */; };
@@ -68,6 +69,8 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		802109401837E11DF00C7703 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		89B045890A63CAA363CB40B3 /* Pods_HDUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HDUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9533F5D4241CB44300BD0741 /* HDStarRatingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDStarRatingViewController.h; sourceTree = "<group>"; };
+		9533F5D5241CB44300BD0741 /* HDStarRatingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDStarRatingViewController.m; sourceTree = "<group>"; };
 		95676362241A03DA00374171 /* HDCountDownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCountDownViewController.h; sourceTree = "<group>"; };
 		95676363241A03DA00374171 /* HDCountDownViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCountDownViewController.m; sourceTree = "<group>"; };
 		9567636E241A0EDB00374171 /* HDGridViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDGridViewViewController.h; sourceTree = "<group>"; };
@@ -262,6 +265,8 @@
 				9567637C241A286500374171 /* HDInputFieldViewController.m */,
 				9567637E241A297A00374171 /* HDKeyboardViewController.h */,
 				9567637F241A297A00374171 /* HDKeyboardViewController.m */,
+				9533F5D4241CB44300BD0741 /* HDStarRatingViewController.h */,
+				9533F5D5241CB44300BD0741 /* HDStarRatingViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -509,6 +514,7 @@
 				9567637D241A286500374171 /* HDInputFieldViewController.m in Sources */,
 				9567637A241A1E7800374171 /* HDProgressViewViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				9533F5D6241CB44300BD0741 /* HDStarRatingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
