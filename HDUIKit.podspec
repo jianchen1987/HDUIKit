@@ -5,13 +5,13 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
                        DESC
-  s.homepage         = "https://git.vipaylife.com/vipay/HDUIKit"
+  s.homepage         = "https://code.kh-super.net/projects/MOB/repos/hduikit/"
   s.license          = 'MIT'
   s.author           = {"VanJay" => "wangwanjie1993@gmail.com"}
-  s.source           = {:git => "git@git.vipaylife.com:vipay/HDUIKit.git", :tag => s.version.to_s}
-  s.social_media_url = 'https://git.vipaylife.com/vipay/HDUIKit'
+  s.source           = {:git => "ssh://git@code.kh-super.net:7999/mob/hduikit.git", :tag => s.version.to_s}
+  s.social_media_url = 'https://code.kh-super.net/projects/MOB/repos/hduikit/'
   s.requires_arc     = true
-  s.documentation_url = 'https://git.vipaylife.com/vipay/HDUIKit'
+  s.documentation_url = 'https://code.kh-super.net/projects/MOB/repos/hduikit/'
   s.screenshot       = 'https://xxx.png'
 
   s.platform         = :ios, '9.0'
