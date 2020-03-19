@@ -103,7 +103,8 @@ static char kAssociatedObjectKey_backButtonImage;
 
     objc_setAssociatedObject(self, &kAssociatedObjectKey_backButtonImage, hd_backButtonImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
-    if (self.navigationController.childViewControllers.count <= 1) return;
+    if (!self.presentingViewController && self.navigationController.childViewControllers.count <= 1) return;
+
     if (self.hd_backButtonImage != nil) {
         if (self.hd_NavBarInit) {
             self.hd_navigationItem.leftBarButtonItem = [UIBarButtonItem hd_itemWithImage:self.hd_backButtonImage target:self action:@selector(hd_backItemClick:)];
@@ -141,7 +142,11 @@ static char kAssociatedObjectKey_popDelegate;
 }
 
 - (void)hd_backItemClick:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.presentingViewController) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 #pragma mark - public methods

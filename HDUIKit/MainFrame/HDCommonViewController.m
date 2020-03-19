@@ -22,6 +22,10 @@
     [self baseSetupUI];
 }
 
+- (void)dealloc {
+    NSLog(@"%@ - dealloc", NSStringFromClass(self.class));
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
