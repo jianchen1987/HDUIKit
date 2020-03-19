@@ -13,7 +13,6 @@
 - (NSString *)hd_URLEncodedString {
     NSCharacterSet *encodeUrlSet = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSString *encodeUrl = [self stringByAddingPercentEncodingWithAllowedCharacters:encodeUrlSet];
-
     return encodeUrl;
 }
 
