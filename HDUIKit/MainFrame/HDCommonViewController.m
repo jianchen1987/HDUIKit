@@ -54,13 +54,17 @@
         self.hd_navBackgroundColor = [HDAppTheme HDColorC1];
         self.hd_navTitleColor = UIColor.whiteColor;
         image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
+    } else if (HDViewControllerNavigationBarStyleTransparent == style) {
+        self.hd_navBarAlpha = 0;
+        self.hd_navTitleColor = UIColor.whiteColor;
+        image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
     }
     if (image) {
         self.hd_backButtonImage = image;
     }
     self.hd_navLineHidden = self.hd_shouldHideNavigationBarBottomLine;
 
-    if (!self.hd_shouldHideNavigationBarBottomShadow) {
+    if (HDViewControllerNavigationBarStyleTransparent != style && !self.hd_shouldHideNavigationBarBottomShadow) {
         self.hd_navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
         self.hd_navigationBar.layer.shadowOffset = CGSizeMake(0, 10);
         self.hd_navigationBar.layer.shadowOpacity = 0.2;
@@ -82,3 +86,5 @@
     return false;
 }
 @end
+
+d

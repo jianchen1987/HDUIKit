@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, HDViewControllerNavigationBarStyle) {
-    HDViewControllerNavigationBarStyleWhite = 0,  ///< 白色
-    HDViewControllerNavigationBarStyleTheme,      ///< 主题色
-    HDViewControllerNavigationBarStyleHidden,     ///< 隐藏
-    HDViewControllerNavigationBarStyleOther,      ///< 其他，可自定义颜色
+    HDViewControllerNavigationBarStyleWhite = 0,    ///< 白色
+    HDViewControllerNavigationBarStyleTheme,        ///< 主题色
+    HDViewControllerNavigationBarStyleHidden,       ///< 隐藏
+    HDViewControllerNavigationBarStyleTransparent,  ///< 透明的
+    HDViewControllerNavigationBarStyleOther,        ///< 其他，可自定义颜色
 };
 
 NS_ASSUME_NONNULL_BEGIN
