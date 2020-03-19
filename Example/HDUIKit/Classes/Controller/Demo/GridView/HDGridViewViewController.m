@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.hd_statusBarStyle = UIStatusBarStyleDefault;
+
     self.slider = [[HDUISlider alloc] init];
     [self.slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:self.slider];

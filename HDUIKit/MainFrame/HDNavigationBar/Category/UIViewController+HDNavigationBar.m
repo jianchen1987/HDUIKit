@@ -75,15 +75,22 @@ static char kAssociatedObjectKey_statusBarHidden;
     return (hidden != nil) ? [hidden boolValue] : HDNavConfigure.statusBarHidden;
 }
 
+static char kAssociatedObjectKey_hasManuallySetStatusBarStyle;
+- (void)setHd_hasManuallySetStatusBarStyle:(BOOL)hd_hasManuallySetStatusBarStyle {
+    objc_setAssociatedObject(self, &kAssociatedObjectKey_hasManuallySetStatusBarStyle, @(hd_hasManuallySetStatusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)hd_hasManuallySetStatusBarStyle {
+    id hidden = objc_getAssociatedObject(self, &kAssociatedObjectKey_hasManuallySetStatusBarStyle);
+    return (hidden != nil) ? [hidden boolValue] : NO;
+}
+
 static char kAssociatedObjectKey_statusBarStyle;
 - (void)setHd_statusBarStyle:(UIStatusBarStyle)hd_statusBarStyle {
     objc_setAssociatedObject(self, &kAssociatedObjectKey_statusBarStyle, @(hd_statusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
-    if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
-        [self preferredStatusBarStyle];
-
-        [self performSelector:@selector(setNeedsStatusBarAppearanceUpdate)];
-    }
+    self.hd_hasManuallySetStatusBarStyle = true;
+    [UIApplication sharedApplication].statusBarStyle = [self hd_fixedStatusBarStyle:hd_statusBarStyle];
 }
 
 - (UIStatusBarStyle)hd_statusBarStyle {
@@ -135,6 +142,16 @@ static char kAssociatedObjectKey_popDelegate;
 
 - (void)hd_backItemClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+#pragma mark - public methods
+- (UIStatusBarStyle)hd_fixedStatusBarStyle:(UIStatusBarStyle)style {
+    if (@available(iOS 13.0, *)) {
+        if (style == UIStatusBarStyleDefault) {
+            style = UIStatusBarStyleDarkContent;
+        }
+    }
+    return style;
 }
 
 @end

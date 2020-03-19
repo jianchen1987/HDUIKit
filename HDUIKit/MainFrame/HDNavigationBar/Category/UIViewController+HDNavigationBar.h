@@ -48,8 +48,11 @@ UIKIT_EXTERN NSString *const HDViewControllerPropertyChangedNotification;
 /// 设置状态栏是否隐藏，默认NO：不隐藏
 @property (nonatomic, assign) BOOL hd_statusBarHidden;
 
-/// 设置导航栏类型
+/// 设置状态栏样式类型，需要在 info.plist 中设置 UIViewControllerBasedStatusBarAppearance 为 false
 @property (nonatomic, assign) UIStatusBarStyle hd_statusBarStyle;
+
+/// 标志位，是否手动设置过状态栏样式
+@property (nonatomic, assign) BOOL hd_hasManuallySetStatusBarStyle;
 
 /// 返回按钮图片
 @property (nonatomic, strong) UIImage *hd_backButtonImage;
@@ -63,6 +66,10 @@ UIKIT_EXTERN NSString *const HDViewControllerPropertyChangedNotification;
 /// 返回按钮点击方法
 /// @param sender sender
 - (void)hd_backItemClick:(id)sender;
+
+/// 处理枚举兼容 iOS 13
+/// @param style 状态栏样式
+- (UIStatusBarStyle)hd_fixedStatusBarStyle:(UIStatusBarStyle)style;
 
 @end
 

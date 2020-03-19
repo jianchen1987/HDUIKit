@@ -12,7 +12,6 @@
 #import "NSBundle+HDUIKit.h"
 
 @interface HDCommonViewController ()
-
 @end
 
 @implementation HDCommonViewController
@@ -27,6 +26,12 @@
     [super viewWillAppear:animated];
 
     [self setupNavigationBarStyle];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    [self udpateStatusBarStyle];
 }
 
 - (void)baseSetupUI {
@@ -73,6 +78,31 @@
     }
 }
 
+- (void)udpateStatusBarStyle {
+    if (self.hd_hasManuallySetStatusBarStyle) {
+        [UIApplication sharedApplication].statusBarStyle = [self hd_fixedStatusBarStyle:self.hd_statusBarStyle];
+    } else {
+        UIStatusBarStyle darkStyle = UIStatusBarStyleDefault;
+        if (@available(iOS 13.0, *)) {
+            darkStyle = UIStatusBarStyleDarkContent;
+        }
+        UIStatusBarStyle style = darkStyle;
+        HDViewControllerNavigationBarStyle navStyle = self.hd_preferredNavigationBarStyle;
+        if (HDViewControllerNavigationBarStyleWhite == navStyle) {
+            style = darkStyle;
+        } else if (HDViewControllerNavigationBarStyleTheme == navStyle) {
+            style = UIStatusBarStyleLightContent;
+        } else if (HDViewControllerNavigationBarStyleHidden == navStyle) {
+            style = UIStatusBarStyleLightContent;
+        } else if (HDViewControllerNavigationBarStyleOther == navStyle) {
+            style = darkStyle;
+        } else if (HDViewControllerNavigationBarStyleTransparent == navStyle) {
+            style = UIStatusBarStyleLightContent;
+        }
+        self.hd_statusBarStyle = style;
+    }
+}
+
 #pragma mark - HDViewControllerNavigationBarStyle
 - (HDViewControllerNavigationBarStyle)hd_preferredNavigationBarStyle {
     return HDViewControllerNavigationBarStyleTheme;
@@ -86,5 +116,3 @@
     return false;
 }
 @end
-
-d
