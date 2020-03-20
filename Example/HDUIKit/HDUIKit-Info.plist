@@ -26,6 +26,10 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>访问您的位置，帮您更好得提供服务</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>访问您的位置，帮您更好得提供服务</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UIRequiredDeviceCapabilities</key>

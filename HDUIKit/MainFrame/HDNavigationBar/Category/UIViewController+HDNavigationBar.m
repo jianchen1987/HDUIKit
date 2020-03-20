@@ -141,7 +141,7 @@ static char kAssociatedObjectKey_popDelegate;
     [[NSNotificationCenter defaultCenter] postNotificationName:HDViewControllerPropertyChangedNotification object:@{@"viewController": self}];
 }
 
-- (void)hd_backItemClick:(id)sender {
+- (void)hd_backItemClick:(UIBarButtonItem *)sender {
     if (self.presentingViewController) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
@@ -291,6 +291,10 @@ static char kAssociatedObjectKey_navbarInit;
 
 - (BOOL)hd_NavBarInit {
     return [objc_getAssociatedObject(self, &kAssociatedObjectKey_navbarInit) boolValue];
+}
+
+- (CGFloat)navigationBarHeight {
+    return 44 + CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
 }
 
 #pragma mark - 常用属性快速设置

@@ -2,7 +2,7 @@
 //  UIButton+sizeToFit.m
 //  HDUIKit
 //
-//  Created by seeu on 2019/6/12.
+//  Created by VanJay on 2019/6/12.
 //  Copyright © 2019 chaos network technology. All rights reserved.
 //
 

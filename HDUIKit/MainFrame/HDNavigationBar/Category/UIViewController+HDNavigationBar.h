@@ -65,7 +65,7 @@ UIKIT_EXTERN NSString *const HDViewControllerPropertyChangedNotification;
 
 /// 返回按钮点击方法
 /// @param sender sender
-- (void)hd_backItemClick:(id)sender;
+- (void)hd_backItemClick:(UIBarButtonItem *)sender;
 
 /// 处理枚举兼容 iOS 13
 /// @param style 状态栏样式
@@ -102,6 +102,9 @@ UIKIT_EXTERN NSString *const HDViewControllerPropertyChangedNotification;
 
 @property (nonatomic, assign) CGFloat hd_navItemLeftSpace;
 @property (nonatomic, assign) CGFloat hd_navItemRightSpace;
+
+/// 导航栏加状态栏高度
+@property (nonatomic, assign, readonly) CGFloat navigationBarHeight;
 
 /// 显示导航栏分割线
 - (void)showNavLine;

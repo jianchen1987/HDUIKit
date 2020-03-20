@@ -19,6 +19,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// HDUIKitKeyboardResources
 + (NSBundle *)hd_UIKitKeyboardResources;
+
+/// HDUIKitSearchBarResources
++ (NSBundle *)hd_UIKitSearchBarResources;
+
+/// HDUIKITCitySelectResources
++ (NSBundle *)hd_UIKITCitySelectResources;
 @end
 
 NS_ASSUME_NONNULL_END

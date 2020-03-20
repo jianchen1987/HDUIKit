@@ -10,37 +10,36 @@
 @implementation NSBundle (HDUIKit)
 + (NSBundle *)hd_UIKitMainFrameResourcesBundle {
     static NSBundle *resourceBundle = nil;
-    if (!resourceBundle) {
-        NSBundle *mainBundle = [NSBundle mainBundle];
-        NSString *resourcePath = [mainBundle pathForResource:@"Frameworks/HDUIKit.framework/HDUIKitMainFrameResources" ofType:@"bundle"];
-        if (!resourcePath) {
-            resourcePath = [mainBundle pathForResource:@"HDUIKitMainFrameResources" ofType:@"bundle"];
-        }
-        resourceBundle = [NSBundle bundleWithPath:resourcePath] ?: mainBundle;
-    }
-    return resourceBundle;
+    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitMainFrameResources"];
 }
 
 + (NSBundle *)hd_UIKitTipsResourcesBundle {
     static NSBundle *resourceBundle = nil;
-    if (!resourceBundle) {
-        NSBundle *mainBundle = [NSBundle mainBundle];
-        NSString *resourcePath = [mainBundle pathForResource:@"Frameworks/HDUIKit.framework/HDUIKitTipsResources" ofType:@"bundle"];
-        if (!resourcePath) {
-            resourcePath = [mainBundle pathForResource:@"HDUIKitTipsResources" ofType:@"bundle"];
-        }
-        resourceBundle = [NSBundle bundleWithPath:resourcePath] ?: mainBundle;
-    }
-    return resourceBundle;
+    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitTipsResources"];
 }
 
 + (NSBundle *)hd_UIKitKeyboardResources {
     static NSBundle *resourceBundle = nil;
+    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitKeyboardResources"];
+}
+
++ (NSBundle *)hd_UIKitSearchBarResources {
+    static NSBundle *resourceBundle = nil;
+    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitSearchBarResources"];
+}
+
++ (NSBundle *)hd_UIKITCitySelectResources {
+    static NSBundle *resourceBundle = nil;
+    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKITCitySelectResources"];
+}
+
+#pragma mark - private methods
++ (NSBundle *)bundleWithStaticResourceBundle:(NSBundle *)resourceBundle bundleName:(NSString *)name {
     if (!resourceBundle) {
         NSBundle *mainBundle = [NSBundle mainBundle];
-        NSString *resourcePath = [mainBundle pathForResource:@"Frameworks/HDUIKit.framework/HDUIKitKeyboardResources" ofType:@"bundle"];
+        NSString *resourcePath = [mainBundle pathForResource:[NSString stringWithFormat:@"Frameworks/HDUIKit.framework/%@", name] ofType:@"bundle"];
         if (!resourcePath) {
-            resourcePath = [mainBundle pathForResource:@"HDUIKitKeyboardResources" ofType:@"bundle"];
+            resourcePath = [mainBundle pathForResource:name ofType:@"bundle"];
         }
         resourceBundle = [NSBundle bundleWithPath:resourcePath] ?: mainBundle;
     }

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.5.6"
+  s.version          = "0.8.0"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -193,6 +193,42 @@ Pod::Spec.new do |s|
       sss.source_files = 'HDUIKit/Components/HDUITextField'
       sss.dependency 'HDVendorKit/KVOController'
       sss.dependency 'Masonry'
+    end
+
+    ss.subspec 'HDCitySelect' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDCitySelect', 'HDUIKit/Components/HDCitySelect/*/*'
+      sss.resource_bundles = {'HDUIKITCitySelectResources' => ['HDUIKit/Components/HDCitySelect/Resources/*.*']}
+      sss.dependency 'YYModel'
+      sss.dependency 'HDVendorKit/KVOController'
+      sss.dependency 'HDServiceKit/Location'
+      sss.dependency 'HDUIKit/Components/HDFloatLayoutView'
+      sss.dependency 'HDUIKit/Components/HDUIButton'
+      sss.dependency 'HDUIKit/Components/HDTableHeaderFootView'
+      sss.dependency 'HDUIKit/WJFrameLayout'
+      sss.dependency 'HDUIKit/MainFrame'
+      sss.dependency 'Masonry'
+      sss.frameworks = 'CoreLocation'
+    end
+
+    ss.subspec 'HDScrollTitleBar' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDScrollTitleBar'
+      sss.dependency 'HDUIKit/WJFrameLayout'
+    end
+
+    ss.subspec 'HDSearchBar' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDSearchBar'
+      sss.dependency 'Masonry'
+      sss.dependency 'HDVendorKit/KVOController'
+      sss.resource_bundles = {'HDUIKitSearchBarResources' => ['HDUIKit/Components/HDSearchBar/Resources/*.*']}
+    end
+
+    ss.subspec 'HDTableHeaderFootView' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDTableHeaderFootView'
+      sss.dependency 'Masonry'
+    end
+
+    ss.subspec 'HDSkeletonLayer' do |sss|
+      sss.source_files = 'HDUIKit/Components/HDSkeletonLayer'
     end
 
   end

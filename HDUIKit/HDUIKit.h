@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"0.5.6";
+static NSString *const HDUIKit_VERSION = @"0.8.0";
 
 #if __has_include("HDDispatchMainQueueSafe.h")
 #import "HDDispatchMainQueueSafe.h"
@@ -66,12 +66,40 @@ static NSString *const HDUIKit_VERSION = @"0.5.6";
 #import "CALayer+WJFrameLayout.h"
 #endif
 
+#if __has_include("HDTableHeaderFootView.h")
+#import "HDTableHeaderFootView.h"
+#endif
+
+#if __has_include("HDTableHeaderFootViewModel.h")
+#import "HDTableHeaderFootViewModel.h"
+#endif
+
+#if __has_include("HDTableViewSectionModel.h")
+#import "HDTableViewSectionModel.h"
+#endif
+
+#if __has_include("HDSearchBar.h")
+#import "HDSearchBar.h"
+#endif
+
 #if __has_include("HDUIButton.h")
 #import "HDUIButton.h"
 #endif
 
 #if __has_include("HDUIGhostButton.h")
 #import "HDUIGhostButton.h"
+#endif
+
+#if __has_include("HDScrollTitleBarTool.h")
+#import "HDScrollTitleBarTool.h"
+#endif
+
+#if __has_include("HDScrollNavBar.h")
+#import "HDScrollNavBar.h"
+#endif
+
+#if __has_include("HDScrollTitleBarViewButton.h")
+#import "HDScrollTitleBarViewButton.h"
 #endif
 
 #if __has_include("HDToastBackgroundView.h")
@@ -112,6 +140,30 @@ static NSString *const HDUIKit_VERSION = @"0.5.6";
 
 #if __has_include("NAT.h")
 #import "NAT.h"
+#endif
+
+#if __has_include("HDCitySelectViewController.h")
+#import "HDCitySelectViewController.h"
+#endif
+
+#if __has_include("HDCitySearchViewController.h")
+#import "HDCitySearchViewController.h"
+#endif
+
+#if __has_include("HDCityGroupsModel.h")
+#import "HDCityGroupsModel.h"
+#endif
+
+#if __has_include("HDCityModel.h")
+#import "HDCityModel.h"
+#endif
+
+#if __has_include("HDCitySelectSearchBar.h")
+#import "HDCitySelectSearchBar.h"
+#endif
+
+#if __has_include("HDSelectCityTableViewCell.h")
+#import "HDSelectCityTableViewCell.h"
 #endif
 
 #if __has_include("HDActionAlertView.h")
@@ -164,6 +216,30 @@ static NSString *const HDUIKit_VERSION = @"0.5.6";
 
 #if __has_include("HDFloatLayoutView.h")
 #import "HDFloatLayoutView.h"
+#endif
+
+#if __has_include("UIView+HDSkeleton.h")
+#import "UIView+HDSkeleton.h"
+#endif
+
+#if __has_include("HDSkeleton.h")
+#import "HDSkeleton.h"
+#endif
+
+#if __has_include("HDSkeletonDefines.h")
+#import "HDSkeletonDefines.h"
+#endif
+
+#if __has_include("HDSkeletonLayer.h")
+#import "HDSkeletonLayer.h"
+#endif
+
+#if __has_include("HDSkeletonLayerDataSourceProvider.h")
+#import "HDSkeletonLayerDataSourceProvider.h"
+#endif
+
+#if __has_include("HDSkeletonLayerLayoutProtocol.h")
+#import "HDSkeletonLayerLayoutProtocol.h"
 #endif
 
 #if __has_include("HDUISlider.h")
@@ -358,6 +434,10 @@ static NSString *const HDUIKit_VERSION = @"0.5.6";
 #import "NSCharacterSet+HDUIKit.h"
 #endif
 
+#if __has_include("UIScrollView+HDUIKit.h")
+#import "UIScrollView+HDUIKit.h"
+#endif
+
 #if __has_include("UIImage+HD_GIF.h")
 #import "UIImage+HD_GIF.h"
 #endif
@@ -404,6 +484,22 @@ static NSString *const HDUIKit_VERSION = @"0.5.6";
 
 #if __has_include("NSString+HD_Util.h")
 #import "NSString+HD_Util.h"
+#endif
+
+#if __has_include("UITabBarController+Extension.h")
+#import "UITabBarController+Extension.h"
+#endif
+
+#if __has_include("UINavigationController+Extension.h")
+#import "UINavigationController+Extension.h"
+#endif
+
+#if __has_include("UIViewController+WJKeyBoard.h")
+#import "UIViewController+WJKeyBoard.h"
+#endif
+
+#if __has_include("UIViewController+Extension.h")
+#import "UIViewController+Extension.h"
 #endif
 
 #if __has_include("NSObject+HDUIKit.h")
