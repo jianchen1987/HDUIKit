@@ -9,7 +9,7 @@
 #import "HDSkeletonLayer.h"
 #import "HDCommonDefines.h"
 #import "HDSkeletonDefines.h"
-#import "UIBezierPath+HDUIKit.h"
+#import "UIBezierPath+HDKitCore.h"
 
 #define kShadowWidth (self.bounds.size.width * 0.9)
 #define kShadowHeight (self.bounds.size.height * 0.9)

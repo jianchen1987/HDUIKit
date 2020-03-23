@@ -7,7 +7,7 @@
 
 #import "HDUISlider.h"
 #import "HDCommonDefines.h"
-#import "UIImage+HDUIKit.h"
+#import "UIImage+HDKitCore.h"
 
 @implementation HDUISlider
 

@@ -7,7 +7,7 @@
 //
 
 #import "HDScrollTitleBarTool.h"
-#import "UIColor+HDUIKit.h"
+#import "UIColor+HDKitCore.h"
 
 @implementation HDScrollTitleBarTool
 + (CGFloat)interpolationFrom:(CGFloat)from to:(CGFloat)to percent:(CGFloat)percent {

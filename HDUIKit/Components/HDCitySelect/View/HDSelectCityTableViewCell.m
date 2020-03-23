@@ -14,7 +14,7 @@
 #import "HDUIGhostButton.h"
 #import "Masonry.h"
 #import "NSBundle+HDUIKit.h"
-#import "NSObject+HDUIKit.h"
+#import "NSObject+HDKitCore.h"
 
 NSString *const kNotificationCitySelectLocationInfoChanged = @"kNotificationCitySelectLocationInfoChanged";
 

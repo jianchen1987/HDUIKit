@@ -61,7 +61,7 @@
             [items insertObject:[self fixedSpaceWithWidth:width] atIndex:0];
             [self hd_setLeftBarButtonItems:items animated:animated];
         }
-    } else {  //不存在按钮,或者不需要调节
+    } else {  // 不存在按钮,或者不需要调节
         [self hd_setLeftBarButtonItems:leftBarButtonItems animated:animated];
     }
 }

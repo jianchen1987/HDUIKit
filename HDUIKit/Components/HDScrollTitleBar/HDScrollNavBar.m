@@ -9,10 +9,10 @@
 #import "HDScrollNavBar.h"
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
+#import "HDFrameLayout.h"
 #import "HDScrollTitleBarTool.h"
 #import "NSString+HD_Size.h"
-#import "UIView+HDUIKit.h"
-#import "WJFrameLayout.h"
+#import "UIView+HDKitCore.h"
 
 @interface HDScrollNavBar ()
 /** 滚动容器 */
@@ -180,21 +180,21 @@
 - (void)updateIndicateLineFrame {
     if (!self.currentButton) return;
 
-    [self.indicateLine wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
+    [self.indicateLine hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
         if (self.bottomLine.isHidden) {
-            make.bottom.wj_equalTo(self.height - self.marginBottomToIndicateLine);
+            make.bottom.hd_equalTo(self.height - self.marginBottomToIndicateLine);
         } else {
-            make.bottom.wj_equalTo(self.bottomLine.top - self.marginBottomToIndicateLine);
+            make.bottom.hd_equalTo(self.bottomLine.top - self.marginBottomToIndicateLine);
         }
-        make.centerX.wj_equalTo(self.currentButton.centerX);
-        make.height.wj_equalTo(self.indicateLineHeight);
+        make.centerX.hd_equalTo(self.currentButton.centerX);
+        make.height.hd_equalTo(self.indicateLineHeight);
         if (self.indicateLineWidth > 0) {
-            make.width.wj_equalTo(self.indicateLineWidth);
+            make.width.hd_equalTo(self.indicateLineWidth);
         } else {
             if (self.isIndicateLineWidthEqualToFullButton) {
-                make.width.wj_equalTo(self.currentButton.width);
+                make.width.hd_equalTo(self.currentButton.width);
             } else {
-                make.width.wj_equalTo(self.currentButton.titleLabel.width);
+                make.width.hd_equalTo(self.currentButton.titleLabel.width);
             }
         }
     }];
@@ -211,36 +211,36 @@
     [self layoutScrollViewWithContainerSize:self.size];
 
     if (!self.bottomLine.isHidden) {
-        [self.bottomLine wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-            make.height.wj_equalTo(self.bottomLineHeight);
-            make.width.wj_equalTo(self.width);
-            make.bottom.wj_equalTo(self.height);
-            make.centerX.wj_equalTo(self.width * 0.5);
+        [self.bottomLine hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.height.hd_equalTo(self.bottomLineHeight);
+            make.width.hd_equalTo(self.width);
+            make.bottom.hd_equalTo(self.height);
+            make.centerX.hd_equalTo(self.width * 0.5);
         }];
     }
 
     // 设置初始指示器坐标
-    [self.indicateLine wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
+    [self.indicateLine hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
         if (self.bottomLine.isHidden) {
-            make.bottom.wj_equalTo(self.height - self.marginBottomToIndicateLine);
+            make.bottom.hd_equalTo(self.height - self.marginBottomToIndicateLine);
         } else {
-            make.bottom.wj_equalTo(self.bottomLine.top - self.marginBottomToIndicateLine);
+            make.bottom.hd_equalTo(self.bottomLine.top - self.marginBottomToIndicateLine);
         }
-        make.height.wj_equalTo(self.indicateLineHeight);
+        make.height.hd_equalTo(self.indicateLineHeight);
 
         if (self.indicateLineWidth > 0) {
-            make.width.wj_equalTo(self.indicateLineWidth);
+            make.width.hd_equalTo(self.indicateLineWidth);
         } else {
             if (self.isIndicateLineWidthEqualToFullButton) {
                 [self.allButtons[self.currentIndex] sizeToFit];
                 CGSize size = self.allButtons[self.currentIndex].size;
-                make.width.wj_equalTo(size.width);
+                make.width.hd_equalTo(size.width);
             } else {
                 CGSize size = [self.allButtons[self.currentIndex].titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, 20)];
-                make.width.wj_equalTo(size.width);
+                make.width.hd_equalTo(size.width);
             }
         }
-        make.centerX.wj_equalTo(self.allButtons[self.currentIndex].centerX);
+        make.centerX.hd_equalTo(self.allButtons[self.currentIndex].centerX);
     }];
 }
 
@@ -387,82 +387,82 @@
     if (self.indicateLineHeight <= 0) return;
 
     // N多细节处理
-    [self.indicateLine wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
+    [self.indicateLine hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
         if (self.bottomLine.isHidden) {
-            make.bottom.wj_equalTo(self.height - self.marginBottomToIndicateLine);
+            make.bottom.hd_equalTo(self.height - self.marginBottomToIndicateLine);
         } else {
-            make.bottom.wj_equalTo(self.bottomLine.top - self.marginBottomToIndicateLine);
+            make.bottom.hd_equalTo(self.bottomLine.top - self.marginBottomToIndicateLine);
         }
-        make.height.wj_equalTo(self.indicateLineHeight);
+        make.height.hd_equalTo(self.indicateLineHeight);
         if (percent < 0.5) {
             if (self.isIndicateLineAnimationEnabled) {
                 if (self.indicateLineWidth > 0) {
-                    make.left.wj_equalTo(preButton.centerX - self.indicateLineWidth * 0.5);
+                    make.left.hd_equalTo(preButton.centerX - self.indicateLineWidth * 0.5);
                     CGFloat width = percent * 2 * (nextButton.centerX + self.indicateLineWidth * 0.5 - preButton.centerX - self.indicateLineWidth * 0.5) + self.indicateLineWidth;
-                    make.width.wj_equalTo(width);
+                    make.width.hd_equalTo(width);
                 } else {
                     if (self.isIndicateLineWidthEqualToFullButton) {
-                        make.left.wj_equalTo(preButton.left);
+                        make.left.hd_equalTo(preButton.left);
                         CGFloat width = percent * 2 * (nextButton.right - preButton.right) + preButton.width;
                         width = width >= preButton.width ? width : preButton.width;
-                        make.width.wj_equalTo(width);
+                        make.width.hd_equalTo(width);
                     } else {
                         CGRect nextButtonLabelFrame = [nextButton.titleLabel convertRect:nextButton.titleLabel.bounds toView:self];
                         CGRect preButtonLabelFrame = [preButton.titleLabel convertRect:preButton.titleLabel.bounds toView:self];
-                        make.left.wj_equalTo(CGRectGetMinX(preButtonLabelFrame));
+                        make.left.hd_equalTo(CGRectGetMinX(preButtonLabelFrame));
                         CGFloat width = percent * 2 * (CGRectGetMaxX(nextButtonLabelFrame) - CGRectGetMaxX(preButtonLabelFrame)) + preButton.titleLabel.width;
                         width = width >= preButton.titleLabel.width ? width : preButton.titleLabel.width;
-                        make.width.wj_equalTo(width);
+                        make.width.hd_equalTo(width);
                     }
                 }
             } else {
                 if (self.indicateLineWidth > 0) {
-                    make.centerX.wj_equalTo(preButton.centerX);
-                    make.width.wj_equalTo(self.indicateLineWidth);
+                    make.centerX.hd_equalTo(preButton.centerX);
+                    make.width.hd_equalTo(self.indicateLineWidth);
                 } else {
                     if (self.isIndicateLineWidthEqualToFullButton) {
-                        make.left.wj_equalTo(preButton.left);
-                        make.right.wj_equalTo(preButton.right);
+                        make.left.hd_equalTo(preButton.left);
+                        make.right.hd_equalTo(preButton.right);
                     } else {
                         CGRect preButtonLabelFrame = [preButton.titleLabel convertRect:preButton.titleLabel.bounds toView:self];
-                        make.left.wj_equalTo(CGRectGetMinX(preButtonLabelFrame));
-                        make.right.wj_equalTo(CGRectGetMaxX(preButtonLabelFrame));
+                        make.left.hd_equalTo(CGRectGetMinX(preButtonLabelFrame));
+                        make.right.hd_equalTo(CGRectGetMaxX(preButtonLabelFrame));
                     }
                 }
             }
         } else {
             if (self.isIndicateLineAnimationEnabled) {
                 if (self.indicateLineWidth > 0) {
-                    make.right.wj_equalTo(nextButton.centerX + self.indicateLineWidth * 0.5);
+                    make.right.hd_equalTo(nextButton.centerX + self.indicateLineWidth * 0.5);
                     CGFloat width = (1 - percent) * 2 * (nextButton.centerX + self.indicateLineWidth * 0.5 - preButton.centerX - self.indicateLineWidth * 0.5) + self.indicateLineWidth;
-                    make.width.wj_equalTo(width);
+                    make.width.hd_equalTo(width);
                 } else {
                     if (self.isIndicateLineWidthEqualToFullButton) {
-                        make.right.wj_equalTo(nextButton.right);
+                        make.right.hd_equalTo(nextButton.right);
                         CGFloat width = (1 - percent) * 2 * (nextButton.right - preButton.right) + preButton.width;
                         width = width >= nextButton.width ? width : nextButton.width;
-                        make.width.wj_equalTo(width);
+                        make.width.hd_equalTo(width);
                     } else {
                         CGRect nextButtonLabelFrame = [nextButton.titleLabel convertRect:nextButton.titleLabel.bounds toView:self];
                         CGRect preButtonLabelFrame = [preButton.titleLabel convertRect:preButton.titleLabel.bounds toView:self];
-                        make.right.wj_equalTo(CGRectGetMaxX(nextButtonLabelFrame));
+                        make.right.hd_equalTo(CGRectGetMaxX(nextButtonLabelFrame));
                         CGFloat width = (1 - percent) * 2 * (CGRectGetMaxX(nextButtonLabelFrame) - CGRectGetMaxX(preButtonLabelFrame)) + preButton.titleLabel.width;
                         width = width >= nextButton.titleLabel.width ? width : nextButton.titleLabel.width;
-                        make.width.wj_equalTo(width);
+                        make.width.hd_equalTo(width);
                     }
                 }
             } else {
                 if (self.indicateLineWidth > 0) {
-                    make.centerX.wj_equalTo(nextButton.centerX);
-                    make.width.wj_equalTo(self.indicateLineWidth);
+                    make.centerX.hd_equalTo(nextButton.centerX);
+                    make.width.hd_equalTo(self.indicateLineWidth);
                 } else {
                     if (self.isIndicateLineWidthEqualToFullButton) {
-                        make.right.wj_equalTo(nextButton.right);
-                        make.left.wj_equalTo(nextButton.left);
+                        make.right.hd_equalTo(nextButton.right);
+                        make.left.hd_equalTo(nextButton.left);
                     } else {
                         CGRect nextButtonLabelFrame = [nextButton.titleLabel convertRect:nextButton.titleLabel.bounds toView:self];
-                        make.left.wj_equalTo(CGRectGetMinX(nextButtonLabelFrame));
-                        make.right.wj_equalTo(CGRectGetMaxX(nextButtonLabelFrame));
+                        make.left.hd_equalTo(CGRectGetMinX(nextButtonLabelFrame));
+                        make.right.hd_equalTo(CGRectGetMaxX(nextButtonLabelFrame));
                     }
                 }
             }

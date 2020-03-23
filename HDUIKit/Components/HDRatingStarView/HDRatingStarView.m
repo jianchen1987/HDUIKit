@@ -8,7 +8,7 @@
 
 #import "HDRatingStarView.h"
 #import "HDStarView.h"
-#import "UIColor+HDUIKit.h"
+#import "UIColor+HDKitCore.h"
 
 static CGFloat const kStarViewTop = 0;
 

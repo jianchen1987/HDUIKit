@@ -7,7 +7,7 @@
 //
 
 #import "HDUIButton.h"
-#import "CALayer+HDUIKit.h"
+#import "CALayer+HDKitCore.h"
 #import "HDCommonDefines.h"
 
 @interface HDUIButton ()

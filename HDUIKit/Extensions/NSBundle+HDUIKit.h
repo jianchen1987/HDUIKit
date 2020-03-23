@@ -1,6 +1,6 @@
 //
-//  NSBundle+HDUIKit.h
-//  HDUIKit
+//  NSBundle+HDKitCore.h
+//  HDKitCore
 //
 //  Created by VanJay on 2020/3/4.
 //  Copyright © 2019 chaos network technology. All rights reserved.

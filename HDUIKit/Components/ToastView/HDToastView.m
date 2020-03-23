@@ -11,7 +11,7 @@
 #import "HDToastAnimator.h"
 #import "HDToastBackgroundView.h"
 #import "HDToastContentView.h"
-#import "UIView+HDUIKit.h"
+#import "UIView+HDKitCore.h"
 
 static NSMutableArray<HDToastView *> *kToastViews = nil;
 

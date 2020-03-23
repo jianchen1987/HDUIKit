@@ -9,11 +9,11 @@
 #import "HDKeyBoard.h"
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
+#import "HDFrameLayout.h"
 #import "HDUIButton.h"
 #import "NSBundle+HDUIKit.h"
 #import "NSString+HD_Size.h"
 #import "UIView+HD_Extension.h"
-#import "WJFrameLayout.h"
 
 #define kHDKeyBoardHeight (kScreenWidth * (240 / 375.f) + kiPhoneXSeriesSafeBottomHeight)
 
@@ -103,10 +103,10 @@
     if (_enterpriseBtn.imageView.image) {  // 判断防止除数为 0 崩溃
         imageSize = CGSizeMake(textSize.height * imageOriginSize.width / imageOriginSize.height, textSize.height);
     }
-    [_enterpriseBtn wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-        make.centerX.wj_equalTo(self.width * 0.5);
-        make.size.wj_equalTo(CGSizeMake(imageSize.width + textSize.width + self.theme.enterpriseMargin, textSize.height + 2 * enterpriseVMargin));
-        make.top.wj_equalTo(0);
+    [_enterpriseBtn hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+        make.centerX.hd_equalTo(self.width * 0.5);
+        make.size.hd_equalTo(CGSizeMake(imageSize.width + textSize.width + self.theme.enterpriseMargin, textSize.height + 2 * enterpriseVMargin));
+        make.top.hd_equalTo(0);
     }];
 
     _containerView = [[UIView alloc] init];
@@ -225,16 +225,16 @@
 
             button.frame = CGRectMake(x, y, buttonW, buttonH);
         } else if (i == self.numberPadCanSwitchToLetterConfigArr.count - 2) {
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(deleteButtonW, deleteButtonH));
-                make.top.wj_equalTo(0);
-                make.right.wj_equalTo(self.containerView.width - buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(deleteButtonW, deleteButtonH));
+                make.top.hd_equalTo(0);
+                make.right.hd_equalTo(self.containerView.width - buttonToScreenHMargin);
             }];
         } else if (i == self.numberPadCanSwitchToLetterConfigArr.count - 1) {
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(deleteButtonW, deleteButtonH));
-                make.top.wj_equalTo(deleteButtonH + buttonVMargin);
-                make.right.wj_equalTo(self.containerView.width - buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(deleteButtonW, deleteButtonH));
+                make.top.hd_equalTo(deleteButtonH + buttonVMargin);
+                make.right.hd_equalTo(self.containerView.width - buttonToScreenHMargin);
             }];
         }
         [button setRoundedCorners:UIRectCornerAllCorners radius:5.f];
@@ -288,10 +288,10 @@
             button.frame = CGRectMake(x, y, buttonW, buttonH);
         } else if (i == 19) {
             // 大小写
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(buttonH, buttonH));
-                make.top.wj_equalTo((buttonH + buttonVMargin) * 2);
-                make.left.wj_equalTo(buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(buttonH, buttonH));
+                make.top.hd_equalTo((buttonH + buttonVMargin) * 2);
+                make.left.hd_equalTo(buttonToScreenHMargin);
             }];
         } else if (i > 19 && i <= 26) {
             // 第三排
@@ -301,50 +301,50 @@
             button.frame = CGRectMake(x, y, buttonW, buttonH);
         } else if (i == 27) {
             // 删除
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(buttonH, buttonH));
-                make.top.wj_equalTo((buttonH + buttonVMargin) * 2);
-                make.right.wj_equalTo(self.containerView.width - buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(buttonH, buttonH));
+                make.top.hd_equalTo((buttonH + buttonVMargin) * 2);
+                make.right.hd_equalTo(self.containerView.width - buttonToScreenHMargin);
             }];
         } else if (i == 28) {
             // 123
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(buttonH, buttonH));
-                make.top.wj_equalTo((buttonH + buttonVMargin) * 3);
-                make.left.wj_equalTo(buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(buttonH, buttonH));
+                make.top.hd_equalTo((buttonH + buttonVMargin) * 3);
+                make.left.hd_equalTo(buttonToScreenHMargin);
             }];
         } else if (i == 29) {
             // 空格
             CGFloat doneButtonW = buttonW + buttonH + thirdRowButtonBiggerMargin;
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.left.wj_equalTo(buttonHMargin + buttonH + thirdRowButtonBiggerMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.left.hd_equalTo(buttonHMargin + buttonH + thirdRowButtonBiggerMargin);
                 if (self.isLetterPadCanSwitchToASCII) {
-                    make.right.wj_equalTo(self.containerView.width - (doneButtonW + buttonToScreenHMargin + 2 * buttonHMargin + buttonH));
+                    make.right.hd_equalTo(self.containerView.width - (doneButtonW + buttonToScreenHMargin + 2 * buttonHMargin + buttonH));
                 } else {
-                    make.right.wj_equalTo(self.containerView.width - (doneButtonW + buttonToScreenHMargin + buttonHMargin));
+                    make.right.hd_equalTo(self.containerView.width - (doneButtonW + buttonToScreenHMargin + buttonHMargin));
                 }
-                make.top.wj_equalTo((buttonH + buttonVMargin) * 3);
-                make.height.wj_equalTo(buttonH);
+                make.top.hd_equalTo((buttonH + buttonVMargin) * 3);
+                make.height.hd_equalTo(buttonH);
             }];
         } else {
             CGFloat doneButtonW = buttonW + buttonH + thirdRowButtonBiggerMargin;
             if (self.isLetterPadCanSwitchToASCII) {
                 // 切特殊符号
                 if (i == self.letterKeyBoardConfigArr.count - 2) {
-                    [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                        make.size.wj_equalTo(CGSizeMake(buttonH, buttonH));
-                        make.top.wj_equalTo((buttonH + buttonVMargin) * 3);
-                        make.right.wj_equalTo(self.containerView.width - buttonToScreenHMargin - doneButtonW - buttonHMargin);
+                    [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                        make.size.hd_equalTo(CGSizeMake(buttonH, buttonH));
+                        make.top.hd_equalTo((buttonH + buttonVMargin) * 3);
+                        make.right.hd_equalTo(self.containerView.width - buttonToScreenHMargin - doneButtonW - buttonHMargin);
                     }];
                 }
             }
 
             // 完成
             if (i == self.letterKeyBoardConfigArr.count - 1) {
-                [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                    make.size.wj_equalTo(CGSizeMake(doneButtonW, buttonH));
-                    make.top.wj_equalTo((buttonH + buttonVMargin) * 3);
-                    make.right.wj_equalTo(self.containerView.width - buttonToScreenHMargin);
+                [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                    make.size.hd_equalTo(CGSizeMake(doneButtonW, buttonH));
+                    make.top.hd_equalTo((buttonH + buttonVMargin) * 3);
+                    make.right.hd_equalTo(self.containerView.width - buttonToScreenHMargin);
                 }];
             }
         }
@@ -395,17 +395,17 @@
             button.frame = CGRectMake(x, y, buttonW, buttonH);
         } else if (i == 28) {
             // 删除
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(buttonH, buttonH));
-                make.top.wj_equalTo((buttonH + buttonVMargin) * 2);
-                make.right.wj_equalTo(self.containerView.width - buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(buttonH, buttonH));
+                make.top.hd_equalTo((buttonH + buttonVMargin) * 2);
+                make.right.hd_equalTo(self.containerView.width - buttonToScreenHMargin);
             }];
         } else if (i == 29) {
             // 123
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(buttonH, buttonH));
-                make.top.wj_equalTo((buttonH + buttonVMargin) * 3);
-                make.left.wj_equalTo(buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(buttonH, buttonH));
+                make.top.hd_equalTo((buttonH + buttonVMargin) * 3);
+                make.left.hd_equalTo(buttonToScreenHMargin);
             }];
         } else if (i > 29 && i <= 36) {
             // 第四排
@@ -416,10 +416,10 @@
             button.frame = CGRectMake(x, y, buttonW, buttonH);
         } else if (i == self.asciiKeyBoardConfigArr.count - 1) {
             // abc
-            [button wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-                make.size.wj_equalTo(CGSizeMake(buttonH, buttonH));
-                make.top.wj_equalTo((buttonH + buttonVMargin) * 3);
-                make.right.wj_equalTo(self.containerView.width - buttonToScreenHMargin);
+            [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.size.hd_equalTo(CGSizeMake(buttonH, buttonH));
+                make.top.hd_equalTo((buttonH + buttonVMargin) * 3);
+                make.right.hd_equalTo(self.containerView.width - buttonToScreenHMargin);
             }];
         }
         [button setRoundedCorners:UIRectCornerAllCorners radius:5.f];
@@ -738,12 +738,12 @@
     CGRect buttonFrame = [self.containerView convertRect:button.frame toView:self];
 
     CGFloat HMargin = 2;
-    [self.popupLabel wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
+    [self.popupLabel hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
         CGFloat width = button.width + 2 * HMargin;
-        make.width.wj_equalTo(width);
-        make.height.wj_equalTo(button.height * width / button.width);
-        make.bottom.wj_equalTo(buttonFrame.origin.y);
-        make.left.wj_equalTo(buttonFrame.origin.x - HMargin);
+        make.width.hd_equalTo(width);
+        make.height.hd_equalTo(button.height * width / button.width);
+        make.bottom.hd_equalTo(buttonFrame.origin.y);
+        make.left.hd_equalTo(buttonFrame.origin.x - HMargin);
     }];
     [self.popupLabel setRoundedCorners:UIRectCornerAllCorners radius:5];
 }

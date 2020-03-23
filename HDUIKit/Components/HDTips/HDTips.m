@@ -13,7 +13,7 @@
 #import "HDToastBackgroundView.h"
 #import "HDToastContentView.h"
 #import "NSBundle+HDUIKit.h"
-#import "NSString+HDUIKit.h"
+#import "NSString+HDKitCore.h"
 #import "UIImage+HD_GIF.h"
 
 const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;

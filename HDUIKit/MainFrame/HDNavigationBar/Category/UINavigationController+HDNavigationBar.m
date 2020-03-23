@@ -27,6 +27,7 @@
     if (self = [super init]) {
         self.hd_openGestureHandle = YES;
         self.hd_transitionScale = transitionScale;
+        self.navigationBar.hidden = true;
         [self pushViewController:rootVC animated:YES];
     }
     return self;

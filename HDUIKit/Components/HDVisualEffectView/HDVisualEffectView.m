@@ -7,7 +7,7 @@
 //
 
 #import "HDVisualEffectView.h"
-#import "CALayer+HDUIKit.h"
+#import "CALayer+HDKitCore.h"
 
 @interface HDVisualEffectView ()
 @property (nonatomic, strong) CALayer *foregroundLayer;

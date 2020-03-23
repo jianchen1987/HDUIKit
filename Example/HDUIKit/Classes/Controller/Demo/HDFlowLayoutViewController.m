@@ -42,10 +42,10 @@
         [self.floatLayoutView addSubview:view];
     }
 
-    [self.floatLayoutView wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-        make.size.wj_equalTo([self.floatLayoutView sizeThatFits:CGSizeMake(300, CGFLOAT_MAX)]);
-        make.centerX.wj_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
-        make.top.wj_equalTo(100);
+    [self.floatLayoutView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+        make.size.hd_equalTo([self.floatLayoutView sizeThatFits:CGSizeMake(300, CGFLOAT_MAX)]);
+        make.centerX.hd_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
+        make.top.hd_equalTo(100);
     }];
 }
 

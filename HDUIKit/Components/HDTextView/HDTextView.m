@@ -11,8 +11,8 @@
 #import "HDCommonDefines.h"
 #import "HDLog.h"
 #import "HDMultipleDelegates.h"
-#import "NSString+HDUIKit.h"
-#import "UITextView+HDUIKit.h"
+#import "NSString+HDKitCore.h"
+#import "UITextView+HDKitCore.h"
 
 /// 系统 textView 默认的字号大小，用于 placeholder 默认的文字大小。实测得到，请勿修改。
 const CGFloat kSystemTextViewDefaultFontPointSize = 12.0f;

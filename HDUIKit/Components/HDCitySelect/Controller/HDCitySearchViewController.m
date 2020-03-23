@@ -33,7 +33,7 @@ static NSString *reuseIdentifierID = @"HDCitySearchViewController_reuseIdentifie
 
 - (void)loadAllCityModels {
     NSString *path = [[NSBundle hd_UIKITCitySelectResources] pathForResource:@"cities.json" ofType:nil];
-    NSArray *json = [NSArray arrayWithContentsOfFile:path];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path] options:NSJSONReadingAllowFragments error:nil];
     NSMutableArray<HDCityGroupsModel *> *cityGroups = [NSMutableArray arrayWithArray:[NSArray yy_modelArrayWithClass:HDCityGroupsModel.class json:json]];
 
     _cityArray = [NSMutableArray array];

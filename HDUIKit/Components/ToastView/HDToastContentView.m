@@ -9,7 +9,7 @@
 #import "HDToastContentView.h"
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
-#import "UIView+HDUIKit.h"
+#import "UIView+HDKitCore.h"
 
 @interface HDToastContentView ()
 @property (nonatomic, assign) BOOL isSquareAndHeightChanged;  ///< 正方形且高度被强制改变

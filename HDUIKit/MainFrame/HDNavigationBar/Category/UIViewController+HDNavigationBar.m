@@ -523,7 +523,9 @@ static char kAssociatedObjectKey_navItemRightSpace;
     }
     self.hd_navigationBar.frame = CGRectMake(0, 0, width, navBarH);
     self.hd_navigationBar.hd_statusBarHidden = self.hd_statusBarHidden;
-    [self.hd_navigationBar layoutSubviews];
+
+    [self.hd_navigationBar setNeedsLayout];
+    [self.hd_navigationBar layoutIfNeeded];
 }
 
 @end

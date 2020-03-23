@@ -46,15 +46,15 @@
 
     UIView *refView;
     for (UIView *view in _scrollView.subviews) {
-        [view wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
+        [view hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
             if (!refView) {
                 make.top.equalToValue(20);
             } else {
-                make.top.wj_equalTo(refView.bottom).wj_offset([refView isKindOfClass:UILabel.class] ? kRealWidth(6) : kRealWidth(20));
+                make.top.hd_equalTo(refView.bottom).hd_offset([refView isKindOfClass:UILabel.class] ? kRealWidth(6) : kRealWidth(20));
             }
             make.height.equalTo([view isKindOfClass:UILabel.class] ? @30 : @40);
             make.width.equalToValue(width);
-            make.centerX.wj_equalTo(self.view.width * 0.5);
+            make.centerX.hd_equalTo(self.view.width * 0.5);
         }];
 
         if ([view isKindOfClass:UITextField.class]) {

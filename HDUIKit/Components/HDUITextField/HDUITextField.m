@@ -9,16 +9,16 @@
 //
 
 #import "HDUITextField.h"
-#import "CAAnimation+HDUIKit.h"
-#import "FBKVOController+HDVendorKit.h"
+#import "CAAnimation+HDKitCore.h"
+#import "FBKVOController+HDKitCore.h"
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
-#import "NSString+HDUIKit.h"
+#import "NSString+HDKitCore.h"
 #import "NSString+HD_Size.h"
 #import "NSString+HD_Util.h"
-#import "UIColor+HDUIKit.h"
-#import "UITextField+HDUIKit.h"
-#import "UIView+HDUIKit.h"
+#import "UIColor+HDKitCore.h"
+#import "UITextField+HDKitCore.h"
+#import "UIView+HDKitCore.h"
 
 #define MAS_SHORTHAND_GLOBALS
 

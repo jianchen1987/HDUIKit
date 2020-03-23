@@ -10,9 +10,9 @@
 #import "HDAlertViewButton.h"
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
-#import "UIView+HDUIKit.h"
+#import "UIView+HDFrameLayout.h"
+#import "UIView+HDKitCore.h"
 #import "UIView+HD_Extension.h"
-#import "UIView+WJFrameLayout.h"
 
 // 宽度
 #define kHDAlertViewWidth (kScreenWidth * 0.8)

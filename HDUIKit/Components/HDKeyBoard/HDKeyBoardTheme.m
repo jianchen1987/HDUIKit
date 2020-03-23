@@ -9,7 +9,7 @@
 #import "HDKeyBoardTheme.h"
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
-#import "UIImage+HDUIKit.h"
+#import "UIImage+HDKitCore.h"
 #import "UIView+HD_Extension.h"
 
 @implementation HDKeyBoardButtonModel

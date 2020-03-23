@@ -6,6 +6,7 @@
 //  Copyright © 2020 wangwanjie. All rights reserved.
 //
 
+#import <HDKitCore/HDKitCore.h>
 #import <HDUIKit/HDUIKit.h>
 #import <Masonry/Masonry.h>
 

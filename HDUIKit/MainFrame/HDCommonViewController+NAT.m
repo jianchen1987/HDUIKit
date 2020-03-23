@@ -6,9 +6,9 @@
 //  Copyright © 2019 chaos network technology. All rights reserved.
 //
 
+#import "HDAssociatedObjectHelper.h"
 #import "HDCommonViewController+NAT.h"
-#import <HDUIKit/HDAssociatedObjectHelper.h>
-#import <HDUIKit/HDTips.h>
+#import "HDTips.h"
 
 @interface HDCommonViewController ()
 @property (nonatomic, strong) HDTips *hud;  ///< 提示 HUD

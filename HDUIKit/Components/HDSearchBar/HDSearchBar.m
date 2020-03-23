@@ -7,12 +7,12 @@
 //
 
 #import "HDSearchBar.h"
+#import "FBKVOController+HDKitCore.h"
 #import "HDAppTheme.h"
 #import "HDCommonDefines.h"
 #import "NSBundle+HDUIKit.h"
 #import "UIButton+EnlargeEdge.h"
 #import "UIView+HD_Extension.h"
-#import <HDVendorKit/FBKVOController+HDVendorKit.h>
 #import <Masonry/Masonry.h>
 
 @interface HDSearchBar () <UITextFieldDelegate>

@@ -150,15 +150,15 @@
 
     UIView *refView;
     for (UIView *view in _scrollView.subviews) {
-        [view wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
+        [view hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
             if (!refView) {
                 make.top.equalToValue(20);
             } else {
-                make.top.wj_equalTo(refView.bottom).offset(30);
+                make.top.hd_equalTo(refView.bottom).offset(30);
             }
             make.height.equalTo(@50);
             make.width.equalToValue(width);
-            make.centerX.wj_equalTo(self.view.width * 0.5);
+            make.centerX.hd_equalTo(self.view.width * 0.5);
         }];
         refView = view;
     }
@@ -228,20 +228,20 @@
         [passwordShowBtn setImage:[UIImage imageNamed:@"password_show"] forState:UIControlStateSelected];
         [passwordShowBtn addTarget:self action:@selector(clickedPasswordShowBtn:) forControlEvents:UIControlEventTouchUpInside];
         [_passwordTFRightView addSubview:passwordShowBtn];
-        [passwordShowBtn wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-            make.size.wj_equalTo(image.size);
-            make.left.wj_equalTo(0);
-            make.centerY.wj_equalTo(rightViewHeight * 0.5);
+        [passwordShowBtn hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.size.hd_equalTo(image.size);
+            make.left.hd_equalTo(0);
+            make.centerY.hd_equalTo(rightViewHeight * 0.5);
         }];
 
         UIView *separatedLine = [[UIView alloc] init];
         separatedLine.backgroundColor = HexColor(0xadb6c8);
         [_passwordTFRightView addSubview:separatedLine];
 
-        [separatedLine wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-            make.left.wj_equalTo(passwordShowBtn.right).offset(marginEyeIconToSepLine);
-            make.size.wj_equalTo(CGSizeMake(lineWidth, rightViewHeight));
-            make.centerY.wj_equalTo(rightViewHeight * 0.5);
+        [separatedLine hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.left.hd_equalTo(passwordShowBtn.right).offset(marginEyeIconToSepLine);
+            make.size.hd_equalTo(CGSizeMake(lineWidth, rightViewHeight));
+            make.centerY.hd_equalTo(rightViewHeight * 0.5);
         }];
 
         UILabel *forgetPwdLB = [[UILabel alloc] init];
@@ -253,10 +253,10 @@
         [forgetPwdLB addGestureRecognizer:recngnizer];
         [_passwordTFRightView addSubview:forgetPwdLB];
 
-        [forgetPwdLB wj_makeFrameLayout:^(WJFrameLayoutMaker *_Nonnull make) {
-            make.left.wj_equalTo(separatedLine.right).offset(marginStplineToForgotBtn);
-            make.size.wj_equalTo(size);
-            make.centerY.wj_equalTo(rightViewHeight * 0.5);
+        [forgetPwdLB hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.left.hd_equalTo(separatedLine.right).offset(marginStplineToForgotBtn);
+            make.size.hd_equalTo(size);
+            make.centerY.hd_equalTo(rightViewHeight * 0.5);
         }];
     }
     return _passwordTFRightView;

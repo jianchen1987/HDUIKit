@@ -7,7 +7,7 @@
 //
 
 #import "HDAppTheme.h"
-#import "UIColor+HDUIKit.h"
+#import "UIColor+HDKitCore.h"
 
 @implementation HDAppTheme
 

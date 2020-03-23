@@ -7,6 +7,7 @@
 //
 
 #import "HDCitySelectViewController.h"
+#import "FBKVOController+HDKitCore.h"
 #import "HDAppTheme.h"
 #import "HDCityGroupsModel.h"
 #import "HDCitySearchViewController.h"
@@ -15,12 +16,9 @@
 #import "HDSelectCityTableViewCell.h"
 #import "HDTableHeaderFootView.h"
 #import "NSBundle+HDUIKit.h"
-#import "UIView+WJFrameLayout.h"
-#import "UIViewController+Extension.h"
-#import "UIViewController+HDUIKit.h"
+#import "UIView+HDFrameLayout.h"
+#import "UIViewController+HDKitCore.h"
 #import <CoreLocation/CoreLocation.h>
-#import <HDServiceKit/HDLocationUtils.h>
-#import <HDVendorKit/FBKVOController+HDVendorKit.h>
 #import <YYModel/YYModel.h>
 
 #define kRecentlyCitysCachePath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"recentlyCitys.data"]
@@ -74,7 +72,8 @@
 - (void)loadLocalCityGroup {
 
     NSString *path = [[NSBundle hd_UIKITCitySelectResources] pathForResource:@"cities.json" ofType:nil];
-    NSArray *json = [NSArray arrayWithContentsOfFile:path];
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfFile:path] options:NSJSONReadingAllowFragments error:nil];
+
     // 去除不可用的
     NSArray<HDCityGroupsModel *> *dataSource = [NSArray yy_modelArrayWithClass:HDCityGroupsModel.class json:json];
     [self.cityGroups removeAllObjects];
@@ -158,15 +157,14 @@
 /// 随时检查权限变更
 - (void)loadLatestAuthStateToRefreshLocationInfo {
     // 获取授权情况
-    HDCLAuthorizationStatus status = [HDLocationUtils getCLAuthorizationStatus];
-    if (status == HDCLAuthorizationStatusNotDetermined) {
-        self.locationCityModel.locationState = HDCitySelectLocationStateDefault;
-        self.locationCityModel.name = @"点击开始获取位置";
-    } else if (status == HDCLAuthorizationStatusAuthed) {  // 已授权，直接定位
+    if (CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse || CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedAlways) {
         [self startUpdatingLocationInfo];
-    } else if (status == HDCLAuthorizationStatusNotAuthed) {  // 用户拒绝授权
+    } else if (CLLocationManager.authorizationStatus == kCLAuthorizationStatusDenied || CLLocationManager.authorizationStatus == kCLAuthorizationStatusRestricted) {
         self.locationCityModel.locationState = HDCitySelectLocationStateUserDenyed;
         self.locationCityModel.name = @"未授权";
+    } else {
+        self.locationCityModel.locationState = HDCitySelectLocationStateDefault;
+        self.locationCityModel.name = @"点击开始获取位置";
     }
 }
 

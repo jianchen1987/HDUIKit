@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 UIKIT_EXTERN NSString *const kCharacterSetStringNumber;
 UIKIT_EXTERN NSString *const kCharacterSetStringNumberAndLetter;
 UIKIT_EXTERN NSString *const kCharacterSetStringAmount;
 UIKIT_EXTERN NSString *const kCharacterSetStringLetter;
 
 typedef void (^EventCallBackBlock)(void);
-
-NS_ASSUME_NONNULL_BEGIN
 
 @interface HDUITextFieldConfig : NSObject
 @property (nonatomic, copy) NSString *placeholder;                        ///< 占位文字

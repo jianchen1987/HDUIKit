@@ -17,5 +17,4 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) HDTableHeaderFootViewModel *model;  ///< 数据模型
 @property (nonatomic, copy) void (^rightButtonClickedHandler)(void);
 @end
-
 NS_ASSUME_NONNULL_END

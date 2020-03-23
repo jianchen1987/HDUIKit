@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.8.0"
+  s.version          = "0.9.0"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -20,18 +20,15 @@ Pod::Spec.new do |s|
   s.pod_target_xcconfig = { 'OTHER_LDFLAGS' => '-lObjC' }
 
   s.subspec 'Core' do |ss|
-    ss.source_files = 'HDUIKit/HDUIKit.h', 'HDUIKit/Core','HDUIKit/UIKitExtensions', 'HDUIKit/UIKitExtensions/*/*'
-    ss.dependency 'HDUIKit/HDWeakObjectContainer'
-    ss.dependency 'HDUIKit/HDLog'
-    ss.dependency 'HDUIKit/HDRuntime'
-    ss.frameworks = 'AVFoundation'
+    ss.source_files = 'HDUIKit/Extensions', 'HDUIKit/Extensions/*/*'
   end
 
   s.subspec 'MainFrame' do |ss|
     ss.source_files = 'HDUIKit/MainFrame'
     ss.dependency 'HDUIKit/HDNavigationBar'
     ss.dependency 'HDUIKit/HDAppTheme'
-    ss.dependency 'HDUIKit/UIKitExtensions/UIImage'
+    ss.dependency 'HDUIKit/Core'
+    ss.dependency 'HDKitCore/Extensions/UIImage'
     ss.dependency 'HDUIKit/Components/HDTips'
     ss.resource_bundles = {'HDUIKitMainFrameResources' => ['HDUIKit/MainFrame/Resources/*.*']}
   end
@@ -40,74 +37,18 @@ Pod::Spec.new do |s|
     ss.source_files = 'HDUIKit/MainFrame/HDNavigationBar', 'HDUIKit/MainFrame/HDNavigationBar/*/*'
   end
 
-  s.subspec 'HDRuntime' do |ss|
-    ss.source_files = 'HDUIKit/Core/Runtime','HDUIKit/UIKitExtensions/{NSMethodSignature}+HDUIKit.{h,m}'
-    ss.dependency 'HDUIKit/HDLog'
-  end
-
-  s.subspec 'MethodSwizzle' do |ss|
-    ss.source_files = 'HDUIKit/UIKitExtensions/NSObject/NSObject+HD_Swizzle.{h,m}'
-  end
-
-  s.subspec 'DispatchMainQueueSafe' do |ss|
-    ss.source_files = 'HDUIKit/DispatchMainQueueSafe'
-  end
-
   s.subspec 'HDAppTheme' do |ss|
     ss.source_files = 'HDUIKit/Theme'
-    ss.dependency 'HDUIKit/UIKitExtensions/UIColor'
-  end
-
-  s.subspec 'HDWeakObjectContainer' do |ss|
-    ss.source_files = 'HDUIKit/Components/HDWeakObjectContainer/HDWeakObjectContainer.{h,m}'
-  end
-
-  s.subspec 'WJFrameLayout' do |ss|
-    ss.source_files = 'HDUIKit/WJFrameLayout'
-  end
-
-  s.subspec 'WJFunctionThrottle' do |ss|
-    ss.source_files = 'HDUIKit/WJFunctionThrottle'
-  end
-
-  s.subspec 'HDLog' do |ss|
-    ss.source_files = 'HDUIKit/Components/HDLog'
+    ss.dependency 'HDKitCore/Extensions/UIColor'
   end
 
   s.subspec 'HDCodeGenerator' do |ss|
     ss.source_files = 'HDUIKit/Vender/HDCodeGenerator', 'HDUIKit/Vender/HDCodeGenerator/*/*'
   end
 
-  s.subspec 'UIKitExtensions' do |ss|
-    ss.source_files = 'HDUIKit/UIKitExtensions', 'HDUIKit/UIKitExtensions/*/*'
-    ss.dependency 'HDUIKit/Core'
-
-    ss.subspec 'UIView' do |sss|
-      sss.source_files = 'HDUIKit/UIKitExtensions/UIView'
-    end
-
-    ss.subspec 'NSString' do |sss|
-      sss.source_files = 'HDUIKit/UIKitExtensions/NSString'
-    end
-
-    ss.subspec 'UIColor' do |sss|
-      sss.source_files = 'HDUIKit/UIKitExtensions/UIColor'
-      sss.dependency 'HDUIKit/UIKitExtensions/NSString'
-    end
-
-    ss.subspec 'UIImage' do |sss|
-      sss.source_files = 'HDUIKit/UIKitExtensions/UIImage'
-      sss.dependency 'HDUIKit/UIKitExtensions/NSString'
-    end
-
-    ss.subspec 'UIButton' do |sss|
-      sss.source_files = 'HDUIKit/UIKitExtensions/UIButton'
-    end
-
-  end
-
   s.subspec 'Components' do |ss|
     ss.dependency 'HDUIKit/Core'
+    ss.dependency 'HDKitCore/Core'
     ss.dependency 'HDUIKit/HDAppTheme'
 
     ss.subspec 'HDUIButton' do |sss|
@@ -129,7 +70,7 @@ Pod::Spec.new do |s|
     ss.subspec 'HDKeyBoard' do |sss|
       sss.source_files = 'HDUIKit/Components/HDKeyBoard'
       sss.dependency 'HDUIKit/Components/HDUIButton'
-      sss.dependency 'HDUIKit/WJFrameLayout'
+      sss.dependency 'HDKitCore/HDFrameLayout'
       sss.resource_bundles = {'HDUIKitKeyboardResources' => ['HDUIKit/Components/HDKeyBoard/Resources/*.*']}
     end
 
@@ -139,7 +80,7 @@ Pod::Spec.new do |s|
 
     ss.subspec 'HDTextView' do |sss|
       sss.source_files = 'HDUIKit/Components/HDTextView'
-      sss.dependency 'HDUIKit/Components/MultipleDelegates'
+      sss.dependency 'HDKitCore/MultipleDelegates'
     end
 
     ss.subspec 'HDTips' do |sss|
@@ -148,11 +89,6 @@ Pod::Spec.new do |s|
       sss.dependency 'HDUIKit/Components/ProgressView'
       sss.resource_bundles = {'HDUIKitTipsResources' => ['HDUIKit/Components/HDTips/Resources/*.*']}
     end
-
-    ss.subspec 'MultipleDelegates' do |sss|
-      sss.source_files = 'HDUIKit/Components/MultipleDelegates'
-    end
-
     ss.subspec 'ProgressView' do |sss|
       sss.source_files = 'HDUIKit/Components/ProgressView'
     end
@@ -163,14 +99,14 @@ Pod::Spec.new do |s|
 
     ss.subspec 'HDActionAlertView' do |sss|
       sss.source_files = 'HDUIKit/Components/HDActionAlertView'
-      sss.dependency 'HDUIKit/DispatchMainQueueSafe'
+      sss.dependency 'HDKitCore/DispatchMainQueueSafe'
     end
 
     ss.subspec 'HDAlertView' do |sss|
       sss.source_files = 'HDUIKit/Components/HDAlertView'
       sss.dependency 'HDUIKit/Components/HDActionAlertView'
       sss.dependency 'HDUIKit/HDAppTheme'
-      sss.dependency 'HDUIKit/WJFrameLayout'
+      sss.dependency 'HDKitCore/HDFrameLayout'
     end
 
     ss.subspec 'NAT' do |sss|
@@ -181,7 +117,7 @@ Pod::Spec.new do |s|
 
     ss.subspec 'HDCountDownButton' do |sss|
       sss.source_files = 'HDUIKit/Components/HDCountDownButton'
-      sss.dependency 'HDVendorKit/HDWeakTimer'
+      sss.dependency 'HDKitCore/HDWeakTimer'
       sss.dependency 'HDUIKit/Components/HDUIButton'
     end
 
@@ -191,7 +127,7 @@ Pod::Spec.new do |s|
 
     ss.subspec 'HDUITextField' do |sss|
       sss.source_files = 'HDUIKit/Components/HDUITextField'
-      sss.dependency 'HDVendorKit/KVOController'
+      sss.dependency 'HDKitCore/KVOController'
       sss.dependency 'Masonry'
     end
 
@@ -199,12 +135,11 @@ Pod::Spec.new do |s|
       sss.source_files = 'HDUIKit/Components/HDCitySelect', 'HDUIKit/Components/HDCitySelect/*/*'
       sss.resource_bundles = {'HDUIKITCitySelectResources' => ['HDUIKit/Components/HDCitySelect/Resources/*.*']}
       sss.dependency 'YYModel'
-      sss.dependency 'HDVendorKit/KVOController'
-      sss.dependency 'HDServiceKit/Location'
+      sss.dependency 'HDKitCore/KVOController'
       sss.dependency 'HDUIKit/Components/HDFloatLayoutView'
       sss.dependency 'HDUIKit/Components/HDUIButton'
       sss.dependency 'HDUIKit/Components/HDTableHeaderFootView'
-      sss.dependency 'HDUIKit/WJFrameLayout'
+      sss.dependency 'HDKitCore/HDFrameLayout'
       sss.dependency 'HDUIKit/MainFrame'
       sss.dependency 'Masonry'
       sss.frameworks = 'CoreLocation'
@@ -212,13 +147,13 @@ Pod::Spec.new do |s|
 
     ss.subspec 'HDScrollTitleBar' do |sss|
       sss.source_files = 'HDUIKit/Components/HDScrollTitleBar'
-      sss.dependency 'HDUIKit/WJFrameLayout'
+      sss.dependency 'HDKitCore/HDFrameLayout'
     end
 
     ss.subspec 'HDSearchBar' do |sss|
       sss.source_files = 'HDUIKit/Components/HDSearchBar'
       sss.dependency 'Masonry'
-      sss.dependency 'HDVendorKit/KVOController'
+      sss.dependency 'HDKitCore/KVOController'
       sss.resource_bundles = {'HDUIKitSearchBarResources' => ['HDUIKit/Components/HDSearchBar/Resources/*.*']}
     end
 
