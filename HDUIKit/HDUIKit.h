@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"0.9.0";
+static NSString *const HDUIKit_VERSION = @"0.9.1";
 
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
@@ -236,6 +236,10 @@ static NSString *const HDUIKit_VERSION = @"0.9.0";
 
 #if __has_include("HDCommonViewController.h")
 #import "HDCommonViewController.h"
+#endif
+
+#if __has_include("HDMainFrame.h")
+#import "HDMainFrame.h"
 #endif
 
 #if __has_include("HDNavigationBar.h")
