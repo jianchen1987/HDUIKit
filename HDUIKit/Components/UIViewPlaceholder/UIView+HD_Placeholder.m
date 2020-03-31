@@ -23,13 +23,6 @@
 
     if (!self.hd_placeholderView) {
         self.hd_placeholderView = [[HDPlaceholderView alloc] init];
-        self.hd_placeholderView.backgroundColor = [self.backgroundColor isEqual:UIColor.clearColor] ? UIColor.whiteColor : self.backgroundColor;
-        __weak __typeof(self) weakSelf = self;
-        self.hd_placeholderView.tappedRefreshBtnHandler = ^{
-            __strong __typeof(weakSelf) strongSelf = weakSelf;
-            [strongSelf hd_removePlaceholderView];
-            !strongSelf.hd_tappedRefreshBtnHandler ?: strongSelf.hd_tappedRefreshBtnHandler();
-        };
 
         if (self.superview) {
             if ([self isKindOfClass:UITableView.class]) {
@@ -53,6 +46,15 @@
             [self addSubview:self.hd_placeholderView];
         }
     }
+
+    self.hd_placeholderView.backgroundColor = [self.backgroundColor isEqual:UIColor.clearColor] ? UIColor.whiteColor : self.backgroundColor;
+    __weak __typeof(self) weakSelf = self;
+    self.hd_placeholderView.tappedRefreshBtnHandler = ^{
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf hd_removePlaceholderView];
+        !strongSelf.hd_tappedRefreshBtnHandler ?: strongSelf.hd_tappedRefreshBtnHandler();
+    };
+    self.hd_placeholderView.hidden = false;
 
     [self hd_addPlaceholderViewConstraintsWithModel:model];
 }
@@ -78,9 +80,28 @@
 }
 
 - (void)hd_removePlaceholderView {
-    if (self.hd_placeholderView) {
-        [self.hd_placeholderView removeFromSuperview];
-        self.hd_placeholderView = nil;
+
+    if ([self isKindOfClass:UITableView.class]) {
+        UITableView *tableView = (UITableView *)self;
+        if (tableView.backgroundView != self.hd_placeholderView) {
+            [self.hd_placeholderView removeFromSuperview];
+            self.hd_placeholderView = nil;
+        } else {
+            self.hd_placeholderView.hidden = true;
+        }
+    } else if ([self isKindOfClass:UICollectionView.class]) {
+        UICollectionView *collectionView = (UICollectionView *)self;
+        if (collectionView.backgroundView != self.hd_placeholderView) {
+            [self.hd_placeholderView removeFromSuperview];
+            self.hd_placeholderView = nil;
+        } else {
+            self.hd_placeholderView.hidden = true;
+        }
+    } else {
+        if (self.hd_placeholderView) {
+            [self.hd_placeholderView removeFromSuperview];
+            self.hd_placeholderView = nil;
+        }
     }
 }
 

@@ -26,7 +26,9 @@
         self.placeholderImageV = [[UIImageView alloc] init];
         [self addSubview:self.placeholderImageV];
     }
-    self.placeholderImageV.image = [UIImage imageNamed:self.model.image];
+    if (HDIsStringNotEmpty(self.model.image)) {
+        self.placeholderImageV.image = [UIImage imageNamed:self.model.image];
+    }
 
     if (!self.placeholderLabel) {
         self.placeholderLabel = [[UILabel alloc] init];
