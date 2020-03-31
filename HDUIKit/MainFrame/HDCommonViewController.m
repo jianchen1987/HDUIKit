@@ -10,6 +10,7 @@
 #import "HDCommonViewController.h"
 #import "HDAppTheme.h"
 #import "NSBundle+HDUIKit.h"
+#import <HDKitCore/HDLog.h>
 
 @interface HDCommonViewController ()
 @end
@@ -20,10 +21,15 @@
     [super viewDidLoad];
 
     [self baseSetupUI];
+
+    // 监听转屏
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_deviceOrientationDidChangedNotification) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 - (void)dealloc {
-    NSLog(@"%@ - dealloc", NSStringFromClass(self.class));
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+
+    HDLog(@"%@ - dealloc", NSStringFromClass(self.class));
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,6 +79,11 @@
     }
     self.hd_navLineHidden = self.hd_shouldHideNavigationBarBottomLine;
 
+    [self updateNavigationBarShadow];
+}
+
+- (void)updateNavigationBarShadow {
+    HDViewControllerNavigationBarStyle style = self.hd_preferredNavigationBarStyle;
     if (HDViewControllerNavigationBarStyleTransparent != style && !self.hd_shouldHideNavigationBarBottomShadow) {
         self.hd_navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
         self.hd_navigationBar.layer.shadowOffset = CGSizeMake(0, 10);
@@ -105,6 +116,11 @@
         }
         self.hd_statusBarStyle = style;
     }
+}
+
+#pragma mark - Notification
+- (void)_deviceOrientationDidChangedNotification {
+    [self updateNavigationBarShadow];
 }
 
 #pragma mark - HDViewControllerNavigationBarStyle
