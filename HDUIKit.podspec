@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.9.2"
+  s.version          = "0.9.3"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -163,6 +163,12 @@ Pod::Spec.new do |s|
 
     ss.subspec 'HDSkeletonLayer' do |sss|
       sss.source_files = 'HDUIKit/Components/HDSkeletonLayer'
+    end
+
+    ss.subspec 'UIViewPlaceholder' do |sss|
+      sss.source_files = 'HDUIKit/Components/UIViewPlaceholder'
+      sss.dependency 'Masonry'
+      sss.dependency 'HDUIKit/Components/HDUIButton'
     end
 
   end

@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"0.9.2";
+static NSString *const HDUIKit_VERSION = @"0.9.3";
 
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
@@ -196,6 +196,22 @@ static NSString *const HDUIKit_VERSION = @"0.9.2";
 
 #if __has_include("HDVisualEffectView.h")
 #import "HDVisualEffectView.h"
+#endif
+
+#if __has_include("UIView+HD_Placeholder.h")
+#import "UIView+HD_Placeholder.h"
+#endif
+
+#if __has_include("UIViewPlaceholder.h")
+#import "UIViewPlaceholder.h"
+#endif
+
+#if __has_include("HDPlaceholderView.h")
+#import "HDPlaceholderView.h"
+#endif
+
+#if __has_include("UIViewPlaceholderViewModel.h")
+#import "UIViewPlaceholderViewModel.h"
 #endif
 
 #if __has_include("HDPieProgressView.h")
