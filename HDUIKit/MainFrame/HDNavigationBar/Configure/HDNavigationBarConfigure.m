@@ -1,3 +1,5 @@
+
+
 //
 //  HDNavigationBarConfigure.m
 //  HDUIKit
@@ -16,17 +18,18 @@
 @end
 
 @implementation HDNavigationBarConfigure
-+ (void)load {
-    [[HDNavigationBarConfigure sharedInstance] setupDefaultConfigure];
-}
-
 + (instancetype)sharedInstance {
-    static HDNavigationBarConfigure *instance = nil;
     static dispatch_once_t onceToken;
+    static HDNavigationBarConfigure *instance = nil;
     dispatch_once(&onceToken, ^{
-        instance = [HDNavigationBarConfigure new];
+        instance = [[super allocWithZone:NULL] init];
+        [instance setupDefaultConfigure];
     });
     return instance;
+}
+
++ (id)allocWithZone:(struct _NSZone *)zone {
+    return [self sharedInstance];
 }
 
 - (void)setupDefaultConfigure {
