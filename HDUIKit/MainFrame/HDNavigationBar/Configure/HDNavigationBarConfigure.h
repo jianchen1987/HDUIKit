@@ -31,10 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 是否禁止导航栏左右item间距调整，默认是NO
 @property (nonatomic, assign) BOOL hd_disableFixSpace;
 
-/// 导航栏左侧按钮距屏幕左边间距，默认是0，可自行调整
+/// 导航栏左侧按钮距屏幕左边间距，默认是12，可自行调整
 @property (nonatomic, assign) CGFloat hd_navItemLeftSpace;
 
-/// 导航栏右侧按钮距屏幕右边间距，默认是0，可自行调整
+/// 导航栏右侧按钮距屏幕右边间距，默认是12，可自行调整
 @property (nonatomic, assign) CGFloat hd_navItemRightSpace;
 
 /// 是否隐藏状态栏，默认NO

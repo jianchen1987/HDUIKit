@@ -36,8 +36,8 @@
     self.titleFont = [UIFont boldSystemFontOfSize:17.0f];
 
     self.hd_disableFixSpace = NO;
-    self.hd_navItemLeftSpace = 0;
-    self.hd_navItemRightSpace = 0;
+    self.hd_navItemLeftSpace = 12;
+    self.hd_navItemRightSpace = 12;
     self.navItemLeftSpace = 12.f;
     self.navItemRightSpace = 12.f;
 
