@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "0.9.6"
+  s.version          = "0.9.7"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -23,7 +23,6 @@ Pod::Spec.new do |s|
 
     s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreLocation'
     s.ios.vendored_framework = "#{s.name}-#{s.version}/ios/#{s.name}.framework"
-    s.resources = "#{s.name}-#{s.version}/ios/#{s.name}.framework/Versions/A/Resources/*.bundle"
     s.dependency 'FFToast', '~> 1.2.0'
     s.dependency 'Masonry'
   else
