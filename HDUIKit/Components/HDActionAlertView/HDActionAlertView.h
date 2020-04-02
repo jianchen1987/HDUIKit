@@ -37,12 +37,12 @@ typedef NS_ENUM(NSInteger, HDActionAlertViewBackgroundStyle) {
 typedef NS_ENUM(NSInteger, HDActionAlertViewTransitionStyle) {
     HDActionAlertViewTransitionStyleSlideFromBottom = 0,  ///< 底部滑出
     HDActionAlertViewTransitionStyleFade,                 ///< 透明度变化
-    HDActionAlertViewTransitionStyleBounce,               ///< 底部滑出
+    HDActionAlertViewTransitionStyleBounce,               ///< 弹簧动画
     HDActionAlertViewTransitionStyleDropDown,             ///< 物理动画下落
     HDActionAlertViewTransitionStyleSlideFromTop,         ///< 顶部滑出
 };
 
-@protocol TSActionAlertViewDelegate <NSObject>
+@protocol HDActionAlertViewDelegate <NSObject>
 
 @optional
 /** 以下代理优先级低于 block 回调 */
@@ -60,13 +60,28 @@ typedef NS_ENUM(NSInteger, HDActionAlertViewTransitionStyle) {
 
 @end
 
-@interface HDActionAlertView : UIView
+@protocol HDActionAlertViewOverridable <NSObject>
 
-@property (weak, nonatomic) id<TSActionAlertViewDelegate> delegate;
+@optional
+
+/** 布局containerview的位置,就是那个看得到的视图 */
+- (void)layoutContainerView;
+/** 设置containerview的属性,比如圆角 */
+- (void)setupContainerViewAttributes;
+/** 给containerview添加子视图 */
+- (void)setupContainerSubViews;
+/** 设置子视图的frame */
+- (void)layoutContainerViewSubViews;
+
+@end
+
+@interface HDActionAlertView : UIView <HDActionAlertViewOverridable>
+
+@property (weak, nonatomic) id<HDActionAlertViewDelegate> delegate;
 @property (nonatomic, assign) HDActionAlertViewBackgroundStyle backgroundStyle;  // 背景效果
 @property (nonatomic, assign, getter=isVisible) BOOL visible;                    // 是否正在显示
 @property (nonatomic, assign) HDActionAlertViewTransitionStyle transitionStyle;
-@property (nonatomic, strong) UIView *containerView;  ///< 容器视图
+@property (nonatomic, strong, nullable) UIView *containerView;  ///< 容器视图
 @property (nonatomic, weak) UIWindow *oldKeyWindow;
 @property (nonatomic, assign) BOOL allowTapBackgroundDismiss;  ///< 点击背景是否隐藏
 @property (nonatomic, copy) NSString *identitableString;       ///< 标志
@@ -91,16 +106,6 @@ typedef NS_ENUM(NSInteger, HDActionAlertViewTransitionStyle) {
 - (void)dismiss;
 - (void)dismissCompletion:(void (^__nullable)(void))completion;
 - (void)show;
-
-// 子类需要实现
-/** 布局containerview的位置,就是那个看得到的视图 */
-- (void)layoutContainerView;
-/** 设置containerview的属性,比如圆角 */
-- (void)setupContainerViewAttributes;
-/** 给containerview添加子视图 */
-- (void)setupContainerSubViews;
-/** 设置子视图的frame */
-- (void)layoutContainerViewSubViews;
 
 // 给控制器调用的,不用管
 - (void)setup;
