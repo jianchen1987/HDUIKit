@@ -89,7 +89,7 @@
         _buttton = [HDCountDownButton buttonWithType:UIButtonTypeCustom];
         _buttton.adjustsImageWhenDisabled = NO;
         _buttton.titleLabel.font = font;
-        _buttton.contentEdgeInsets = UIEdgeInsetsMake(7, 10, 7, 10);
+        _buttton.titleEdgeInsets = UIEdgeInsetsMake(7, 10, 7, 10);
         [_buttton setTitleColor:[HDAppTheme HDColorC1] forState:UIControlStateNormal];
         [_buttton setTitleColor:[HDAppTheme HDColorG2] forState:UIControlStateDisabled];
         [_buttton setTitle:title forState:UIControlStateNormal];

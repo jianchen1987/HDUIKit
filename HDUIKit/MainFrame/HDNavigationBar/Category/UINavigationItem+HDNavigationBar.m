@@ -130,9 +130,13 @@
     id layout = [self valueForKey:@"_layout"];
     if (!layout) return;
     SEL selector = NSSelectorFromString(@"_updateMarginConstraints");
-    IMP imp = [layout methodForSelector:selector];
-    void (*func)(id, SEL) = (void *)imp;
-    func(layout, selector);
+
+    if ([layout respondsToSelector:selector]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+        [layout performSelector:selector];
+#pragma clang diagnostic pop
+    }
 }
 
 - (void)hd__updateMarginConstraints {
