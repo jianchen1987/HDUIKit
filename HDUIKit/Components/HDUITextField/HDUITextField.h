@@ -16,15 +16,15 @@ typedef void (^ValueChangedBlock)(NSString *text);
 @protocol HDUITextFieldDelegate <NSObject>
 
 @optional
-- (BOOL)floatingAnimatedTextFieldShouldBeginEditing:(UITextField *)textField;
-- (void)floatingAnimatedTextFieldDidBeginEditing:(UITextField *)textField;
-- (BOOL)floatingAnimatedTextFieldShouldEndEditing:(UITextField *)textField;
-- (void)floatingAnimatedTextFieldDidEndEditing:(UITextField *)textField;
-- (void)floatingAnimatedTextFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason NS_AVAILABLE_IOS(10_0);
-- (BOOL)floatingAnimatedTextField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+- (BOOL)hd_textFieldShouldBeginEditing:(UITextField *)textField;
+- (void)hd_textFieldDidBeginEditing:(UITextField *)textField;
+- (BOOL)hd_textFieldShouldEndEditing:(UITextField *)textField;
+- (void)hd_textFieldDidEndEditing:(UITextField *)textField;
+- (void)hd_textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason NS_AVAILABLE_IOS(10_0);
+- (BOOL)hd_textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 
-- (BOOL)floatingAnimatedTextFieldShouldClear:(UITextField *)textField;
-- (BOOL)floatingAnimatedTextFieldShouldReturn:(UITextField *)textField;
+- (BOOL)hd_textFieldShouldClear:(UITextField *)textField;
+- (BOOL)hd_textFieldShouldReturn:(UITextField *)textField;
 @end
 
 @interface HDUITextField : UIView
@@ -39,13 +39,13 @@ typedef void (^ValueChangedBlock)(NSString *text);
 
 @property (nonatomic, copy, readonly) NSString *validInputText;  ///< 获取当前有效输入信息（忽略分隔符）
 
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder rightIconImage:(UIImage *)rightIconImage;
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder rightIconImage:(UIImage *)rightIconImage;
 - (instancetype)initWithPlaceholder:(NSString *)placeholder rightIconImage:(UIImage *)rightIconImage;
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder rightLabelString:(NSString *)rightLabelString;
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder rightLabelString:(NSString *)rightLabelString;
 - (instancetype)initWithPlaceholder:(NSString *)placeholder rightLabelString:(NSString *)rightLabelString;
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder leftIconImage:(UIImage *)leftIconImage;
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder leftIconImage:(UIImage *)leftIconImage;
 - (instancetype)initWithPlaceholder:(NSString *)placeholder leftIconImage:(UIImage *)leftIconImage;
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder leftLabelString:(NSString *)leftLabelString;
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder leftLabelString:(NSString *)leftLabelString;
 - (instancetype)initWithPlaceholder:(NSString *)placeholder leftLabelString:(NSString *)leftLabelString;
 
 - (void)becomeFirstResponder;

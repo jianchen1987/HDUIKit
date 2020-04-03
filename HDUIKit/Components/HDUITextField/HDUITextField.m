@@ -46,7 +46,7 @@
 }
 
 #pragma mark - life cycle
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder rightIconImage:(UIImage *)rightIconImage {
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder rightIconImage:(UIImage *)rightIconImage {
     return [[self alloc] initWithPlaceholder:placeholder rightIconImage:rightIconImage];
 }
 
@@ -62,7 +62,7 @@
     return self;
 }
 
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder rightLabelString:(NSString *)rightLabelString {
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder rightLabelString:(NSString *)rightLabelString {
     return [[self alloc] initWithPlaceholder:placeholder rightLabelString:rightLabelString];
 }
 
@@ -78,7 +78,7 @@
     return self;
 }
 
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder leftIconImage:(UIImage *)leftIconImage {
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder leftIconImage:(UIImage *)leftIconImage {
     return [[self alloc] initWithPlaceholder:placeholder leftIconImage:leftIconImage];
 }
 
@@ -94,7 +94,7 @@
     return self;
 }
 
-+ (instancetype)floatingAnimatedTextFieldWithPlaceholder:(NSString *)placeholder leftLabelString:(NSString *)leftLabelString {
++ (instancetype)textFieldWithPlaceholder:(NSString *)placeholder leftLabelString:(NSString *)leftLabelString {
     return [[self alloc] initWithPlaceholder:placeholder leftLabelString:leftLabelString];
 }
 
@@ -1135,8 +1135,8 @@
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(floatingAnimatedTextFieldShouldBeginEditing:)]) {
-        return [self.delegate floatingAnimatedTextFieldShouldBeginEditing:textField];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textFieldShouldBeginEditing:)]) {
+        return [self.delegate hd_textFieldShouldBeginEditing:textField];
     }
     return YES;
 }
@@ -1168,14 +1168,14 @@
         }
     }
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(floatingAnimatedTextFieldDidBeginEditing:)]) {
-        [self.delegate floatingAnimatedTextFieldDidBeginEditing:textField];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textFieldDidBeginEditing:)]) {
+        [self.delegate hd_textFieldDidBeginEditing:textField];
     }
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(floatingAnimatedTextFieldShouldEndEditing:)]) {
-        return [self.delegate floatingAnimatedTextFieldShouldEndEditing:textField];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textFieldShouldEndEditing:)]) {
+        return [self.delegate hd_textFieldShouldEndEditing:textField];
     }
     return YES;
 }
@@ -1244,8 +1244,8 @@
         }
     }
 
-    if (self.delegate && [self.delegate respondsToSelector:@selector(floatingAnimatedTextFieldDidEndEditing:)]) {
-        [self.delegate floatingAnimatedTextFieldDidEndEditing:textField];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textFieldDidEndEditing:)]) {
+        [self.delegate hd_textFieldDidEndEditing:textField];
     }
 }
 
@@ -1268,8 +1268,8 @@
     }
 
     // 如果代理实现了该方法，全由代理决定
-    if (self.delegate && [self.delegate respondsToSelector:@selector(floatingAnimatedTextField:shouldChangeCharactersInRange:replacementString:)]) {
-        return [self.delegate floatingAnimatedTextField:textField shouldChangeCharactersInRange:range replacementString:string];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textField:shouldChangeCharactersInRange:replacementString:)]) {
+        return [self.delegate hd_textField:textField shouldChangeCharactersInRange:range replacementString:string];
     }
 
     BOOL res = YES;
@@ -1385,8 +1385,8 @@
 
 - (BOOL)textFieldShouldClear:(UITextField *)textField {
     BOOL shouldClear = YES;
-    if (self.delegate && [self.delegate respondsToSelector:@selector(floatingAnimatedTextFieldShouldClear:)]) {
-        shouldClear = [self.delegate floatingAnimatedTextFieldShouldClear:textField];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textFieldShouldClear:)]) {
+        shouldClear = [self.delegate hd_textFieldShouldClear:textField];
     }
     if (shouldClear) {
         if (self.config.hideRightViewWhenEditing) {
@@ -1399,8 +1399,8 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(floatingAnimatedTextFieldShouldReturn:)]) {
-        return [self.delegate floatingAnimatedTextFieldShouldReturn:textField];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textFieldShouldReturn:)]) {
+        return [self.delegate hd_textFieldShouldReturn:textField];
     }
     return YES;
 }
