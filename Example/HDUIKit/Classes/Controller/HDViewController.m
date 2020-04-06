@@ -28,6 +28,7 @@
 
 - (void)initDataSource {
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"输入框" destVcName:@"HDInputFieldViewController"]];
+    [self.dataSource addObject:[ExampleItem itemWithDesc:@"密码、验证码输入框" destVcName:@"HDUnitTextFieldViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"Toast" destVcName:@"HDToastViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"弹窗" destVcName:@"HDSheetViewViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"星星评分" destVcName:@"HDStarRatingViewController"]];
@@ -107,7 +108,6 @@
     } else {
         vc = [[cls alloc] init];
     }
-
     vc.hd_navigationItem.title = item.desc;
     [self.navigationController pushViewController:vc animated:true];
     HDLog(@"打开：%@", item.destVcName);

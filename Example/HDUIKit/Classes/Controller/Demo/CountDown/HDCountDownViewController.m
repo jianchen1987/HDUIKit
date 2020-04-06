@@ -25,6 +25,7 @@
     [self.buttton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.equalTo(self.hd_navigationBar.mas_bottom).offset(30);
+        make.size.mas_equalTo(self.buttton.frame.size);
     }];
 
     [self handleCountDownTime];

@@ -1088,37 +1088,37 @@
 - (void)updateConfigWithDict:(NSDictionary<NSString *, id> *)dict {
     NSArray *allKeys = dict.allKeys;
     if ([allKeys containsObject:@"leftLabelString"]) {
-        if (self.leftLabel && !self.leftLabel.isHidden) {
+        if (self.leftLabel) {
             self.leftLabel.text = dict[@"leftLabelString"];
         }
     }
 
     if ([allKeys containsObject:@"rightLabelString"]) {
-        if (self.rightLabel && !self.rightLabel.isHidden) {
+        if (self.rightLabel) {
             self.rightLabel.text = dict[@"rightLabelString"];
         }
     }
 
     if ([allKeys containsObject:@"floatingText"]) {
-        if (self.floatingLabel && !self.floatingLabel.isHidden) {
+        if (self.floatingLabel) {
             self.floatingLabel.text = dict[@"floatingText"];
         }
     }
 
     if ([allKeys containsObject:@"placeholder"]) {
-        if (self.placeholderLabel && !self.placeholderLabel.isHidden) {
+        if (self.placeholderLabel) {
             self.placeholderLabel.text = dict[@"placeholder"];
         }
     }
 
     if ([allKeys containsObject:@"leftIconImage"]) {
-        if (self.leftImageView && !self.leftImageView.isHidden) {
+        if (self.leftImageView) {
             self.leftImageView.image = dict[@"leftIconImage"];
         }
     }
 
     if ([allKeys containsObject:@"rightIconImage"]) {
-        if (self.rightImageView && !self.rightImageView.isHidden) {
+        if (self.rightImageView) {
             self.rightImageView.image = dict[@"rightIconImage"];
         }
     }

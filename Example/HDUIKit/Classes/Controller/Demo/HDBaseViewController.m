@@ -18,9 +18,4 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
-
-- (void)dealloc {
-    HDLog(@"%@ - dealloc", NSStringFromClass(self.class));
-}
-
 @end

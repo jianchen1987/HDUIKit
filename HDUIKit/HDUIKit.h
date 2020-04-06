@@ -12,7 +12,11 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.0.2";
+static NSString *const HDUIKit_VERSION = @"1.0.4";
+
+#if __has_include("UIView+KeyboardMoveRespond.h")
+#import "UIView+KeyboardMoveRespond.h"
+#endif
 
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
@@ -88,6 +92,18 @@ static NSString *const HDUIKit_VERSION = @"1.0.2";
 
 #if __has_include("NAT.h")
 #import "NAT.h"
+#endif
+
+#if __has_include("HDUnitTextFieldTextPosition.h")
+#import "HDUnitTextFieldTextPosition.h"
+#endif
+
+#if __has_include("HDUnitTextField.h")
+#import "HDUnitTextField.h"
+#endif
+
+#if __has_include("HDUnitTextFieldTextRange.h")
+#import "HDUnitTextFieldTextRange.h"
 #endif
 
 #if __has_include("HDCitySelectViewController.h")

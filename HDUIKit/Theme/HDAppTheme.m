@@ -208,7 +208,7 @@
 }
 
 + (UIEdgeInsets)padding {
-    return UIEdgeInsetsMake(15, 15, 15, 15);
+    return UIEdgeInsetsMake(25, 15, 25, 15);
 }
 
 + (CGFloat)textFieldHeight {
