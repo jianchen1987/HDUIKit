@@ -19,6 +19,7 @@
 #import "UIColor+HDKitCore.h"
 #import "UITextField+HDKitCore.h"
 #import "UIView+HDKitCore.h"
+#import <HDKitCore/HDCommonDefines.h>
 
 #define MAS_SHORTHAND_GLOBALS
 
@@ -402,15 +403,18 @@
 
 - (void)setDefaultValue {
     _config = [self defaultConfig];
-    __weak __typeof(self) weakSelf = self;
+    @HDWeakify(self);
     _config.updatePropertyBlock = ^() {
-        [weakSelf commonInit];
+        @HDStrongify(self);
+        [self commonInit];
     };
     _config.updateConstraintBlock = ^() {
-        [weakSelf activeOrUpdateConstraints];
+        @HDStrongify(self);
+        [self activeOrUpdateConstraints];
     };
     _config.showRightViewBlock = ^() {
-        [weakSelf showRightView];
+        @HDStrongify(self);
+        [self showRightView];
     };
 }
 
@@ -470,38 +474,38 @@
     if (!_KVOController) {
         _KVOController = [FBKVOController controllerWithObserver:self];
 
-        __weak __typeof(self) weakSelf = self;
-        [_KVOController hd_observe:self.textField
-                           keyPath:@"text"
-                             block:^(id _Nullable observer, id _Nonnull object, NSDictionary<NSString *, id> *_Nonnull change) {
-                                 __strong __typeof(weakSelf) strongSelf = weakSelf;
-                                 if (object == strongSelf.textField) {
-                                     NSString *oldText = change[NSKeyValueChangeOldKey];
-                                     NSString *newText = change[NSKeyValueChangeNewKey];
-                                     if (![newText isEqualToString:oldText]) {
-                                         [strongSelf.textField sendActionsForControlEvents:UIControlEventEditingChanged];
+        @HDWeakify(self);
+        [self.KVOController hd_observe:self.textField
+                               keyPath:@"text"
+                                 block:^(id _Nullable observer, id _Nonnull object, NSDictionary<NSString *, id> *_Nonnull change) {
+                                     @HDStrongify(self);
+                                     if (object == self.textField) {
+                                         NSString *oldText = change[NSKeyValueChangeOldKey];
+                                         NSString *newText = change[NSKeyValueChangeNewKey];
+                                         if (![newText isEqualToString:oldText]) {
+                                             [self.textField sendActionsForControlEvents:UIControlEventEditingChanged];
+                                         }
                                      }
-                                 }
-                             }];
+                                 }];
     }
 }
 
 - (void)enterTextFieldFocusCompletion:(void (^)(BOOL finished))completion {
 
-    __weak __typeof(self) weakSelf = self;
-
     [self setNeedsLayout];
-
+    @HDWeakify(self);
     if (!self.isSimulateInput) {
         [UIView animateWithDuration:_config.animationDuration
             animations:^{
-                weakSelf.lineView.backgroundColor = weakSelf.config.bottomLineSelectedColor;
+                @HDStrongify(self);
+                self.lineView.backgroundColor = self.config.bottomLineSelectedColor;
                 [self activeBottomLineViewConstraintIsFocused:YES];
 
                 [self layoutIfNeeded];
             }
             completion:^(BOOL finished) {
-                weakSelf.bottomLineFocusing = YES;
+                @HDStrongify(self);
+                self.bottomLineFocusing = YES;
                 // 已经在上部了就不执行动画但是要传回回调触发外部方法
                 if (![self shouldPlaceholderLabelBeFocused]) {
                     !completion ?: completion(finished);
@@ -527,17 +531,18 @@
 
 - (void)exitTextFieldFocus {
 
-    __weak __typeof(self) weakSelf = self;
     [self setNeedsLayout];
-
+    @HDWeakify(self);
     [UIView animateWithDuration:_config.animationDuration
         animations:^{
+            @HDStrongify(self);
             [self activeBottomLineViewConstraintIsFocused:NO];
 
             [self layoutIfNeeded];
         }
         completion:^(BOOL finished) {
-            weakSelf.bottomLineFocusing = NO;
+            @HDStrongify(self);
+            self.bottomLineFocusing = NO;
         }];
 
     // 有内容不执行，只改线条
@@ -631,34 +636,35 @@
     // 要动画
     rightView.hidden = NO;
     CGAffineTransform scaleTransform = CGAffineTransformMakeScale(1, 1);
+    @HDWeakify(self);
     [UIView animateWithDuration:_config.animationDuration
         animations:^{
             rightView.transform = scaleTransform;
         }
         completion:^(BOOL finished) {
+            @HDStrongify(self);
             [self activeDefaultTextFieldConstraint];
         }];
 }
 
 - (void)hideRightView {
 
-    __weak __typeof(self) weakSelf = self;
-
     UIView *leftView = _leftImageView ? _leftImageView : _leftLabel;
     UIView *rightView = _rightImageView ? _rightImageView : _rightLabel;
 
     if (rightView.isHidden && CGRectGetMaxX(_textField.frame) == CGRectGetWidth(self.frame)) return;
 
+    @HDWeakify(self);
     void (^UpdateTextFieldContraints)(void) = ^(void) {
-        __strong __typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
+        @HDStrongify(self);
+        [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
             if (leftView) {
-                make.left.equalTo(leftView.mas_right).offset(strongSelf.config.leftViewEdgeInsets.right);
+                make.left.equalTo(leftView.mas_right).offset(self.config.leftViewEdgeInsets.right);
             } else {
-                make.left.equalTo(strongSelf.downPartContainer);
+                make.left.equalTo(self.downPartContainer);
             }
-            make.right.equalTo(strongSelf.downPartContainer);
-            make.top.bottom.equalTo(strongSelf.downPartContainer);
+            make.right.equalTo(self.downPartContainer);
+            make.top.bottom.equalTo(self.downPartContainer);
         }];
     };
 
@@ -673,9 +679,10 @@
     CGAffineTransform scaleTransform = CGAffineTransformMakeScale(0.1, 0.1);
 
     void (^ConstrainAnimation)(void) = ^(void) {
+        @HDStrongify(self);
         // 解决重新布局时内容闪动
         [self setNeedsLayout];
-        [UIView animateWithDuration:weakSelf.config.animationDuration * 0.5
+        [UIView animateWithDuration:self.config.animationDuration * 0.5
                          animations:^{
                              UpdateTextFieldContraints();
                              [self layoutIfNeeded];
@@ -688,7 +695,6 @@
         }
         completion:^(BOOL finished) {
             rightView.hidden = YES;
-
             ConstrainAnimation();
         }];
 }
@@ -770,11 +776,11 @@
         [self simulateCallShouldChangeCharactersMethodWithText:text];
         self.isSimulateInput = NO;
     } else {
-        __weak __typeof(self) weakSelf = self;
+        @HDWeakify(self);
         [self enterTextFieldFocusCompletion:^(BOOL finished) {
-            __strong __typeof(weakSelf) strongSelf = weakSelf;
-            [strongSelf simulateCallShouldChangeCharactersMethodWithText:text];
-            strongSelf.isSimulateInput = NO;
+            @HDStrongify(self);
+            [self simulateCallShouldChangeCharactersMethodWithText:text];
+            self.isSimulateInput = NO;
         }];
     }
 }
