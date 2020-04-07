@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.0.7";
+static NSString *const HDUIKit_VERSION = @"1.0.8";
 
 #if __has_include("UIView+KeyboardMoveRespond.h")
 #import "UIView+KeyboardMoveRespond.h"
