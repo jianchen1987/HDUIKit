@@ -19,18 +19,18 @@ NSString *const kCharacterSetStringLetter = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefgh
     self = [super init];
     if (self) {
         // 默认值
-        self.placeholderColor = [HDAppTheme HDColorG3];
-        self.floatingLabelColor = [HDAppTheme HDColorG3];
+        self.placeholderColor = HDAppTheme.color.G3;
+        self.floatingLabelColor = HDAppTheme.color.G3;
         self.leftViewEdgeInsets = UIEdgeInsetsMake(5, 0, 5, 10);
         self.rightViewEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 0);
         self.placeholderEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-        self.bottomLineNormalColor = [HDAppTheme HDColorG4];
-        self.bottomLineSelectedColor = [HDAppTheme HDColorC1];
-        self.textFieldTintColor = [HDAppTheme HDColorC1];
-        self.leftLabelColor = [HDAppTheme HDColorG3];
-        self.rightLabelColor = [HDAppTheme HDColorC1];
-        self.leftLabelFont = [HDAppTheme HDFontStandard3];
-        self.rightLabelFont = [HDAppTheme HDFontStandard3];
+        self.bottomLineNormalColor = HDAppTheme.color.G4;
+        self.bottomLineSelectedColor = HDAppTheme.color.C1;
+        self.textFieldTintColor = HDAppTheme.color.C1;
+        self.leftLabelColor = HDAppTheme.color.G3;
+        self.rightLabelColor = HDAppTheme.color.C1;
+        self.leftLabelFont = HDAppTheme.font.standard3;
+        self.rightLabelFont = HDAppTheme.font.standard3;
         self.font = [UIFont systemFontOfSize:16];
         self.textColor = UIColor.blackColor;
         self.placeholderFont = [UIFont systemFontOfSize:16];

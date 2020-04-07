@@ -16,10 +16,10 @@
     if (self) {
         const CGFloat onePix = (CGFloat)(1 * 2) / [UIScreen mainScreen].scale;
         // 默认值
-        self.titleFont = [HDAppTheme HDFontStandard3];
+        self.titleFont = HDAppTheme.font.standard3;
         self.titleColor = UIColor.blackColor;
-        self.messageFont = [HDAppTheme HDFontStandard3];
-        self.messageColor = [HDAppTheme HDColorG2];
+        self.messageFont = HDAppTheme.font.standard3;
+        self.messageColor = HDAppTheme.color.G2;
         self.containerViewEdgeInsets = UIEdgeInsetsMake(kRealWidth(15), onePix, onePix, onePix);
         self.contentViewEdgeInsets = UIEdgeInsetsMake(kRealWidth(5), kRealWidth(15), kRealWidth(5), kRealWidth(15));
         self.labelHEdgeMargin = kRealWidth(15);

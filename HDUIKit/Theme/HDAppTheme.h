@@ -2,104 +2,112 @@
 //  HDAppTheme.h
 //  HDUIKit
 //
-//  Created by 帅呆 on 2019/1/28.
-//  Copyright © 2019 chaos network technology. All rights reserved.
+//  Created by VanJay on 2020/4/5.
+//  Copyright © 2020 chaos network technology. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HDAppTheme : NSObject
+@interface HDAppThemeFont : NSObject
+
+- (UIFont *)forSize:(CGFloat)size;
+- (UIFont *)boldForSize:(CGFloat)size;
+- (UIFont *)thinForSize:(CGFloat)size;
+
+/** 30 加粗 */
+- (UIFont *)amountOnly;
+
+/** 23 加粗 */
+- (UIFont *)numberOnly;
+
+/** 23 加粗 */
+- (UIFont *)_23Bold;
+
+/** 20 加粗 */
+- (UIFont *)_20Bold;
+
+/** 22 加粗 */
+- (UIFont *)standard1Bold;
+
+/** 17 */
+- (UIFont *)standard2;
+
+/** 17 加粗 */
+- (UIFont *)standard2Bold;
+
+/** 15 */
+- (UIFont *)standard3;
+
+/** 15 加粗 */
+- (UIFont *)standard3Bold;
+
+/** 12 */
+- (UIFont *)standard4;
+
+/** 12 加粗 */
+- (UIFont *)standard4Bold;
+
+/** 11 */
+- (UIFont *)standard5;
+
+/** 11 加粗 */
+- (UIFont *)standard5Bold;
+@end
+
+@interface HDAppThemeColor : NSObject
 /** #f83460 */
-+ (UIColor *)HDColorC1;
+- (UIColor *)C1;
+
 /** #f5a635 */
-+ (UIColor *)HDColorC2;
+- (UIColor *)C2;
+
 /** #343b4d */
-+ (UIColor *)HDColorG1;
+- (UIColor *)G1;
+
 /** #5d667f */
-+ (UIColor *)HDColorG2;
+- (UIColor *)G2;
+
 /** #ADB6C8 */
-+ (UIColor *)HDColorG3;
+- (UIColor *)G3;
+
 /** #e4e5ea */
-+ (UIColor *)HDColorG4;
+- (UIColor *)G4;
+
 /** #f5f7fa */
-+ (UIColor *)HDColorG5;
+- (UIColor *)G5;
+
 /** #E1E1E1 */
-+ (UIColor *)HDColorG6;
+- (UIColor *)G6;
+@end
 
-+ (UIFont *)fontForSize:(CGFloat)size;
-+ (UIFont *)boldFontForSize:(CGFloat)size;
-+ (UIFont *)thinFontForSize:(CGFloat)size;
+@interface HDAppThemeValue : NSObject
+/** 布局时，与控制器 View 内边距 */
+- (UIEdgeInsets)padding;
 
-/**
- 30 blod
- */
-+ (UIFont *)HDFontAmountOnly;
-/**
- 22 blod
- */
-+ (UIFont *)HDFontNumberOnly;
-/**
- 22
- */
-+ (UIFont *)HDFontStandard1Bold;
+/** 输入框高度 */
+- (CGFloat)textFieldHeight;
 
-/**
- 23 加粗
- */
-+ (UIFont *)HDFont23Bold;
-
-/**
- 20 加粗
- */
-+ (UIFont *)HDFont20Bold;
-
-/**
- 17
- */
-+ (UIFont *)HDFontStandard2;
-+ (UIFont *)HDFontStandard2Bold;
-/**
- 15
- */
-+ (UIFont *)HDFontStandard3;
-+ (UIFont *)HDFontStandard3Bold;
-/**
- 12
- */
-+ (UIFont *)HDFontStandard4Bold;
-/**
- 12
- */
-+ (UIFont *)HDFontStandard4;
-/**
- 11
- */
-+ (UIFont *)HDFontStandard5;
-/**
- 9
- */
-+ (UIFont *)HDFont9;
-
-/**
- 边距
-
- @return 边距
- */
-+ (UIEdgeInsets)padding;
-
-+ (CGFloat)textFieldHeight;
-
-+ (CGFloat)normalButtonHeight;
-
-+ (CGFloat)mainButtonHeight;
+/** 按钮高度 */
+- (CGFloat)buttonHeight;
 
 /** 一像素的大小 */
-+ (CGFloat)pixelOne;
+- (CGFloat)pixelOne;
 
-+ (CGFloat)statusBarHeight;
+/** 状态栏高度 */
+- (CGFloat)statusBarHeight;
+@end
+
+@interface HDAppTheme : NSObject
+/** 字体 */
++ (HDAppThemeFont *)font;
+
+/** 颜色 */
++ (HDAppThemeColor *)color;
+
+/** 距离、大小、尺寸 */
++ (HDAppThemeValue *)value;
 @end
 
 NS_ASSUME_NONNULL_END

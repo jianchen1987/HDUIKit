@@ -45,7 +45,7 @@
 }
 
 - (void)baseSetupUI {
-    self.view.backgroundColor = [HDAppTheme HDColorG5];
+    self.view.backgroundColor = HDAppTheme.color.G5;
 }
 
 #pragma mark - private methods
@@ -57,16 +57,16 @@
     UIImage *image;
     if (HDViewControllerNavigationBarStyleWhite == style) {
         self.hd_navBackgroundColor = UIColor.whiteColor;
-        self.hd_navTitleColor = [HDAppTheme HDColorC1];
+        self.hd_navTitleColor = HDAppTheme.color.C1;
         image = [UIImage imageNamed:@"ic-return-red" inBundle:bundle compatibleWithTraitCollection:nil];
     } else if (HDViewControllerNavigationBarStyleTheme == style) {
-        self.hd_navBackgroundColor = [HDAppTheme HDColorC1];
+        self.hd_navBackgroundColor = HDAppTheme.color.C1;
         self.hd_navTitleColor = UIColor.whiteColor;
         image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
     } else if (HDViewControllerNavigationBarStyleHidden == style) {
         self.hd_navigationBar.hidden = true;
     } else if (HDViewControllerNavigationBarStyleOther == style) {
-        self.hd_navBackgroundColor = [HDAppTheme HDColorC1];
+        self.hd_navBackgroundColor = HDAppTheme.color.C1;
         self.hd_navTitleColor = UIColor.whiteColor;
         image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
     } else if (HDViewControllerNavigationBarStyleTransparent == style) {

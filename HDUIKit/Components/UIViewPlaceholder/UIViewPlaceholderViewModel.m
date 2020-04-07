@@ -17,14 +17,14 @@
         self.scaleImage = NO;
         self.image = @"placeholder_no_data_coupon";
         self.title = @"暂无数据";
-        self.titleColor = [HDAppTheme HDColorG3];
+        self.titleColor = HDAppTheme.color.G3;
         self.needRefreshBtn = NO;
         self.refreshBtnTitle = @"刷新";
-        self.refreshBtnTitleFont = [HDAppTheme HDFontStandard3];
+        self.refreshBtnTitleFont = HDAppTheme.font.standard3;
         self.refreshBtnTitleColor = UIColor.whiteColor;
         self.marginInfoToImage = 10;
         self.marginBtnToInfo = kRealWidth(30);
-        self.refreshBtnBackgroundColor = [HDAppTheme HDColorC1];
+        self.refreshBtnBackgroundColor = HDAppTheme.color.C1;
         self.refreshButtonLabelEdgeInset = UIEdgeInsetsMake(8, 30, 8, 30);
     }
     return self;

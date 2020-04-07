@@ -121,7 +121,7 @@
 
 - (void)addRedPoint {
     _redPointView = [[UIView alloc] init];
-    _redPointView.backgroundColor = [HDAppTheme HDColorC1];
+    _redPointView.backgroundColor = HDAppTheme.color.C1;
     _redPointView.frame = CGRectMake(5, 5, kRealWidth(6), kRealWidth(6));
     [self addSubview:_redPointView];
     [_redPointView setRoundedCorners:UIRectCornerAllCorners radius:_redPointView.bounds.size.height * 0.5];
@@ -142,7 +142,7 @@
     self = [super init];
     if (self) {
         // 设置默认值
-        self.backgroundColor = [HDAppTheme HDColorG1];
+        self.backgroundColor = HDAppTheme.color.G1;
         self.buttonBgColor = HDColor(93, 102, 127, 0.4);
         self.buttonSelectedBgColor = HDColor(93, 102, 127, 1);
         self.buttonHighlightBgColor = HDColor(93, 102, 127, 1);
@@ -156,7 +156,7 @@
         self.enterpriseLabelFont = [UIFont fontWithName:@"PingFang SC" size:15];
         self.enterpriseShowStyle = HDKeyBoardEnterpriseInfoShowTypeImageLeft;
         self.enterpriseMargin = 10;
-        self.enterpriseLabelColor = [HDAppTheme HDColorG3];
+        self.enterpriseLabelColor = HDAppTheme.color.G3;
         self.deleteButtonImage = @"keyboard_delete";
         self.shiftButtonImage = @"keyboard_shift";
         self.shiftButtonSelectedImage = @"keyboard_shift_selected";

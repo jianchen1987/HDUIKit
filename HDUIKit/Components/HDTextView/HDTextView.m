@@ -76,7 +76,7 @@ const UIEdgeInsets kSystemTextViewFixTextInsets = {0, 5, 0, 5};
     }
 
     self.placeholderLabel = [[UILabel alloc] init];
-    self.placeholderLabel.font = [HDAppTheme fontForSize:kSystemTextViewDefaultFontPointSize];
+    self.placeholderLabel.font = [HDAppTheme.font forSize:kSystemTextViewDefaultFontPointSize];
     self.placeholderLabel.textColor = self.placeholderColor;
     self.placeholderLabel.numberOfLines = 0;
     self.placeholderLabel.alpha = 0;

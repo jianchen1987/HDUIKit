@@ -2,48 +2,16 @@
 //  HDAppTheme.m
 //  HDUIKit
 //
-//  Created by 帅呆 on 2019/1/28.
-//  Copyright © 2019 chaos network technology. All rights reserved.
+//  Created by VanJay on 2020/4/5.
+//  Copyright © 2020 chaos network technology. All rights reserved.
 //
 
 #import "HDAppTheme.h"
 #import "UIColor+HDKitCore.h"
 
-@implementation HDAppTheme
+@implementation HDAppThemeFont
 
-+ (UIColor *)HDColorC1 {
-    return [UIColor hd_colorWithHexString:@"#f83460"];
-}
-
-+ (UIColor *)HDColorC2 {
-    return [UIColor hd_colorWithHexString:@"#f5a635"];
-}
-
-+ (UIColor *)HDColorG1 {
-    return [UIColor hd_colorWithHexString:@"#343b4d"];
-}
-
-+ (UIColor *)HDColorG2 {
-    return [UIColor hd_colorWithHexString:@"#5d667f"];
-}
-
-+ (UIColor *)HDColorG3 {
-    return [UIColor hd_colorWithHexString:@"#adb6c8"];
-}
-
-+ (UIColor *)HDColorG4 {
-    return [UIColor hd_colorWithHexString:@"#e4e5ea"];
-}
-
-+ (UIColor *)HDColorG5 {
-    return [UIColor hd_colorWithHexString:@"#f5f7fa"];
-}
-
-+ (UIColor *)HDColorG6 {
-    return [UIColor hd_colorWithHexString:@"#E1E1E1"];
-}
-
-+ (UIFont *)fontForSize:(CGFloat)size {
+- (UIFont *)forSize:(CGFloat)size {
     if (@available(iOS 8.2, *)) {
         return [UIFont systemFontOfSize:size weight:UIFontWeightRegular];
     } else {
@@ -51,7 +19,7 @@
     }
 }
 
-+ (UIFont *)thinFontForSize:(CGFloat)size {
+- (UIFont *)thinForSize:(CGFloat)size {
     if (@available(iOS 8.2, *)) {
         return [UIFont systemFontOfSize:size weight:UIFontWeightThin];
     } else {
@@ -59,7 +27,7 @@
     }
 }
 
-+ (UIFont *)boldFontForSize:(CGFloat)size {
+- (UIFont *)boldForSize:(CGFloat)size {
     if (@available(iOS 8.2, *)) {
         return [UIFont systemFontOfSize:size weight:UIFontWeightBold];
     } else {
@@ -67,167 +35,143 @@
     }
 }
 
-/**
- 30 bold
- */
-+ (UIFont *)HDFontAmountOnly {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:30.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:30.0f];
-    }
+- (UIFont *)amountOnly {
+    return [self boldForSize:30.f];
 }
 
-/**
- 22 bold
- */
-+ (UIFont *)HDFontNumberOnly {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:23.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:23.0f];
-    }
+- (UIFont *)numberOnly {
+    return [self boldForSize:23.f];
 }
 
-/**
- 22
- */
-+ (UIFont *)HDFontStandard1Bold {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:22.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:22.0f];
-    }
+- (UIFont *)_23Bold {
+    return [self boldForSize:23.f];
 }
 
-/**
- 17
- */
-+ (UIFont *)HDFontStandard2 {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:17.0f weight:UIFontWeightRegular];
-    } else {
-        return [UIFont systemFontOfSize:17.0f];
-    }
+- (UIFont *)_20Bold {
+    return [self boldForSize:20.f];
 }
 
-/**
- 23 加粗
- */
-+ (UIFont *)HDFont23Bold {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:23.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:23.0f];
-    }
+- (UIFont *)standard1Bold {
+    return [self boldForSize:22.f];
 }
 
-/**
- 20 加粗
- */
-+ (UIFont *)HDFont20Bold {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:20.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:20.0f];
-    }
+- (UIFont *)standard2 {
+    return [self forSize:17.f];
 }
 
-/**
- 17
- */
-+ (UIFont *)HDFontStandard2Bold {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:17.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:17.0f];
-    }
+- (UIFont *)standard2Bold {
+    return [self boldForSize:17.f];
 }
 
-/**
- 15
- */
-+ (UIFont *)HDFontStandard3 {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:15.0f weight:UIFontWeightRegular];
-    } else {
-        return [UIFont systemFontOfSize:15.0f];
-    }
+- (UIFont *)standard3 {
+    return [self forSize:15.f];
 }
 
-+ (UIFont *)HDFontStandard3Bold {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:15.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:15.0f];
-    }
+- (UIFont *)standard3Bold {
+    return [self boldForSize:15.f];
 }
 
-/**
- 12
- */
-+ (UIFont *)HDFontStandard4Bold {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:12.0f weight:UIFontWeightBold];
-    } else {
-        return [UIFont boldSystemFontOfSize:12.0f];
-    }
+- (UIFont *)standard4 {
+    return [self forSize:12.f];
 }
 
-/**
- 12
- */
-+ (UIFont *)HDFontStandard4 {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:12.0f weight:UIFontWeightRegular];
-    } else {
-        return [UIFont systemFontOfSize:12.0f];
-    }
+- (UIFont *)standard4Bold {
+    return [self boldForSize:12.f];
 }
 
-/**
- 11
- */
-+ (UIFont *)HDFontStandard5 {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:11.0f weight:UIFontWeightRegular];
-    } else {
-        return [UIFont systemFontOfSize:11.0f];
-    }
+- (UIFont *)standard5 {
+    return [self forSize:11.f];
 }
 
-/**
- 9
- */
-+ (UIFont *)HDFont9 {
-    if (@available(iOS 8.2, *)) {
-        return [UIFont systemFontOfSize:9.0f weight:UIFontWeightRegular];
-    } else {
-        return [UIFont systemFontOfSize:9.0f];
-    }
+- (UIFont *)standard5Bold {
+    return [self boldForSize:11.f];
 }
 
-+ (UIEdgeInsets)padding {
+@end
+
+@implementation HDAppThemeColor
+
+- (UIColor *)C1 {
+    return [UIColor hd_colorWithHexString:@"#f83460"];
+}
+
+- (UIColor *)C2 {
+    return [UIColor hd_colorWithHexString:@"#f5a635"];
+}
+
+- (UIColor *)G1 {
+    return [UIColor hd_colorWithHexString:@"#343b4d"];
+}
+
+- (UIColor *)G2 {
+    return [UIColor hd_colorWithHexString:@"#5d667f"];
+}
+
+- (UIColor *)G3 {
+    return [UIColor hd_colorWithHexString:@"#adb6c8"];
+}
+
+- (UIColor *)G4 {
+    return [UIColor hd_colorWithHexString:@"#e4e5ea"];
+}
+
+- (UIColor *)G5 {
+    return [UIColor hd_colorWithHexString:@"#f5f7fa"];
+}
+
+- (UIColor *)G6 {
+    return [UIColor hd_colorWithHexString:@"#E1E1E1"];
+}
+
+@end
+
+@implementation HDAppThemeValue
+
+- (UIEdgeInsets)padding {
     return UIEdgeInsetsMake(25, 15, 25, 15);
 }
 
-+ (CGFloat)textFieldHeight {
+- (CGFloat)textFieldHeight {
     return 45.0f;
 }
 
-+ (CGFloat)normalButtonHeight {
+- (CGFloat)buttonHeight {
     return 45.0f;
 }
 
-+ (CGFloat)mainButtonHeight {
-    return 45.0f;
-}
-
-+ (CGFloat)pixelOne {
+- (CGFloat)pixelOne {
     return 1.0 / UIScreen.mainScreen.scale;
 }
 
-+ (CGFloat)statusBarHeight {
+- (CGFloat)statusBarHeight {
     return CGRectGetHeight(UIApplication.sharedApplication.statusBarFrame);
+}
+
+@end
+
+@implementation HDAppTheme
+
+static HDAppThemeFont *_font;
++ (HDAppThemeFont *)font {
+    if (_font == nil) {
+        _font = [HDAppThemeFont new];
+    }
+    return _font;
+}
+
+static HDAppThemeColor *_color;
++ (HDAppThemeColor *)color {
+    if (_color == nil) {
+        _color = [HDAppThemeColor new];
+    }
+    return _color;
+}
+
+static HDAppThemeValue *_value;
++ (HDAppThemeValue *)value {
+    if (_value == nil) {
+        _value = [HDAppThemeValue new];
+    }
+    return _value;
 }
 @end

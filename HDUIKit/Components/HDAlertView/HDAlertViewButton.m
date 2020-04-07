@@ -30,7 +30,7 @@
 #pragma mark - life cycle
 - (void)commonInit {
     [self addTarget:self action:@selector(tappedButton) forControlEvents:UIControlEventTouchUpInside];
-    self.backgroundColor = [HDAppTheme HDColorG5];
+    self.backgroundColor = HDAppTheme.color.G5;
 
     [self setProperties];
 }
@@ -52,15 +52,15 @@
 }
 
 - (void)setProperties {
-    self.titleLabel.font = [HDAppTheme HDFontStandard3Bold];
+    self.titleLabel.font = HDAppTheme.font.standard3Bold;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
 
     if (_type == HDAlertViewButtonTypeDefault) {
-        [self setTitleColor:[HDAppTheme HDColorC1] forState:UIControlStateNormal];
+        [self setTitleColor:HDAppTheme.color.C1 forState:UIControlStateNormal];
     } else if (_type == HDAlertViewButtonTypeCustom) {
-        [self setTitleColor:[HDAppTheme HDColorC1] forState:UIControlStateNormal];
+        [self setTitleColor:HDAppTheme.color.C1 forState:UIControlStateNormal];
     } else if (_type == HDAlertViewButtonTypeCancel) {
-        [self setTitleColor:[HDAppTheme HDColorG2] forState:UIControlStateNormal];
+        [self setTitleColor:HDAppTheme.color.G2 forState:UIControlStateNormal];
     }
 }
 #pragma mark - event response

@@ -34,7 +34,7 @@
     self.backgroundColor = [UIColor whiteColor];
     self.marginToSide = kRealWidth(15);
     self.marginButtonTextField = kRealWidth(10);
-    self.buttonTitleColor = [HDAppTheme HDColorC1];
+    self.buttonTitleColor = HDAppTheme.color.C1;
 
     self.animationDuration = 0.25;
 
@@ -42,7 +42,7 @@
     self.contentView.layer.borderColor = UIColor.clearColor.CGColor;
     self.contentView.layer.borderWidth = PixelOne;
     self.contentView.layer.masksToBounds = YES;
-    self.contentView.backgroundColor = [HDAppTheme HDColorG5];
+    self.contentView.backgroundColor = HDAppTheme.color.G5;
     [self addSubview:_contentView];
 
     _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_search" inBundle:[NSBundle hd_UIKitSearchBarResources] compatibleWithTraitCollection:nil]];
@@ -414,12 +414,12 @@
 - (UITextField *)textField {
     if (!_textField) {
         _textField = [[UITextField alloc] init];
-        _textField.font = [HDAppTheme HDFontStandard3];
-        _textField.textColor = [HDAppTheme HDColorG1];
+        _textField.font = HDAppTheme.font.standard3;
+        _textField.textColor = HDAppTheme.color.G1;
         _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _textField.rightView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 35)];
         _textField.rightViewMode = UITextFieldViewModeUnlessEditing;
-        _textField.tintColor = [HDAppTheme HDColorC1];
+        _textField.tintColor = HDAppTheme.color.C1;
         _textField.delegate = self;
         [_textField addTarget:self
                        action:@selector(textFieldDidChange:)

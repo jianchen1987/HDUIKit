@@ -15,12 +15,12 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.titleColor = [HDAppTheme HDColorG1];
-        self.titleFont = [HDAppTheme HDFontStandard3];
+        self.titleColor = HDAppTheme.color.G1;
+        self.titleFont = HDAppTheme.font.standard3;
         self.backgroundColor = UIColor.whiteColor;
         self.marginToBottom = -1;
-        self.rightButtonTitleColor = [HDAppTheme HDColorG3];
-        self.rightButtonTitleFont = [HDAppTheme HDFontStandard4];
+        self.rightButtonTitleColor = HDAppTheme.color.G3;
+        self.rightButtonTitleFont = HDAppTheme.font.standard4;
         self.edgeInsets = UIEdgeInsetsMake(0, kRealWidth(15), 0, kRealWidth(15));
         self.titleToImageMarin = kRealWidth(6);
         self.rightTitleToImageMarin = kRealWidth(6);

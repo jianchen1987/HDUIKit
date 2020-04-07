@@ -85,18 +85,18 @@ NSString *const kNotificationCitySelectLocationInfoChanged = @"kNotificationCity
 
     for (HDCityModel *model in dataSource) {
         HDUIGhostButton *button = HDUIGhostButton.new;
-        UIColor *textColor = [HDAppTheme HDColorG2];
-        UIFont *textFont = [HDAppTheme HDFontStandard3];
+        UIColor *textColor = HDAppTheme.color.G2;
+        UIFont *textFont = HDAppTheme.font.standard3;
         NSString *imageName = nil;
         if (model.isLocationCell) {
             if (model.locationState == HDCitySelectLocationStateSuccees) {
-                textColor = [HDAppTheme HDColorG1];
-                textFont = [HDAppTheme HDFontStandard2Bold];
+                textColor = HDAppTheme.color.G1;
+                textFont = HDAppTheme.font.standard2Bold;
                 imageName = @"ic_found_localtion";
                 button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 5);
             } else {
-                textColor = [HDAppTheme HDColorG2];
-                textFont = [HDAppTheme HDFontStandard3];
+                textColor = HDAppTheme.color.G2;
+                textFont = HDAppTheme.font.standard3;
                 button.imageEdgeInsets = UIEdgeInsetsZero;
             }
         }

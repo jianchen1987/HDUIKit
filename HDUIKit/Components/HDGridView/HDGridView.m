@@ -48,7 +48,7 @@
     self.separatorWidth = PixelOne;
     self.separatorLineDashPattern = nil;
 
-    self.separatorColor = [HDAppTheme HDColorC1];
+    self.separatorColor = HDAppTheme.color.C1;
     self.separatorEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
 
     self.separatorLayer = [CAShapeLayer layer];

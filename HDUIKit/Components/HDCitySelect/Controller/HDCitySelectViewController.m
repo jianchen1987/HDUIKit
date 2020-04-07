@@ -313,7 +313,7 @@
     HDTableHeaderFootView *header = [HDTableHeaderFootView headerWithTableView:tableView];
     HDTableHeaderFootViewModel *model = HDTableHeaderFootViewModel.new;
     model.marginToBottom = CGFLOAT_MIN;
-    model.titleColor = [HDAppTheme HDColorG3];
+    model.titleColor = HDAppTheme.color.G3;
     NSString *title = cityGroupModel.title;
     if ([cityGroupModel.title isEqualToString:@"热门"]) {
         title = @"热门城市";

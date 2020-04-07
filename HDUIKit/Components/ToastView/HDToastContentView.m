@@ -30,13 +30,13 @@
 
     _textLabel = [[UILabel alloc] init];
     self.textLabel.numberOfLines = 0;
-    self.textLabel.font = [HDAppTheme HDFontStandard3];
+    self.textLabel.font = HDAppTheme.font.standard3;
     self.textLabel.opaque = NO;
     [self addSubview:self.textLabel];
 
     _detailTextLabel = [[UILabel alloc] init];
     self.detailTextLabel.numberOfLines = 0;
-    self.detailTextLabel.font = [HDAppTheme HDFontStandard4];
+    self.detailTextLabel.font = HDAppTheme.font.standard4;
     self.detailTextLabel.opaque = NO;
     [self addSubview:self.detailTextLabel];
 }

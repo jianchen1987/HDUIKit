@@ -40,14 +40,14 @@
     self.currentIndex = 0;
     self.isBtnEqualWidth = NO;
     self.indicateLineHeight = 2;
-    self.indicateLineColor = [HDAppTheme HDColorC1];
+    self.indicateLineColor = HDAppTheme.color.C1;
     self.bottomLineHeight = 0;
     self.bottomLineColor = HexColor(0xE9E9E9);
     self.normalFontSize = 15;
     self.selectedFontSize = 15;
     self.titleLabelZoomScale = 1.2;
-    self.titleNormalColor = [HDAppTheme HDColorG2];
-    self.titleSelectedColor = [HDAppTheme HDColorC1];
+    self.titleNormalColor = HDAppTheme.color.G2;
+    self.titleSelectedColor = HDAppTheme.color.C1;
     self.marginBottomToIndicateLine = 2;
     self.isIndicateLineWidthEqualToFullButton = false;
 
@@ -117,7 +117,7 @@
         if (self.isBtnWidthEqualAndExpandFullWidth) {
             btn.width = averageWidth;
         } else {
-            CGSize buttonSize = [btn.titleLabel.text boundingAllRectWithSize:CGSizeMake(CGFLOAT_MAX, buttonHeight) font:[HDAppTheme fontForSize:fontSize] lineSpacing:0];
+            CGSize buttonSize = [btn.titleLabel.text boundingAllRectWithSize:CGSizeMake(CGFLOAT_MAX, buttonHeight) font:[HDAppTheme.font forSize:fontSize] lineSpacing:0];
             btn.width = buttonSize.width;
         }
 
@@ -285,7 +285,7 @@
     HDScrollTitleBarViewButton *button = [[HDScrollTitleBarViewButton alloc] init];
     [button setTitle:title forState:UIControlStateNormal];
     button.backgroundColor = [UIColor clearColor];
-    button.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
+    button.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
     [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
     button.titleEdgeInsets = self.buttonTitleEdgeInsets;
     [self.scrollView addSubview:button];
@@ -293,7 +293,7 @@
 }
 
 - (void)setupNormalFontSizeItem {
-    self.preButton.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
+    self.preButton.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
     self.nextButton.titleLabel.font = [UIFont systemFontOfSize:self.normalFontSize];
 
     [self.preButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
@@ -370,15 +370,15 @@
         CGFloat frontFontSize = (1 - percent) * (self.titleLabelZoomScale * self.normalFontSize - self.normalFontSize) + self.normalFontSize;
         CGFloat nextFontSize = percent * (self.titleLabelZoomScale * self.normalFontSize - self.normalFontSize) + self.normalFontSize;
 
-        preButton.titleLabel.font = [HDAppTheme fontForSize:frontFontSize];
-        nextButton.titleLabel.font = [HDAppTheme fontForSize:nextFontSize];
+        preButton.titleLabel.font = [HDAppTheme.font forSize:frontFontSize];
+        nextButton.titleLabel.font = [HDAppTheme.font forSize:nextFontSize];
     } else {
         if (percent > 0.5) {
-            nextButton.titleLabel.font = [HDAppTheme fontForSize:self.selectedFontSize];
-            preButton.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
+            nextButton.titleLabel.font = [HDAppTheme.font forSize:self.selectedFontSize];
+            preButton.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
         } else {
-            nextButton.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
-            preButton.titleLabel.font = [HDAppTheme fontForSize:self.selectedFontSize];
+            nextButton.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
+            preButton.titleLabel.font = [HDAppTheme.font forSize:self.selectedFontSize];
         }
     }
 }
@@ -474,25 +474,25 @@
 - (void)clickButtonWhenNotGraduallyChangFont:(HDScrollTitleBarViewButton *)button {
     _preButton = _currentButton;
 
-    _preButton.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
+    _preButton.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
 
     _currentButton.selected = NO;
     button.selected = YES;
     _currentButton = button;
 
-    _currentButton.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
+    _currentButton.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
 }
 
 - (void)selectItemWhenNotGraduallyChangFont:(HDScrollTitleBarViewButton *)button {
     _preButton = _currentButton;
 
-    _preButton.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
+    _preButton.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
 
     _currentButton.selected = NO;
     button.selected = YES;
     _currentButton = button;
 
-    _currentButton.titleLabel.font = [HDAppTheme fontForSize:self.normalFontSize];
+    _currentButton.titleLabel.font = [HDAppTheme.font forSize:self.normalFontSize];
 }
 
 #pragma mark - KVO

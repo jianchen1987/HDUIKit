@@ -105,7 +105,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = UIColor.clearColor;
-        self.tintColor = [HDAppTheme HDColorC1];
+        self.tintColor = HDAppTheme.color.C1;
         self.borderWidth = 1;
         self.borderInset = 0;
         self.lineWidth = 5;
