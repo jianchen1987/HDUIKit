@@ -190,6 +190,10 @@ Pod::Spec.new do |s|
         sss.source_files = 'HDUIKit/Components/HDUnitTextField'
       end
 
+      ss.subspec 'UIViewKeyboardMoveRespond' do |sss|
+        sss.source_files = 'HDUIKit/Components/UIViewKeyboardMoveRespond'
+      end
+
     end
 
   end

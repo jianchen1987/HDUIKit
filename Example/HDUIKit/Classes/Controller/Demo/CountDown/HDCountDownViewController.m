@@ -85,14 +85,14 @@
 
 - (HDCountDownButton *)buttton {
     if (!_buttton) {
-        UIFont *font = [HDAppTheme HDFontStandard3];
+        UIFont *font = HDAppTheme.font.standard3;
         NSString *title = @"获取验证码";
         _buttton = [HDCountDownButton buttonWithType:UIButtonTypeCustom];
         _buttton.adjustsImageWhenDisabled = NO;
         _buttton.titleLabel.font = font;
         _buttton.titleEdgeInsets = UIEdgeInsetsMake(7, 10, 7, 10);
-        [_buttton setTitleColor:[HDAppTheme HDColorC1] forState:UIControlStateNormal];
-        [_buttton setTitleColor:[HDAppTheme HDColorG2] forState:UIControlStateDisabled];
+        [_buttton setTitleColor:HDAppTheme.color.C1 forState:UIControlStateNormal];
+        [_buttton setTitleColor:HDAppTheme.color.G2 forState:UIControlStateDisabled];
         [_buttton setTitle:title forState:UIControlStateNormal];
         __weak __typeof(self) weakSelf = self;
         _buttton.countDownStateChangedHandler = ^(HDCountDownButton *_Nonnull countDownButton, BOOL enabled) {

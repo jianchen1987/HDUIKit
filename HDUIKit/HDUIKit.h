@@ -14,10 +14,6 @@
 /// 版本号
 static NSString *const HDUIKit_VERSION = @"1.0.8";
 
-#if __has_include("UIView+KeyboardMoveRespond.h")
-#import "UIView+KeyboardMoveRespond.h"
-#endif
-
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
 #endif
@@ -128,6 +124,10 @@ static NSString *const HDUIKit_VERSION = @"1.0.8";
 
 #if __has_include("HDSelectCityTableViewCell.h")
 #import "HDSelectCityTableViewCell.h"
+#endif
+
+#if __has_include("UIView+KeyboardMoveRespond.h")
+#import "UIView+KeyboardMoveRespond.h"
 #endif
 
 #if __has_include("HDActionAlertView.h")
