@@ -57,11 +57,17 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface HDAppThemeColor : NSObject
-/** #f83460 */
+/** #FC821A */
 - (UIColor *)C1;
 
-/** #f5a635 */
+/** #FF4444 */
 - (UIColor *)C2;
+
+/** #22B573 */
+- (UIColor *)C3;
+
+/** #EBB626 */
+- (UIColor *)C4;
 
 /** #343b4d */
 - (UIColor *)G1;

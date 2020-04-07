@@ -7,7 +7,10 @@
 //
 
 #import "UIView+KeyboardMoveRespond.h"
-#import <HDKitCore/HDKitCore.h>
+#import <HDKitCore/HDAssociatedObjectHelper.h>
+#import <HDKitCore/HDDispatchMainQueueSafe.h>
+#import <HDKitCore/UIView+HD_Extension.h>
+#import <HDKitCore/UIViewController+HDKitCore.h>
 
 @interface UIView ()
 @property (nonatomic, assign) BOOL isHd_enableUpSpring;                     ///< 是否开启跟随键盘向上弹起
