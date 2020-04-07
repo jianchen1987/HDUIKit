@@ -57,7 +57,7 @@
     UIImage *image;
     if (HDViewControllerNavigationBarStyleWhite == style) {
         self.hd_navBackgroundColor = UIColor.whiteColor;
-        self.hd_navTitleColor = HDAppTheme.color.C1;
+        self.hd_navTitleColor = HDAppTheme.color.G1;
         image = [UIImage imageNamed:@"ic-return-red" inBundle:bundle compatibleWithTraitCollection:nil];
     } else if (HDViewControllerNavigationBarStyleTheme == style) {
         self.hd_navBackgroundColor = HDAppTheme.color.C1;
