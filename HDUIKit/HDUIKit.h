@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.0.8";
+static NSString *const HDUIKit_VERSION = @"1.1.0";
 
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
@@ -40,6 +40,10 @@ static NSString *const HDUIKit_VERSION = @"1.0.8";
 
 #if __has_include("HDUIGhostButton.h")
 #import "HDUIGhostButton.h"
+#endif
+
+#if __has_include("HDShareImageAlertView.h")
+#import "HDShareImageAlertView.h"
 #endif
 
 #if __has_include("HDScrollTitleBarTool.h")
@@ -166,6 +170,18 @@ static NSString *const HDUIKit_VERSION = @"1.0.8";
 #import "HDRatingStarView.h"
 #endif
 
+#if __has_include("HDActionSheetView.h")
+#import "HDActionSheetView.h"
+#endif
+
+#if __has_include("HDActionSheetViewConfig.h")
+#import "HDActionSheetViewConfig.h"
+#endif
+
+#if __has_include("HDActionSheetViewButton.h")
+#import "HDActionSheetViewButton.h"
+#endif
+
 #if __has_include("HDCountDownButton.h")
 #import "HDCountDownButton.h"
 #endif
@@ -178,8 +194,32 @@ static NSString *const HDUIKit_VERSION = @"1.0.8";
 #import "HDKeyBoardTheme.h"
 #endif
 
+#if __has_include("HDCustomViewActionView.h")
+#import "HDCustomViewActionView.h"
+#endif
+
+#if __has_include("HDCustomViewActionViewConfig.h")
+#import "HDCustomViewActionViewConfig.h"
+#endif
+
 #if __has_include("HDFloatLayoutView.h")
 #import "HDFloatLayoutView.h"
+#endif
+
+#if __has_include("HDSocialShareAlertViewConfig.h")
+#import "HDSocialShareAlertViewConfig.h"
+#endif
+
+#if __has_include("HDSocialShareCellModel.h")
+#import "HDSocialShareCellModel.h"
+#endif
+
+#if __has_include("HDSocialShareAlertView.h")
+#import "HDSocialShareAlertView.h"
+#endif
+
+#if __has_include("HDSocialShareCell.h")
+#import "HDSocialShareCell.h"
 #endif
 
 #if __has_include("UIView+HDSkeleton.h")

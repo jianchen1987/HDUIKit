@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.0.8"
+  s.version          = "1.1.0"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -119,7 +119,6 @@ Pod::Spec.new do |s|
       ss.subspec 'HDAlertView' do |sss|
         sss.source_files = 'HDUIKit/Components/HDAlertView'
         sss.dependency 'HDUIKit/Components/HDActionAlertView'
-        sss.dependency 'HDUIKit/HDAppTheme'
         sss.dependency 'HDKitCore/HDFrameLayout'
       end
 
@@ -192,6 +191,28 @@ Pod::Spec.new do |s|
 
       ss.subspec 'UIViewKeyboardMoveRespond' do |sss|
         sss.source_files = 'HDUIKit/Components/UIViewKeyboardMoveRespond'
+      end
+
+      ss.subspec 'HDActionSheetView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDActionSheetView'
+        sss.dependency 'HDUIKit/Components/HDActionAlertView'
+      end
+
+      ss.subspec 'HDSocialShareView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDSocialShareView'
+        sss.dependency 'HDUIKit/Components/HDActionAlertView'
+        sss.dependency 'Masonry'
+      end
+
+      ss.subspec 'HDCustomViewActionView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDCustomViewActionView'
+        sss.dependency 'HDUIKit/Components/HDActionAlertView'
+        sss.dependency 'HDKitCore/HDFrameLayout'
+      end
+
+      ss.subspec 'HDShareImageAlertView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDShareImageAlertView'
+        sss.dependency 'HDUIKit/Components/HDActionAlertView'
       end
 
     end
