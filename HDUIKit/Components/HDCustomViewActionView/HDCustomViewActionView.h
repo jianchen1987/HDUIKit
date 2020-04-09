@@ -11,10 +11,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface HDCustomViewActionView : HDActionAlertView
+@protocol HDCustomViewActionViewProtocol <NSObject>
 
-+ (instancetype)actionViewWithContentView:(UIView *)contentView config:(HDCustomViewActionViewConfig *__nullable)config;
-- (instancetype)initWithContentView:(UIView *)contentView config:(HDCustomViewActionViewConfig *__nullable)config;
+@required
+/// 布局计算自身以及子控件 frame
+- (void)layoutyImmediately;
+
+@end
+
+@interface HDCustomViewActionView : HDActionAlertView
++ (instancetype)actionViewWithContentView:(UIView<HDCustomViewActionViewProtocol> *)contentView config:(HDCustomViewActionViewConfig *__nullable)config;
+- (instancetype)initWithContentView:(UIView<HDCustomViewActionViewProtocol> *)contentView config:(HDCustomViewActionViewConfig *__nullable)config;
 @end
 
 NS_ASSUME_NONNULL_END
