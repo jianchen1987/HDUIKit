@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class HDSocialShareCellModel;
 
-typedef void (^ClickedHandler)(HDSocialShareCellModel *model, NSInteger index);
-
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^ClickedHandler)(HDSocialShareCellModel *model, NSInteger index);
 
 @interface HDSocialShareCellModel : NSObject
 @property (nonatomic, copy) NSString *title;        ///< 标题

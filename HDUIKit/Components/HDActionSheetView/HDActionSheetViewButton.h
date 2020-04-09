@@ -17,9 +17,9 @@ typedef NS_ENUM(NSInteger, HDActionSheetViewButtonType) {
 @class HDActionSheetView;
 @class HDActionSheetViewButton;
 
-typedef void (^HDActionSheetViewButtonHandler)(HDActionSheetView *alertView, HDActionSheetViewButton *button);
-
 NS_ASSUME_NONNULL_BEGIN
+
+typedef void (^HDActionSheetViewButtonHandler)(HDActionSheetView *alertView, HDActionSheetViewButton *button);
 
 @interface HDActionSheetViewButton : UIButton
 @property (nonatomic, assign) HDActionSheetViewButtonType type;      ///< 类型

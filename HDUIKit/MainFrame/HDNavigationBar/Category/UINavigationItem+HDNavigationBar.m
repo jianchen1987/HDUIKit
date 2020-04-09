@@ -133,7 +133,7 @@
 
     if ([layout respondsToSelector:selector]) {
 #pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wundeclared-selector"
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [layout performSelector:selector];
 #pragma clang diagnostic pop
     }

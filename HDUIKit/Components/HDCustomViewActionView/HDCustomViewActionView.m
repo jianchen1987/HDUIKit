@@ -24,11 +24,11 @@
 
 @implementation HDCustomViewActionView
 
-+ (instancetype)actionViewWithContentView:(UIView *)contentView config:(HDCustomViewActionViewConfig *__nullable)config {
++ (instancetype)actionViewWithContentView:(UIView<HDCustomViewActionViewProtocol> *)contentView config:(HDCustomViewActionViewConfig *__nullable)config {
     return [[self alloc] initWithContentView:contentView config:config];
 }
 
-- (instancetype)initWithContentView:(UIView *)contentView config:(HDCustomViewActionViewConfig *__nullable)config {
+- (instancetype)initWithContentView:(UIView<HDCustomViewActionViewProtocol> *)contentView config:(HDCustomViewActionViewConfig *__nullable)config {
     if (self = [super init]) {
         config = config ?: [[HDCustomViewActionViewConfig alloc] init];
 
