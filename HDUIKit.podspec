@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.1.4"
+  s.version          = "1.1.5"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -213,6 +213,19 @@ Pod::Spec.new do |s|
       ss.subspec 'HDShareImageAlertView' do |sss|
         sss.source_files = 'HDUIKit/Components/HDShareImageAlertView'
         sss.dependency 'HDUIKit/Components/HDActionAlertView'
+      end
+
+      ss.subspec 'HDImageUploadAddImageView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDImageUploadAddImageView'
+        sss.dependency 'Masonry'
+      end
+
+      ss.subspec 'HDImageBrowserToolViewHandler' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDImageBrowserToolViewHandler'
+        sss.dependency 'HDKitCore/HDFrameLayout'
+        sss.dependency 'YBImageBrowser', '~> 3.0.8'
+        sss.dependency 'HDUIKit/Components/HDUIButton'
+        sss.resource_bundles = {'HDUIKitImageBrowserResources' => ['HDUIKit/Components/HDImageBrowserToolViewHandler/Resources/*.*']}
       end
 
     end

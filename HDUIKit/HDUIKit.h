@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.1.4";
+static NSString *const HDUIKit_VERSION = @"1.1.5";
 
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
@@ -146,6 +146,10 @@ static NSString *const HDUIKit_VERSION = @"1.1.4";
 #import "HDActionAlertViewController.h"
 #endif
 
+#if __has_include("HDImageUploadAddImageView.h")
+#import "HDImageUploadAddImageView.h"
+#endif
+
 #if __has_include("HDAlertViewConfig.h")
 #import "HDAlertViewConfig.h"
 #endif
@@ -168,6 +172,10 @@ static NSString *const HDUIKit_VERSION = @"1.1.4";
 
 #if __has_include("HDRatingStarView.h")
 #import "HDRatingStarView.h"
+#endif
+
+#if __has_include("HDImageBrowserToolViewHandler.h")
+#import "HDImageBrowserToolViewHandler.h"
 #endif
 
 #if __has_include("HDActionSheetView.h")

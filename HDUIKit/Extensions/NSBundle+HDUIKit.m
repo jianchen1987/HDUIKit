@@ -33,6 +33,11 @@
     return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKITCitySelectResources"];
 }
 
++ (NSBundle *)hd_UIKITImageBrowserResources {
+    static NSBundle *resourceBundle = nil;
+    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitImageBrowserResources"];
+}
+
 #pragma mark - private methods
 + (NSBundle *)bundleWithStaticResourceBundle:(NSBundle *)resourceBundle bundleName:(NSString *)name {
     if (!resourceBundle) {

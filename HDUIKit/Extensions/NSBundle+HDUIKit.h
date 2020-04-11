@@ -25,6 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// HDUIKITCitySelectResources
 + (NSBundle *)hd_UIKITCitySelectResources;
+
+/// HDUIKitImageBrowserResources
++ (NSBundle *)hd_UIKITImageBrowserResources;
 @end
 
 NS_ASSUME_NONNULL_END
