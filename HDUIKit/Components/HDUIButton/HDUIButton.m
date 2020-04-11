@@ -284,8 +284,8 @@
 
                 break;
             case UIControlContentVerticalAlignmentCenter:
-                imageFrame = isImageViewShowing ? CGRectSetY(imageFrame, CGFloatGetCenter(contentSize.height, CGRectGetHeight(imageFrame)) + self.imageEdgeInsets.top - self.imageEdgeInsets.bottom) : imageFrame;
-                titleFrame = isTitleLabelShowing ? CGRectSetY(titleFrame, CGFloatGetCenter(contentSize.height, CGRectGetHeight(titleFrame)) + self.titleEdgeInsets.top - self.titleEdgeInsets.bottom) : titleFrame;
+                imageFrame = isImageViewShowing ? CGRectSetY(imageFrame, contentEdgeInsets.top + CGFloatGetCenter(contentSize.height, CGRectGetHeight(imageFrame)) + self.imageEdgeInsets.top) : imageFrame;
+                titleFrame = isTitleLabelShowing ? CGRectSetY(titleFrame, contentEdgeInsets.top + CGFloatGetCenter(contentSize.height, CGRectGetHeight(titleFrame)) + self.titleEdgeInsets.top) : titleFrame;
                 break;
             case UIControlContentVerticalAlignmentBottom:
                 imageFrame = isImageViewShowing ? CGRectSetY(imageFrame, CGRectGetHeight(self.bounds) - contentEdgeInsets.bottom - self.imageEdgeInsets.bottom - CGRectGetHeight(imageFrame)) : imageFrame;
