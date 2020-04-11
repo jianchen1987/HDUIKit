@@ -29,6 +29,17 @@ HDSynthesizeIdStrongProperty(hud, setHud);
     });
 }
 
+- (void)showloadingText:(id)text {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.hud) {
+            [self.hud hideAnimated:true];
+            [self.hud removeFromSuperview];
+            self.hud = nil;
+        }
+        self.hud = [HDTips showLoading:text inView:self.view];
+    });
+}
+
 - (void)dismissLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.hud) {

@@ -26,7 +26,7 @@
     [self presentViewController:imageCropVC animated:true completion:nil];
 }
 
-#pragma mark - RSKImageCropViewControllerDelegate
+#pragma mark - HDImageCropViewControllerDelegate
 
 - (void)imageCropViewControllerDidCancelCrop:(HDImageCropViewController *)controller {
     [controller dismissAnimated:true completion:nil];

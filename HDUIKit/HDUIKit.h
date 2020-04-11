@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.1.6";
+static NSString *const HDUIKit_VERSION = @"1.1.7";
 
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
