@@ -131,6 +131,10 @@
     return [UIColor hd_colorWithHexString:@"#E1E1E1"];
 }
 
+- (UIColor *)normalBackground {
+    return [UIColor hd_colorWithHexString:@"#F5F7FA"];
+}
+
 @end
 
 @implementation HDAppThemeValue

@@ -36,6 +36,7 @@
 		959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE6E9240E04D600D3E3AE /* ExampleItem.m */; };
 		959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */; };
 		959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */; };
+		95F046692441F87C009712ED /* HDCropImageExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F046682441F87C009712ED /* HDCropImageExampleViewController.m */; };
 		95F19CD12438D9E500634756 /* HDUnitTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F19CD02438D9E500634756 /* HDUnitTextFieldViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +102,8 @@
 		959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDBaseViewController.m; sourceTree = "<group>"; };
 		959AE723240F3D2400D3E3AE /* HDCodeGeneratorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCodeGeneratorViewController.h; sourceTree = "<group>"; };
 		959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCodeGeneratorViewController.m; sourceTree = "<group>"; };
+		95F046672441F87C009712ED /* HDCropImageExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCropImageExampleViewController.h; sourceTree = "<group>"; };
+		95F046682441F87C009712ED /* HDCropImageExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCropImageExampleViewController.m; sourceTree = "<group>"; };
 		95F19CCF2438D9E500634756 /* HDUnitTextFieldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDUnitTextFieldViewController.h; sourceTree = "<group>"; };
 		95F19CD02438D9E500634756 /* HDUnitTextFieldViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDUnitTextFieldViewController.m; sourceTree = "<group>"; };
 		A88E61FF828E8CF0B8287AD2 /* HDUIKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HDUIKit.podspec; path = ../HDUIKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -287,6 +290,8 @@
 				95749E952434372E00297E0D /* HDUniversalButtonViewController.m */,
 				95F19CCF2438D9E500634756 /* HDUnitTextFieldViewController.h */,
 				95F19CD02438D9E500634756 /* HDUnitTextFieldViewController.m */,
+				95F046672441F87C009712ED /* HDCropImageExampleViewController.h */,
+				95F046682441F87C009712ED /* HDCropImageExampleViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -535,6 +540,7 @@
 				95676370241A0EDB00374171 /* HDGridViewViewController.m in Sources */,
 				959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */,
 				95749E962434372E00297E0D /* HDUniversalButtonViewController.m in Sources */,
+				95F046692441F87C009712ED /* HDCropImageExampleViewController.m in Sources */,
 				959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */,
 				95676364241A03DA00374171 /* HDCountDownViewController.m in Sources */,
 				95F19CD12438D9E500634756 /* HDUnitTextFieldViewController.m in Sources */,

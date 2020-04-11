@@ -31,6 +31,7 @@
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"密码、验证码输入框" destVcName:@"HDUnitTextFieldViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"Toast" destVcName:@"HDToastViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"弹窗" destVcName:@"HDSheetViewViewController"]];
+    [self.dataSource addObject:[ExampleItem itemWithDesc:@"图片裁剪" destVcName:@"HDCropImageExampleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"星星评分" destVcName:@"HDStarRatingViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"函数防抖" destVcName:@"HDFunctionThrottleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"搜索框" destVcName:@"HDSearchBarViewController"]];

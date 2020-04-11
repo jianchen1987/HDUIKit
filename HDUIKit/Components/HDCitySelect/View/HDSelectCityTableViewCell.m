@@ -106,7 +106,7 @@ NSString *const kNotificationCitySelectLocationInfoChanged = @"kNotificationCity
             [button setImage:[UIImage imageNamed:imageName inBundle:[NSBundle hd_UIKITCitySelectResources] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         }
         button.titleLabel.font = textFont;
-        button.backgroundColor = HexColor(0xF5F7FA);
+        button.backgroundColor = HDAppTheme.color.normalBackground;
         button.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
         [button sizeToFit];
         button.hd_associatedObject = model;

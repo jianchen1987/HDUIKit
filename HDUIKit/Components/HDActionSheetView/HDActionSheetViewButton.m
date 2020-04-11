@@ -63,7 +63,7 @@
         self.backgroundColor = UIColor.whiteColor;
         self.titleLabel.font = HDAppTheme.font.standard2;
     } else if (_type == HDActionSheetViewButtonTypeCancel) {
-        self.backgroundColor = HexColor(0xF5F7FA);
+        self.backgroundColor = HDAppTheme.color.normalBackground;
         self.titleLabel.font = HDAppTheme.font.standard2Bold;
     }
 }

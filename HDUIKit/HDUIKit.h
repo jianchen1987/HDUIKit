@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.1.5";
+static NSString *const HDUIKit_VERSION = @"1.1.6";
 
 #if __has_include("NSBundle+HDUIKit.h")
 #import "NSBundle+HDUIKit.h"
@@ -212,6 +212,30 @@ static NSString *const HDUIKit_VERSION = @"1.1.5";
 
 #if __has_include("HDFloatLayoutView.h")
 #import "HDFloatLayoutView.h"
+#endif
+
+#if __has_include("CGGeometry+HDImageCropper.h")
+#import "CGGeometry+HDImageCropper.h"
+#endif
+
+#if __has_include("HDImageCropViewController.h")
+#import "HDImageCropViewController.h"
+#endif
+
+#if __has_include("HDImageCropperTouchView.h")
+#import "HDImageCropperTouchView.h"
+#endif
+
+#if __has_include("HDImageScrollView.h")
+#import "HDImageScrollView.h"
+#endif
+
+#if __has_include("UIImage+HDImageCropper.h")
+#import "UIImage+HDImageCropper.h"
+#endif
+
+#if __has_include("HDImageCropper.h")
+#import "HDImageCropper.h"
 #endif
 
 #if __has_include("HDSocialShareAlertViewConfig.h")

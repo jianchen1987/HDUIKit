@@ -20,7 +20,7 @@
         self.buttonTitle = @"取消";
         self.buttonTitleColor = HDAppTheme.color.G1;
         self.buttonTitleFont = HDAppTheme.font.standard2Bold;
-        self.buttonBgColor = HexColor(0xF5F7FA);
+        self.buttonBgColor = HDAppTheme.color.normalBackground;
         self.buttonHeight = kRealWidth(45);
         self.containerViewEdgeInsets = UIEdgeInsetsMake(kRealWidth(20), kRealWidth(15), kRealWidth(30), kRealWidth(15));
         self.marginTitleToContentView = kRealWidth(15);

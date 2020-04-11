@@ -29,7 +29,7 @@
         self.marginImageToTip = kRealWidth(20);
         self.cancelTitleFont = HDAppTheme.font.standard2Bold;
         self.cancelTitleColor = HDAppTheme.color.G1;
-        self.cancelButtonBackgroundColor = HexColor(0xF5F7FA);
+        self.cancelButtonBackgroundColor = HDAppTheme.color.normalBackground;
         self.buttonHeight = kRealWidth(45);
         self.containerCorner = 10;
     }

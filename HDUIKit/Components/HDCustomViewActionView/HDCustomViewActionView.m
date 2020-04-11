@@ -10,6 +10,7 @@
 #import "HDFrameLayout.h"
 #import <HDKitCore/HDCommonDefines.h>
 #import <HDKitCore/UIView+HD_Extension.h>
+#import <HDUIKit/HDAppTheme.h>
 
 // 宽度
 #define kHDCustomViewActionViewWidth (kScreenWidth * 1)
@@ -181,7 +182,7 @@
 - (UIView *)iphoneXSeriousSafeAreaFillView {
     if (!_iphoneXSeriousSafeAreaFillView) {
         _iphoneXSeriousSafeAreaFillView = [[UIView alloc] init];
-        _iphoneXSeriousSafeAreaFillView.backgroundColor = HexColor(0xF5F7FA);
+        _iphoneXSeriousSafeAreaFillView.backgroundColor = HDAppTheme.color.normalBackground;
     }
     return _iphoneXSeriousSafeAreaFillView;
 }

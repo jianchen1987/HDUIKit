@@ -86,6 +86,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** #E1E1E1 */
 - (UIColor *)G6;
+
+/** #F5F7FA */
+- (UIColor *)normalBackground;
 @end
 
 @interface HDAppThemeValue : NSObject
