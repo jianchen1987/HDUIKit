@@ -47,7 +47,7 @@
         [self.refreshBtn addTarget:self action:@selector(tappedRefreshBtn) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.refreshBtn];
     }
-    self.refreshBtn.contentEdgeInsets = self.model.refreshButtonLabelEdgeInset;
+    self.refreshBtn.titleEdgeInsets = self.model.refreshButtonLabelEdgeInset;
     if (self.model.refreshBtnAttributeTitle.length) {
         [self.refreshBtn setAttributedTitle:self.model.refreshBtnAttributeTitle forState:UIControlStateNormal];
     } else {
