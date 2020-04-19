@@ -23,6 +23,7 @@
         self.buttonBgColor = HDAppTheme.color.normalBackground;
         self.buttonHeight = kRealWidth(45);
         self.containerViewEdgeInsets = UIEdgeInsetsMake(kRealWidth(20), kRealWidth(15), kRealWidth(30), kRealWidth(15));
+        self.contentHorizontalEdgeMargin = kRealWidth(15);
         self.marginTitleToContentView = kRealWidth(15);
         self.containerMinHeight = 120;
         self.containerCorner = 10;

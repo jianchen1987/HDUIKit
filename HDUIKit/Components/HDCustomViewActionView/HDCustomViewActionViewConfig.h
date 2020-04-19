@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, HDCustomViewActionViewStyle) {
+    HDCustomViewActionViewStyleCancel = 0,  /// 取消
+    HDCustomViewActionViewStyleClose,       /// 取消
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HDCustomViewActionViewConfig : NSObject
@@ -20,10 +25,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *buttonBgColor;                ///< 按钮背景色
 @property (nonatomic, assign) CGFloat buttonHeight;                  ///< 按钮高度
 @property (nonatomic, assign) UIEdgeInsets containerViewEdgeInsets;  ///< 容器内边距
+@property (nonatomic, assign) CGFloat contentHorizontalEdgeMargin;   ///< 内容水平方向离边距离
 @property (nonatomic, assign) CGFloat marginTitleToContentView;      ///< 标题和内容间距
 @property (nonatomic, assign) CGFloat containerCorner;               ///< 容器圆角
 @property (nonatomic, assign) CGFloat containerMinHeight;            ///< 容器最小高度
 @property (nonatomic, assign) CGFloat containerMaxHeight;            ///< 容器最大高度，默认屏幕高度80%
+@property (nonatomic, assign) HDCustomViewActionViewStyle style;     ///< 风格
 @end
 
 NS_ASSUME_NONNULL_END

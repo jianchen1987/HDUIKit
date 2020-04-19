@@ -9,11 +9,15 @@
 #import "HDCustomViewActionView.h"
 #import "HDFrameLayout.h"
 #import <HDKitCore/HDCommonDefines.h>
+#import <HDKitCore/UIImage+HDKitCore.h>
 #import <HDKitCore/UIView+HD_Extension.h>
 #import <HDUIKit/HDAppTheme.h>
 
 // 宽度
 #define kHDCustomViewActionViewWidth (kScreenWidth * 1)
+
+static CGFloat const kCloseButtonW = 30.0;
+static CGFloat const kCloseButtonEdgeMargin = 10.0;
 
 @interface HDCustomViewActionView ()
 @property (nonatomic, strong) UIView *iphoneXSeriousSafeAreaFillView;  ///< iPhoneX 系列底部填充
@@ -53,13 +57,21 @@
         containerHeight += CGRectGetHeight(self.contentView.frame);
     }
 
-    containerHeight += self.config.buttonHeight;
+    if (self.config.style == HDCustomViewActionViewStyleCancel) {
+        containerHeight += self.config.buttonHeight;
+    }
 
     if (!self.titleLabel.isHidden) {
         containerHeight += (self.titleLBSize.height + self.config.marginTitleToContentView);
+    } else {
+        if (self.config.style == HDCustomViewActionViewStyleClose) {
+            containerHeight += (kCloseButtonW + self.config.marginTitleToContentView);
+        }
     }
 
-    containerHeight += kiPhoneXSeriesSafeBottomHeight;
+    if (self.config.style == HDCustomViewActionViewStyleCancel) {
+        containerHeight += kiPhoneXSeriesSafeBottomHeight;
+    }
 
     if (containerHeight < _config.containerMinHeight) {
         containerHeight = _config.containerMinHeight;
@@ -96,7 +108,7 @@
     if (self.contentView) {  // 自定义上部
         [self.containerView addSubview:self.contentView];
     }
-    if (iPhoneXSeries) {
+    if (self.config.style == HDCustomViewActionViewStyleCancel && iPhoneXSeries) {
         [self.containerView addSubview:self.iphoneXSeriousSafeAreaFillView];
     }
 }
@@ -113,12 +125,14 @@
             make.bottom.hd_equalTo(self.iphoneXSeriousSafeAreaFillView.top);
         }];
     } else {
-        [self.button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
-            make.left.hd_equalTo(0);
-            make.width.hd_equalTo(self.containerView.width);
-            make.height.hd_equalTo(self.config.buttonHeight);
-            make.bottom.hd_equalTo(self.containerView.height);
-        }];
+        if (self.config.style == HDCustomViewActionViewStyleCancel) {
+            [self.button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+                make.left.hd_equalTo(0);
+                make.width.hd_equalTo(self.containerView.width);
+                make.height.hd_equalTo(self.config.buttonHeight);
+                make.bottom.hd_equalTo(self.containerView.height);
+            }];
+        }
     }
 
     if (!self.titleLabel.isHidden) {
@@ -129,12 +143,28 @@
         }];
     }
 
+    if (self.config.style == HDCustomViewActionViewStyleClose) {
+        [self.button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.size.hd_equalTo(CGSizeMake(kCloseButtonW, kCloseButtonW));
+            make.right.hd_equalTo(self.containerView.width - kCloseButtonEdgeMargin);
+            if (!self.titleLabel.isHidden) {
+                make.centerY.hd_equalTo(self.titleLabel.centerY);
+            } else {
+                make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
+            }
+        }];
+    }
+
     [self.contentView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
-        make.left.hd_equalTo(self.config.containerViewEdgeInsets.left);
+        make.left.hd_equalTo(self.config.contentHorizontalEdgeMargin);
         if (!self.titleLabel.isHidden) {
             make.top.hd_equalTo(self.titleLabel.bottom).offset(self.config.marginTitleToContentView);
         } else {
-            make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
+            if (self.config.style == HDCustomViewActionViewStyleClose) {
+                make.top.hd_equalTo(self.button.bottom).offset(self.config.marginTitleToContentView);
+            } else {
+                make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
+            }
         }
         // 计算剩余高度
         CGFloat leftHeight = CGRectGetMinY(self.button.frame) - self.config.containerViewEdgeInsets.top - self.config.containerViewEdgeInsets.bottom;
@@ -153,14 +183,19 @@
 #pragma mark - private methods
 - (CGFloat)containerViewWidth {
     if (_contentView) {
-        return _config.containerViewEdgeInsets.left + _config.containerViewEdgeInsets.right + _contentView.frame.size.width;
+        return _config.contentHorizontalEdgeMargin * 2 + _contentView.frame.size.width;
     } else {
         return kHDCustomViewActionViewWidth;
     }
 }
 
 - (CGSize)titleLBSize {
-    const CGFloat maxTitleWidth = self.containerViewWidth - (_config.containerViewEdgeInsets.left + _config.containerViewEdgeInsets.right);
+    CGFloat maxTitleWidth = self.containerViewWidth - (_config.containerViewEdgeInsets.left + _config.containerViewEdgeInsets.right);
+
+    if (self.config.style == HDCustomViewActionViewStyleClose) {
+        maxTitleWidth = maxTitleWidth - (kCloseButtonW + kCloseButtonEdgeMargin);
+    }
+
     return [self.titleLabel sizeThatFits:CGSizeMake(maxTitleWidth, CGFLOAT_MAX)];
 }
 
@@ -190,10 +225,16 @@
 - (UIButton *)button {
     if (!_button) {
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_button setTitle:self.config.buttonTitle forState:UIControlStateNormal];
-        [_button setTitleColor:self.config.buttonTitleColor forState:UIControlStateNormal];
-        _button.backgroundColor = self.config.buttonBgColor;
-        _button.titleLabel.font = self.config.buttonTitleFont;
+
+        if (self.config.style == HDCustomViewActionViewStyleCancel) {
+            [_button setTitle:self.config.buttonTitle forState:UIControlStateNormal];
+            [_button setTitleColor:self.config.buttonTitleColor forState:UIControlStateNormal];
+            _button.backgroundColor = self.config.buttonBgColor;
+            _button.titleLabel.font = self.config.buttonTitleFont;
+        } else if (self.config.style == HDCustomViewActionViewStyleClose) {
+            UIImage *image = [UIImage hd_imageWithShape:HDUIImageShapeNavClose size:CGSizeMake(16, 16) tintColor:HDAppTheme.color.G3];
+            [_button setImage:image forState:UIControlStateNormal];
+        }
         [_button addTarget:self action:@selector(clickedButtonHandler) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
