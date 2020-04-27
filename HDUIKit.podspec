@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.1.9"
+  s.version          = "1.2.0"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -48,6 +48,10 @@ Pod::Spec.new do |s|
 
     s.subspec 'HDNavigationBar' do |ss|
       ss.source_files = 'HDUIKit/MainFrame/HDNavigationBar', 'HDUIKit/MainFrame/HDNavigationBar/*/*'
+    end
+
+    s.subspec 'HDKeyboardManager' do |ss|
+      ss.source_files = 'HDUIKit/HDKeyboardManager', 'HDUIKit/HDKeyboardManager/*/*'
     end
 
     s.subspec 'HDAppTheme' do |ss|
