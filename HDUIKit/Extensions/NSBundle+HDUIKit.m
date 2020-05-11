@@ -10,36 +10,36 @@
 @implementation NSBundle (HDUIKit)
 + (NSBundle *)hd_UIKitMainFrameResourcesBundle {
     static NSBundle *resourceBundle = nil;
-    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitMainFrameResources"];
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitMainFrameResources"];
 }
 
 + (NSBundle *)hd_UIKitTipsResourcesBundle {
     static NSBundle *resourceBundle = nil;
-    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitTipsResources"];
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitTipsResources"];
 }
 
 + (NSBundle *)hd_UIKitKeyboardResources {
     static NSBundle *resourceBundle = nil;
-    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitKeyboardResources"];
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitKeyboardResources"];
 }
 
 + (NSBundle *)hd_UIKitSearchBarResources {
     static NSBundle *resourceBundle = nil;
-    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitSearchBarResources"];
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitSearchBarResources"];
 }
 
 + (NSBundle *)hd_UIKITCitySelectResources {
     static NSBundle *resourceBundle = nil;
-    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKITCitySelectResources"];
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKITCitySelectResources"];
 }
 
 + (NSBundle *)hd_UIKITImageBrowserResources {
     static NSBundle *resourceBundle = nil;
-    return [self bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitImageBrowserResources"];
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitImageBrowserResources"];
 }
 
 #pragma mark - private methods
-+ (NSBundle *)bundleWithStaticResourceBundle:(NSBundle *)resourceBundle bundleName:(NSString *)name {
++ (NSBundle *)uikit_bundleWithStaticResourceBundle:(NSBundle *)resourceBundle bundleName:(NSString *)name {
     if (!resourceBundle) {
         NSBundle *mainBundle = [NSBundle mainBundle];
         NSString *resourcePath = [mainBundle pathForResource:[NSString stringWithFormat:@"Frameworks/HDUIKit.framework/%@", name] ofType:@"bundle"];
