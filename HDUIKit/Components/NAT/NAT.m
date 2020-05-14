@@ -19,12 +19,17 @@
 
 + (void)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
 
-    [self showAlertWithMessage:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
+    [self showAlertWithTitle:nil message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
 }
 
-+ (void)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType {
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
 
-    HDAlertView *alertView = [HDAlertView alertViewWithTitle:nil message:message config:nil];
+    [self showAlertWithTitle:title message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
+}
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType {
+
+    HDAlertView *alertView = [HDAlertView alertViewWithTitle:title message:message config:nil];
     alertView.identitableString = message;
 
     BOOL isRight = layoutType == NATAlertButtonLayoutTypeRightConfirm;

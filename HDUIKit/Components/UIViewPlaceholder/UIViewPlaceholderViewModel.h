@@ -14,6 +14,7 @@ typedef void (^ClickOnRefreshButton)(void);
 
 @interface UIViewPlaceholderViewModel : NSObject
 @property (nonatomic, copy) NSString *title;                                   ///< 标题
+@property (nonatomic, strong) UIFont *titleFont;                               ///< 标题字体
 @property (nonatomic, strong) UIColor *titleColor;                             ///< 标题颜色
 @property (nonatomic, copy) NSString *image;                                   ///< 图片
 @property (nonatomic, assign) BOOL scaleImage;                                 ///< 是否缩放显示图片，如果设置是需要传图片尺寸，默认 NO
