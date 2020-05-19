@@ -60,6 +60,17 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
  @param handler 回调
  */
 + (void)showAlertWithMessage:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
+
+/**
+弹出提示框
+
+@param title 标题
+@param message 内容
+@param buttonTitle 按钮标题
+@param handler 回调
+*/
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
+
 /**
  弹出提示框
  

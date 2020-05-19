@@ -57,9 +57,14 @@
 
 + (void)showAlertWithMessage:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
 
+    [self showAlertWithTitle:nil message:message buttonTitle:buttonTitle handler:handler];
+}
+
++ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
+
     buttonTitle = buttonTitle ?: @"确定";
 
-    HDAlertView *alertView = [HDAlertView alertViewWithTitle:nil message:message config:nil];
+    HDAlertView *alertView = [HDAlertView alertViewWithTitle:title message:message config:nil];
     alertView.identitableString = message;
     HDAlertViewButton *button = [HDAlertViewButton buttonWithTitle:buttonTitle type:HDAlertViewButtonTypeCustom handler:handler];
     [alertView addButtons:@[button]];
