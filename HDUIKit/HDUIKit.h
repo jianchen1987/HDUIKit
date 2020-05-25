@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.2.5";
+static NSString *const HDUIKit_VERSION = @"1.2.6";
 
 #if __has_include("HDKeyboardManager.h")
 #import "HDKeyboardManager.h"
@@ -56,6 +56,10 @@ static NSString *const HDUIKit_VERSION = @"1.2.5";
 
 #if __has_include("HDShareImageAlertView.h")
 #import "HDShareImageAlertView.h"
+#endif
+
+#if __has_include("HDLabel.h")
+#import "HDLabel.h"
 #endif
 
 #if __has_include("HDScrollTitleBarTool.h")
