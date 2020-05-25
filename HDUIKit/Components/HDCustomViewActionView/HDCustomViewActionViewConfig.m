@@ -28,6 +28,7 @@
         self.containerMinHeight = 120;
         self.containerCorner = 10;
         self.containerMaxHeight = kScreenHeight * 0.8;
+        self.scrollViewBounces = true;
     }
     return self;
 }
