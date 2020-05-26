@@ -85,10 +85,10 @@
 - (void)updateNavigationBarShadow {
     HDViewControllerNavigationBarStyle style = self.hd_preferredNavigationBarStyle;
     if (HDViewControllerNavigationBarStyleTransparent != style && !self.hd_shouldHideNavigationBarBottomShadow) {
-        self.hd_navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
-        self.hd_navigationBar.layer.shadowOffset = CGSizeMake(0, 10);
-        self.hd_navigationBar.layer.shadowOpacity = 0.2;
-        self.hd_navigationBar.layer.shadowRadius = 20;
+        self.hd_navigationBar.layer.shadowColor = [UIColor colorWithRed:228 / 255.0 green:229 / 255.0 blue:234 / 255.0 alpha:0.50].CGColor;
+        self.hd_navigationBar.layer.shadowOffset = CGSizeMake(0, 3);
+        self.hd_navigationBar.layer.shadowOpacity = 1;
+        self.hd_navigationBar.layer.shadowRadius = 3;
         self.hd_navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.hd_navigationBar.bounds].CGPath;
     }
 }

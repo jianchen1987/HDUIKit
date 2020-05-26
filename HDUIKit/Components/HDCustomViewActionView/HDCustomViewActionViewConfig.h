@@ -31,6 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat containerMinHeight;            ///< 容器最小高度
 @property (nonatomic, assign) CGFloat containerMaxHeight;            ///< 容器最大高度，默认屏幕高度80%
 @property (nonatomic, assign) HDCustomViewActionViewStyle style;     ///< 风格
+@property (nonatomic, assign) BOOL scrollViewBounces;                ///< scrollView 是否开启 bounce，默认开启
 @end
 
 NS_ASSUME_NONNULL_END

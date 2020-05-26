@@ -27,6 +27,7 @@
 }
 
 - (void)initDataSource {
+    [self.dataSource addObject:[ExampleItem itemWithDesc:@"自定义内容弹窗" destVcName:@"HDCustomContentActionViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"输入框" destVcName:@"HDInputFieldViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"密码、验证码输入框" destVcName:@"HDUnitTextFieldViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"Toast" destVcName:@"HDToastViewController"]];

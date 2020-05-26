@@ -39,7 +39,7 @@
 
     self.placeholderLabel.text = self.model.title;
     self.placeholderLabel.textColor = self.model.titleColor;
-    self.placeholderLabel.font = self.model.refreshBtnTitleFont;
+    self.placeholderLabel.font = self.model.titleFont;
 
     if (!self.refreshBtn) {
         self.refreshBtn = [[HDUIGhostButton alloc] init];

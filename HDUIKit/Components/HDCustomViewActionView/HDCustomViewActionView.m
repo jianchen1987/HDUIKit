@@ -25,6 +25,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
 @property (nonatomic, strong) UIButton *button;                        ///< 按钮
 @property (nonatomic, strong) UIView *contentView;                     ///< 自定义 View
 @property (nonatomic, strong) HDCustomViewActionViewConfig *config;    ///< 配置
+@property (nonatomic, strong) UIScrollView *scrollView;                ///< 滚动容器
 @end
 
 @implementation HDCustomViewActionView
@@ -106,7 +107,12 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
     [self.containerView addSubview:self.button];
 
     if (self.contentView) {  // 自定义上部
-        [self.containerView addSubview:self.contentView];
+        if ([self.contentView isKindOfClass:UIScrollView.class]) {
+            [self.containerView addSubview:self.contentView];
+        } else {
+            [self.containerView addSubview:self.scrollView];
+            [self.scrollView addSubview:self.contentView];
+        }
     }
     if (self.config.style == HDCustomViewActionViewStyleCancel && iPhoneXSeries) {
         [self.containerView addSubview:self.iphoneXSeriousSafeAreaFillView];
@@ -155,7 +161,13 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
         }];
     }
 
-    [self.contentView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+    UIView *outerView;
+    if ([self.contentView isKindOfClass:UIScrollView.class]) {
+        outerView = self.contentView;
+    } else {
+        outerView = self.scrollView;
+    }
+    [outerView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
         make.left.hd_equalTo(self.config.contentHorizontalEdgeMargin);
         if (!self.titleLabel.isHidden) {
             make.top.hd_equalTo(self.titleLabel.bottom).offset(self.config.marginTitleToContentView);
@@ -167,7 +179,13 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
             }
         }
         // 计算剩余高度
-        CGFloat leftHeight = CGRectGetMinY(self.button.frame) - self.config.containerViewEdgeInsets.top - self.config.containerViewEdgeInsets.bottom;
+        CGFloat leftHeight;
+        if (self.config.style == HDCustomViewActionViewStyleCancel) {
+            leftHeight = CGRectGetMinY(self.button.frame) - UIEdgeInsetsGetVerticalValue(self.config.containerViewEdgeInsets);
+        } else {
+            leftHeight = self.containerView.height - UIEdgeInsetsGetVerticalValue(self.config.containerViewEdgeInsets);
+        }
+
         if (!self.titleLabel.isHidden) {
             leftHeight -= (CGRectGetHeight(self.titleLabel.frame) + self.config.marginTitleToContentView);
         }
@@ -176,8 +194,23 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
         } else {
             make.width.hd_equalTo(self.contentView.size.width);
             make.height.hd_equalTo(leftHeight);
+
+            if (outerView == self.contentView && [self.contentView isKindOfClass:UIScrollView.class]) {
+                UIScrollView *contentView = (UIScrollView *)self.contentView;
+                contentView.contentSize = CGSizeMake(self.contentView.size.width, self.contentView.height);
+            }
         }
     }];
+
+    if (outerView == self.scrollView) {
+        [self.contentView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.left.hd_equalTo(0);
+            make.width.hd_equalTo(self.scrollView.width);
+            make.top.hd_equalTo(0);
+            make.height.hd_equalTo(self.contentView.height);
+        }];
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.width, self.contentView.height);
+    }
 }
 
 #pragma mark - private methods
@@ -238,5 +271,14 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
         [_button addTarget:self action:@selector(clickedButtonHandler) forControlEvents:UIControlEventTouchUpInside];
     }
     return _button;
+}
+
+- (UIScrollView *)scrollView {
+    if (!_scrollView) {
+        _scrollView = UIScrollView.new;
+        _scrollView.showsVerticalScrollIndicator = false;
+        _scrollView.bounces = self.config.scrollViewBounces;
+    }
+    return _scrollView;
 }
 @end

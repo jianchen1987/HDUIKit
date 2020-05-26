@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		9533F5D6241CB44300BD0741 /* HDStarRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9533F5D5241CB44300BD0741 /* HDStarRatingViewController.m */; };
+		9549A22E247B6F350093C706 /* HDCustomContentActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9549A22D247B6F350093C706 /* HDCustomContentActionViewController.m */; };
 		95555C252424A68100AD3EB3 /* HDSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555C242424A68100AD3EB3 /* HDSearchBarViewController.m */; };
 		95555C282424AE9600AD3EB3 /* HDScrollTitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555C272424AE9600AD3EB3 /* HDScrollTitleBarViewController.m */; };
 		95676364241A03DA00374171 /* HDCountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676363241A03DA00374171 /* HDCountDownViewController.m */; };
@@ -76,6 +77,8 @@
 		89B045890A63CAA363CB40B3 /* Pods_HDUIKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HDUIKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9533F5D4241CB44300BD0741 /* HDStarRatingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDStarRatingViewController.h; sourceTree = "<group>"; };
 		9533F5D5241CB44300BD0741 /* HDStarRatingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDStarRatingViewController.m; sourceTree = "<group>"; };
+		9549A22C247B6F340093C706 /* HDCustomContentActionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCustomContentActionViewController.h; sourceTree = "<group>"; };
+		9549A22D247B6F350093C706 /* HDCustomContentActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCustomContentActionViewController.m; sourceTree = "<group>"; };
 		95555C232424A68100AD3EB3 /* HDSearchBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDSearchBarViewController.h; sourceTree = "<group>"; };
 		95555C242424A68100AD3EB3 /* HDSearchBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDSearchBarViewController.m; sourceTree = "<group>"; };
 		95555C262424AE9600AD3EB3 /* HDScrollTitleBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDScrollTitleBarViewController.h; sourceTree = "<group>"; };
@@ -292,6 +295,8 @@
 				95F19CD02438D9E500634756 /* HDUnitTextFieldViewController.m */,
 				95F046672441F87C009712ED /* HDCropImageExampleViewController.h */,
 				95F046682441F87C009712ED /* HDCropImageExampleViewController.m */,
+				9549A22C247B6F340093C706 /* HDCustomContentActionViewController.h */,
+				9549A22D247B6F350093C706 /* HDCustomContentActionViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				"${BUILT_PRODUCTS_DIR}/FFToast/FFToast.framework",
 				"${BUILT_PRODUCTS_DIR}/HDKitCore/HDKitCore.framework",
 				"${BUILT_PRODUCTS_DIR}/HDUIKit/HDUIKit.framework",
+				"${PODS_ROOT}/LookinServer/LookinServer.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YBImageBrowser/YBImageBrowser.framework",
@@ -499,6 +505,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFToast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDKitCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDUIKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YBImageBrowser.framework",
@@ -540,6 +547,7 @@
 				95676370241A0EDB00374171 /* HDGridViewViewController.m in Sources */,
 				959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */,
 				95749E962434372E00297E0D /* HDUniversalButtonViewController.m in Sources */,
+				9549A22E247B6F350093C706 /* HDCustomContentActionViewController.m in Sources */,
 				95F046692441F87C009712ED /* HDCropImageExampleViewController.m in Sources */,
 				959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */,
 				95676364241A03DA00374171 /* HDCountDownViewController.m in Sources */,

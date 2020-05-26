@@ -220,7 +220,7 @@
 - (HDUIButton *)downloadButton {
     if (!_downloadButton) {
         _downloadButton = [HDUIButton buttonWithType:UIButtonTypeCustom];
-        _downloadButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        _downloadButton.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         [_downloadButton setImage:[UIImage imageNamed:@"download_icon" inBundle:[NSBundle hd_UIKITImageBrowserResources] compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
         [_downloadButton addTarget:self action:@selector(clickedDownloadButtonHandler) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -230,7 +230,7 @@
 - (HDUIButton *)closeButton {
     if (!_closeButton) {
         _closeButton = [HDUIButton buttonWithType:UIButtonTypeCustom];
-        _closeButton.contentEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
+        _closeButton.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
         [_closeButton setImage:[[UIImage imageNamed:@"ic-button-close" inBundle:[NSBundle hd_UIKITImageBrowserResources] compatibleWithTraitCollection:nil] hd_imageWithTintColor:UIColor.whiteColor] forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(clickedCloseButtonHandler) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -240,7 +240,7 @@
 - (HDUIButton *)pageIndexButton {
     if (!_pageIndexButton) {
         _pageIndexButton = [HDUIButton buttonWithType:UIButtonTypeCustom];
-        _pageIndexButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
+        _pageIndexButton.titleEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10);
         _pageIndexButton.enabled = false;
         _pageIndexButton.backgroundColor = [UIColor.blackColor colorWithAlphaComponent:0.5];
         [_pageIndexButton setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];

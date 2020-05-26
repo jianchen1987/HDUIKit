@@ -17,6 +17,7 @@
         self.scaleImage = NO;
         self.image = @"placeholder_no_data_coupon";
         self.title = @"暂无数据";
+        self.titleFont = HDAppTheme.font.standard3;
         self.titleColor = HDAppTheme.color.G3;
         self.needRefreshBtn = NO;
         self.refreshBtnTitle = @"刷新";
