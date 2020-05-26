@@ -122,6 +122,11 @@ typedef void (^ValueChangedBlock)(NSString *text);
  */
 - (void)setText:(NSString *)text lastEditLocation:(NSUInteger)location replacementString:(NSString *)string;
 
+
+/// 左侧自定义视图
+/// @param leftView 自定义视图
+- (void)setCustomLeftView:(UIView *)leftView;
+
 /**
  右侧 view 自定义
  */

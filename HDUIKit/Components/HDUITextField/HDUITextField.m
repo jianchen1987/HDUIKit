@@ -40,6 +40,7 @@
 @property (nonatomic, strong) HDUITextFieldConfig *config;                             ///< 配置模型
 @property (nonatomic, assign) BOOL isSimulateInput;                                    ///< 标志是否模拟输入，用于判断
 @property (nonatomic, strong) UIView *customRightView;                                 ///< 自定义的右边视图
+@property (nonatomic, strong) UIView *customLeftView;                                 ///< 自定义的左边视图
 @end
 
 @implementation HDUITextField {
@@ -353,6 +354,15 @@
             make.size.mas_equalTo(rightView.frame.size);
         }];
     }
+    
+    if(_customLeftView) {
+        leftView = _customLeftView;
+        [leftView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.downPartContainer);
+            make.centerY.mas_equalTo(self.textField);
+            make.size.mas_equalTo(leftView.frame.size);
+        }];
+    }
 
     if (_textField) {
         [_textField mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -573,6 +583,7 @@
     [UIView animateWithDuration:_config.animationDuration
                      animations:^{
                          self.placeholderLabel.transform = CGAffineTransformConcat(scaleTransform, transTransform);
+                         self.placeholderLabel.textColor = self.config.floatingLabelColor;
                      }
                      completion:completion];
 }
@@ -586,6 +597,7 @@
     [UIView animateWithDuration:_config.animationDuration
                      animations:^{
                          self.placeholderLabel.transform = CGAffineTransformConcat(scaleTransform, transTransform);
+        self.placeholderLabel.textColor = self.config.placeholderColor;
                      }];
 }
 
@@ -1060,9 +1072,19 @@
     }
 }
 
+- (void)setCustomLeftView:(UIView *)leftView {
+    [_downPartContainer addSubview:leftView];
+    _customLeftView = leftView;
+    // 防止挡住浮动标题
+    [_downPartContainer sendSubviewToBack:_customLeftView];
+    
+    [self activeDefaultTextFieldConstraint];
+    
+}
+
 - (void)setCustomRightView:(UIView *)rightView {
 
-    [self addSubview:rightView];
+    [_downPartContainer addSubview:rightView];
     _customRightView = rightView;
 
     [self activeDefaultTextFieldConstraint];
