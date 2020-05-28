@@ -85,8 +85,12 @@ static HDActionAlertView *__hd_current_view;
 }
 
 - (void)becomeKeyWindow {
-    UIWindow *appWindow = [[UIApplication sharedApplication].delegate window];
-    [appWindow makeKeyWindow];
+    if (self.canBecomeKeyWindow) {
+        [super becomeKeyWindow];
+    } else {
+        UIWindow *appWindow = [[UIApplication sharedApplication].delegate window];
+        [appWindow makeKeyWindow];
+    }
 }
 @end
 
@@ -234,9 +238,10 @@ static HDActionAlertView *__hd_current_view;
         return;
     }
 
-    if ([HDActionAlertView isAnimating]) {
-        return;
-    }
+    // if ([HDActionAlertView isAnimating]) {
+    // return;
+    // }
+
     self.oldKeyWindow = [[UIApplication sharedApplication] keyWindow];
 
     // 同一个标志不添加
@@ -254,7 +259,6 @@ static HDActionAlertView *__hd_current_view;
     }
 
     if ([[self.class sharedQueue] containsObject:self]) {
-
         for (HDActionAlertView *alertView in [self.class sharedQueue]) {
             if (alertView != self && [[alertView.class sharedMapQueueKey] isEqualToString:[self.class sharedMapQueueKey]] && alertView.isVisible) {
                 [alertView dismissAnimated:false cleanup:NO completion:nil];
@@ -400,7 +404,7 @@ static HDActionAlertView *__hd_current_view;
     if (!window) {
         window = [UIApplication sharedApplication].windows[0];
     }
-    [window makeKeyWindow];
+    [window makeKeyAndVisible];
     window.hidden = NO;
 }
 

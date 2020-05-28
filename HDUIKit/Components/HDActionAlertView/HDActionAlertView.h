@@ -85,6 +85,8 @@ typedef NS_ENUM(NSInteger, HDActionAlertViewTransitionStyle) {
 @property (nonatomic, weak) UIWindow *oldKeyWindow;
 @property (nonatomic, assign) BOOL allowTapBackgroundDismiss;  ///< 点击背景是否隐藏
 @property (nonatomic, copy) NSString *identitableString;       ///< 标志
+/// 是否可以成为 keyWindow，默认为 false
+@property (nonatomic, assign) BOOL canBecomeKeyWindow;
 
 /** 以下回调优先级高于代理 */
 @property (nonatomic, copy) HDActionAlertViewHandler willShowHandler;
