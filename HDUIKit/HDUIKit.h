@@ -230,6 +230,170 @@ static NSString *const HDUIKit_VERSION = @"1.2.8";
 #import "HDFloatLayoutView.h"
 #endif
 
+#if __has_include("JXCategoryView.h")
+#import "JXCategoryView.h"
+#endif
+
+#if __has_include("JXCategoryTitleVerticalZoomCellModel.h")
+#import "JXCategoryTitleVerticalZoomCellModel.h"
+#endif
+
+#if __has_include("JXCategoryTitleVerticalZoomCell.h")
+#import "JXCategoryTitleVerticalZoomCell.h"
+#endif
+
+#if __has_include("JXCategoryTitleVerticalZoomView.h")
+#import "JXCategoryTitleVerticalZoomView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorCell.h")
+#import "JXCategoryIndicatorCell.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorCellModel.h")
+#import "JXCategoryIndicatorCellModel.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorView.h")
+#import "JXCategoryIndicatorView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorDotLineView.h")
+#import "JXCategoryIndicatorDotLineView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorBackgroundView.h")
+#import "JXCategoryIndicatorBackgroundView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorLineView.h")
+#import "JXCategoryIndicatorLineView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorRainbowLineView.h")
+#import "JXCategoryIndicatorRainbowLineView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorTriangleView.h")
+#import "JXCategoryIndicatorTriangleView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorBallView.h")
+#import "JXCategoryIndicatorBallView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorImageView.h")
+#import "JXCategoryIndicatorImageView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorComponentView.h")
+#import "JXCategoryIndicatorComponentView.h"
+#endif
+
+#if __has_include("JXCategoryDotCellModel.h")
+#import "JXCategoryDotCellModel.h"
+#endif
+
+#if __has_include("JXCategoryDotCell.h")
+#import "JXCategoryDotCell.h"
+#endif
+
+#if __has_include("JXCategoryDotView.h")
+#import "JXCategoryDotView.h"
+#endif
+
+#if __has_include("JXCategoryTitleImageCellModel.h")
+#import "JXCategoryTitleImageCellModel.h"
+#endif
+
+#if __has_include("JXCategoryTitleImageView.h")
+#import "JXCategoryTitleImageView.h"
+#endif
+
+#if __has_include("JXCategoryTitleImageCell.h")
+#import "JXCategoryTitleImageCell.h"
+#endif
+
+#if __has_include("JXCategoryTitleCellModel.h")
+#import "JXCategoryTitleCellModel.h"
+#endif
+
+#if __has_include("JXCategoryTitleCell.h")
+#import "JXCategoryTitleCell.h"
+#endif
+
+#if __has_include("JXCategoryTitleView.h")
+#import "JXCategoryTitleView.h"
+#endif
+
+#if __has_include("JXCategoryImageCellModel.h")
+#import "JXCategoryImageCellModel.h"
+#endif
+
+#if __has_include("JXCategoryImageView.h")
+#import "JXCategoryImageView.h"
+#endif
+
+#if __has_include("JXCategoryImageCell.h")
+#import "JXCategoryImageCell.h"
+#endif
+
+#if __has_include("JXCategoryNumberCellModel.h")
+#import "JXCategoryNumberCellModel.h"
+#endif
+
+#if __has_include("JXCategoryNumberView.h")
+#import "JXCategoryNumberView.h"
+#endif
+
+#if __has_include("JXCategoryNumberCell.h")
+#import "JXCategoryNumberCell.h"
+#endif
+
+#if __has_include("JXCategoryViewAnimator.h")
+#import "JXCategoryViewAnimator.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorParamsModel.h")
+#import "JXCategoryIndicatorParamsModel.h"
+#endif
+
+#if __has_include("JXCategoryCollectionView.h")
+#import "JXCategoryCollectionView.h"
+#endif
+
+#if __has_include("JXCategoryIndicatorProtocol.h")
+#import "JXCategoryIndicatorProtocol.h"
+#endif
+
+#if __has_include("JXCategoryViewDefines.h")
+#import "JXCategoryViewDefines.h"
+#endif
+
+#if __has_include("UIColor+JXAdd.h")
+#import "UIColor+JXAdd.h"
+#endif
+
+#if __has_include("JXCategoryListContainerView.h")
+#import "JXCategoryListContainerView.h"
+#endif
+
+#if __has_include("JXCategoryFactory.h")
+#import "JXCategoryFactory.h"
+#endif
+
+#if __has_include("JXCategoryBaseView.h")
+#import "JXCategoryBaseView.h"
+#endif
+
+#if __has_include("JXCategoryBaseCell.h")
+#import "JXCategoryBaseCell.h"
+#endif
+
+#if __has_include("JXCategoryBaseCellModel.h")
+#import "JXCategoryBaseCellModel.h"
+#endif
+
 #if __has_include("CGGeometry+HDImageCropper.h")
 #import "CGGeometry+HDImageCropper.h"
 #endif

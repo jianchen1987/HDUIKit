@@ -73,6 +73,8 @@ static HDActionAlertView *__hd_current_view;
 @end
 
 @interface HDActionAlertWindow : UIWindow
+/// 是否可以成为 keyWindow，默认为 false
+@property (nonatomic, assign) BOOL canBecomeKeyWindow;
 @end
 
 @implementation HDActionAlertWindow
@@ -288,6 +290,7 @@ static HDActionAlertView *__hd_current_view;
 
     if (!self.alertWindow) {
         HDActionAlertWindow *window = [[HDActionAlertWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        window.canBecomeKeyWindow = self.canBecomeKeyWindow;
         window.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         window.opaque = NO;
         window.rootViewController = viewController;
