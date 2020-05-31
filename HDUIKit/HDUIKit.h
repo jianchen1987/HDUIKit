@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.2.8";
+static NSString *const HDUIKit_VERSION = @"1.3.0";
 
 #if __has_include("HDKeyboardManager.h")
 #import "HDKeyboardManager.h"
@@ -60,18 +60,6 @@ static NSString *const HDUIKit_VERSION = @"1.2.8";
 
 #if __has_include("HDLabel.h")
 #import "HDLabel.h"
-#endif
-
-#if __has_include("HDScrollTitleBarTool.h")
-#import "HDScrollTitleBarTool.h"
-#endif
-
-#if __has_include("HDScrollNavBar.h")
-#import "HDScrollNavBar.h"
-#endif
-
-#if __has_include("HDScrollTitleBarViewButton.h")
-#import "HDScrollTitleBarViewButton.h"
 #endif
 
 #if __has_include("HDToastBackgroundView.h")
@@ -230,168 +218,108 @@ static NSString *const HDUIKit_VERSION = @"1.2.8";
 #import "HDFloatLayoutView.h"
 #endif
 
-#if __has_include("JXCategoryView.h")
-#import "JXCategoryView.h"
+#if __has_include("HDCategoryView.h")
+#import "HDCategoryView.h"
 #endif
 
-#if __has_include("JXCategoryTitleVerticalZoomCellModel.h")
-#import "JXCategoryTitleVerticalZoomCellModel.h"
+#if __has_include("HDCategoryIndicatorView.h")
+#import "HDCategoryIndicatorView.h"
 #endif
 
-#if __has_include("JXCategoryTitleVerticalZoomCell.h")
-#import "JXCategoryTitleVerticalZoomCell.h"
+#if __has_include("HDCategoryIndicatorCell.h")
+#import "HDCategoryIndicatorCell.h"
 #endif
 
-#if __has_include("JXCategoryTitleVerticalZoomView.h")
-#import "JXCategoryTitleVerticalZoomView.h"
+#if __has_include("HDCategoryIndicatorCellModel.h")
+#import "HDCategoryIndicatorCellModel.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorCell.h")
-#import "JXCategoryIndicatorCell.h"
+#if __has_include("HDCategoryIndicatorLineView.h")
+#import "HDCategoryIndicatorLineView.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorCellModel.h")
-#import "JXCategoryIndicatorCellModel.h"
+#if __has_include("HDCategoryIndicatorBackgroundView.h")
+#import "HDCategoryIndicatorBackgroundView.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorView.h")
-#import "JXCategoryIndicatorView.h"
+#if __has_include("HDCategoryIndicatorComponentView.h")
+#import "HDCategoryIndicatorComponentView.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorDotLineView.h")
-#import "JXCategoryIndicatorDotLineView.h"
+#if __has_include("HDCategoryDotCell.h")
+#import "HDCategoryDotCell.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorBackgroundView.h")
-#import "JXCategoryIndicatorBackgroundView.h"
+#if __has_include("HDCategoryDotView.h")
+#import "HDCategoryDotView.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorLineView.h")
-#import "JXCategoryIndicatorLineView.h"
+#if __has_include("HDCategoryDotCellModel.h")
+#import "HDCategoryDotCellModel.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorRainbowLineView.h")
-#import "JXCategoryIndicatorRainbowLineView.h"
+#if __has_include("HDCategoryTitleView.h")
+#import "HDCategoryTitleView.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorTriangleView.h")
-#import "JXCategoryIndicatorTriangleView.h"
+#if __has_include("HDCategoryTitleCellModel.h")
+#import "HDCategoryTitleCellModel.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorBallView.h")
-#import "JXCategoryIndicatorBallView.h"
+#if __has_include("HDCategoryTitleCell.h")
+#import "HDCategoryTitleCell.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorImageView.h")
-#import "JXCategoryIndicatorImageView.h"
+#if __has_include("HDCategoryNumberView.h")
+#import "HDCategoryNumberView.h"
 #endif
 
-#if __has_include("JXCategoryIndicatorComponentView.h")
-#import "JXCategoryIndicatorComponentView.h"
+#if __has_include("HDCategoryNumberCell.h")
+#import "HDCategoryNumberCell.h"
 #endif
 
-#if __has_include("JXCategoryDotCellModel.h")
-#import "JXCategoryDotCellModel.h"
+#if __has_include("HDCategoryNumberCellModel.h")
+#import "HDCategoryNumberCellModel.h"
 #endif
 
-#if __has_include("JXCategoryDotCell.h")
-#import "JXCategoryDotCell.h"
+#if __has_include("HDCategoryCollectionView.h")
+#import "HDCategoryCollectionView.h"
 #endif
 
-#if __has_include("JXCategoryDotView.h")
-#import "JXCategoryDotView.h"
+#if __has_include("HDCategoryListContainerView.h")
+#import "HDCategoryListContainerView.h"
 #endif
 
-#if __has_include("JXCategoryTitleImageCellModel.h")
-#import "JXCategoryTitleImageCellModel.h"
+#if __has_include("HDCategoryFactory.h")
+#import "HDCategoryFactory.h"
 #endif
 
-#if __has_include("JXCategoryTitleImageView.h")
-#import "JXCategoryTitleImageView.h"
+#if __has_include("HDCategoryViewAnimator.h")
+#import "HDCategoryViewAnimator.h"
 #endif
 
-#if __has_include("JXCategoryTitleImageCell.h")
-#import "JXCategoryTitleImageCell.h"
+#if __has_include("HDCategoryIndicatorParamsModel.h")
+#import "HDCategoryIndicatorParamsModel.h"
 #endif
 
-#if __has_include("JXCategoryTitleCellModel.h")
-#import "JXCategoryTitleCellModel.h"
+#if __has_include("HDCategoryIndicatorProtocol.h")
+#import "HDCategoryIndicatorProtocol.h"
 #endif
 
-#if __has_include("JXCategoryTitleCell.h")
-#import "JXCategoryTitleCell.h"
+#if __has_include("HDCategoryViewDefines.h")
+#import "HDCategoryViewDefines.h"
 #endif
 
-#if __has_include("JXCategoryTitleView.h")
-#import "JXCategoryTitleView.h"
+#if __has_include("HDCategoryBaseCellModel.h")
+#import "HDCategoryBaseCellModel.h"
 #endif
 
-#if __has_include("JXCategoryImageCellModel.h")
-#import "JXCategoryImageCellModel.h"
+#if __has_include("HDCategoryBaseView.h")
+#import "HDCategoryBaseView.h"
 #endif
 
-#if __has_include("JXCategoryImageView.h")
-#import "JXCategoryImageView.h"
-#endif
-
-#if __has_include("JXCategoryImageCell.h")
-#import "JXCategoryImageCell.h"
-#endif
-
-#if __has_include("JXCategoryNumberCellModel.h")
-#import "JXCategoryNumberCellModel.h"
-#endif
-
-#if __has_include("JXCategoryNumberView.h")
-#import "JXCategoryNumberView.h"
-#endif
-
-#if __has_include("JXCategoryNumberCell.h")
-#import "JXCategoryNumberCell.h"
-#endif
-
-#if __has_include("JXCategoryViewAnimator.h")
-#import "JXCategoryViewAnimator.h"
-#endif
-
-#if __has_include("JXCategoryIndicatorParamsModel.h")
-#import "JXCategoryIndicatorParamsModel.h"
-#endif
-
-#if __has_include("JXCategoryCollectionView.h")
-#import "JXCategoryCollectionView.h"
-#endif
-
-#if __has_include("JXCategoryIndicatorProtocol.h")
-#import "JXCategoryIndicatorProtocol.h"
-#endif
-
-#if __has_include("JXCategoryViewDefines.h")
-#import "JXCategoryViewDefines.h"
-#endif
-
-#if __has_include("UIColor+JXAdd.h")
-#import "UIColor+JXAdd.h"
-#endif
-
-#if __has_include("JXCategoryListContainerView.h")
-#import "JXCategoryListContainerView.h"
-#endif
-
-#if __has_include("JXCategoryFactory.h")
-#import "JXCategoryFactory.h"
-#endif
-
-#if __has_include("JXCategoryBaseView.h")
-#import "JXCategoryBaseView.h"
-#endif
-
-#if __has_include("JXCategoryBaseCell.h")
-#import "JXCategoryBaseCell.h"
-#endif
-
-#if __has_include("JXCategoryBaseCellModel.h")
-#import "JXCategoryBaseCellModel.h"
+#if __has_include("HDCategoryBaseCell.h")
+#import "HDCategoryBaseCell.h"
 #endif
 
 #if __has_include("CGGeometry+HDImageCropper.h")

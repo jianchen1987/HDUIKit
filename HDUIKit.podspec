@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.2.8"
+  s.version          = "1.3.0"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -162,11 +162,6 @@ Pod::Spec.new do |s|
         sss.frameworks = 'CoreLocation'
       end
 
-      ss.subspec 'HDScrollTitleBar' do |sss|
-        sss.source_files = 'HDUIKit/Components/HDScrollTitleBar'
-        sss.dependency 'HDKitCore/HDFrameLayout'
-      end
-
       ss.subspec 'HDSearchBar' do |sss|
         sss.source_files = 'HDUIKit/Components/HDSearchBar'
         sss.dependency 'Masonry'
@@ -239,6 +234,10 @@ Pod::Spec.new do |s|
 
       ss.subspec 'HDLabel' do |sss|
         sss.source_files = 'HDUIKit/Components/HDLabel'
+      end
+
+      ss.subspec 'HDCategoryView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDCategoryView', 'HDUIKit/Components/HDCategoryView/**/*'
       end
 
     end

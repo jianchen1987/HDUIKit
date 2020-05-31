@@ -1,0 +1,69 @@
+//
+//  HDCategoryViewAnimator.m
+//  HDUIKit
+//
+//  Created by VanJay on 2020/5/31.
+//  Copyright © 2020 chaos network technology. All rights reserved.
+//
+
+#import "HDCategoryViewAnimator.h"
+
+@interface HDCategoryViewAnimator ()
+@property (nonatomic, strong) CADisplayLink *displayLink;
+@property (nonatomic, assign) CFTimeInterval firstTimestamp;
+@property (readwrite, getter=isExecuting) BOOL executing;
+@end
+
+@implementation HDCategoryViewAnimator
+
+- (void)dealloc {
+    self.progressCallback = nil;
+    self.completeCallback = nil;
+}
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _executing = NO;
+        _duration = 0.25;
+        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(processDisplayLink:)];
+    }
+    return self;
+}
+
+- (void)start {
+    [self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    self.executing = YES;
+}
+
+- (void)stop {
+    !self.progressCallback ?: self.progressCallback(1);
+    [self.displayLink invalidate];
+    !self.completeCallback ?: self.completeCallback();
+    self.executing = NO;
+}
+
+- (void)invalid {
+    [self.displayLink invalidate];
+    !self.completeCallback ?: self.completeCallback();
+    self.executing = NO;
+}
+
+- (void)processDisplayLink:(CADisplayLink *)sender {
+    if (self.firstTimestamp == 0) {
+        self.firstTimestamp = sender.timestamp;
+        return;
+    }
+    CGFloat percent = (sender.timestamp - self.firstTimestamp) / self.duration;
+    if (percent >= 1) {
+        !self.progressCallback ?: self.progressCallback(percent);
+        [self.displayLink invalidate];
+        !self.completeCallback ?: self.completeCallback();
+        self.executing = NO;
+    } else {
+        !self.progressCallback ?: self.progressCallback(percent);
+        self.executing = YES;
+    }
+}
+
+@end

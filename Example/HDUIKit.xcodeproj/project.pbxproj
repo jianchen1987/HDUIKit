@@ -25,7 +25,6 @@
 		9533F5D6241CB44300BD0741 /* HDStarRatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9533F5D5241CB44300BD0741 /* HDStarRatingViewController.m */; };
 		9549A22E247B6F350093C706 /* HDCustomContentActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9549A22D247B6F350093C706 /* HDCustomContentActionViewController.m */; };
 		95555C252424A68100AD3EB3 /* HDSearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555C242424A68100AD3EB3 /* HDSearchBarViewController.m */; };
-		95555C282424AE9600AD3EB3 /* HDScrollTitleBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95555C272424AE9600AD3EB3 /* HDScrollTitleBarViewController.m */; };
 		95676364241A03DA00374171 /* HDCountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676363241A03DA00374171 /* HDCountDownViewController.m */; };
 		95676370241A0EDB00374171 /* HDGridViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9567636F241A0EDB00374171 /* HDGridViewViewController.m */; };
 		95676377241A1E2300374171 /* HDFlowLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95676376241A1E2300374171 /* HDFlowLayoutViewController.m */; };
@@ -37,6 +36,9 @@
 		959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE6E9240E04D600D3E3AE /* ExampleItem.m */; };
 		959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */; };
 		959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */; };
+		95C1CDED2483C7DF0042634E /* HDCategoryTitleExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDEC2483C7DF0042634E /* HDCategoryTitleExampleViewController.m */; };
+		95C1CDF12483C88C0042634E /* HDOrderListChildViewControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDF02483C88C0042634E /* HDOrderListChildViewControllerConfig.m */; };
+		95C1CDF42483C9440042634E /* HDCategoryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDF32483C9440042634E /* HDCategoryContentViewController.m */; };
 		95F046692441F87C009712ED /* HDCropImageExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F046682441F87C009712ED /* HDCropImageExampleViewController.m */; };
 		95F19CD12438D9E500634756 /* HDUnitTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F19CD02438D9E500634756 /* HDUnitTextFieldViewController.m */; };
 /* End PBXBuildFile section */
@@ -81,8 +83,6 @@
 		9549A22D247B6F350093C706 /* HDCustomContentActionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCustomContentActionViewController.m; sourceTree = "<group>"; };
 		95555C232424A68100AD3EB3 /* HDSearchBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDSearchBarViewController.h; sourceTree = "<group>"; };
 		95555C242424A68100AD3EB3 /* HDSearchBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDSearchBarViewController.m; sourceTree = "<group>"; };
-		95555C262424AE9600AD3EB3 /* HDScrollTitleBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDScrollTitleBarViewController.h; sourceTree = "<group>"; };
-		95555C272424AE9600AD3EB3 /* HDScrollTitleBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDScrollTitleBarViewController.m; sourceTree = "<group>"; };
 		95676362241A03DA00374171 /* HDCountDownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCountDownViewController.h; sourceTree = "<group>"; };
 		95676363241A03DA00374171 /* HDCountDownViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCountDownViewController.m; sourceTree = "<group>"; };
 		9567636E241A0EDB00374171 /* HDGridViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDGridViewViewController.h; sourceTree = "<group>"; };
@@ -105,6 +105,12 @@
 		959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDBaseViewController.m; sourceTree = "<group>"; };
 		959AE723240F3D2400D3E3AE /* HDCodeGeneratorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCodeGeneratorViewController.h; sourceTree = "<group>"; };
 		959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCodeGeneratorViewController.m; sourceTree = "<group>"; };
+		95C1CDEB2483C7DF0042634E /* HDCategoryTitleExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCategoryTitleExampleViewController.h; sourceTree = "<group>"; };
+		95C1CDEC2483C7DF0042634E /* HDCategoryTitleExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCategoryTitleExampleViewController.m; sourceTree = "<group>"; };
+		95C1CDEF2483C88C0042634E /* HDOrderListChildViewControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDOrderListChildViewControllerConfig.h; sourceTree = "<group>"; };
+		95C1CDF02483C88C0042634E /* HDOrderListChildViewControllerConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDOrderListChildViewControllerConfig.m; sourceTree = "<group>"; };
+		95C1CDF22483C9440042634E /* HDCategoryContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCategoryContentViewController.h; sourceTree = "<group>"; };
+		95C1CDF32483C9440042634E /* HDCategoryContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCategoryContentViewController.m; sourceTree = "<group>"; };
 		95F046672441F87C009712ED /* HDCropImageExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCropImageExampleViewController.h; sourceTree = "<group>"; };
 		95F046682441F87C009712ED /* HDCropImageExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCropImageExampleViewController.m; sourceTree = "<group>"; };
 		95F19CCF2438D9E500634756 /* HDUnitTextFieldViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDUnitTextFieldViewController.h; sourceTree = "<group>"; };
@@ -270,6 +276,7 @@
 		959AE6E3240E04D600D3E3AE /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				95C1CDEE2483C8720042634E /* CategoryTitle */,
 				9567636D241A0ECC00374171 /* GridView */,
 				95676361241A03CC00374171 /* CountDown */,
 				959AE6E4240E04D600D3E3AE /* BarQRCode */,
@@ -281,14 +288,12 @@
 				95676379241A1E7800374171 /* HDProgressViewViewController.m */,
 				9567637B241A286500374171 /* HDInputFieldViewController.h */,
 				9567637C241A286500374171 /* HDInputFieldViewController.m */,
-				9567637E241A297A00374171 /* HDKeyboardViewController.h */,
 				9567637F241A297A00374171 /* HDKeyboardViewController.m */,
+				9567637E241A297A00374171 /* HDKeyboardViewController.h */,
 				9533F5D4241CB44300BD0741 /* HDStarRatingViewController.h */,
 				9533F5D5241CB44300BD0741 /* HDStarRatingViewController.m */,
 				95555C232424A68100AD3EB3 /* HDSearchBarViewController.h */,
 				95555C242424A68100AD3EB3 /* HDSearchBarViewController.m */,
-				95555C262424AE9600AD3EB3 /* HDScrollTitleBarViewController.h */,
-				95555C272424AE9600AD3EB3 /* HDScrollTitleBarViewController.m */,
 				95749E942434372E00297E0D /* HDUniversalButtonViewController.h */,
 				95749E952434372E00297E0D /* HDUniversalButtonViewController.m */,
 				95F19CCF2438D9E500634756 /* HDUnitTextFieldViewController.h */,
@@ -324,6 +329,19 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		95C1CDEE2483C8720042634E /* CategoryTitle */ = {
+			isa = PBXGroup;
+			children = (
+				95C1CDEB2483C7DF0042634E /* HDCategoryTitleExampleViewController.h */,
+				95C1CDEC2483C7DF0042634E /* HDCategoryTitleExampleViewController.m */,
+				95C1CDEF2483C88C0042634E /* HDOrderListChildViewControllerConfig.h */,
+				95C1CDF02483C88C0042634E /* HDOrderListChildViewControllerConfig.m */,
+				95C1CDF22483C9440042634E /* HDCategoryContentViewController.h */,
+				95C1CDF32483C9440042634E /* HDCategoryContentViewController.m */,
+			);
+			path = CategoryTitle;
 			sourceTree = "<group>";
 		};
 		DE3B6017A48137FC3C9278E8 /* Pods */ = {
@@ -542,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95C1CDED2483C7DF0042634E /* HDCategoryTitleExampleViewController.m in Sources */,
 				95555C252424A68100AD3EB3 /* HDSearchBarViewController.m in Sources */,
 				959AE6EB240E04D600D3E3AE /* HDViewController.m in Sources */,
 				95676370241A0EDB00374171 /* HDGridViewViewController.m in Sources */,
@@ -558,9 +577,10 @@
 				959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */,
 				9567637D241A286500374171 /* HDInputFieldViewController.m in Sources */,
 				9567637A241A1E7800374171 /* HDProgressViewViewController.m in Sources */,
+				95C1CDF12483C88C0042634E /* HDOrderListChildViewControllerConfig.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				9533F5D6241CB44300BD0741 /* HDStarRatingViewController.m in Sources */,
-				95555C282424AE9600AD3EB3 /* HDScrollTitleBarViewController.m in Sources */,
+				95C1CDF42483C9440042634E /* HDCategoryContentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

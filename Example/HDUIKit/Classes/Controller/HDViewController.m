@@ -27,6 +27,7 @@
 }
 
 - (void)initDataSource {
+    [self.dataSource addObject:[ExampleItem itemWithDesc:@"分类标题" destVcName:@"HDCategoryTitleExampleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"自定义内容弹窗" destVcName:@"HDCustomContentActionViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"输入框" destVcName:@"HDInputFieldViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"密码、验证码输入框" destVcName:@"HDUnitTextFieldViewController"]];
@@ -36,7 +37,6 @@
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"星星评分" destVcName:@"HDStarRatingViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"函数防抖" destVcName:@"HDFunctionThrottleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"搜索框" destVcName:@"HDSearchBarViewController"]];
-    [self.dataSource addObject:[ExampleItem itemWithDesc:@"标题滚动栏" destVcName:@"HDScrollTitleBarViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"城市选择器" destVcName:@"HDCitySelectViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"类 Masonry 实现 UIView、CALayer 快速 Frame 布局" destVcName:@"HDQuickFrameViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"栅栏布局" destVcName:@"HDGridViewViewController"]];
