@@ -13,6 +13,7 @@ NSString *const kCharacterSetStringNumber = @"0123456789";
 NSString *const kCharacterSetStringNumberAndLetter = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 NSString *const kCharacterSetStringAmount = @"0123456789.";
 NSString *const kCharacterSetStringLetter = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+NSString *const kCharacterSetStringNumberAndLetterAndSpecialCharacters = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!#$%^&*()'\"=_:;?~|·+-\\/[]{},.<>€£¥";
 
 @implementation HDUITextFieldConfig
 - (instancetype)init {

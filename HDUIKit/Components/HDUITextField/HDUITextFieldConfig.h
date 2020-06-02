@@ -15,6 +15,7 @@ UIKIT_EXTERN NSString *const kCharacterSetStringNumber;
 UIKIT_EXTERN NSString *const kCharacterSetStringNumberAndLetter;
 UIKIT_EXTERN NSString *const kCharacterSetStringAmount;
 UIKIT_EXTERN NSString *const kCharacterSetStringLetter;
+UIKIT_EXTERN NSString *const kCharacterSetStringNumberAndLetterAndSpecialCharacters;
 
 typedef void (^EventCallBackBlock)(void);
 
