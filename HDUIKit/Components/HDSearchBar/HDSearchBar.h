@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 - (void)searchBarTextDidBeginEditing:(HDSearchBar *)searchBar;
+- (void)searchBarTextDidEndEditing:(HDSearchBar *)searchBar;
+- (void)searchBarTextDidEndEditing:(HDSearchBar *)searchBar reason:(UITextFieldDidEndEditingReason)reason API_AVAILABLE(ios(10.0));
 - (void)searchBar:(HDSearchBar *)searchBar textDidChange:(NSString *)searchText;
 - (void)searchBarLeftButtonClicked:(HDSearchBar *)searchBar;
 - (void)searchBarRightButtonClicked:(HDSearchBar *)searchBar;

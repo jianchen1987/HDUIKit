@@ -324,6 +324,18 @@
     }
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(searchBarTextDidEndEditing:)]) {
+        return [self.delegate searchBarTextDidEndEditing:self];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason API_AVAILABLE(ios(10.0)) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(searchBarTextDidEndEditing:reason:)]) {
+        return [self.delegate searchBarTextDidEndEditing:self reason:reason];
+    }
+}
+
 #pragma mark - getters and setters
 - (void)setShowBottomShadow:(BOOL)showBottomShadow {
     _showBottomShadow = showBottomShadow;
