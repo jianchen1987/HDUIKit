@@ -9,25 +9,26 @@
 #import "NAT.h"
 
 @implementation NAT
-+ (void)showToastWithTitle:(NSString *)title content:(NSString *)content type:(FFToastType)type {
++ (FFToast *)showToastWithTitle:(NSString *)title content:(NSString *)content type:(FFToastType)type {
     FFToast *toast = [[FFToast alloc] initToastWithTitle:title message:content iconImage:nil];
     toast.duration = 3.0f;
     toast.toastType = type;
     toast.toastPosition = FFToastPositionDefault;
     [toast show];
+    return toast;
 }
 
-+ (void)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
++ (HDAlertView *)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
 
-    [self showAlertWithTitle:nil message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
+    return [self showAlertWithTitle:nil message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
 }
 
-+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
++ (HDAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
 
-    [self showAlertWithTitle:title message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
+    return [self showAlertWithTitle:title message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
 }
 
-+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType {
++ (HDAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType {
 
     HDAlertView *alertView = [HDAlertView alertViewWithTitle:title message:message config:nil];
     alertView.identitableString = message;
@@ -53,14 +54,15 @@
     }
 
     [alertView show];
+    return alertView;
 }
 
-+ (void)showAlertWithMessage:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
++ (HDAlertView *)showAlertWithMessage:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
 
-    [self showAlertWithTitle:nil message:message buttonTitle:buttonTitle handler:handler];
+    return [self showAlertWithTitle:nil message:message buttonTitle:buttonTitle handler:handler];
 }
 
-+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
++ (HDAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
 
     buttonTitle = buttonTitle ?: @"确定";
 
@@ -70,18 +72,20 @@
     [alertView addButtons:@[button]];
 
     [alertView show];
+    return alertView;
 }
 
-+ (void)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
++ (HDAlertView *)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler {
 
     HDAlertView *alertView = [HDAlertView alertViewWithTitle:nil contentView:contentView config:nil];
     HDAlertViewButton *button = [HDAlertViewButton buttonWithTitle:buttonTitle type:HDAlertViewButtonTypeCustom handler:handler];
     [alertView addButtons:@[button]];
 
     [alertView show];
+    return alertView;
 }
 
-+ (void)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
++ (HDAlertView *)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
 
     HDAlertView *alertView = [HDAlertView alertViewWithTitle:nil contentView:contentView config:nil];
     HDAlertViewButton *button = [HDAlertViewButton buttonWithTitle:confirmButtonTitle type:HDAlertViewButtonTypeCustom handler:confirmButtonHandler];
@@ -100,5 +104,6 @@
     [alertView addButtons:@[cancelButton, button]];
 
     [alertView show];
+    return alertView;
 }
 @end

@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
  @param content 内容
  @param type 类型
  */
-+ (void)showToastWithTitle:(NSString *)title content:(NSString *)content type:(FFToastType)type;
++ (FFToast *)showToastWithTitle:(NSString *)title content:(NSString *)content type:(FFToastType)type;
 
 /// 弹出提示框，确认按钮在右边
 /// @param message 信息
@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 /// @param confirmButtonHandler 确认回调
 /// @param cancelButtonTitle 取消标题
 /// @param cancelButtonHandler 取消回调
-+ (void)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler;
++ (HDAlertView *)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler;
 
 /// 弹出提示框，确认按钮在右边
 /// @param title 标题
@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 /// @param confirmButtonHandler 确认回调
 /// @param cancelButtonTitle 取消标题
 /// @param cancelButtonHandler 取消回调
-+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler;
++ (HDAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler;
 
 /// 弹出提示框，确认按钮在右边
 /// @param message 信息
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 /// @param cancelButtonTitle 取消标题
 /// @param cancelButtonHandler 取消回调
 /// @param layoutType 操作按钮布局类型
-+ (void)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType;
++ (HDAlertView *)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType;
 
 /**
  弹出提示框
@@ -59,7 +59,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
  @param buttonTitle 按钮标题
  @param handler 回调
  */
-+ (void)showAlertWithMessage:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
++ (HDAlertView *)showAlertWithMessage:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
 
 /**
 弹出提示框
@@ -69,7 +69,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 @param buttonTitle 按钮标题
 @param handler 回调
 */
-+ (void)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
++ (HDAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
 
 /**
  弹出提示框
@@ -79,7 +79,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
  @param buttonTitle 按钮标题
  @param handler 回调
  */
-+ (void)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
++ (HDAlertView *)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
 
 /**
 弹出提示框
@@ -91,5 +91,5 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 @param cancelButtonTitle 取消按钮标题
 @param cancelButtonHandler 取消回调
 */
-+ (void)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler;
++ (HDAlertView *)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler;
 @end
