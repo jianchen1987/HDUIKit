@@ -26,6 +26,14 @@ typedef void (^ClickedCountDownStateChanged)(HDCountDownButton *countDownButton,
 @property (nonatomic, copy) ClickedCountDownButtonHandler clickedCountDownButtonHandler;
 /** 按钮是否可用状态改变回调 */
 @property (nonatomic, copy) ClickedCountDownStateChanged countDownStateChangedHandler;
+/** 倒计时文字或者重新发送状态宽度高于默认状态回调 */
+@property (nonatomic, copy) ClickedCountDownButtonHandler notNormalStateWidthGreaterThanNormalBlock;
+/** 恢复默认状态宽度回调 */
+@property (nonatomic, copy) ClickedCountDownButtonHandler restoreNormalStateWidthBlock;
+/// 初始状态的宽度
+@property (nonatomic, assign) CGFloat normalStateWidth;
+/// 是否使用初始状态的宽度
+@property (nonatomic, assign) BOOL shouldUseNormalStateWidth;
 /** 当前剩余时间秒数 */
 @property (nonatomic, assign) NSInteger leftSecond;
 /// 开始倒计时

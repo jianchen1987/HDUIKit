@@ -20,15 +20,22 @@
     // Do any additional setup after loading the view.
 
     [self.view addSubview:self.buttton];
+    [self.view setNeedsUpdateConstraints];
+    [self handleCountDownTime];
+}
 
+- (void)updateViewConstraints {
     [self.buttton sizeToFit];
-    [self.buttton mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.buttton mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.equalTo(self.hd_navigationBar.mas_bottom).offset(30);
-        make.size.mas_equalTo(self.buttton.frame.size);
+        if (self.buttton.shouldUseNormalStateWidth) {
+            make.size.mas_equalTo(CGSizeMake(self.buttton.normalStateWidth, CGRectGetHeight(self.buttton.bounds)));
+        } else {
+            make.size.mas_equalTo(self.buttton.frame.size);
+        }
     }];
-
-    [self handleCountDownTime];
+    [super updateViewConstraints];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -40,7 +47,8 @@
 - (void)handleCountDownTime {
     void (^countDownChangingHandler)(HDCountDownViewController *) = ^(HDCountDownViewController *vc) {
         vc.buttton.countDownChangingHandler = ^NSString *(HDCountDownButton *_Nonnull countDownButton, NSUInteger second) {
-            NSString *title = [NSString stringWithFormat:@"%zds", second];
+            // NSString *title = [NSString stringWithFormat:@"%zds", second];
+            NSString *title = [NSString stringWithFormat:@"%zd秒后重新获取", second];
             return title;
         };
     };
@@ -70,11 +78,6 @@
     };
 }
 
-- (void)updateViewConstraints {
-
-    [super updateViewConstraints];
-}
-
 - (void)updateSendSMSButtonBorder {
     if (_buttton && !CGSizeIsEmpty(_buttton.bounds.size)) {
         self.buttton.layer.cornerRadius = CGRectGetHeight(self.buttton.frame) * 0.5;
@@ -94,10 +97,19 @@
         [_buttton setTitleColor:HDAppTheme.color.C1 forState:UIControlStateNormal];
         [_buttton setTitleColor:HDAppTheme.color.G2 forState:UIControlStateDisabled];
         [_buttton setTitle:title forState:UIControlStateNormal];
-        __weak __typeof(self) weakSelf = self;
+        _buttton.normalStateWidth = [_buttton sizeThatFits:CGSizeMake(MAXFLOAT, MAXFLOAT)].width;
+        @HDWeakify(self);
         _buttton.countDownStateChangedHandler = ^(HDCountDownButton *_Nonnull countDownButton, BOOL enabled) {
-            __strong __typeof(weakSelf) strongSelf = weakSelf;
-            [strongSelf updateSendSMSButtonBorder];
+            @HDStrongify(self);
+            [self updateSendSMSButtonBorder];
+        };
+        _buttton.notNormalStateWidthGreaterThanNormalBlock = ^(HDCountDownButton *_Nonnull countDownButton) {
+            @HDStrongify(self);
+            [self.view setNeedsUpdateConstraints];
+        };
+        _buttton.restoreNormalStateWidthBlock = ^(HDCountDownButton *_Nonnull countDownButton) {
+            @HDStrongify(self);
+            [self.view setNeedsUpdateConstraints];
         };
     }
     return _buttton;

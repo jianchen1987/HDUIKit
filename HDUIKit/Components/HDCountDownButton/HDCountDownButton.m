@@ -93,11 +93,15 @@
                 NSString *title = self.countDownChangingHandler(self, self.second);
                 [self setTitle:title forState:UIControlStateNormal];
                 [self setTitle:title forState:UIControlStateDisabled];
+
+                [self fittingGreaterSizeThanNormalState];
             });
         } else {
             NSString *title = [NSString stringWithFormat:@"%zds", _second];
             [self setTitle:title forState:UIControlStateNormal];
             [self setTitle:title forState:UIControlStateDisabled];
+
+            [self fittingGreaterSizeThanNormalState];
         }
     }
 }
@@ -109,10 +113,14 @@
                 NSString *title = self.countDownFinishedHandler(self, self.totalSecond);
                 [self setTitle:title forState:UIControlStateNormal];
                 [self setTitle:title forState:UIControlStateDisabled];
+
+                [self fittingGreaterSizeThanNormalState];
             });
         } else {
             [self setTitle:@"重新获取" forState:UIControlStateNormal];
             [self setTitle:@"重新获取" forState:UIControlStateDisabled];
+
+            [self fittingGreaterSizeThanNormalState];
         }
     };
 
@@ -126,6 +134,20 @@
         }
     } else {
         setTitleHandler();
+    }
+}
+
+#pragma mark - private methods
+- (void)fittingGreaterSizeThanNormalState {
+    // 判断新宽度与原始宽度大小
+    CGSize newSize = [self sizeThatFits:CGSizeMake(MAXFLOAT, MAXFLOAT)];
+    if (newSize.width > self.normalStateWidth) {
+        self.shouldUseNormalStateWidth = false;
+        !self.notNormalStateWidthGreaterThanNormalBlock ?: self.notNormalStateWidthGreaterThanNormalBlock(self);
+    } else {
+        self.shouldUseNormalStateWidth = true;
+        // 恢复原始大小
+        !self.restoreNormalStateWidthBlock ?: self.restoreNormalStateWidthBlock(self);
     }
 }
 @end
