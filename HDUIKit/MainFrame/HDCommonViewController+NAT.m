@@ -22,10 +22,14 @@ HDSynthesizeIdStrongProperty(hud, setHud);
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.hud) {
             [self.hud hideAnimated:true];
-            [self.hud removeFromSuperview];
-            self.hud = nil;
         }
         self.hud = [HDTips showLoadingInView:self.view];
+        @HDWeakify(self);
+        self.hud.didHideBlock = ^(UIView *_Nonnull hideInView, BOOL animated) {
+            @HDStrongify(self);
+            [self.hud removeFromSuperview];
+            self.hud = nil;
+        };
     });
 }
 
@@ -33,17 +37,21 @@ HDSynthesizeIdStrongProperty(hud, setHud);
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.hud) {
             [self.hud hideAnimated:true];
-            [self.hud removeFromSuperview];
-            self.hud = nil;
         }
         self.hud = [HDTips showLoading:text inView:self.view];
+        @HDWeakify(self);
+        self.hud.didHideBlock = ^(UIView *_Nonnull hideInView, BOOL animated) {
+            @HDStrongify(self);
+            [self.hud removeFromSuperview];
+            self.hud = nil;
+        };
     });
 }
 
 - (void)dismissLoading {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self.hud) {
-            [self.hud hideAnimated:YES afterDelay:0];
+            [self.hud hideAnimated:true afterDelay:0];
         }
     });
 }
