@@ -143,7 +143,22 @@ static char kAssociatedObjectKey_popDelegate;
 
 - (void)hd_backItemClick:(UIBarButtonItem *)sender {
     if (self.presentingViewController) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if (self.presentingViewController.presentedViewController == self) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else {
+            // 判断有没有导航控制器
+            UINavigationController *navigationController = self.navigationController;
+            if (navigationController) {
+                // 判断是不是只有一个
+                if (navigationController.viewControllers.count <= 1) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                } else {
+                    [navigationController popViewControllerAnimated:YES];
+                }
+            } else {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        }
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
