@@ -196,7 +196,7 @@ static HDActionAlertView *__hd_current_view;
         __hd_background_window = [[HDActionAlertViewBackgroundWindow alloc] initWithFrame:frame
                                                                                  andStyle:[HDActionAlertView currentAlertView].backgroundStyle];
 
-        dispatch_main_async_safe(^{
+        hd_dispatch_main_async_safe(^{
             [__hd_background_window makeKeyAndVisible];
             __hd_background_window.alpha = 0;
             [UIView animateWithDuration:0.3
@@ -208,7 +208,7 @@ static HDActionAlertView *__hd_current_view;
 }
 
 + (void)hideBackgroundAnimated:(BOOL)animated {
-    dispatch_main_async_safe(^{
+    hd_dispatch_main_async_safe(^{
         if (!animated) {
             [__hd_background_window removeFromSuperview];
             __hd_background_window = nil;
@@ -230,7 +230,7 @@ static HDActionAlertView *__hd_current_view;
 #pragma mark - public methods
 
 - (void)show {
-    dispatch_main_async_safe(^{
+    hd_dispatch_main_async_safe(^{
         [self _show];
     });
 }
@@ -320,13 +320,13 @@ static HDActionAlertView *__hd_current_view;
 }
 
 - (void)dismiss {
-    dispatch_main_async_safe(^{
+    hd_dispatch_main_async_safe(^{
         [self dismissCompletion:nil];
     });
 }
 
 - (void)dismissCompletion:(void (^__nullable)(void))completion {
-    dispatch_main_async_safe(^{
+    hd_dispatch_main_async_safe(^{
         [self dismissAnimated:true cleanup:YES completion:completion];
     });
 }

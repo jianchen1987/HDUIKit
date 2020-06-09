@@ -99,7 +99,7 @@
 
     BOOL isVCActive = self.viewController.hd_isViewLoadedAndVisible && self.viewController.isLastVCInNavController;
     if (isVCActive && minus > 0) {  // 遮住了当前输入框
-        dispatch_main_async_safe(^{
+        hd_dispatch_main_async_safe(^{
             [UIView animateWithDuration:duration
                              animations:^{
                                  self.transform = CGAffineTransformMakeTranslation(0, -minus);
@@ -108,7 +108,7 @@
     }
 
     if (originEndY == [UIScreen mainScreen].bounds.size.height) {  // 键盘下降
-        dispatch_main_async_safe(^{
+        hd_dispatch_main_async_safe(^{
             [UIView animateWithDuration:duration
                              animations:^{
                                  self.transform = CGAffineTransformIdentity;
@@ -132,7 +132,7 @@
 
     BOOL isVCActive = self.viewController.hd_isViewLoadedAndVisible && self.viewController.isLastVCInNavController;
     if (isVCActive && minus > 0) {  // 遮住了当前输入框
-        dispatch_main_async_safe(^{
+        hd_dispatch_main_async_safe(^{
             [UIView animateWithDuration:duration
                              animations:^{
                                  self.transform = CGAffineTransformMakeTranslation(0, -minus);
@@ -141,7 +141,7 @@
     }
 
     if (originEndY == [UIScreen mainScreen].bounds.size.height) {  // 键盘下降
-        dispatch_main_async_safe(^{
+        hd_dispatch_main_async_safe(^{
             [UIView animateWithDuration:duration
                              animations:^{
                                  self.transform = CGAffineTransformIdentity;
