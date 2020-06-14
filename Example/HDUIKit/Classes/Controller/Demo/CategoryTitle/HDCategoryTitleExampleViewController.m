@@ -42,6 +42,10 @@
     [super updateViewConstraints];
 }
 
+- (HDViewControllerNavigationBarStyle)hd_preferredNavigationBarStyle {
+    return HDViewControllerNavigationBarStyleWhite;
+}
+
 #pragma mark - HDCategoryListContainerViewDelegate
 - (id<HDCategoryListContentViewDelegate>)listContainerView:(HDCategoryListContainerView *)listContainerView initListForIndex:(NSInteger)index {
     HDCategoryContentViewController *listVC = self.configList[index].vc;

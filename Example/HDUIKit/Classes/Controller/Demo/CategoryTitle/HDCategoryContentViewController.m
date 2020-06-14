@@ -21,11 +21,6 @@
     self.view.backgroundColor = HDRandomColor;
 }
 
-#pragma mark - override
-- (HDViewControllerNavigationBarStyle)hd_preferredNavigationBarStyle {
-    return HDViewControllerNavigationBarStyleHidden;
-}
-
 #pragma mark - HDCategoryListContentViewDelegate
 - (UIView *)listView {
     return self.view;

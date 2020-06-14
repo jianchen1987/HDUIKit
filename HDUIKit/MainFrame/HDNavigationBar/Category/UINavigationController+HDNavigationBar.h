@@ -31,6 +31,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 只能通过上面的两个初始化方法开启
 @property (nonatomic, assign, readonly) BOOL hd_openGestureHandle;
 
+/// 滑动手势识别器，用于外部获取
+@property (nonatomic, strong, readonly) UIPanGestureRecognizer *panGesture;
+
 @end
 
 NS_ASSUME_NONNULL_END
