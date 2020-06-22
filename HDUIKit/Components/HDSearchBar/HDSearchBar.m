@@ -248,7 +248,7 @@
     [_leftButton setTitle:nil forState:UIControlStateNormal];
     [_leftButton setImage:image forState:UIControlStateNormal];
 
-    [self setShowLeftButton:self.showRightButton animated:true];
+    [self setShowLeftButton:self.showLeftButton animated:true];
 }
 
 - (void)setShowRightButton:(BOOL)showRightButton animated:(BOOL)animated {
