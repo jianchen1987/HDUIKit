@@ -107,11 +107,11 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
     [self.containerView addSubview:self.button];
 
     if (self.contentView) {  // 自定义上部
-        if ([self.contentView isKindOfClass:UIScrollView.class]) {
-            [self.containerView addSubview:self.contentView];
-        } else {
+        if (self.config.shouldAddScrollViewContainer) {
             [self.containerView addSubview:self.scrollView];
             [self.scrollView addSubview:self.contentView];
+        } else {
+            [self.containerView addSubview:self.contentView];
         }
     }
     if (self.config.style == HDCustomViewActionViewStyleCancel && iPhoneXSeries) {
@@ -162,7 +162,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
     }
 
     UIView *outerView;
-    if ([self.contentView isKindOfClass:UIScrollView.class]) {
+    if (!self.config.shouldAddScrollViewContainer) {
         outerView = self.contentView;
     } else {
         outerView = self.scrollView;
@@ -195,7 +195,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
             make.width.hd_equalTo(self.contentView.size.width);
             make.height.hd_equalTo(leftHeight);
 
-            if (outerView == self.contentView && [self.contentView isKindOfClass:UIScrollView.class]) {
+            if (outerView == self.contentView && self.config.shouldAddScrollViewContainer) {
                 UIScrollView *contentView = (UIScrollView *)self.contentView;
                 contentView.contentSize = CGSizeMake(self.contentView.size.width, self.contentView.height);
             }
