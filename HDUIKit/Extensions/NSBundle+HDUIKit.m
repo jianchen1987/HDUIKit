@@ -38,6 +38,11 @@
     return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitImageBrowserResources"];
 }
 
++ (NSBundle *)hd_UIKITTopToastResources {
+    static NSBundle *resourceBundle = nil;
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitTopToastResources"];
+}
+
 #pragma mark - private methods
 + (NSBundle *)uikit_bundleWithStaticResourceBundle:(NSBundle *)resourceBundle bundleName:(NSString *)name {
     if (!resourceBundle) {

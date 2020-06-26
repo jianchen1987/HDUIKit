@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.4.2"
+  s.version          = "1.4.3"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -24,7 +24,6 @@ Pod::Spec.new do |s|
     s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreLocation'
     s.ios.vendored_framework = "#{s.name}-#{s.version}/ios/#{s.name}.framework"
     s.resources = "#{s.name}-#{s.version}/ios/#{s.name}.framework/Versions/A/Resources/*.bundle"
-    s.dependency 'FFToast', '~> 1.2.0'
     s.dependency 'Masonry'
   else
     puts '....... HDUIKit source ........'
@@ -128,8 +127,8 @@ Pod::Spec.new do |s|
 
       ss.subspec 'NAT' do |sss|
         sss.source_files = 'HDUIKit/Components/NAT'
-        sss.dependency 'FFToast', '~> 1.2.0'
         sss.dependency 'HDUIKit/Components/HDAlertView'
+        sss.dependency 'HDUIKit/Components/HDTopToastView'
       end
 
       ss.subspec 'HDCountDownButton' do |sss|
@@ -238,6 +237,13 @@ Pod::Spec.new do |s|
 
       ss.subspec 'HDCategoryView' do |sss|
         sss.source_files = 'HDUIKit/Components/HDCategoryView', 'HDUIKit/Components/HDCategoryView/**/*'
+      end
+
+      ss.subspec 'HDTopToastView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDTopToastView'
+        sss.dependency 'HDUIKit/Components/HDActionAlertView'
+        sss.dependency 'HDKitCore/HDFrameLayout'
+        sss.resource_bundles = {'HDUIKitTopToastResources' => ['HDUIKit/Components/HDTopToastView/Resources/*.*']}
       end
 
     end

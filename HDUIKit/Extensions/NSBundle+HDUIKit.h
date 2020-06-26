@@ -28,6 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// HDUIKitImageBrowserResources
 + (NSBundle *)hd_UIKITImageBrowserResources;
+
+/// HDUIKitTopToastResources
++ (NSBundle *)hd_UIKITTopToastResources;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,18 +23,21 @@ static HDActionAlertView *__hd_current_view;
 #pragma mark - HDActionAlertViewBackgroundWindow 声明一个Window
 @interface HDActionAlertViewBackgroundWindow : UIWindow
 @property (nonatomic, assign) HDActionAlertViewBackgroundStyle style;
+/// 实心填充背景色颜色透明度，默认 0.6
+@property (nonatomic, assign) CGFloat solidBackgroundColorAlpha;
 @end
 
 @implementation HDActionAlertViewBackgroundWindow
 
 #pragma mark - init
-- (id)initWithFrame:(CGRect)frame andStyle:(HDActionAlertViewBackgroundStyle)style {
+- (id)initWithFrame:(CGRect)frame andStyle:(HDActionAlertViewBackgroundStyle)style solidBackgroundColorAlpha:(CGFloat)solidBackgroundColorAlpha {
     self = [super initWithFrame:frame];
     if (self) {
         self.style = style;
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.opaque = NO;
         self.windowLevel = HDActionAlertViewBackgroundWindowLevel;
+        self.solidBackgroundColorAlpha = solidBackgroundColorAlpha;
     }
     return self;
 }
@@ -64,7 +67,7 @@ static HDActionAlertView *__hd_current_view;
             break;
         }
         case HDActionAlertViewBackgroundStyleSolid: {
-            [[UIColor.blackColor colorWithAlphaComponent:0.6] set];  // 背景透明度
+            [[UIColor.blackColor colorWithAlphaComponent:self.solidBackgroundColorAlpha] set];  // 背景透明度
             CGContextFillRect(context, self.bounds);
             break;
         }
@@ -99,13 +102,19 @@ static HDActionAlertView *__hd_current_view;
 #pragma mark - HDActionAlertView
 
 @interface HDActionAlertView () <CAAnimationDelegate, UIGestureRecognizerDelegate>
-@property (assign, nonatomic) CGFloat screenHeighLight;  //亮度
 @property (nonatomic, strong) HDActionAlertWindow *alertWindow;
 @property (nonatomic, assign, getter=isLayoutDirty) BOOL layoutDirty;
 @property (nonatomic, strong) UIView *customView;
 @end
 
 @implementation HDActionAlertView
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.solidBackgroundColorAlpha = 0.6;
+    }
+    return self;
+}
 
 + (instancetype)actionAlertViewWithCustomView:(UIView *)customView style:(HDActionAlertViewTransitionStyle)style {
     return [[self alloc] initWithCustomView:customView style:style];
@@ -194,7 +203,8 @@ static HDActionAlertView *__hd_current_view;
         }
 
         __hd_background_window = [[HDActionAlertViewBackgroundWindow alloc] initWithFrame:frame
-                                                                                 andStyle:[HDActionAlertView currentAlertView].backgroundStyle];
+                                                                                 andStyle:[HDActionAlertView currentAlertView].backgroundStyle
+                                                                solidBackgroundColorAlpha:[HDActionAlertView currentAlertView].solidBackgroundColorAlpha];
 
         hd_dispatch_main_async_safe(^{
             [__hd_background_window makeKeyAndVisible];
@@ -276,8 +286,6 @@ static HDActionAlertView *__hd_current_view;
         [self.delegate actionAlertViewWillShow:self];
     }
 
-    CGFloat currentLight = [[UIScreen mainScreen] brightness];
-    self.screenHeighLight = currentLight;
     self.visible = YES;
 
     [HDActionAlertView setAnimating:YES];
@@ -285,10 +293,10 @@ static HDActionAlertView *__hd_current_view;
 
     [HDActionAlertView showBackground];
 
-    HDActionAlertViewController *viewController = [[HDActionAlertViewController alloc] init];
-    viewController.alertView = self;
-
     if (!self.alertWindow) {
+        HDActionAlertViewController *viewController = [[HDActionAlertViewController alloc] init];
+        viewController.alertView = self;
+
         HDActionAlertWindow *window = [[HDActionAlertWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         window.canBecomeKeyWindow = self.canBecomeKeyWindow;
         window.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

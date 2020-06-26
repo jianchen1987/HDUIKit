@@ -87,6 +87,8 @@ typedef NS_ENUM(NSInteger, HDActionAlertViewTransitionStyle) {
 @property (nonatomic, copy) NSString *identitableString;       ///< 标志
 /// 是否可以成为 keyWindow，默认为 false
 @property (nonatomic, assign) BOOL canBecomeKeyWindow;
+/// 实心填充背景色颜色透明度，默认 0.6
+@property (nonatomic, assign) CGFloat solidBackgroundColorAlpha;
 
 /** 以下回调优先级高于代理 */
 @property (nonatomic, copy) HDActionAlertViewHandler willShowHandler;

@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.4.2";
+static NSString *const HDUIKit_VERSION = @"1.4.3";
 
 #if __has_include("HDKeyboardManager.h")
 #import "HDKeyboardManager.h"
@@ -320,6 +320,14 @@ static NSString *const HDUIKit_VERSION = @"1.4.2";
 
 #if __has_include("HDCategoryBaseCell.h")
 #import "HDCategoryBaseCell.h"
+#endif
+
+#if __has_include("HDTopToastView.h")
+#import "HDTopToastView.h"
+#endif
+
+#if __has_include("HDTopToastViewConfig.h")
+#import "HDTopToastViewConfig.h"
 #endif
 
 #if __has_include("CGGeometry+HDImageCropper.h")

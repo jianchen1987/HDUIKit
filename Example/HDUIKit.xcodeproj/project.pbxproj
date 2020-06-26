@@ -36,6 +36,7 @@
 		959AE6EC240E04D600D3E3AE /* ExampleItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE6E9240E04D600D3E3AE /* ExampleItem.m */; };
 		959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */; };
 		959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */; };
+		95A3014224A5D6D400BAD586 /* HDToastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A3014124A5D6D400BAD586 /* HDToastViewController.m */; };
 		95C1CDED2483C7DF0042634E /* HDCategoryTitleExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDEC2483C7DF0042634E /* HDCategoryTitleExampleViewController.m */; };
 		95C1CDF12483C88C0042634E /* HDOrderListChildViewControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDF02483C88C0042634E /* HDOrderListChildViewControllerConfig.m */; };
 		95C1CDF42483C9440042634E /* HDCategoryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDF32483C9440042634E /* HDCategoryContentViewController.m */; };
@@ -105,6 +106,8 @@
 		959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDBaseViewController.m; sourceTree = "<group>"; };
 		959AE723240F3D2400D3E3AE /* HDCodeGeneratorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCodeGeneratorViewController.h; sourceTree = "<group>"; };
 		959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCodeGeneratorViewController.m; sourceTree = "<group>"; };
+		95A3014024A5D6D400BAD586 /* HDToastViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDToastViewController.h; sourceTree = "<group>"; };
+		95A3014124A5D6D400BAD586 /* HDToastViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDToastViewController.m; sourceTree = "<group>"; };
 		95C1CDEB2483C7DF0042634E /* HDCategoryTitleExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCategoryTitleExampleViewController.h; sourceTree = "<group>"; };
 		95C1CDEC2483C7DF0042634E /* HDCategoryTitleExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCategoryTitleExampleViewController.m; sourceTree = "<group>"; };
 		95C1CDEF2483C88C0042634E /* HDOrderListChildViewControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDOrderListChildViewControllerConfig.h; sourceTree = "<group>"; };
@@ -302,6 +305,8 @@
 				95F046682441F87C009712ED /* HDCropImageExampleViewController.m */,
 				9549A22C247B6F340093C706 /* HDCustomContentActionViewController.h */,
 				9549A22D247B6F350093C706 /* HDCustomContentActionViewController.m */,
+				95A3014024A5D6D400BAD586 /* HDToastViewController.h */,
+				95A3014124A5D6D400BAD586 /* HDToastViewController.m */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -560,6 +565,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A3014224A5D6D400BAD586 /* HDToastViewController.m in Sources */,
 				95C1CDED2483C7DF0042634E /* HDCategoryTitleExampleViewController.m in Sources */,
 				95555C252424A68100AD3EB3 /* HDSearchBarViewController.m in Sources */,
 				959AE6EB240E04D600D3E3AE /* HDViewController.m in Sources */,
