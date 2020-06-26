@@ -220,10 +220,10 @@
     NSTimeInterval hideAfterDuration = self.config.hideAfterDuration;
 
     NSMutableString *text = [NSMutableString string];
-    if (self.titleLB.isHidden) {
+    if (!self.titleLB.isHidden && HDIsStringNotEmpty(self.title)) {
         [text appendString:self.title];
     }
-    if (self.messageLB.isHidden) {
+    if (!self.messageLB.isHidden && HDIsStringNotEmpty(self.message)) {
         [text appendString:self.message];
     }
 

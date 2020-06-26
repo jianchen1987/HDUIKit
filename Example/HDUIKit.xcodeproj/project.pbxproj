@@ -513,7 +513,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HDUIKit_Example/Pods-HDUIKit_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/FFToast/FFToast.framework",
 				"${BUILT_PRODUCTS_DIR}/HDKitCore/HDKitCore.framework",
 				"${BUILT_PRODUCTS_DIR}/HDUIKit/HDUIKit.framework",
 				"${PODS_ROOT}/LookinServer/LookinServer.framework",
@@ -525,7 +524,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFToast.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDKitCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HDUIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LookinServer.framework",
