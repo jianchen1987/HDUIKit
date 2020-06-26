@@ -68,7 +68,10 @@
     }
 
     if (!self.messageLB.isHidden) {
-        containerHeight += [self messageLBSize].height + self.config.marginTitle2Message;
+        if (!self.titleLB.isHidden) {
+            containerHeight += self.config.marginTitle2Message;
+        }
+        containerHeight += [self messageLBSize].height;
         if (!self.iconIV.hidden && self.titleLB.isHidden) {
             if (self.iconIVSize.height > self.messageLBSize.height) {
                 // 上下对称
