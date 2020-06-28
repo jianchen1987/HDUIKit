@@ -11,7 +11,6 @@
 @implementation NAT
 + (HDTopToastView *)showToastWithTitle:(NSString *)title content:(NSString *)content type:(HDTopToastType)type {
     HDTopToastViewConfig *config = HDTopToastViewConfig.new;
-    config.hideAfterDuration = 3;
     return [self showToastWithTitle:title content:content type:type config:config];
 }
 

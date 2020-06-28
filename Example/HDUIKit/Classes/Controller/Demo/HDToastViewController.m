@@ -24,6 +24,6 @@
 
     HDTopToastViewConfig *config = HDTopToastViewConfig.new;
     config.hideAfterDuration = 3;
-    [NAT showToastWithTitle:nil content:@"库存不足" type:HDTopToastTypeSuccess config:config];
+    [NAT showToastWithTitle:@"库存不足" content:@"我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容" type:HDTopToastTypeSuccess config:config];
 }
 @end
