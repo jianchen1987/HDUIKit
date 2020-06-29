@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
  @param buttonTitle 按钮标题
  @param handler 回调
  */
-+ (HDAlertView *)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView buttonTitle:(NSString *)buttonTitle handler:(HDAlertViewButtonHandler)handler;
++ (HDAlertView *)showAlertWithTitle:(NSString *_Nullable)title contentView:(UIView *)contentView buttonTitle:(NSString *_Nullable)buttonTitle handler:(HDAlertViewButtonHandler _Nullable)handler;
 
 /**
 弹出提示框
@@ -103,7 +103,7 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 @param cancelButtonTitle 取消按钮标题
 @param cancelButtonHandler 取消回调
 */
-+ (HDAlertView *)showAlertWithTitle:(NSString *)title contentView:(UIView *)contentView confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler;
++ (HDAlertView *)showAlertWithTitle:(NSString *_Nullable)title contentView:(UIView *)contentView confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler;
 @end
 
 NS_ASSUME_NONNULL_END

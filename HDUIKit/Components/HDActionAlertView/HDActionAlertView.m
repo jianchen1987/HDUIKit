@@ -15,10 +15,11 @@
 const UIWindowLevel HDActionAlertViewWindowLevel = 1986.0;            // 不要与系统 alert 重叠
 const UIWindowLevel HDActionAlertViewBackgroundWindowLevel = 1985.0;  // 在 alert 窗口下方
 
-static BOOL __hd_animating;
-static NSMutableDictionary<NSString *, NSMutableArray<HDActionAlertView *> *> *__sharedQueueCache;
-static HDActionAlertViewBackgroundWindow *__hd_background_window;
-static HDActionAlertView *__hd_current_view;
+static BOOL __hd_animating = false;
+static NSMutableDictionary<NSString *, NSMutableArray<HDActionAlertView *> *> *__sharedQueueCache = nil;
+static HDActionAlertViewBackgroundWindow *__hd_background_window = nil;
+static HDActionAlertView *__hd_current_view = nil;
+static BOOL __shouldFinallyHideBackgroundWindow = true;
 
 #pragma mark - HDActionAlertViewBackgroundWindow 声明一个Window
 @interface HDActionAlertViewBackgroundWindow : UIWindow
@@ -212,9 +213,7 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
 
 #pragma mark - show/hide background
 + (void)showBackground {
-
     if (!__hd_background_window) {
-
         CGRect frame = [[UIScreen mainScreen] bounds];
         if ([[UIScreen mainScreen] respondsToSelector:@selector(fixedCoordinateSpace)]) {
             frame = [[[UIScreen mainScreen] fixedCoordinateSpace] convertRect:frame
@@ -225,6 +224,7 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
                                                                                  andStyle:[HDActionAlertView currentAlertView].backgroundStyle
                                                                 solidBackgroundColorAlpha:[HDActionAlertView currentAlertView].solidBackgroundColorAlpha];
 
+        __shouldFinallyHideBackgroundWindow = false;
         hd_dispatch_main_async_safe(^{
             [__hd_background_window makeKeyAndVisible];
             __hd_background_window.alpha = 0;
@@ -233,10 +233,15 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
                                  __hd_background_window.alpha = 1;
                              }];
         });
+    } else {
+        __shouldFinallyHideBackgroundWindow = false;
     }
 }
 
 + (void)hideBackgroundAnimated:(BOOL)animated {
+    // 正常情况下都要移除，除非被别处修改
+    __shouldFinallyHideBackgroundWindow = true;
+
     hd_dispatch_main_async_safe(^{
         if (!animated) {
             [__hd_background_window removeFromSuperview];
@@ -250,9 +255,13 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
                 __hd_background_window.alpha = 0;
             }
             completion:^(BOOL finished) {
-                [__hd_background_window removeFromSuperview];
-                __hd_background_window = nil;
-                [__sharedQueueCache removeAllObjects];
+                if (__shouldFinallyHideBackgroundWindow) {
+                    [__hd_background_window removeFromSuperview];
+                    __hd_background_window = nil;
+                    [__sharedQueueCache removeAllObjects];
+                } else {
+                    __hd_background_window.alpha = 1;
+                }
             }];
     });
 }
@@ -278,7 +287,8 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
 
     // 同一个标志不添加
     BOOL isDestViewExist = false;
-    for (HDActionAlertView *view in [self.class sharedQueue]) {
+    NSMutableArray<HDActionAlertView *> *sharedQueue = [self.class sharedQueue];
+    for (HDActionAlertView *view in sharedQueue) {
         if (self.identitableString.length > 0 && view.identitableString.length > 0) {
             if ([self.identitableString isEqualToString:view.identitableString]) {
                 isDestViewExist = true;
@@ -286,14 +296,16 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
         }
     }
 
-    if (![[self.class sharedQueue] containsObject:self] && !isDestViewExist) {
-        [[self.class sharedQueue] addObject:self];
+    if (![sharedQueue containsObject:self] && !isDestViewExist) {
+        [sharedQueue addObject:self];
     }
 
-    if ([[self.class sharedQueue] containsObject:self]) {
-        for (HDActionAlertView *alertView in [self.class sharedQueue]) {
-            if (alertView != self && [[alertView.class sharedMapQueueKey] isEqualToString:[self.class sharedMapQueueKey]] && alertView.isVisible) {
-                [alertView dismissAnimated:false cleanup:NO completion:nil];
+    if ([sharedQueue containsObject:self]) {
+        if (sharedQueue.count > 1) {
+            for (HDActionAlertView *alertView in sharedQueue) {
+                if (alertView != self && [[alertView.class sharedMapQueueKey] isEqualToString:[self.class sharedMapQueueKey]] && alertView.isVisible) {
+                    [alertView dismissAnimated:false cleanup:NO completion:nil];
+                }
             }
         }
     } else {
@@ -342,8 +354,8 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
 
         [HDActionAlertView setAnimating:NO];
 
-        NSInteger index = [[self.class sharedQueue] indexOfObject:self];
-        if (index < [self.class sharedQueue].count - 1) {
+        NSInteger index = [sharedQueue indexOfObject:self];
+        if (index < sharedQueue.count - 1) {
             [self dismissAnimated:false cleanup:NO completion:nil];  // 消失之后显示下一个 AlertView
         }
     }];
