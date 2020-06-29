@@ -16,7 +16,7 @@ const UIWindowLevel HDActionAlertViewWindowLevel = 1986.0;            // 不要�
 const UIWindowLevel HDActionAlertViewBackgroundWindowLevel = 1985.0;  // 在 alert 窗口下方
 
 static BOOL __hd_animating;
-static NSMutableDictionary<NSString *, NSMutableArray<HDActionAlertView *> *> *__sharedQueueMap;
+static NSMutableDictionary<NSString *, NSMutableArray<HDActionAlertView *> *> *__sharedQueueCache;
 static HDActionAlertViewBackgroundWindow *__hd_background_window;
 static HDActionAlertView *__hd_current_view;
 
@@ -116,6 +116,8 @@ static HDActionAlertView *__hd_current_view;
 
 #pragma mark - HDActionAlertView
 
+static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kHDAlertActionViewTransitionAnimationCompletionKey";
+
 @interface HDActionAlertView () <CAAnimationDelegate, UIGestureRecognizerDelegate>
 @property (nonatomic, strong) HDActionAlertWindow *alertWindow;
 @property (nonatomic, assign, getter=isLayoutDirty) BOOL layoutDirty;
@@ -163,32 +165,33 @@ static HDActionAlertView *__hd_current_view;
     return NSStringFromClass(self.class);
 }
 
-+ (NSMutableDictionary<NSString *, NSMutableArray<HDActionAlertView *> *> *)sharedQueueMap {
-    if (!__sharedQueueMap) {
-        __sharedQueueMap = [NSMutableDictionary dictionary];
++ (NSMutableDictionary<NSString *, NSMutableArray<HDActionAlertView *> *> *)sharedQueueCache {
+    if (!__sharedQueueCache) {
+        __sharedQueueCache = [[NSMutableDictionary alloc] init];
     }
-    return __sharedQueueMap;
+    return __sharedQueueCache;
 }
 
 + (NSInteger)totalQueueCount {
     __block NSInteger count = 0;
 
-    [[self sharedQueueMap] enumerateKeysAndObjectsUsingBlock:^(NSString *_Nonnull key, NSMutableArray<HDActionAlertView *> *_Nonnull obj, BOOL *_Nonnull stop) {
+    [[self sharedQueueCache] enumerateKeysAndObjectsUsingBlock:^(NSString *_Nonnull key, NSMutableArray<HDActionAlertView *> *_Nonnull obj, BOOL *_Nonnull stop) {
         count += obj.count;
     }];
 
     return count;
 }
 
++ (NSString *)queueKey {
+    return [self sharedMapQueueKey];
+}
+
 + (NSMutableArray<HDActionAlertView *> *)sharedQueue {
-
-    NSString *queueKey = [self sharedMapQueueKey];
-
-    if (![self.sharedQueueMap valueForKey:queueKey]) {
-        [self.sharedQueueMap setValue:[NSMutableArray array] forKey:queueKey];
+    NSString *queueKey = self.queueKey;
+    if (![self.sharedQueueCache objectForKey:queueKey]) {
+        [self.sharedQueueCache setObject:[NSMutableArray array] forKey:queueKey];
     }
-
-    return [self.sharedQueueMap valueForKey:queueKey];
+    return [self.sharedQueueCache objectForKey:queueKey];
 }
 
 + (HDActionAlertView *)currentAlertView {
@@ -207,6 +210,7 @@ static HDActionAlertView *__hd_current_view;
     __hd_animating = animating;
 }
 
+#pragma mark - show/hide background
 + (void)showBackground {
 
     if (!__hd_background_window) {
@@ -248,6 +252,7 @@ static HDActionAlertView *__hd_current_view;
             completion:^(BOOL finished) {
                 [__hd_background_window removeFromSuperview];
                 __hd_background_window = nil;
+                [__sharedQueueCache removeAllObjects];
             }];
     });
 }
@@ -367,6 +372,17 @@ static HDActionAlertView *__hd_current_view;
         }
     }
 
+    // 执行 dismiss 动画结束之前就清除队列或缓存数据
+    if (cleanup) {
+        NSMutableArray<HDActionAlertView *> *queue = [self.class sharedQueue];
+        [queue removeObject:self];
+
+        if (queue.count <= 0) {
+            NSString *queueKey = self.class.queueKey;
+            [[self.class sharedQueueCache] removeObjectForKey:queueKey];
+        }
+    }
+
     void (^dismissComplete)(void) = ^{
         self.visible = NO;
 
@@ -378,10 +394,6 @@ static HDActionAlertView *__hd_current_view;
         NSInteger index = [[self.class sharedQueue] indexOfObject:self];
         if (index != NSNotFound && index < [self.class sharedQueue].count - 1) {
             nextAlertView = [self.class sharedQueue][index + 1];
-        }
-
-        if (cleanup) {
-            [[self.class sharedQueue] removeObject:self];
         }
 
         [HDActionAlertView setAnimating:NO];
@@ -416,14 +428,14 @@ static HDActionAlertView *__hd_current_view;
         [HDActionAlertView setAnimating:YES];
         [self transitionOutCompletion:dismissComplete];
 
-        if ([self.class totalQueueCount] == 1) {
+        if ([self.class totalQueueCount] <= 0) {
             [HDActionAlertView hideBackgroundAnimated:YES];
         }
 
     } else {
         dismissComplete();
 
-        if ([self.class totalQueueCount] == 0) {
+        if ([self.class totalQueueCount] <= 0) {
             [HDActionAlertView hideBackgroundAnimated:YES];
         }
     }
@@ -493,7 +505,7 @@ static HDActionAlertView *__hd_current_view;
             animation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
             animation.duration = 0.5;
             animation.delegate = self;
-            [animation setValue:completion forKey:@"handler"];
+            [animation setValue:completion forKey:kHDAlertActionViewTransitionAnimationCompletionKey];
             [view.layer addAnimation:animation forKey:@"bouce"];
         } break;
 
@@ -506,7 +518,7 @@ static HDActionAlertView *__hd_current_view;
             animation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
             animation.duration = 0.4;
             animation.delegate = self;
-            [animation setValue:completion forKey:@"handler"];
+            [animation setValue:completion forKey:kHDAlertActionViewTransitionAnimationCompletionKey];
             [view.layer addAnimation:animation forKey:@"dropdown"];
         } break;
 
@@ -564,7 +576,7 @@ static HDActionAlertView *__hd_current_view;
             animation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut], [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut]];
             animation.duration = 0.35;
             animation.delegate = self;
-            [animation setValue:completion forKey:@"handler"];
+            [animation setValue:completion forKey:kHDAlertActionViewTransitionAnimationCompletionKey];
             [view.layer addAnimation:animation forKey:@"bounce"];
 
             view.transform = CGAffineTransformMakeScale(0.01, 0.01);
@@ -599,7 +611,6 @@ static HDActionAlertView *__hd_current_view;
 }
 
 #pragma mark - Layout
-
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self validateLayout];
@@ -649,6 +660,7 @@ static HDActionAlertView *__hd_current_view;
     self.layoutDirty = NO;
 }
 
+#pragma mark - HDActionAlertViewOverridable
 - (void)setupContainerSubViews {
     // 设置容器视图
 }
@@ -691,12 +703,10 @@ static HDActionAlertView *__hd_current_view;
     }
 }
 
-#pragma mark - CAAnimation delegate
+#pragma mark - CAAnimationDelegate
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag {
-    void (^completion)(void) = [anim valueForKey:@"handler"];
-    if (completion) {
-        completion();
-    }
+    void (^completion)(void) = [anim valueForKey:kHDAlertActionViewTransitionAnimationCompletionKey];
+    !completion ?: completion();
 }
 
 #pragma mark - UIGestureRecognizerDelegate
