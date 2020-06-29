@@ -78,6 +78,10 @@ static HDActionAlertView *__hd_current_view;
 @interface HDActionAlertWindow : UIWindow
 /// 是否可以成为 keyWindow，默认为 false
 @property (nonatomic, assign) BOOL canBecomeKeyWindow;
+/// 弹窗
+@property (nonatomic, weak) HDActionAlertView *alertView;
+/// 背景是否禁用事件（containerView 仍然响应），比如 TopToast 弹窗，背景就不该拦截事件，但本身仍需上滑 dismiss 操作
+@property (nonatomic, assign) BOOL ignoreBackgroundTouchEvent;
 @end
 
 @implementation HDActionAlertWindow
@@ -97,6 +101,17 @@ static HDActionAlertView *__hd_current_view;
         [appWindow makeKeyWindow];
     }
 }
+
+- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
+    if (!self.ignoreBackgroundTouchEvent) return [super pointInside:point withEvent:event];
+
+    if (!self.alertView) return [super pointInside:point withEvent:event];
+
+    if (CGRectContainsPoint(self.alertView.containerView.frame, point)) return true;
+
+    return false;
+}
+
 @end
 
 #pragma mark - HDActionAlertView
@@ -299,6 +314,8 @@ static HDActionAlertView *__hd_current_view;
 
         HDActionAlertWindow *window = [[HDActionAlertWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
         window.canBecomeKeyWindow = self.canBecomeKeyWindow;
+        window.ignoreBackgroundTouchEvent = self.ignoreBackgroundTouchEvent;
+        window.alertView = self;
         window.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         window.opaque = NO;
         window.rootViewController = viewController;

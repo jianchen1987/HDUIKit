@@ -23,7 +23,6 @@
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
 
     HDTopToastViewConfig *config = HDTopToastViewConfig.new;
-    config.hideAfterDuration = 3;
-    [NAT showToastWithTitle:@"库存不足" content:@"我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容我是很长的内容" type:HDTopToastTypeSuccess config:config];
+    [NAT showToastWithTitle:@"我是很长的内容我是很长的内容我是很长的内" content:nil type:HDTopToastTypeSuccess config:config];
 }
 @end

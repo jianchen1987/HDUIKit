@@ -89,6 +89,8 @@ typedef NS_ENUM(NSInteger, HDActionAlertViewTransitionStyle) {
 @property (nonatomic, assign) BOOL canBecomeKeyWindow;
 /// 实心填充背景色颜色透明度，默认 0.6
 @property (nonatomic, assign) CGFloat solidBackgroundColorAlpha;
+/// 背景是否禁用事件（containerView 仍然响应），比如 TopToast 弹窗，背景就不该拦截事件，但本身仍需上滑 dismiss 操作
+@property (nonatomic, assign) BOOL ignoreBackgroundTouchEvent;
 
 /** 以下回调优先级高于代理 */
 @property (nonatomic, copy) HDActionAlertViewHandler willShowHandler;

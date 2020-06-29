@@ -20,11 +20,11 @@
         self.messageFont = HDAppTheme.font.standard3;
         self.messageColor = HDAppTheme.color.G2;
         self.backgroundColor = HDAppTheme.color.C1;
-        self.containerViewEdgeInsets = UIEdgeInsetsMake(UIApplication.sharedApplication.statusBarFrame.size.height, kRealWidth(10), 0, kRealWidth(10));
-        self.contentViewEdgeInsets = UIEdgeInsetsMake(kRealWidth(10), kRealWidth(15), kRealWidth(10), kRealWidth(15));
+        self.containerViewEdgeInsets = UIEdgeInsetsMake(UIApplication.sharedApplication.statusBarFrame.size.height, kRealWidth(8), 0, kRealWidth(8));
+        self.contentViewEdgeInsets = UIEdgeInsetsMake(kRealWidth(22), kRealWidth(15), kRealWidth(22), kRealWidth(15));
         self.marginTitle2Message = kRealWidth(10);
-        self.marginTitleToIcon = kRealWidth(8);
-        self.containerCorner = 10;
+        self.marginTitleToIcon = kRealWidth(10);
+        self.containerCorner = 5;
         self.containerMinHeight = 40;
         self.iconWidth = kRealWidth(20);
         self.hideAfterDuration = -1;

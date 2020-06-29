@@ -47,6 +47,7 @@
         self.backgroundStyle = HDActionAlertViewBackgroundStyleSolid;
         self.allowTapBackgroundDismiss = true;
         self.solidBackgroundColorAlpha = 0;
+        self.ignoreBackgroundTouchEvent = true;
     }
     return self;
 }
@@ -183,28 +184,28 @@
             break;
         }
         case HDTopToastTypeSuccess: {
-            self.config.backgroundColor = [UIColor colorWithRed:31.f / 255.f green:177.f / 255.f blue:138.f / 255.f alpha:1.f];
+            self.config.backgroundColor = [UIColor colorWithRed:248 / 255.0 green:52 / 255.0 blue:96 / 255.0 alpha:1.0];
             self.iconImage = [UIImage imageNamed:@"toast_success" inBundle:[NSBundle hd_UIKITTopToastResources] compatibleWithTraitCollection:nil];
             self.config.titleColor = UIColor.whiteColor;
             self.config.messageColor = UIColor.whiteColor;
             break;
         }
         case HDTopToastTypeError: {
-            self.config.backgroundColor = [UIColor colorWithRed:255.f / 255.f green:91.f / 255.f blue:65.f / 255.f alpha:1.f];
+            self.config.backgroundColor = [UIColor colorWithRed:93 / 255.0 green:102 / 255.0 blue:127 / 255.0 alpha:1.0];
             self.iconImage = [UIImage imageNamed:@"toast_error" inBundle:[NSBundle hd_UIKITTopToastResources] compatibleWithTraitCollection:nil];
             self.config.titleColor = UIColor.whiteColor;
             self.config.messageColor = UIColor.whiteColor;
             break;
         }
         case HDTopToastTypeWarning: {
-            self.config.backgroundColor = [UIColor colorWithRed:255.f / 255.f green:134.f / 255.f blue:0.f / 255.f alpha:1.f];
+            self.config.backgroundColor = [UIColor colorWithRed:252 / 255.0 green:203 / 255.0 blue:48 / 255.0 alpha:1.0];
             self.iconImage = [UIImage imageNamed:@"toast_warning" inBundle:[NSBundle hd_UIKITTopToastResources] compatibleWithTraitCollection:nil];
             self.config.titleColor = UIColor.whiteColor;
             self.config.messageColor = UIColor.whiteColor;
             break;
         }
         case HDTopToastTypeInfo: {
-            self.config.backgroundColor = [UIColor colorWithRed:75.f / 255.f green:107.f / 255.f blue:122.f / 255.f alpha:1.f];
+            self.config.backgroundColor = [UIColor colorWithRed:173 / 255.0 green:182 / 255.0 blue:200 / 255.0 alpha:1.0];
             self.iconImage = [UIImage imageNamed:@"toast_info" inBundle:[NSBundle hd_UIKITTopToastResources] compatibleWithTraitCollection:nil];
             self.config.titleColor = UIColor.whiteColor;
             self.config.messageColor = UIColor.whiteColor;
