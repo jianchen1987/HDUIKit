@@ -21,6 +21,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
 
 @interface HDCustomViewActionView ()
 @property (nonatomic, strong) UIView *iphoneXSeriousSafeAreaFillView;  ///< iPhoneX 系列底部填充
+@property (nonatomic, strong) UIView *topSepLine;                      /// 顶部分割线
 @property (nonatomic, strong) UILabel *titleLabel;                     ///< 标题
 @property (nonatomic, strong) UIButton *button;                        ///< 按钮
 @property (nonatomic, strong) UIView *contentView;                     ///< 自定义 View
@@ -63,11 +64,15 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
     }
 
     if (!self.titleLabel.isHidden) {
-        containerHeight += (self.titleLBSize.height + self.config.marginTitleToContentView);
+        CGFloat height = kCloseButtonW >= self.titleLBSize.height ? kCloseButtonW : self.titleLBSize.height;
+        containerHeight += (height + self.config.marginTitleToContentView);
     } else {
         if (self.config.style == HDCustomViewActionViewStyleClose) {
             containerHeight += (kCloseButtonW + self.config.marginTitleToContentView);
         }
+    }
+    if (!self.topSepLine.isHidden) {
+        containerHeight += self.config.topLineHeight;
     }
 
     if (self.config.style == HDCustomViewActionViewStyleCancel) {
@@ -103,6 +108,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
     if (!self.titleLabel.isHidden) {
         self.titleLabel.text = _config.title;
     }
+    [self.containerView addSubview:self.topSepLine];
 
     [self.containerView addSubview:self.button];
 
@@ -161,6 +167,21 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
         }];
     }
 
+    // 标题未隐藏才需处理顶部分割线
+    if (!self.topSepLine.isHidden) {
+        [self.topSepLine hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.left.hd_equalTo(self.config.topLineEdgeInsets.left);
+            make.width.hd_equalTo(self.containerView.width).offset(UIEdgeInsetsGetHorizontalValue(self.config.topLineEdgeInsets));
+            if (self.config.style == HDCustomViewActionViewStyleClose) {
+                UIView *view = self.button.height >= self.titleLBSize.height ? self.button : self.titleLabel;
+                make.top.hd_equalTo(view.bottom).offset(self.config.marginTitleToContentView);
+            } else {
+                make.top.hd_equalTo(self.titleLabel.bottom).offset(self.config.marginTitleToContentView);
+            }
+            make.height.hd_equalTo(self.config.topLineHeight);
+        }];
+    }
+
     UIView *outerView;
     if (!self.config.shouldAddScrollViewContainer) {
         outerView = self.contentView;
@@ -169,14 +190,19 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
     }
     [outerView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
         make.left.hd_equalTo(self.config.contentHorizontalEdgeMargin);
-        if (!self.titleLabel.isHidden) {
-            make.top.hd_equalTo(self.titleLabel.bottom).offset(self.config.marginTitleToContentView);
-        } else {
+        if (self.topSepLine.isHidden) {
             if (self.config.style == HDCustomViewActionViewStyleClose) {
-                make.top.hd_equalTo(self.button.bottom).offset(self.config.marginTitleToContentView);
+                if (self.titleLabel.isHidden) {
+                    make.top.hd_equalTo(self.button.bottom).offset(self.config.marginTitleToContentView);
+                } else {
+                    UIView *view = self.button.height >= self.titleLBSize.height ? self.button : self.titleLabel;
+                    make.top.hd_equalTo(view.bottom).offset(self.config.marginTitleToContentView);
+                }
             } else {
                 make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
             }
+        } else {
+            make.top.hd_equalTo(self.topSepLine.bottom);
         }
         // 计算剩余高度
         CGFloat leftHeight;
@@ -187,7 +213,19 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
         }
 
         if (!self.titleLabel.isHidden) {
-            leftHeight -= (CGRectGetHeight(self.titleLabel.frame) + self.config.marginTitleToContentView);
+            if (self.config.style == HDCustomViewActionViewStyleClose) {
+                UIView *view = self.button.height >= self.titleLBSize.height ? self.button : self.titleLabel;
+                leftHeight -= (CGRectGetHeight(view.frame) + self.config.marginTitleToContentView);
+            } else {
+                leftHeight -= (CGRectGetHeight(self.titleLabel.frame) + self.config.marginTitleToContentView);
+            }
+        } else {
+            if (self.config.style == HDCustomViewActionViewStyleClose) {
+                leftHeight -= (CGRectGetHeight(self.button.frame) + self.config.marginTitleToContentView);
+            }
+        }
+        if (!self.topSepLine.isHidden) {
+            leftHeight -= (CGRectGetHeight(self.topSepLine.frame));
         }
         if (self.contentView.size.height <= leftHeight) {
             make.size.hd_equalTo(self.contentView.size);
@@ -280,5 +318,14 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
         _scrollView.bounces = self.config.scrollViewBounces;
     }
     return _scrollView;
+}
+
+- (UIView *)topSepLine {
+    if (!_topSepLine) {
+        _topSepLine = UIView.new;
+        _topSepLine.backgroundColor = self.config.topLineColor;
+        _topSepLine.hidden = !self.config.needTopSepLine || (HDIsStringEmpty(self.config.title) && self.config.style == HDCustomViewActionViewStyleCancel);
+    }
+    return _topSepLine;
 }
 @end

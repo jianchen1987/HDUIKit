@@ -30,6 +30,10 @@
         self.containerMaxHeight = kScreenHeight * 0.8;
         self.scrollViewBounces = true;
         self.shouldAddScrollViewContainer = true;
+        self.needTopSepLine = false;
+        self.topLineHeight = PixelOne;
+        self.topLineEdgeInsets = UIEdgeInsetsZero;
+        self.topLineColor = HDAppTheme.color.G4;
     }
     return self;
 }

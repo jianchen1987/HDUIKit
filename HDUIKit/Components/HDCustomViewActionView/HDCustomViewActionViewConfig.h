@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, HDCustomViewActionViewStyle) {
     HDCustomViewActionViewStyleCancel = 0,  /// 取消
-    HDCustomViewActionViewStyleClose,       /// 取消
+    HDCustomViewActionViewStyleClose,       /// 关闭
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -33,6 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) HDCustomViewActionViewStyle style;     ///< 风格
 @property (nonatomic, assign) BOOL scrollViewBounces;                ///< scrollView 是否开启 bounce，默认开启
 @property (nonatomic, assign) BOOL shouldAddScrollViewContainer;     ///< 是否应该 UIScrollView 容器，默认开启
+@property (nonatomic, assign) BOOL needTopSepLine;                   ///< 是否需要顶部分割线，默认关闭，无 title 自动隐藏
+@property (nonatomic, assign) UIEdgeInsets topLineEdgeInsets;        ///< 顶部分割线距离边距，上下无效
+@property (nonatomic, assign) CGFloat topLineHeight;                 ///< 顶部分割线宽度
+@property (nonatomic, strong) UIColor *topLineColor;                 ///< 顶部分割线颜色
 @end
 
 NS_ASSUME_NONNULL_END
