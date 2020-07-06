@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.5.0"
+  s.version          = "1.5.1"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   $lib = ENV['use_lib']
   $lib_name = ENV["#{s.name}_use_lib"]
   if $lib || $lib_name
-    # puts '--------- HDUIKit binary -------'
+    puts '--------- HDUIKit binary -------'
 
     s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreLocation'
     s.ios.vendored_framework = "#{s.name}-#{s.version}/ios/#{s.name}.framework"

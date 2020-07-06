@@ -23,6 +23,7 @@
                    self.floatLayoutView = view;
                    view.padding = UIEdgeInsetsMake(10, 10, 10, 10);
                    view.itemMargins = UIEdgeInsetsMake(0, 0, 8, 8);
+                   view.maxRowCount = 2;
                    view;
                })];
 
@@ -47,6 +48,8 @@
         make.centerX.hd_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
         make.top.hd_equalTo(100);
     }];
+    NSUInteger rowCount = [self.floatLayoutView fowardingTotalRowCountWithMaxSize:CGSizeMake(300, CGFLOAT_MAX)];
+    HDLog(@"目标行数：%zd", rowCount);
 }
 
 @end

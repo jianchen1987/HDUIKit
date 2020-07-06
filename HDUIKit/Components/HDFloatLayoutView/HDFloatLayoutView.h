@@ -44,6 +44,10 @@ extern const CGSize HDFloatLayoutViewAutomaticalMaximumItemSize;
 
 /** 最大行数，多余的不会添加 */
 @property (nonatomic, assign) NSUInteger maxRowCount;  ///< 最大行数，默认0，不限制
+
+/// 全部子View布局时的行数
+/// @param maxSize 最大尺寸，用于计算行数
+- (NSUInteger)fowardingTotalRowCountWithMaxSize:(CGSize)maxSize;
 @end
 
 NS_ASSUME_NONNULL_END
