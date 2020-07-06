@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
   $lib = ENV['use_lib']
   $lib_name = ENV["#{s.name}_use_lib"]
   if $lib || $lib_name
-    puts '--------- HDUIKit binary -------'
+    # puts '--------- HDUIKit binary -------'
 
     s.frameworks       = 'Foundation', 'UIKit', 'CoreGraphics', 'QuartzCore', 'CoreLocation'
     s.ios.vendored_framework = "#{s.name}-#{s.version}/ios/#{s.name}.framework"
