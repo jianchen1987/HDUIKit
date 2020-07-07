@@ -31,6 +31,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// HDUIKitTopToastResources
 + (NSBundle *)hd_UIKITTopToastResources;
+
+/// HDUIKitTextFieldResources
++ (NSBundle *)hd_UIKitTextFieldResources;
+
+/// HDUIKitCustomViewActionViewResources
++ (NSBundle *)hd_UIKitCustomViewActionViewResources;
 @end
 
 NS_ASSUME_NONNULL_END

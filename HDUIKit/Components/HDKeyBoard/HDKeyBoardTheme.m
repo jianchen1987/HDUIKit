@@ -160,12 +160,12 @@
         self.deleteButtonImage = @"keyboard_delete";
         self.shiftButtonImage = @"keyboard_shift";
         self.shiftButtonSelectedImage = @"keyboard_shift_selected";
-        self.enterpriseText = @"- HDUIKit 安全键盘 -";
+        self.enterpriseText = @"- 安全键盘 -";
         self.doneButtonName = @"Done";
         self.doneButtonTitleColor = UIColor.whiteColor;
         self.doneButtonHighlightTitleColor = UIColor.whiteColor;
-        self.doneButtonBgColor = HDColor(248, 52, 96, 1);
-        self.doneButtonHighlightBgColor = HDColor(248, 52, 96, 0.5);
+        self.doneButtonBgColor = HDAppTheme.color.C1;
+        self.doneButtonHighlightBgColor = [HDAppTheme.color.C1 colorWithAlphaComponent:0.5];
     }
     return self;
 }

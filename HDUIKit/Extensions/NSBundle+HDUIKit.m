@@ -43,6 +43,16 @@
     return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitTopToastResources"];
 }
 
++ (NSBundle *)hd_UIKitTextFieldResources {
+    static NSBundle *resourceBundle = nil;
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitTextFieldResources"];
+}
+
++ (NSBundle *)hd_UIKitCustomViewActionViewResources {
+    static NSBundle *resourceBundle = nil;
+    return [self uikit_bundleWithStaticResourceBundle:resourceBundle bundleName:@"HDUIKitCustomViewActionViewResources"];
+}
+
 #pragma mark - private methods
 + (NSBundle *)uikit_bundleWithStaticResourceBundle:(NSBundle *)resourceBundle bundleName:(NSString *)name {
     if (!resourceBundle) {

@@ -37,6 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) UIEdgeInsets topLineEdgeInsets;        ///< 顶部分割线距离边距，上下无效
 @property (nonatomic, assign) CGFloat topLineHeight;                 ///< 顶部分割线宽度
 @property (nonatomic, strong) UIColor *topLineColor;                 ///< 顶部分割线颜色
+@property (nonatomic, strong) UIImage *closeImage;                   ///< 关闭按钮图片
 @end
 
 NS_ASSUME_NONNULL_END

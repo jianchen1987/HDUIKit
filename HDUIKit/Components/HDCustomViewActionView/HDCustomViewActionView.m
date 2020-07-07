@@ -303,7 +303,10 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
             _button.backgroundColor = self.config.buttonBgColor;
             _button.titleLabel.font = self.config.buttonTitleFont;
         } else if (self.config.style == HDCustomViewActionViewStyleClose) {
-            UIImage *image = [UIImage hd_imageWithShape:HDUIImageShapeNavClose size:CGSizeMake(16, 16) tintColor:HDAppTheme.color.G3];
+            UIImage *image = self.config.closeImage;
+            if (!image) {
+                image = [UIImage hd_imageWithShape:HDUIImageShapeNavClose size:CGSizeMake(16, 16) tintColor:HDAppTheme.color.G3];
+            }
             [_button setImage:image forState:UIControlStateNormal];
         }
         [_button addTarget:self action:@selector(clickedButtonHandler) forControlEvents:UIControlEventTouchUpInside];

@@ -8,6 +8,7 @@
 
 #import "HDUITextFieldConfig.h"
 #import "HDAppTheme.h"
+#import "NSBundle+HDUIKit.h"
 
 NSString *const kCharacterSetStringNumber = @"0123456789";
 NSString *const kCharacterSetStringNumberAndLetter = @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -59,6 +60,7 @@ NSString *const kCharacterSetStringNumberAndLetterAndSpecialCharacters = @"01234
         self.keyboardType = UIKeyboardTypeNumberPad;
         self.shouldSeparatedReverse = false;
         self.separatedReverseUnitLength = 3;
+        self.clearButtonImage = [UIImage imageNamed:@"clear" inBundle:[NSBundle hd_UIKitTextFieldResources] compatibleWithTraitCollection:nil];
 
         __weak __typeof(self) weakSelf = self;
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
