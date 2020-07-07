@@ -83,7 +83,7 @@
 
             if (isTitleLabelShowing) {
                 CGSize titleLimitSize = CGSizeMake(contentLimitSize.width - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentLimitSize.height - imageTotalSize.height - spacingBetweenImageAndTitle - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
-                CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
+                CGSize titleSize = [self.titleLabel textRectForBounds:(CGRect){0, 0, titleLimitSize} limitedToNumberOfLines:self.titleLabel.numberOfLines].size;
                 titleSize.height = fmin(titleSize.height, titleLimitSize.height);
                 titleTotalSize = CGSizeMake(titleSize.width + UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
             }
@@ -96,7 +96,7 @@
         case HDUIButtonImagePositionLeft:
         case HDUIButtonImagePositionRight: {
             // 图片和文字水平排版时，高度以文字或图片的最大高度为最终高度
-            // 注意这里有一个和系统不一致的行为：当 titleLabel 为多行时，系统的 sizeThatFits: 计算结果固定是单行的，所以当 HDUIButtonImagePositionLeft 并且titleLabel 多行的情况下，HDUIButton 计算的结果与系统不一致
+            // 注意这里有一个和系统不一致的行为：当 titleLabel 为多行时，系统的 sizeThatFits: 计算结果固定是单行的，所以当 HDUIButtonImagePositionLeft 并且 titleLabel 多行的情况下，HDUIButton 计算的结果与系统不一致
 
             if (isImageViewShowing) {
                 CGFloat imageLimitHeight = contentLimitSize.height - UIEdgeInsetsGetVerticalValue(self.imageEdgeInsets);
@@ -107,7 +107,7 @@
 
             if (isTitleLabelShowing) {
                 CGSize titleLimitSize = CGSizeMake(contentLimitSize.width - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets) - imageTotalSize.width - spacingBetweenImageAndTitle, contentLimitSize.height - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
-                CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
+                CGSize titleSize = [self.titleLabel textRectForBounds:(CGRect){0, 0, titleLimitSize} limitedToNumberOfLines:self.titleLabel.numberOfLines].size;
                 titleSize.height = fmin(titleSize.height, titleLimitSize.height);
                 titleTotalSize = CGSizeMake(titleSize.width + UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), titleSize.height + UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
             }
@@ -157,7 +157,7 @@
 
         if (isTitleLabelShowing) {
             titleLimitSize = CGSizeMake(contentSize.width - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets), contentSize.height - imageTotalSize.height - spacingBetweenImageAndTitle - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
-            CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
+            CGSize titleSize = [self.titleLabel textRectForBounds:(CGRect){0, 0, titleLimitSize} limitedToNumberOfLines:self.titleLabel.numberOfLines].size;
             titleSize.width = fmin(titleLimitSize.width, titleSize.width);
             titleSize.height = fmin(titleLimitSize.height, titleSize.height);
             titleFrame = CGRectMakeWithSize(titleSize);
@@ -270,7 +270,7 @@
 
         if (isTitleLabelShowing) {
             titleLimitSize = CGSizeMake(contentSize.width - UIEdgeInsetsGetHorizontalValue(self.titleEdgeInsets) - imageTotalSize.width - spacingBetweenImageAndTitle, contentSize.height - UIEdgeInsetsGetVerticalValue(self.titleEdgeInsets));
-            CGSize titleSize = [self.titleLabel sizeThatFits:titleLimitSize];
+            CGSize titleSize = [self.titleLabel textRectForBounds:(CGRect){0, 0, titleLimitSize} limitedToNumberOfLines:self.titleLabel.numberOfLines].size;
             titleSize.width = fmin(titleLimitSize.width, titleSize.width);
             titleSize.height = fmin(titleLimitSize.height, titleSize.height);
             titleFrame = CGRectMakeWithSize(titleSize);

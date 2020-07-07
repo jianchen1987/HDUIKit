@@ -27,6 +27,21 @@
                    view;
                })];
 
+    HDUIGhostButton *button = HDUIGhostButton.new;
+
+    button.titleLabel.hd_lineSpace = 15;
+    [button setTitle:@"好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的" forState:UIControlStateNormal];
+    // 设置在
+    [button setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
+    button.titleLabel.numberOfLines = 2;
+    [self.view addSubview:button];
+
+    [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+        make.size.hd_equalTo([button sizeThatFits:CGSizeMake(200, CGFLOAT_MAX)]);
+        make.centerX.hd_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
+        make.top.hd_equalTo(400);
+    }];
+
     NSArray *titles = @[@"入金", @"入金2", @"入金w24", @"入34err金", @"入sdfdsdsf金", @"入sdfggsgg金", @"入金让人同仁堂短头发"];
 
     for (NSUInteger i = 0; i < titles.count; i++) {
