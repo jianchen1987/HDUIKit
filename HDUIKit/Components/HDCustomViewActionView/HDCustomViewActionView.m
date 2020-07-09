@@ -75,7 +75,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
         containerHeight += self.config.topLineHeight;
     }
 
-    if (self.config.style == HDCustomViewActionViewStyleCancel) {
+    if (_iphoneXSeriousSafeAreaFillView) {
         containerHeight += kiPhoneXSeriesSafeBottomHeight;
     }
 
@@ -120,31 +120,16 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
             [self.containerView addSubview:self.contentView];
         }
     }
-    if (self.config.style == HDCustomViewActionViewStyleCancel && iPhoneXSeries) {
+    if (iPhoneXSeries) {
         [self.containerView addSubview:self.iphoneXSeriousSafeAreaFillView];
     }
 }
 
 - (void)layoutContainerViewSubViews {
 
-    if (_iphoneXSeriousSafeAreaFillView) {
+    BOOL hasIphoneXSeriousSafeAreaFillView = _iphoneXSeriousSafeAreaFillView;
+    if (hasIphoneXSeriousSafeAreaFillView) {
         self.iphoneXSeriousSafeAreaFillView.frame = CGRectMake(0, CGRectGetHeight(self.containerView.frame) - kiPhoneXSeriesSafeBottomHeight, self.containerViewWidth, kiPhoneXSeriesSafeBottomHeight);
-
-        [self.button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
-            make.left.hd_equalTo(0);
-            make.width.hd_equalTo(self.containerView.width);
-            make.height.hd_equalTo(self.config.buttonHeight);
-            make.bottom.hd_equalTo(self.iphoneXSeriousSafeAreaFillView.top);
-        }];
-    } else {
-        if (self.config.style == HDCustomViewActionViewStyleCancel) {
-            [self.button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
-                make.left.hd_equalTo(0);
-                make.width.hd_equalTo(self.containerView.width);
-                make.height.hd_equalTo(self.config.buttonHeight);
-                make.bottom.hd_equalTo(self.containerView.height);
-            }];
-        }
     }
 
     if (!self.titleLabel.isHidden) {
@@ -163,6 +148,17 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
                 make.centerY.hd_equalTo(self.titleLabel.centerY);
             } else {
                 make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
+            }
+        }];
+    } else {
+        [self.button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+            make.left.hd_equalTo(0);
+            make.width.hd_equalTo(self.containerView.width);
+            make.height.hd_equalTo(self.config.buttonHeight);
+            if (hasIphoneXSeriousSafeAreaFillView) {
+                make.bottom.hd_equalTo(self.iphoneXSeriousSafeAreaFillView.top);
+            } else {
+                make.bottom.hd_equalTo(self.containerView.height);
             }
         }];
     }
@@ -199,7 +195,11 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
                     make.top.hd_equalTo(view.bottom).offset(self.config.marginTitleToContentView);
                 }
             } else {
-                make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
+                if (self.titleLabel.isHidden) {
+                    make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
+                } else {
+                    make.top.hd_equalTo(self.titleLabel.bottom).offset(self.config.marginTitleToContentView);
+                }
             }
         } else {
             make.top.hd_equalTo(self.topSepLine.bottom);
@@ -288,7 +288,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
 - (UIView *)iphoneXSeriousSafeAreaFillView {
     if (!_iphoneXSeriousSafeAreaFillView) {
         _iphoneXSeriousSafeAreaFillView = [[UIView alloc] init];
-        _iphoneXSeriousSafeAreaFillView.backgroundColor = HDAppTheme.color.normalBackground;
+        _iphoneXSeriousSafeAreaFillView.backgroundColor = self.config.iPhoneXFillViewBgColor;
     }
     return _iphoneXSeriousSafeAreaFillView;
 }

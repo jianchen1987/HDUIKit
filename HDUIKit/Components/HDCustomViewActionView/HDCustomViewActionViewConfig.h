@@ -23,6 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIFont *buttonTitleFont;               ///< 按钮标题字体
 @property (nonatomic, strong) UIColor *buttonTitleColor;             ///< 按钮标题颜色
 @property (nonatomic, strong) UIColor *buttonBgColor;                ///< 按钮背景色
+@property (nonatomic, strong) UIColor *iPhoneXFillViewBgColor;       ///< iPhoneX 系列底部填充色
 @property (nonatomic, assign) CGFloat buttonHeight;                  ///< 按钮高度
 @property (nonatomic, assign) UIEdgeInsets containerViewEdgeInsets;  ///< 容器内边距
 @property (nonatomic, assign) CGFloat contentHorizontalEdgeMargin;   ///< 内容水平方向离边距离

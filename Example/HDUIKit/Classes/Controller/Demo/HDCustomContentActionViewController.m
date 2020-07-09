@@ -26,7 +26,7 @@
     config.style = HDCustomViewActionViewStyleClose;
     config.contentHorizontalEdgeMargin = 0;
     config.shouldAddScrollViewContainer = true;
-    config.needTopSepLine = true;
+    config.needTopSepLine = false;
     const CGFloat width = kScreenWidth - config.contentHorizontalEdgeMargin * 2;
 
     UIView<HDCustomViewActionViewProtocol> *view = [[UIView<HDCustomViewActionViewProtocol> alloc] initWithFrame:CGRectMake(0, 0, width, 1000)];
