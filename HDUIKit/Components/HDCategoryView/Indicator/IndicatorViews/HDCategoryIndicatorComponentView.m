@@ -7,6 +7,7 @@
 //
 
 #import "HDCategoryIndicatorComponentView.h"
+#import <HDUIKit/HDAppTheme.h>
 
 @implementation HDCategoryIndicatorComponentView
 
@@ -21,7 +22,7 @@
         _indicatorWidthIncrement = 0;
         _indicatorHeight = 3;
         _indicatorCornerRadius = HDCategoryViewAutomaticDimension;
-        _indicatorColor = [UIColor redColor];
+        _indicatorColor = HDAppTheme.color.C1;
         _scrollStyle = HDCategoryIndicatorScrollStyleSimple;
     }
     return self;
