@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol HDCustomViewActionViewProtocol <NSObject>
 
-@required
+@optional
 /// 布局计算自身以及子控件 frame
 - (void)layoutyImmediately;
 
