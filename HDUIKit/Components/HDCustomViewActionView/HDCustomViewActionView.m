@@ -253,11 +253,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
 
 #pragma mark - private methods
 - (CGFloat)containerViewWidth {
-    if (_contentView) {
-        return _config.contentHorizontalEdgeMargin * 2 + _contentView.frame.size.width;
-    } else {
-        return kHDCustomViewActionViewWidth;
-    }
+    return kHDCustomViewActionViewWidth;
 }
 
 - (CGSize)titleLBSize {
