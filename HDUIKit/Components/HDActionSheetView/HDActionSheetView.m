@@ -39,7 +39,7 @@
                                                                                  type:HDActionSheetViewButtonTypeCancel
                                                                               handler:^(HDActionSheetView *alertView, HDActionSheetViewButton *button) {
             if(alertView.cancelButtonHandler) {
-                alertView.cancelButtonHandler();
+                alertView.cancelButtonHandler(alertView, button);
             } else {
                 [alertView dismiss];
             }
