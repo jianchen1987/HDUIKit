@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^HDActionSheetViewHandler)(HDActionSheetView *alertView);
 
 @interface HDActionSheetView : HDActionAlertView
+/// 取消回调
+@property (nonatomic, copy) HDActionSheetViewButtonHandler cancelButtonHandler;
 + (instancetype)alertViewWithCancelButtonTitle:(NSString *__nullable)cancelButtonTitle config:(HDActionSheetViewConfig *__nullable)config;
 - (instancetype)initWithCancelButtonTitle:(NSString *__nullable)cancelButtonTitle config:(HDActionSheetViewConfig *__nullable)config;
 - (void)addButton:(HDActionSheetViewButton *)button;

@@ -38,9 +38,13 @@
         HDActionSheetViewButton *cancelBTN = [HDActionSheetViewButton buttonWithTitle:_cancelButtonTitle
                                                                                  type:HDActionSheetViewButtonTypeCancel
                                                                               handler:^(HDActionSheetView *alertView, HDActionSheetViewButton *button) {
-                                                                                  [self dismiss];
+            if(alertView.cancelButtonHandler) {
+                alertView.cancelButtonHandler();
+            } else {
+                [alertView dismiss];
+            }
                                                                               }];
-
+        cancelBTN.alertView = self;
         [self.buttons addObject:cancelBTN];
 
         _config = config;
