@@ -67,6 +67,7 @@ Pod::Spec.new do |s|
       ss.dependency 'HDKitCore/Core'
       ss.dependency 'HDUIKit/HDAppTheme'
       ss.dependency 'HDKitCore/DispatchMainQueueSafe'
+      ss.dependency 'HDUIKit/Components/HDLabel'
 
       ss.subspec 'HDUIButton' do |sss|
         sss.source_files = 'HDUIKit/Components/HDUIButton'
