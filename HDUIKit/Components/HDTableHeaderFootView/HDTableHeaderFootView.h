@@ -16,5 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)headerWithTableView:(UITableView *)tableView;
 @property (nonatomic, strong) HDTableHeaderFootViewModel *model;  ///< 数据模型
 @property (nonatomic, copy) void (^rightButtonClickedHandler)(void);
+@property (nonatomic, copy) void (^viewClickedHandler)(HDTableHeaderFootViewModel *model);
 @end
 NS_ASSUME_NONNULL_END

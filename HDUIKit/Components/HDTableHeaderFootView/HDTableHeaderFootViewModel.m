@@ -25,6 +25,12 @@
         self.titleToImageMarin = kRealWidth(6);
         self.rightTitleToImageMarin = kRealWidth(6);
         self.rightViewAlignment = HDTableHeaderFootViewRightViewAlignmentTitleRightImageLeft;
+        
+        self.tagColor = UIColor.whiteColor;
+        self.tagFont = [UIFont systemFontOfSize:12];
+        self.tagBackgroundColor = UIColor.orangeColor;
+        self.tagCornerRadius = 0;
+        self.tagTitleEdgeInset = UIEdgeInsetsMake(2, 7, 2, 7);
     }
     return self;
 }

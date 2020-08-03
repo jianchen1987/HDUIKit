@@ -22,6 +22,14 @@ typedef NS_ENUM(NSUInteger, HDTableHeaderFootViewRightViewAlignment) {
 @property (nonatomic, strong) UIColor *backgroundColor;                                    ///< 背景色
 @property (nonatomic, strong) UIFont *titleFont;                                           ///< 字体
 @property (nonatomic, strong) UIColor *titleColor;                                         ///< 字颜色
+
+@property (nonatomic, copy) NSString *tag; ///< 标题标签
+@property (nonatomic, strong) UIFont *tagFont; ///< 标签字体
+@property (nonatomic, strong) UIColor *tagColor; ///< 标签颜色
+@property (nonatomic, strong) UIColor *tagBackgroundColor; ///< 标签背景色
+@property (nonatomic, assign) CGFloat tagCornerRadius; ///< 标签圆角
+@property (nonatomic, assign) UIEdgeInsets tagTitleEdgeInset; ///< 内边距
+
 @property (nonatomic, copy) NSString *rightButtonTitle;                                    ///< 右边按钮标题
 @property (nonatomic, strong) UIImage *rightButtonImage;                                   ///< 右边按钮图片
 @property (nonatomic, strong) UIFont *rightButtonTitleFont;                                ///< 右边按钮字体
