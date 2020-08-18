@@ -68,21 +68,21 @@
         if (HDViewControllerNavigationBarStyleWhite == style) {
             self.hd_navBackgroundColor = UIColor.whiteColor;
             self.hd_navTitleColor = HDAppTheme.color.G1;
-            image = [UIImage imageNamed:@"icon_back_orange" inBundle:bundle compatibleWithTraitCollection:nil];
+            image = [UIImage imageNamed:@"icon_back_black" inBundle:bundle compatibleWithTraitCollection:nil];
         } else if (HDViewControllerNavigationBarStyleTheme == style) {
             self.hd_navBackgroundColor = HDAppTheme.color.C1;
             self.hd_navTitleColor = UIColor.whiteColor;
-            image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
+            image = [UIImage imageNamed:@"icon_back_white" inBundle:bundle compatibleWithTraitCollection:nil];
         } else if (HDViewControllerNavigationBarStyleHidden == style) {
             self.hd_navigationBar.hidden = true;
         } else if (HDViewControllerNavigationBarStyleOther == style) {
             self.hd_navBackgroundColor = HDAppTheme.color.C1;
             self.hd_navTitleColor = UIColor.whiteColor;
-            image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
+            image = [UIImage imageNamed:@"icon_back_white" inBundle:bundle compatibleWithTraitCollection:nil];
         } else if (HDViewControllerNavigationBarStyleTransparent == style) {
             self.hd_navBarAlpha = 0;
             self.hd_navTitleColor = UIColor.whiteColor;
-            image = [UIImage imageNamed:@"ic-return-white" inBundle:bundle compatibleWithTraitCollection:nil];
+            image = [UIImage imageNamed:@"icon_back_white" inBundle:bundle compatibleWithTraitCollection:nil];
         }
         if (image) {
             self.hd_backButtonImage = image;
