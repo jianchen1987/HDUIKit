@@ -92,19 +92,23 @@
 @implementation HDAppThemeColor
 
 - (UIColor *)C1 {
-    return [UIColor hd_colorWithHexString:@"#FC821A"];
+    return [UIColor hd_colorWithHexString:@"#F83E00"];
 }
 
 - (UIColor *)C2 {
-    return [UIColor hd_colorWithHexString:@"#FF4444"];
+    return [UIColor hd_colorWithHexString:@"#FF6B0D"];
 }
 
 - (UIColor *)C3 {
-    return [UIColor hd_colorWithHexString:@"#22B573"];
+    return [UIColor hd_colorWithHexString:@"#FEBF01"];
 }
 
 - (UIColor *)C4 {
-    return [UIColor hd_colorWithHexString:@"#EBB626"];
+    return [UIColor hd_colorWithHexString:@"#FCC5B2"];
+}
+
+- (UIColor *)C5 {
+    return [UIColor hd_colorWithHexString:@"#FFF5F2"];
 }
 
 - (UIColor *)G1 {
