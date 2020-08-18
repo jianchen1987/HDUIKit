@@ -9,19 +9,9 @@
 #import "HDUnitTextField.h"
 #import "HDUnitTextFieldTextRange.h"
 
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-NSNotificationName const HDUnitTextFieldDidBecomeFirstResponderNotification = @"HDUnitTextFieldDidBecomeFirstResponderNotification";
-NSNotificationName const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTextFieldDidResignFirstResponderNotification";
-#else
-NSString *const HDUnitTextFieldDidBecomeFirstResponderNotification = @"HDUnitTextFieldDidBecomeFirstResponderNotification";
-NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTextFieldDidResignFirstResponderNotification";
-#endif
-
 @interface HDUnitTextField ()
-
 @property (nonatomic, strong) NSMutableArray<NSString *> *characterArray;
 @property (nonatomic, strong) CALayer *cursorLayer;
-
 @end
 
 @implementation HDUnitTextField {
@@ -140,7 +130,7 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
     [self _resetCursorStateIfNeeded];
 
     /**
-     Supporting iOS12 SMS verification code, setText will be called when verification code input.
+     支持 iOS 12 验证码输入，输入验证码时会触发 setText
      */
     if (_characterArray.count >= _inputUnitCount) {
         if (_autoResignFirstResponderWhenInputFinished == YES) {
@@ -310,7 +300,10 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
 
     if (result == YES) {
         [self sendActionsForControlEvents:UIControlEventEditingDidBegin];
-        [[NSNotificationCenter defaultCenter] postNotificationName:HDUnitTextFieldDidBecomeFirstResponderNotification object:nil];
+
+        if ([self.delegate respondsToSelector:@selector(unitTextFieldBecomeFirstResponder:)]) {
+            [self.delegate unitTextFieldBecomeFirstResponder:self];
+        }
     }
 
     return result;
@@ -326,7 +319,10 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
 
     if (result) {
         [self sendActionsForControlEvents:UIControlEventEditingDidEnd];
-        [[NSNotificationCenter defaultCenter] postNotificationName:HDUnitTextFieldDidResignFirstResponderNotification object:nil];
+
+        if ([self.delegate respondsToSelector:@selector(unitTextFieldResignFirstResponder:)]) {
+            [self.delegate unitTextFieldResignFirstResponder:self];
+        }
     }
 
     return result;
@@ -556,6 +552,15 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
     });
 }
 
+#pragma mark - public methods
+- (void)clear {
+    self.text = nil;
+
+    if ([self.delegate respondsToSelector:@selector(unitTextFieldDidClear:)]) {
+        [self.delegate unitTextFieldDidClear:self];
+    }
+}
+
 #pragma mark - UIKeyInput
 
 - (BOOL)hasText {
@@ -575,6 +580,10 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
     if (_characterArray.count >= _inputUnitCount) {
         if (_autoResignFirstResponderWhenInputFinished == YES) {
             [self resignFirstResponder];
+
+            if ([self.delegate respondsToSelector:@selector(unitTextFieldDidEndEditing:)]) {
+                [self.delegate unitTextFieldDidEndEditing:self];
+            }
         }
         return;
     }
@@ -599,6 +608,13 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
                 [self resignFirstResponder];
             }];
         }
+        if ([self.delegate respondsToSelector:@selector(unitTextFieldDidEndEditing:)]) {
+            [self.delegate unitTextFieldDidEndEditing:self];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(unitTextFieldDidBeginEditing:)]) {
+            [self.delegate unitTextFieldDidBeginEditing:self];
+        }
     }
 
     [self sendActionsForControlEvents:UIControlEventEditingChanged];
@@ -609,8 +625,9 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
 }
 
 - (void)deleteBackward {
-    if ([self hasText] == NO)
+    if ([self hasText] == NO) {
         return;
+    }
 
     [_inputDelegate textWillChange:self];
     [_characterArray removeLastObject];
@@ -619,6 +636,20 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
     [self setNeedsDisplay];
     [self _resetCursorStateIfNeeded];
     [_inputDelegate textDidChange:self];
+
+    if ([self.delegate respondsToSelector:@selector(unitTextFieldDidDelete:)]) {
+        [self.delegate unitTextFieldDidDelete:self];
+    }
+
+    if (!self.text.length) {
+        if ([self.delegate respondsToSelector:@selector(unitTextFieldDidClear:)]) {
+            [self.delegate unitTextFieldDidClear:self];
+        }
+    } else {
+        if ([self.delegate respondsToSelector:@selector(unitTextFieldDidBeginEditing:)]) {
+            [self.delegate unitTextFieldDidBeginEditing:self];
+        }
+    }
 }
 
 /**
@@ -710,6 +741,7 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
 - (nullable UITextPosition *)positionWithinRange:(UITextRange *)range farthestInDirection:(UITextLayoutDirection)direction {
     return nil;
 }
+
 - (nullable UITextRange *)characterRangeByExtendingPosition:(HDUnitTextFieldTextPosition *)position inDirection:(UITextLayoutDirection)direction {
     return nil;
 }
@@ -718,6 +750,7 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
 - (UITextWritingDirection)baseWritingDirectionForPosition:(HDUnitTextFieldTextPosition *)position inDirection:(UITextStorageDirection)direction {
     return UITextWritingDirectionNatural;
 }
+
 - (void)setBaseWritingDirection:(UITextWritingDirection)writingDirection forRange:(UITextRange *)range {
 }
 
@@ -725,9 +758,11 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
 - (NSArray<UITextSelectionRect *> *)selectionRectsForRange:(HDUnitTextFieldTextRange *)range {
     return nil;
 }
+
 - (CGRect)firstRectForRange:(HDUnitTextFieldTextRange *)range {
     return CGRectNull;
 }
+
 - (CGRect)caretRectForPosition:(HDUnitTextFieldTextPosition *)position {
     return CGRectNull;
 }
@@ -736,9 +771,11 @@ NSString *const HDUnitTextFieldDidResignFirstResponderNotification = @"HDUnitTex
 - (nullable UITextRange *)characterRangeAtPoint:(CGPoint)point {
     return nil;
 }
+
 - (nullable UITextPosition *)closestPositionToPoint:(CGPoint)point withinRange:(HDUnitTextFieldTextRange *)range {
     return nil;
 }
+
 - (nullable UITextPosition *)closestPositionToPoint:(CGPoint)point {
     return nil;
 }

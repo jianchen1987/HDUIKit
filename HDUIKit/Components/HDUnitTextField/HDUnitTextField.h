@@ -10,14 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-UIKIT_EXTERN NSNotificationName const HDUnitTextFieldDidBecomeFirstResponderNotification;
-UIKIT_EXTERN NSNotificationName const HDUnitTextFieldDidResignFirstResponderNotification;
-#else
-UIKIT_EXTERN NSString *const HDUnitTextFieldDidBecomeFirstResponderNotification;
-UIKIT_EXTERN NSString *const HDUnitTextFieldDidResignFirstResponderNotification;
-#endif
-
 /**
  UnitField 的外观风格
 
@@ -122,12 +114,63 @@ IB_DESIGNABLE
 - (instancetype)initWithInputUnitCount:(NSUInteger)count;
 - (instancetype)initWithStyle:(HDUnitTextFieldStyle)style inputUnitCount:(NSUInteger)count;
 
+/// 插入
+- (void)insertText:(NSString *)text;
+
+/// 退格
+- (void)deleteBackward;
+
+/// 清除
+- (void)clear;
+
 @end
 
 @protocol HDUnitTextFieldDelegate <UITextFieldDelegate>
 
 @optional
 - (BOOL)unitTextField:(HDUnitTextField *)unitTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
+
+/**
+ 输入完成 end editing
+ 
+ @param textField 输入框
+ */
+- (void)unitTextFieldDidEndEditing:(HDUnitTextField *)textField;
+
+/**
+ 开始响应
+ 
+ @param textField 输入框
+ */
+- (void)unitTextFieldBecomeFirstResponder:(HDUnitTextField *)textField;
+
+/**
+取消响应
+
+@param textField 输入框
+*/
+- (void)unitTextFieldResignFirstResponder:(HDUnitTextField *)textField;
+
+/**
+ 开始输入 begin editing
+ 
+ @param textField 输入框
+ */
+- (void)unitTextFieldDidBeginEditing:(HDUnitTextField *)textField;
+
+/**
+ 删除一个字符 delete a character
+ 
+ @param textField 输入框
+ */
+- (void)unitTextFieldDidDelete:(HDUnitTextField *)textField;
+
+/**
+ 清除完成 clear all characters
+ 
+ @param textField 输入框
+ */
+- (void)unitTextFieldDidClear:(HDUnitTextField *)textField;
 
 @end
 

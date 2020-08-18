@@ -99,15 +99,31 @@
     return YES;
 }
 
-- (void)unitTextFieldEditingChanged:(HDUnitTextField *)sender {
-    HDLog(@"%s %@", __FUNCTION__, sender.text);
+- (void)unitTextFieldBecomeFirstResponder:(HDUnitTextField *)textField {
+    HDLog(@"%s %@", __FUNCTION__, textField.text);
 }
 
-- (void)unitTextFieldEditingDidBegin:(id)sender {
-    HDLog(@"%s", __FUNCTION__);
+- (void)unitTextFieldResignFirstResponder:(HDUnitTextField *)textField {
+    HDLog(@"%s %@", __FUNCTION__, textField.text);
 }
 
-- (void)unitTextFieldEditingDidEnd:(id)sender {
-    HDLog(@"%s", __FUNCTION__);
+- (void)unitTextFieldEditingChanged:(HDUnitTextField *)textField {
+    HDLog(@"%s %@", __FUNCTION__, textField.text);
+}
+
+- (void)unitTextFieldDidBeginEditing:(HDUnitTextField *)textField {
+    HDLog(@"%s %@", __FUNCTION__, textField.text);
+}
+
+- (void)unitTextFieldDidEndEditing:(HDUnitTextField *)textField {
+    HDLog(@"%s %@", __FUNCTION__, textField.text);
+}
+
+- (void)unitTextFieldDidDelete:(HDUnitTextField *)textField {
+    HDLog(@"%s %@", __FUNCTION__, textField.text);
+}
+
+- (void)unitTextFieldDidClear:(HDUnitTextField *)textField {
+    HDLog(@"%s %@", __FUNCTION__, textField.text);
 }
 @end
