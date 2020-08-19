@@ -8,8 +8,8 @@
 
 #import "HDTableHeaderFootView.h"
 #import "HDAppTheme.h"
-#import "Masonry.h"
 #import "HDLabel.h"
+#import "Masonry.h"
 
 @interface HDTableHeaderFootView ()
 @property (nonatomic, strong) UIImageView *imageView;       ///< 图片
@@ -17,7 +17,7 @@
 @property (nonatomic, strong) UIView *rightViewContainer;   ///< 右 View
 @property (nonatomic, strong) UIImageView *rightImageView;  ///< 右按钮图片
 @property (nonatomic, strong) UILabel *rightLabel;          ///< 右按钮标题
-@property (nonatomic, strong) HDLabel *tagLabel; ///< 标题标签
+@property (nonatomic, strong) HDLabel *tagLabel;            ///< 标题标签
 @end
 
 @implementation HDTableHeaderFootView
@@ -71,7 +71,7 @@
             }
         }];
     }
-    UIView *rightView = self.tagLabel.isHidden ? (self.rightViewContainer.isHidden?nil:self.rightViewContainer) :self.tagLabel;
+    UIView *rightView = self.tagLabel.isHidden ? (self.rightViewContainer.isHidden ? nil : self.rightViewContainer) : self.tagLabel;
     [self.titleLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         if (self.imageView.isHidden) {
             make.left.equalTo(self.contentView).offset(edgeInsets.left);
@@ -83,19 +83,19 @@
         } else {
             make.centerY.equalTo(self.contentView);
         }
-        if(!rightView) {
+        if (!rightView) {
             make.right.equalTo(self.contentView.mas_right).offset(-15);
         } else {
             make.right.lessThanOrEqualTo(rightView.mas_left).offset(-10);
         }
     }];
-    
-    if(!self.tagLabel.isHidden) {
+
+    if (!self.tagLabel.isHidden) {
         [self.tagLabel sizeToFit];
         [self.tagLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.titleLabel.mas_right).offset(10);
             make.centerY.equalTo(self.titleLabel.mas_centerY);
-            if(!self.rightViewContainer.isHidden) {
+            if (!self.rightViewContainer.isHidden) {
                 make.right.lessThanOrEqualTo(self.rightViewContainer.mas_left).offset(-10);
             } else {
                 make.right.lessThanOrEqualTo(self.contentView.mas_right).offset(-15);
@@ -194,7 +194,8 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    if(!CGRectEqualToRect(CGRectZero, self.tagLabel.frame)) {
+
+    if (!CGRectEqualToRect(CGRectZero, self.tagLabel.frame)) {
         self.tagLabel.layer.cornerRadius = self.model.tagCornerRadius;
         self.tagLabel.layer.masksToBounds = YES;
     }
@@ -231,8 +232,8 @@
     if (!_rightImageView.isHidden) {
         _rightImageView.image = model.rightButtonImage;
     }
-    
-    if(model.tag.length > 0) {
+
+    if (model.tag.length > 0) {
         _tagLabel.text = model.tag;
         _tagLabel.hidden = NO;
         _tagLabel.font = model.tagFont;
@@ -293,7 +294,7 @@
     }
     return _rightImageView;
 }
-/** @lazy tagLabel */
+
 - (HDLabel *)tagLabel {
     if (!_tagLabel) {
         _tagLabel = [[HDLabel alloc] init];
