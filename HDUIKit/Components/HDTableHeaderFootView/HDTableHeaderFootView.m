@@ -18,6 +18,8 @@
 @property (nonatomic, strong) UIImageView *rightImageView;  ///< 右按钮图片
 @property (nonatomic, strong) UILabel *rightLabel;          ///< 右按钮标题
 @property (nonatomic, strong) HDLabel *tagLabel;            ///< 标题标签
+/// 底部线条
+@property (nonatomic, strong) UIView *line;
 @end
 
 @implementation HDTableHeaderFootView
@@ -49,6 +51,7 @@
     [self.contentView addSubview:self.titleLabel];
     [self.contentView addSubview:self.tagLabel];
     [self.contentView addSubview:self.rightViewContainer];
+    [self.contentView addSubview:self.line];
     [self.rightViewContainer addSubview:self.rightImageView];
     [self.rightViewContainer addSubview:self.rightLabel];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickedViewHandler)];
@@ -189,6 +192,16 @@
             }
         }
     }
+    
+    if(!self.line.isHidden) {
+        [self.line mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.contentView.mas_left).offset(edgeInsets.left);
+            make.right.equalTo(self.contentView.mas_right).offset(-edgeInsets.right);
+            make.bottom.equalTo(self.contentView.mas_bottom);
+            make.height.mas_equalTo(self.model.lineHeight);
+        }];
+    }
+    
     [super updateConstraints];
 }
 
@@ -242,6 +255,12 @@
         _tagLabel.hd_edgeInsets = model.tagTitleEdgeInset;
     } else {
         _tagLabel.hidden = YES;
+    }
+    
+    if(model.lineHeight > 0) {
+        [self.line setHidden:NO];
+    } else {
+        [self.line setHidden:YES];
     }
 
     [self setNeedsUpdateConstraints];
@@ -300,5 +319,12 @@
         _tagLabel = [[HDLabel alloc] init];
     }
     return _tagLabel;
+}
+- (UIView *)line {
+    if(!_line) {
+        _line = [[UIView alloc] init];
+        _line.backgroundColor = HDAppTheme.color.G5;
+    }
+    return _line;
 }
 @end

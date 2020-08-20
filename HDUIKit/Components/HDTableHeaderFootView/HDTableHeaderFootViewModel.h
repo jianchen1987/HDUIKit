@@ -40,6 +40,7 @@ typedef NS_ENUM(NSUInteger, HDTableHeaderFootViewRightViewAlignment) {
 @property (nonatomic, assign) CGFloat rightTitleToImageMarin;                              ///< 按钮标题与按钮图片间距
 @property (nonatomic, assign) HDTableHeaderFootViewRightViewAlignment rightViewAlignment;  ///< 右视图对齐方式
 @property (nonatomic, copy) NSString *routePath;                                           ///< 路由地址
+@property (nonatomic, assign) CGFloat lineHeight;                                           ///< 底部线条高度,0 不显示
 
 @end
 

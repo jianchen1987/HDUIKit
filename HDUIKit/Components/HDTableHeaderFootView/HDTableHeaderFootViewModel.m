@@ -31,6 +31,7 @@
         self.tagBackgroundColor = UIColor.orangeColor;
         self.tagCornerRadius = 0;
         self.tagTitleEdgeInset = UIEdgeInsetsMake(2, 7, 2, 7);
+        self.lineHeight = 0;
     }
     return self;
 }
