@@ -105,10 +105,12 @@ static char kAssociatedObjectKey_backButtonImage;
 
     if (!self.presentingViewController && self.navigationController.childViewControllers.count <= 1) return;
 
-    if (self.hd_backButtonImage != nil) {
+    if (self.hd_backButtonImage != nil && !self.hd_navigationItem.hidesBackButton) {
         if (self.hd_NavBarInit) {
             self.hd_navigationItem.leftBarButtonItem = [UIBarButtonItem hd_itemWithImage:self.hd_backButtonImage target:self action:@selector(hd_backItemClick:)];
         }
+    } else {
+        self.hd_navigationItem.leftBarButtonItem = nil;
     }
 }
 
