@@ -15,53 +15,48 @@ NSString *const HDViewControllerPropertyChangedNotification = @"HDViewController
 
 @implementation UIViewController (HDNavigationBarCategory)
 
-static char kAssociatedObjectKey_interactivePopDisabled;
 - (void)setHd_interactivePopDisabled:(BOOL)hd_interactivePopDisabled {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_interactivePopDisabled, @(hd_interactivePopDisabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_interactivePopDisabled), @(hd_interactivePopDisabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     [self postPropertyChangeNotification];
 }
 
 - (BOOL)hd_interactivePopDisabled {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_interactivePopDisabled) boolValue];
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-static char kAssociatedObjectKey_fullScreenPopDisabled;
 - (void)setHd_fullScreenPopDisabled:(BOOL)hd_fullScreenPopDisabled {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_fullScreenPopDisabled, @(hd_fullScreenPopDisabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_fullScreenPopDisabled), @(hd_fullScreenPopDisabled), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     [self postPropertyChangeNotification];
 }
 
 - (BOOL)hd_fullScreenPopDisabled {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_fullScreenPopDisabled) boolValue];
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-static char kAssociatedObjectKey_maxPopDistance;
 - (void)setHd_maxPopDistance:(CGFloat)hd_maxPopDistance {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_maxPopDistance, @(hd_maxPopDistance), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_maxPopDistance), @(hd_maxPopDistance), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     [self postPropertyChangeNotification];
 }
 
 - (CGFloat)hd_maxPopDistance {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_maxPopDistance) floatValue];
+    return [objc_getAssociatedObject(self, _cmd) floatValue];
 }
 
-static char kAssociatedObjectKey_navBarAlpha;
 - (void)setHd_navBarAlpha:(CGFloat)hd_navBarAlpha {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navBarAlpha, @(hd_navBarAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navBarAlpha), @(hd_navBarAlpha), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationBar.hd_navBarBackgroundAlpha = hd_navBarAlpha;
 }
 
 - (CGFloat)hd_navBarAlpha {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_navBarAlpha) floatValue];
+    return [objc_getAssociatedObject(self, _cmd) floatValue];
 }
 
-static char kAssociatedObjectKey_statusBarHidden;
 - (void)setHd_statusBarHidden:(BOOL)hd_statusBarHidden {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_statusBarHidden, @(hd_statusBarHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_statusBarHidden), @(hd_statusBarHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
         [self prefersStatusBarHidden];
@@ -71,39 +66,36 @@ static char kAssociatedObjectKey_statusBarHidden;
 }
 
 - (BOOL)hd_statusBarHidden {
-    id hidden = objc_getAssociatedObject(self, &kAssociatedObjectKey_statusBarHidden);
+    id hidden = objc_getAssociatedObject(self, _cmd);
     return (hidden != nil) ? [hidden boolValue] : HDNavConfigure.statusBarHidden;
 }
 
-static char kAssociatedObjectKey_hasManuallySetStatusBarStyle;
 - (void)setHd_hasManuallySetStatusBarStyle:(BOOL)hd_hasManuallySetStatusBarStyle {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_hasManuallySetStatusBarStyle, @(hd_hasManuallySetStatusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_hasManuallySetStatusBarStyle), @(hd_hasManuallySetStatusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)hd_hasManuallySetStatusBarStyle {
-    id hidden = objc_getAssociatedObject(self, &kAssociatedObjectKey_hasManuallySetStatusBarStyle);
+    id hidden = objc_getAssociatedObject(self, _cmd);
     return (hidden != nil) ? [hidden boolValue] : NO;
 }
 
-static char kAssociatedObjectKey_statusBarStyle;
 - (void)setHd_statusBarStyle:(UIStatusBarStyle)hd_statusBarStyle {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_statusBarStyle, @(hd_statusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_statusBarStyle), @(hd_statusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_hasManuallySetStatusBarStyle = true;
     [UIApplication sharedApplication].statusBarStyle = [self hd_fixedStatusBarStyle:hd_statusBarStyle];
 }
 
 - (UIStatusBarStyle)hd_statusBarStyle {
-    id style = objc_getAssociatedObject(self, &kAssociatedObjectKey_statusBarStyle);
+    id style = objc_getAssociatedObject(self, _cmd);
     return (style != nil) ? [style integerValue] : HDNavConfigure.statusBarStyle;
 }
 
-static char kAssociatedObjectKey_backButtonImage;
 - (void)setHd_backButtonImage:(UIImage *)hd_backButtonImage {
 
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_backButtonImage, hd_backButtonImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_backButtonImage), hd_backButtonImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
-    if (!self.presentingViewController && self.navigationController.childViewControllers.count <= 1) return;
+    if (!self.presentingViewController && (self.navigationController.childViewControllers.count <= 1 && !self.shouldAddLeftNavItemOnFirstOfNavChildVCS)) return;
 
     if (self.hd_backButtonImage != nil && !self.hd_navigationItem.hidesBackButton) {
         if (self.hd_NavBarInit) {
@@ -115,26 +107,24 @@ static char kAssociatedObjectKey_backButtonImage;
 }
 
 - (UIImage *)hd_backButtonImage {
-    id image = objc_getAssociatedObject(self, &kAssociatedObjectKey_backButtonImage);
+    id image = objc_getAssociatedObject(self, _cmd);
     return (image != nil) ? image : HDNavConfigure.backButtonImage;
 }
 
-static char kAssociatedObjectKey_pushDelegate;
 - (void)setHd_pushDelegate:(id<HDViewControllerPushDelegate>)hd_pushDelegate {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_pushDelegate, hd_pushDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_pushDelegate), hd_pushDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (id<HDViewControllerPushDelegate>)hd_pushDelegate {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_pushDelegate);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_popDelegate;
 - (void)setHd_popDelegate:(id<HDViewControllerPopDelegate>)hd_popDelegate {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_popDelegate, hd_popDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_popDelegate), hd_popDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (id<HDViewControllerPopDelegate>)hd_popDelegate {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_popDelegate);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
 #pragma mark - Private Methods
@@ -262,15 +252,14 @@ static char kAssociatedObjectKey_popDelegate;
 }
 
 #pragma mark - 添加自定义导航栏
-static char kAssociatedObjectKey_navigationBar;
 - (void)setHd_navigationBar:(HDCustomNavigationBar *)hd_navigationBar {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navigationBar, hd_navigationBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navigationBar), hd_navigationBar, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     [self setupNavBarFrame];
 }
 
 - (HDCustomNavigationBar *)hd_navigationBar {
-    HDCustomNavigationBar *navigationBar = objc_getAssociatedObject(self, &kAssociatedObjectKey_navigationBar);
+    HDCustomNavigationBar *navigationBar = objc_getAssociatedObject(self, _cmd);
     if (!navigationBar) {
         navigationBar = [[HDCustomNavigationBar alloc] init];
         [self.view addSubview:navigationBar];
@@ -285,29 +274,27 @@ static char kAssociatedObjectKey_navigationBar;
     return navigationBar;
 }
 
-static char kAssociatedObjectKey_navigationItem;
 - (void)setHd_navigationItem:(UINavigationItem *)hd_navigationItem {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navigationItem, hd_navigationItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navigationItem), hd_navigationItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationBar.items = @[hd_navigationItem];
 }
 
 - (UINavigationItem *)hd_navigationItem {
-    UINavigationItem *navigationItem = objc_getAssociatedObject(self, &kAssociatedObjectKey_navigationItem);
+    UINavigationItem *navigationItem = objc_getAssociatedObject(self, _cmd);
     if (!navigationItem) {
         navigationItem = [[UINavigationItem alloc] init];
         self.hd_navigationItem = navigationItem;
     }
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navigationItem);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navbarInit;
 - (void)setHd_NavBarInit:(BOOL)hd_NavBarInit {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navbarInit, @(hd_NavBarInit), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_NavBarInit), @(hd_NavBarInit), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (BOOL)hd_NavBarInit {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_navbarInit) boolValue];
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 - (CGFloat)navigationBarHeight {
@@ -315,54 +302,49 @@ static char kAssociatedObjectKey_navbarInit;
 }
 
 #pragma mark - 常用属性快速设置
-static char kAssociatedObjectKey_navBackgroundColor;
 - (void)setHd_navBackgroundColor:(UIColor *)hd_navBackgroundColor {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navBackgroundColor, hd_navBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navBackgroundColor), hd_navBackgroundColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     [self.hd_navigationBar setBackgroundImage:[UIImage hd_imagePiexOneWithColor:hd_navBackgroundColor] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (UIColor *)hd_navBackgroundColor {
-    id objc = objc_getAssociatedObject(self, &kAssociatedObjectKey_navBackgroundColor);
+    id objc = objc_getAssociatedObject(self, _cmd);
     return (objc != nil) ? objc : HDNavConfigure.backgroundColor;
 }
 
-static char kAssociatedObjectKey_navBackgroundImage;
 - (void)setHd_navBackgroundImage:(UIImage *)hd_navBackgroundImage {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navBackgroundImage, hd_navBackgroundImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navBackgroundImage), hd_navBackgroundImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     [self.hd_navigationBar setBackgroundImage:hd_navBackgroundImage forBarMetrics:UIBarMetricsDefault];
 }
 
 - (UIImage *)hd_navBackgroundImage {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navBackgroundImage);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navShadowColor;
 - (void)setHd_navShadowColor:(UIColor *)hd_navShadowColor {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navShadowColor, hd_navShadowColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navShadowColor), hd_navShadowColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationBar.shadowImage = [UIImage hd_changeImage:[UIImage hd_imagePiexOneWithColor:UIColor.whiteColor] color:hd_navShadowColor];
 }
 
 - (UIColor *)hd_navShadowColor {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navShadowColor);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navShadowImage;
 - (void)setHd_navShadowImage:(UIImage *)hd_navShadowImage {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navShadowImage, hd_navShadowImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navShadowImage), hd_navShadowImage, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationBar.shadowImage = hd_navShadowImage;
 }
 
 - (UIImage *)hd_navShadowImage {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navShadowImage);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navLineHidden;
 - (void)setHd_navLineHidden:(BOOL)hd_navLineHidden {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navLineHidden, @(hd_navLineHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navLineHidden), @(hd_navLineHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationBar.hd_navLineHidden = hd_navLineHidden;
 
@@ -373,91 +355,83 @@ static char kAssociatedObjectKey_navLineHidden;
 }
 
 - (BOOL)hd_navLineHidden {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_navLineHidden) boolValue];
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
-static char kAssociatedObjectKey_navTitleView;
 - (void)setHd_navTitleView:(UIView *)hd_navTitleView {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navTitleView, hd_navTitleView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navTitleView), hd_navTitleView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationItem.titleView = hd_navTitleView;
 }
 
 - (UIView *)hd_navTitleView {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navTitleView);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navTitleColor;
 - (void)setHd_navTitleColor:(UIColor *)hd_navTitleColor {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navTitleColor, hd_navTitleColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navTitleColor), hd_navTitleColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: hd_navTitleColor, NSFontAttributeName: self.hd_navTitleFont};
 }
 
 - (UIColor *)hd_navTitleColor {
-    id objc = objc_getAssociatedObject(self, &kAssociatedObjectKey_navTitleColor);
+    id objc = objc_getAssociatedObject(self, _cmd);
     return (objc != nil) ? objc : HDNavConfigure.titleColor;
 }
 
-static char kAssociatedObjectKey_navTitleFont;
 - (void)setHd_navTitleFont:(UIFont *)hd_navTitleFont {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navTitleFont, hd_navTitleFont, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navTitleFont), hd_navTitleFont, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: self.hd_navTitleColor, NSFontAttributeName: hd_navTitleFont};
 }
 
 - (UIFont *)hd_navTitleFont {
-    id objc = objc_getAssociatedObject(self, &kAssociatedObjectKey_navTitleFont);
+    id objc = objc_getAssociatedObject(self, _cmd);
     return (objc != nil) ? objc : HDNavConfigure.titleFont;
 }
 
-static char kAssociatedObjectKey_navLeftBarButtonItem;
 - (void)setHd_navLeftBarButtonItem:(UIBarButtonItem *)hd_navLeftBarButtonItem {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navLeftBarButtonItem, hd_navLeftBarButtonItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navLeftBarButtonItem), hd_navLeftBarButtonItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationItem.leftBarButtonItem = hd_navLeftBarButtonItem;
 }
 
 - (UIBarButtonItem *)hd_navLeftBarButtonItem {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navLeftBarButtonItem);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navLeftBarButtonItems;
 - (void)setHd_navLeftBarButtonItems:(NSArray<UIBarButtonItem *> *)hd_navLeftBarButtonItems {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navLeftBarButtonItems, hd_navLeftBarButtonItems, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navLeftBarButtonItems), hd_navLeftBarButtonItems, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationItem.leftBarButtonItems = hd_navLeftBarButtonItems;
 }
 
 - (NSArray<UIBarButtonItem *> *)hd_navLeftBarButtonItems {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navLeftBarButtonItems);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navRightBarButtonItem;
 - (void)setHd_navRightBarButtonItem:(UIBarButtonItem *)hd_navRightBarButtonItem {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navRightBarButtonItem, hd_navRightBarButtonItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navRightBarButtonItem), hd_navRightBarButtonItem, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationItem.rightBarButtonItem = hd_navRightBarButtonItem;
 }
 
 - (UIBarButtonItem *)hd_navRightBarButtonItem {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navRightBarButtonItem);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navRightBarButtonItems;
 - (void)setHd_navRightBarButtonItems:(NSArray<UIBarButtonItem *> *)hd_navRightBarButtonItems {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navRightBarButtonItems, hd_navRightBarButtonItems, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navRightBarButtonItems), hd_navRightBarButtonItems, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     self.hd_navigationItem.rightBarButtonItems = hd_navRightBarButtonItems;
 }
 
 - (NSArray<UIBarButtonItem *> *)hd_navRightBarButtonItems {
-    return objc_getAssociatedObject(self, &kAssociatedObjectKey_navRightBarButtonItems);
+    return objc_getAssociatedObject(self, _cmd);
 }
 
-static char kAssociatedObjectKey_navItemLeftSpace;
 - (void)setHd_navItemLeftSpace:(CGFloat)hd_navItemLeftSpace {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navItemLeftSpace, @(hd_navItemLeftSpace), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navItemLeftSpace), @(hd_navItemLeftSpace), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     if (hd_navItemLeftSpace == HDNavigationBarItemSpace) return;
 
@@ -467,12 +441,11 @@ static char kAssociatedObjectKey_navItemLeftSpace;
 }
 
 - (CGFloat)hd_navItemLeftSpace {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_navItemLeftSpace) floatValue];
+    return [objc_getAssociatedObject(self, _cmd) floatValue];
 }
 
-static char kAssociatedObjectKey_navItemRightSpace;
 - (void)setHd_navItemRightSpace:(CGFloat)hd_navItemRightSpace {
-    objc_setAssociatedObject(self, &kAssociatedObjectKey_navItemRightSpace, @(hd_navItemRightSpace), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, @selector(hd_navItemRightSpace), @(hd_navItemRightSpace), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
     if (hd_navItemRightSpace == HDNavigationBarItemSpace) return;
 
@@ -482,7 +455,15 @@ static char kAssociatedObjectKey_navItemRightSpace;
 }
 
 - (CGFloat)hd_navItemRightSpace {
-    return [objc_getAssociatedObject(self, &kAssociatedObjectKey_navItemRightSpace) floatValue];
+    return [objc_getAssociatedObject(self, _cmd) floatValue];
+}
+
+- (void)setShouldAddLeftNavItemOnFirstOfNavChildVCS:(BOOL)shouldAddLeftNavItemOnFirstOfNavChildVCS {
+    objc_setAssociatedObject(self, @selector(shouldAddLeftNavItemOnFirstOfNavChildVCS), @(shouldAddLeftNavItemOnFirstOfNavChildVCS), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)shouldAddLeftNavItemOnFirstOfNavChildVCS {
+    return [objc_getAssociatedObject(self, _cmd) boolValue];
 }
 
 #pragma mark - Public Methods

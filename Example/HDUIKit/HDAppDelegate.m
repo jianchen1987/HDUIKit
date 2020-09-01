@@ -15,6 +15,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
     HDViewController *vc = [HDViewController new];
+    vc.shouldAddLeftNavItemOnFirstOfNavChildVCS = true;
     UINavigationController *navc = [UINavigationController rootVC:vc];
     self.window.rootViewController = navc;
     [self.window makeKeyAndVisible];

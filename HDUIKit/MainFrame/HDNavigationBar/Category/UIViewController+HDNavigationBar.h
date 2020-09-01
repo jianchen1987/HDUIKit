@@ -103,6 +103,9 @@ UIKIT_EXTERN NSString *const HDViewControllerPropertyChangedNotification;
 @property (nonatomic, assign) CGFloat hd_navItemLeftSpace;
 @property (nonatomic, assign) CGFloat hd_navItemRightSpace;
 
+/// 如果在导航栏第一个是否仍添加返回按钮，默认为 NO
+@property (nonatomic, assign) BOOL shouldAddLeftNavItemOnFirstOfNavChildVCS;
+
 /// 导航栏加状态栏高度
 @property (nonatomic, assign, readonly) CGFloat navigationBarHeight;
 
