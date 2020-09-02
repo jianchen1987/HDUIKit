@@ -27,6 +27,7 @@
 }
 
 - (void)initDataSource {
+    [self.dataSource addObject:[ExampleItem itemWithDesc:@"搜索框" destVcName:@"HDSearchBarExampleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"分类标题" destVcName:@"HDCategoryTitleExampleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"自定义内容弹窗" destVcName:@"HDCustomContentActionViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"输入框" destVcName:@"HDInputFieldViewController"]];

@@ -336,6 +336,13 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(searchBarShouldReturn:textField:)]) {
+        return [self.delegate searchBarShouldReturn:self textField:textField];
+    }
+    return true;
+}
+
 #pragma mark - getters and setters
 - (void)setShowBottomShadow:(BOOL)showBottomShadow {
     _showBottomShadow = showBottomShadow;
@@ -433,6 +440,7 @@
         _textField.rightViewMode = UITextFieldViewModeUnlessEditing;
         _textField.tintColor = HDAppTheme.color.C1;
         _textField.delegate = self;
+        _textField.returnKeyType = UIReturnKeySearch;
         [_textField addTarget:self
                        action:@selector(textFieldDidChange:)
              forControlEvents:UIControlEventEditingChanged];

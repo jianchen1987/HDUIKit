@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)searchBarRightButtonClicked:(HDSearchBar *)searchBar;
 - (BOOL)searchBar:(HDSearchBar *)searchBar shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 - (BOOL)searchBarShouldClear:(HDSearchBar *)searchBar;
-
+- (BOOL)searchBarShouldReturn:(HDSearchBar *)searchBar textField:(UITextField *)textField;
 @end
 
 @interface HDSearchBar : UIView
@@ -59,6 +59,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *inputFieldBackgrounColor;
 /// 代理
 @property (nonatomic, weak) id<HDSearchBarDelegate> delegate;
+/// 输入框
+@property (nonatomic, strong, readonly) UITextField *textField;
 
 /// 显示或隐藏左侧按钮
 /// @param showLeftButton 是否显示
@@ -86,6 +88,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param image 图片
 - (void)setRightButtonImage:(UIImage *)image;
 
+/// 获取输入框内容
 - (NSString *)getText;
 
 /// 禁用输入框

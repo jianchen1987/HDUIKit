@@ -37,6 +37,7 @@
 		959AE722240F3CDC00D3E3AE /* HDBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */; };
 		959AE725240F3D2400D3E3AE /* HDCodeGeneratorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */; };
 		95A3014224A5D6D400BAD586 /* HDToastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A3014124A5D6D400BAD586 /* HDToastViewController.m */; };
+		95B1036024FF2BD300145C22 /* HDSearchBarExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B1035F24FF2BD300145C22 /* HDSearchBarExampleViewController.m */; };
 		95C1CDED2483C7DF0042634E /* HDCategoryTitleExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDEC2483C7DF0042634E /* HDCategoryTitleExampleViewController.m */; };
 		95C1CDF12483C88C0042634E /* HDOrderListChildViewControllerConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDF02483C88C0042634E /* HDOrderListChildViewControllerConfig.m */; };
 		95C1CDF42483C9440042634E /* HDCategoryContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C1CDF32483C9440042634E /* HDCategoryContentViewController.m */; };
@@ -108,6 +109,8 @@
 		959AE724240F3D2400D3E3AE /* HDCodeGeneratorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCodeGeneratorViewController.m; sourceTree = "<group>"; };
 		95A3014024A5D6D400BAD586 /* HDToastViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDToastViewController.h; sourceTree = "<group>"; };
 		95A3014124A5D6D400BAD586 /* HDToastViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDToastViewController.m; sourceTree = "<group>"; };
+		95B1035E24FF2BD300145C22 /* HDSearchBarExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDSearchBarExampleViewController.h; sourceTree = "<group>"; };
+		95B1035F24FF2BD300145C22 /* HDSearchBarExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDSearchBarExampleViewController.m; sourceTree = "<group>"; };
 		95C1CDEB2483C7DF0042634E /* HDCategoryTitleExampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDCategoryTitleExampleViewController.h; sourceTree = "<group>"; };
 		95C1CDEC2483C7DF0042634E /* HDCategoryTitleExampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HDCategoryTitleExampleViewController.m; sourceTree = "<group>"; };
 		95C1CDEF2483C88C0042634E /* HDOrderListChildViewControllerConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HDOrderListChildViewControllerConfig.h; sourceTree = "<group>"; };
@@ -285,6 +288,8 @@
 				959AE6E4240E04D600D3E3AE /* BarQRCode */,
 				959AE720240F3CDC00D3E3AE /* HDBaseViewController.h */,
 				959AE721240F3CDC00D3E3AE /* HDBaseViewController.m */,
+				95B1035E24FF2BD300145C22 /* HDSearchBarExampleViewController.h */,
+				95B1035F24FF2BD300145C22 /* HDSearchBarExampleViewController.m */,
 				95676375241A1E2300374171 /* HDFlowLayoutViewController.h */,
 				95676376241A1E2300374171 /* HDFlowLayoutViewController.m */,
 				95676378241A1E7800374171 /* HDProgressViewViewController.h */,
@@ -583,6 +588,7 @@
 				9567637A241A1E7800374171 /* HDProgressViewViewController.m in Sources */,
 				95C1CDF12483C88C0042634E /* HDOrderListChildViewControllerConfig.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				95B1036024FF2BD300145C22 /* HDSearchBarExampleViewController.m in Sources */,
 				9533F5D6241CB44300BD0741 /* HDStarRatingViewController.m in Sources */,
 				95C1CDF42483C9440042634E /* HDCategoryContentViewController.m in Sources */,
 			);
