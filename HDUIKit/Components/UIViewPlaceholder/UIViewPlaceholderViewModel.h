@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void (^ClickOnRefreshButton)(void);
 
 @interface UIViewPlaceholderViewModel : NSObject
+@property (nonatomic, strong) UIColor *backgroundColor;                        ///< 背景色
 @property (nonatomic, copy) NSString *title;                                   ///< 标题
 @property (nonatomic, strong) UIFont *titleFont;                               ///< 标题字体
 @property (nonatomic, strong) UIColor *titleColor;                             ///< 标题颜色

@@ -22,6 +22,7 @@
 
 #pragma mark - life cycle
 - (void)commonInit {
+    self.backgroundColor = self.model.backgroundColor;
     if (!self.placeholderImageV) {
         self.placeholderImageV = [[UIImageView alloc] init];
         [self addSubview:self.placeholderImageV];

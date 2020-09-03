@@ -14,6 +14,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
+        self.backgroundColor = nil;
         self.scaleImage = NO;
         self.image = @"placeholder_no_data_coupon";
         self.title = @"暂无数据";
