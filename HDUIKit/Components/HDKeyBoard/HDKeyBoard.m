@@ -12,8 +12,9 @@
 #import "HDFrameLayout.h"
 #import "HDUIButton.h"
 #import "NSBundle+HDUIKit.h"
-#import "NSString+HD_Size.h"
-#import "UIView+HD_Extension.h"
+#import <HDKitCore/NSString+HD_Size.h>
+#import <HDKitCore/UIImage+HDKitCore.h>
+#import <HDKitCore/UIView+HD_Extension.h>
 
 #define kHDKeyBoardHeight (kScreenWidth * (240 / 375.f) + kiPhoneXSeriesSafeBottomHeight)
 
@@ -561,7 +562,8 @@
     self.isCapital = button.isSelected;
     NSBundle *bundle = [NSBundle hd_UIKitKeyboardResources];
     if (button.isSelected) {
-        [button setImage:[UIImage imageNamed:self.theme.shiftButtonSelectedImage inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+        UIImage *originalImage = [UIImage imageNamed:self.theme.shiftButtonSelectedImage inBundle:bundle compatibleWithTraitCollection:nil];
+        [button setImage:[originalImage hd_imageWithTintColor:HDAppTheme.color.C1] forState:UIControlStateNormal];
     } else {
         [button setImage:[UIImage imageNamed:self.theme.shiftButtonImage inBundle:bundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     }
