@@ -233,6 +233,7 @@
     _textField.delegate = self;
     _textField.keyboardType = _config.keyboardType;
     _textField.secureTextEntry = _config.secureTextEntry;
+    _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 
     if (_config.clearButtonImage) {
         UIButton *clearBtn = [_textField valueForKey:@"_clearButton"];
@@ -284,16 +285,18 @@
     CGFloat constVMargin = self.config.marginFloatingLabelToTextField + (self.isBottomLineFocusing ? self.config.bottomLineSelectedHeight : self.config.bottomLineNormalHeight) + self.config.marginBottomLineToTextField;
 
     if (_floatingLabel) {
+        CGFloat floatingStirngHeight = [@"占位文本" boundingAllRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) font:self.config.floatingLabelFont].height;
         [_floatingLabel setContentHuggingPriority:UILayoutPriorityRequired forAxis:UILayoutConstraintAxisVertical];
         [_floatingLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.right.top.equalTo(self);
+            make.height.mas_equalTo(floor(floatingStirngHeight));
         }];
     }
 
     [_downPartContainer mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
         make.top.equalTo(self.floatingLabel.mas_bottom).offset(self.config.marginFloatingLabelToTextField);
-        make.bottom.equalTo(self).offset(-constVMargin + self.config.marginFloatingLabelToTextField);
+        make.bottom.equalTo(self).offset(-self.config.marginBottomLineToTextField);
     }];
 
     if (_leftLabel) {
