@@ -13,6 +13,7 @@
 static CGFloat const kStarViewTop = 0;
 
 @interface HDRatingStarView ()
+@property (nonatomic, strong) CAGradientLayer *gradientLayer;
 @property (nonatomic, strong) CAShapeLayer *foreGroundLayer;
 @property (nonatomic, strong) UIView *starContainer;  ///< 星星容器
 @property (nonatomic, strong) NSMutableArray<HDStarView *> *allStarViews;
@@ -25,13 +26,14 @@ static CGFloat const kStarViewTop = 0;
     [self addSubview:self.starContainer];
     self.starContainer.userInteractionEnabled = false;
     [self.layer addSublayer:self.foreGroundLayer];
+    [self.foreGroundLayer addSublayer:self.gradientLayer];
 
     self.starNum = 5;
     self.itemMargin = 2;
     self.countForOneStar = 2;
     self.fullScore = 5;
     self.starWidth = 35;
-    self.renderColor = UIColor.blueColor;
+    self.renderColors = @[UIColor.blueColor];
     self.defaultColor = [UIColor hd_colorWithHexString:@"e4e5ea"];
     self.allowTouchToSelectScore = true;
     self.shouldFixScore = false;
@@ -71,10 +73,20 @@ static CGFloat const kStarViewTop = 0;
     [self setNeedsLayout];
 }
 
-- (void)setRenderColor:(UIColor *)renderColor {
-    _renderColor = renderColor;
-
-    self.foreGroundLayer.strokeColor = self.renderColor.CGColor;
+- (void)setRenderColors:(NSArray<UIColor *> *)renderColors {
+    _renderColors = renderColors;
+    
+    if (renderColors.count <= 1) {
+        self.gradientLayer.hidden = true;
+        self.foreGroundLayer.strokeColor = self.renderColors.firstObject.CGColor;
+    } else {
+        self.gradientLayer.hidden = false;
+        NSMutableArray *cgColors = [NSMutableArray array];
+        for (UIColor *color in renderColors) {
+            [cgColors addObject:(__bridge id)color.CGColor];
+        }
+        self.gradientLayer.colors = cgColors;
+    }
 }
 
 - (void)setDefaultColor:(UIColor *)defaultColor {
@@ -273,6 +285,7 @@ static CGFloat const kStarViewTop = 0;
 /* 更新图层渲染终点 */
 - (void)updateForeGroundLayerWithPoint:(CGPoint)point {
     self.foreGroundLayer.strokeEnd = point.x / CGRectGetWidth(self.starContainer.bounds);
+    self.gradientLayer.frame = CGRectMake(0, 0, point.x, self.bounds.size.height);
 }
 
 #pragma mark - lazy load
@@ -283,6 +296,13 @@ static CGFloat const kStarViewTop = 0;
         _foreGroundLayer.mask = self.starContainer.layer;
     }
     return _foreGroundLayer;
+}
+
+- (CAGradientLayer *)gradientLayer {
+    if (!_gradientLayer) {
+        _gradientLayer = [[CAGradientLayer alloc] init];
+    }
+    return _gradientLayer;
 }
 
 - (UIView *)starContainer {

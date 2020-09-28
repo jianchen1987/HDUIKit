@@ -44,7 +44,28 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 /// @param confirmButtonHandler 确认回调
 /// @param cancelButtonTitle 取消标题
 /// @param cancelButtonHandler 取消回调
-+ (HDAlertView *_Nonnull)showAlertWithMessage:(NSString *_Nullable)message confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler;
++ (HDAlertView *_Nonnull)showAlertWithMessage:(NSString *_Nullable)message
+                           confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle
+                         confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler
+                            cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle
+                          cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler;
+
+
+/// 弹出提示框，确认按钮在右边
+/// @param message 信息
+/// @param confirmButtonTitle 确认标题
+/// @param confirmButtonColor 确认标题颜色
+/// @param confirmButtonHandler 确认回调
+/// @param cancelButtonTitle 取消标题
+/// @param cancelButtonColor 取消标题颜色
+/// @param cancelButtonHandler 取消回调
++ (HDAlertView *_Nonnull)showAlertWithMessage:(NSString *_Nullable)message
+                           confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle
+                           confirmButtonColor:(UIColor *_Nullable)confirmButtonColor
+                         confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler
+                            cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle
+                            cancelButtonColor:(UIColor *_Nullable)cancelButtonColor
+                          cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler;
 
 /// 弹出提示框，确认按钮在右边
 /// @param title 标题
@@ -53,7 +74,30 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 /// @param confirmButtonHandler 确认回调
 /// @param cancelButtonTitle 取消标题
 /// @param cancelButtonHandler 取消回调
-+ (HDAlertView *)showAlertWithTitle:(NSString *_Nullable)title message:(NSString *_Nullable)message confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler;
++ (HDAlertView *)showAlertWithTitle:(NSString *_Nullable)title
+                            message:(NSString *_Nullable)message
+                 confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle
+               confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler
+                  cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle
+                cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler;
+
+/// 弹出提示框，确认按钮在右边
+/// @param title 标题
+/// @param message 信息
+/// @param confirmButtonTitle 确认标题
+/// @param confirmButtonColor 确认标题颜色
+/// @param confirmButtonHandler 确认回调
+/// @param cancelButtonTitle 取消标题
+/// @param cancelButtonColor 取消标题颜色
+/// @param cancelButtonHandler 取消回调
++ (HDAlertView *)showAlertWithTitle:(NSString *_Nullable)title
+                            message:(NSString *_Nullable)message
+                 confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle
+                 confirmButtonColor:(UIColor *_Nullable)confirmButtonColor
+               confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler
+                  cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle
+                  cancelButtonColor:(UIColor *_Nullable)cancelButtonColor
+                cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler;
 
 /// 弹出提示框，确认按钮在右边
 /// @param message 信息
@@ -62,7 +106,30 @@ typedef NS_ENUM(NSInteger, NATAlertButtonLayoutType) {
 /// @param cancelButtonTitle 取消标题
 /// @param cancelButtonHandler 取消回调
 /// @param layoutType 操作按钮布局类型
-+ (HDAlertView *)showAlertWithMessage:(NSString *_Nullable)message confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType;
++ (HDAlertView *)showAlertWithMessage:(NSString *_Nullable)message
+                   confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle
+                 confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler
+                    cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle
+                  cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler
+                           layoutType:(NATAlertButtonLayoutType)layoutType;
+
+/// 弹出提示框，确认按钮在右边
+/// @param message 信息
+/// @param confirmButtonTitle 确认标题
+/// @param confirmButtonColor 确认标题颜色
+/// @param confirmButtonHandler 确认回调
+/// @param cancelButtonTitle 取消标题
+/// @param cancelButtonColor 取消标题颜色 
+/// @param cancelButtonHandler 取消回调
+/// @param layoutType 操作按钮布局类型
++ (HDAlertView *)showAlertWithMessage:(NSString *_Nullable)message
+                   confirmButtonTitle:(NSString *_Nullable)confirmButtonTitle
+                   confirmButtonColor:(UIColor *_Nullable)confirmButtonColor
+                 confirmButtonHandler:(HDAlertViewButtonHandler _Nullable)confirmButtonHandler
+                    cancelButtonTitle:(NSString *_Nullable)cancelButtonTitle
+                    cancelButtonColor:(UIColor *_Nullable)cancelButtonColor
+                  cancelButtonHandler:(HDAlertViewButtonHandler _Nullable)cancelButtonHandler
+                           layoutType:(NATAlertButtonLayoutType)layoutType;
 
 /**
  弹出提示框

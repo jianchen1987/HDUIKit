@@ -40,8 +40,8 @@ NS_ASSUME_NONNULL_BEGIN
 /* 选择分数回调 */
 @property (nonatomic, copy) void (^selectScoreHandler)(CGFloat score);
 
-/** 星星渲染颜色 */
-@property (nonatomic, strong) UIColor *renderColor;
+/** 星星渲染颜色(渐变色数组) */
+@property (nonatomic, strong) NSArray<UIColor *> *renderColors;
 
 /** 星星默认颜色 */
 @property (nonatomic, strong) UIColor *defaultColor;

@@ -20,29 +20,138 @@
     return toast;
 }
 
-+ (HDAlertView *)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
++ (HDAlertView *)showAlertWithMessage:(NSString *)message
+                   confirmButtonTitle:(NSString *)confirmButtonTitle
+                 confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler
+                    cancelButtonTitle:(NSString *)cancelButtonTitle
+                  cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
 
-    return [self showAlertWithTitle:nil message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
+    return [self showAlertWithTitle:nil
+                            message:message
+                 confirmButtonTitle:confirmButtonTitle
+                 confirmButtonColor:nil
+               confirmButtonHandler:confirmButtonHandler
+                  cancelButtonTitle:cancelButtonTitle
+                  cancelButtonColor:nil
+                cancelButtonHandler:cancelButtonHandler
+                         layoutType:NATAlertButtonLayoutTypeRightConfirm];
 }
 
-+ (HDAlertView *)showAlertWithMessage:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType {
-    return [self showAlertWithTitle:nil message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:layoutType];
++ (HDAlertView *)showAlertWithMessage:(NSString *)message
+                   confirmButtonTitle:(NSString *)confirmButtonTitle
+                   confirmButtonColor:(UIColor *)confirmButtonColor
+                 confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler
+                    cancelButtonTitle:(NSString *)cancelButtonTitle
+                    cancelButtonColor:(UIColor *)cancelButtonColor
+                  cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
+
+    return [self showAlertWithTitle:nil
+                            message:message
+                 confirmButtonTitle:confirmButtonTitle
+                 confirmButtonColor:confirmButtonColor
+               confirmButtonHandler:confirmButtonHandler
+                  cancelButtonTitle:cancelButtonTitle
+                  cancelButtonColor:cancelButtonColor
+                cancelButtonHandler:cancelButtonHandler
+                         layoutType:NATAlertButtonLayoutTypeRightConfirm];
 }
 
-+ (HDAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
-
-    return [self showAlertWithTitle:title message:message confirmButtonTitle:confirmButtonTitle confirmButtonHandler:confirmButtonHandler cancelButtonTitle:cancelButtonTitle cancelButtonHandler:cancelButtonHandler layoutType:NATAlertButtonLayoutTypeRightConfirm];
++ (HDAlertView *)showAlertWithMessage:(NSString *)message
+                   confirmButtonTitle:(NSString *)confirmButtonTitle
+                 confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler
+                    cancelButtonTitle:(NSString *)cancelButtonTitle
+                  cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler
+                           layoutType:(NATAlertButtonLayoutType)layoutType {
+    
+    return [self showAlertWithTitle:nil
+                            message:message
+                 confirmButtonTitle:confirmButtonTitle
+                 confirmButtonColor:nil
+               confirmButtonHandler:confirmButtonHandler
+                  cancelButtonTitle:cancelButtonTitle
+                  cancelButtonColor:nil
+                cancelButtonHandler:cancelButtonHandler
+                         layoutType:layoutType];
 }
 
-+ (HDAlertView *)showAlertWithTitle:(NSString *)title message:(NSString *)message confirmButtonTitle:(NSString *)confirmButtonTitle confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler cancelButtonTitle:(NSString *)cancelButtonTitle cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler layoutType:(NATAlertButtonLayoutType)layoutType {
++ (HDAlertView *)showAlertWithMessage:(NSString *)message
+                   confirmButtonTitle:(NSString *)confirmButtonTitle
+                   confirmButtonColor:(UIColor *)confirmButtonColor
+                 confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler
+                    cancelButtonTitle:(NSString *)cancelButtonTitle
+                    cancelButtonColor:(UIColor *)cancelButtonColor
+                  cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler
+                           layoutType:(NATAlertButtonLayoutType)layoutType {
+    
+    return [self showAlertWithTitle:nil
+                            message:message
+                 confirmButtonTitle:confirmButtonTitle
+                 confirmButtonColor:confirmButtonColor
+               confirmButtonHandler:confirmButtonHandler
+                  cancelButtonTitle:cancelButtonTitle
+                  cancelButtonColor:cancelButtonColor
+                cancelButtonHandler:cancelButtonHandler
+                         layoutType:layoutType];
+}
+
++ (HDAlertView *)showAlertWithTitle:(NSString *)title
+                            message:(NSString *)message
+                 confirmButtonTitle:(NSString *)confirmButtonTitle
+               confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler
+                  cancelButtonTitle:(NSString *)cancelButtonTitle
+                cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
+
+    return [self showAlertWithTitle:title
+                            message:message
+                 confirmButtonTitle:confirmButtonTitle
+                 confirmButtonColor:nil
+               confirmButtonHandler:confirmButtonHandler
+                  cancelButtonTitle:cancelButtonTitle
+                  cancelButtonColor:nil
+                cancelButtonHandler:cancelButtonHandler
+                         layoutType:NATAlertButtonLayoutTypeRightConfirm];
+}
+
++ (HDAlertView *)showAlertWithTitle:(NSString *)title
+                            message:(NSString *)message
+                 confirmButtonTitle:(NSString *)confirmButtonTitle
+                 confirmButtonColor:(UIColor *)confirmButtonColor
+               confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler
+                  cancelButtonTitle:(NSString *)cancelButtonTitle
+                  cancelButtonColor:(UIColor *)cancelButtonColor
+                cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler {
+
+    return [self showAlertWithTitle:title
+                            message:message
+                 confirmButtonTitle:confirmButtonTitle
+                 confirmButtonColor:confirmButtonColor
+               confirmButtonHandler:confirmButtonHandler
+                  cancelButtonTitle:cancelButtonTitle
+                  cancelButtonColor:cancelButtonColor
+                cancelButtonHandler:cancelButtonHandler
+                         layoutType:NATAlertButtonLayoutTypeRightConfirm];
+}
+
++ (HDAlertView *)showAlertWithTitle:(NSString *)title
+                            message:(NSString *)message
+                 confirmButtonTitle:(NSString *)confirmButtonTitle
+                 confirmButtonColor:(UIColor *)confirmButtonColor
+               confirmButtonHandler:(HDAlertViewButtonHandler)confirmButtonHandler
+                  cancelButtonTitle:(NSString *)cancelButtonTitle
+                  cancelButtonColor:(UIColor *)cancelButtonColor
+                cancelButtonHandler:(HDAlertViewButtonHandler)cancelButtonHandler
+                         layoutType:(NATAlertButtonLayoutType)layoutType {
 
     HDAlertView *alertView = [HDAlertView alertViewWithTitle:title message:message config:nil];
     alertView.identitableString = message;
 
     BOOL isRight = layoutType == NATAlertButtonLayoutTypeRightConfirm;
 
-    HDAlertViewButton *confirmButton = confirmButton = [HDAlertViewButton buttonWithTitle:confirmButtonTitle type:HDAlertViewButtonTypeCustom handler:confirmButtonHandler];
-
+    HDAlertViewButton *confirmButton = [HDAlertViewButton buttonWithTitle:confirmButtonTitle type:HDAlertViewButtonTypeCustom handler:confirmButtonHandler];
+    if (confirmButtonColor) {
+        [confirmButton setTitleColor:confirmButtonColor forState:UIControlStateNormal];
+    }
+    
     cancelButtonTitle = cancelButtonTitle ?: @"取消";
     HDAlertViewButton *cancelButton = [HDAlertViewButton buttonWithTitle:cancelButtonTitle
                                                                     type:HDAlertViewButtonTypeCancel
@@ -53,6 +162,10 @@
                                                                          [alertView dismiss];
                                                                      }
                                                                  }];
+    if (cancelButtonColor) {
+        [cancelButton setTitleColor:cancelButtonColor forState:UIControlStateNormal];
+    }
+    
     if (isRight) {
         [alertView addButtons:@[cancelButton, confirmButton]];
     } else {
