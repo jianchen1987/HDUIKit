@@ -37,6 +37,7 @@
         self.topLineColor = HDAppTheme.color.G4;
         self.closeImage = [UIImage imageNamed:@"close" inBundle:[NSBundle hd_UIKitCustomViewActionViewResources] compatibleWithTraitCollection:nil];
         self.iPhoneXFillViewBgColor = HDAppTheme.color.normalBackground;
+        self.textAlignment = HDCustomViewActionViewTextAlignmentLeft;
     }
     return self;
 }

@@ -134,7 +134,11 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
 
     if (!self.titleLabel.isHidden) {
         [self.titleLabel hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
-            make.left.hd_equalTo(self.config.containerViewEdgeInsets.left);
+            if (self.config.textAlignment == HDCustomViewActionViewTextAlignmentCenter) {
+                make.centerX.hd_equalTo(self.centerX);
+            } else {
+                make.left.hd_equalTo(self.config.containerViewEdgeInsets.left);
+            }
             make.top.hd_equalTo(self.config.containerViewEdgeInsets.top);
             make.size.hd_equalTo(self.titleLBSize);
         }];
