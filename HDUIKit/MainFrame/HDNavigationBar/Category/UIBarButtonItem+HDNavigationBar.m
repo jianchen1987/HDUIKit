@@ -37,11 +37,17 @@
     if (highLightImage) {
         [button setImage:highLightImage forState:UIControlStateHighlighted];
     }
+    
+    UIEdgeInsets contentEdgeInsets = UIEdgeInsetsMake(11, 3, 11, 10);
+    button.contentEdgeInsets = contentEdgeInsets;
+    
     [button sizeToFit];
     [button addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
-
+    
     if (button.bounds.size.width < 44.0f) {
-        button.bounds = CGRectMake(0, 0, 44.0f, 44.0f);
+        contentEdgeInsets.right = contentEdgeInsets.right + (44.0f - button.bounds.size.width);
+        button.contentEdgeInsets = contentEdgeInsets;
+        [button sizeToFit];
     }
 
     return [[self alloc] initWithCustomView:button];
