@@ -17,6 +17,7 @@
     if (self) {
         self.titleColor = HDAppTheme.color.G1;
         self.titleFont = HDAppTheme.font.standard3;
+        self.titleNumberOfLines = 1;
         self.backgroundColor = UIColor.whiteColor;
         self.marginToBottom = -1;
         self.rightButtonTitleColor = HDAppTheme.color.G3;

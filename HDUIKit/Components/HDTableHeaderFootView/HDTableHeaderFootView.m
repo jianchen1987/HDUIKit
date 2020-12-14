@@ -225,7 +225,8 @@
     if (model.image) {
         _imageView.image = model.image;
     }
-
+    
+    _titleLabel.numberOfLines = model.titleNumberOfLines;
     if (model.title.length > 0) {
         _titleLabel.text = model.title;
         _titleLabel.font = model.titleFont;
