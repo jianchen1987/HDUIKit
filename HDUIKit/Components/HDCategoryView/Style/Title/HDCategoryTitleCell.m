@@ -20,6 +20,9 @@
 @property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterX;
 @property (nonatomic, strong) NSLayoutConstraint *titleLabelCenterY;
 @property (nonatomic, strong) NSLayoutConstraint *maskTitleLabelCenterX;
+
+@property (nonatomic, strong) NSLayoutConstraint *titleLabelLeft;
+@property (nonatomic, strong) NSLayoutConstraint *titleLabelRight;
 @end
 
 @implementation HDCategoryTitleCell
@@ -33,10 +36,8 @@
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
     [self.contentView addSubview:self.titleLabel];
     
-    NSLayoutConstraint *titleLabelLeft = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
-    NSLayoutConstraint *titleLabelRight = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
-    titleLabelLeft.active = YES;
-    titleLabelRight.active = YES;
+    self.titleLabelLeft = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+    self.titleLabelRight = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationLessThanOrEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
 
     self.titleLabelCenterX = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterX multiplier:1 constant:0];
     self.titleLabelCenterY = [NSLayoutConstraint constraintWithItem:self.titleLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
@@ -123,6 +124,9 @@
             self.titleLabel.transform = currentTransform;
             self.maskTitleLabel.transform = currentTransform;
         }
+        // 自适应字体取消左右约束，titleLabel会比cell宽
+        self.titleLabelLeft.active = NO;
+        self.titleLabelRight.active = NO;
     } else {
         if (myCellModel.isSelected) {
             self.titleLabel.font = myCellModel.titleSelectedFont;
@@ -131,6 +135,9 @@
             self.titleLabel.font = myCellModel.titleFont;
             self.maskTitleLabel.font = myCellModel.titleFont;
         }
+        // 约束titleLabel宽度不超过cell宽度
+        self.titleLabelLeft.active = YES;
+        self.titleLabelRight.active = YES;
     }
 
     NSString *titleString = myCellModel.title ? myCellModel.title : @"";

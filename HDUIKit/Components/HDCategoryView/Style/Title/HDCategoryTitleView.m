@@ -129,7 +129,8 @@
         if (self.titleDataSource && [self.titleDataSource respondsToSelector:@selector(categoryTitleView:widthForTitle:)]) {
             return [self.titleDataSource categoryTitleView:self widthForTitle:self.titles[index]];
         } else {
-            return ceilf([self.titles[index] boundingRectWithSize:CGSizeMake(MAXFLOAT, self.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: self.titleFont} context:nil].size.width);
+            UIFont *font = self.selectedIndex == index ? self.titleSelectedFont : self.titleFont;
+            return ceilf([self.titles[index] boundingRectWithSize:CGSizeMake(MAXFLOAT, self.bounds.size.height) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName: font} context:nil].size.width);
         }
     } else {
         return self.cellWidth;

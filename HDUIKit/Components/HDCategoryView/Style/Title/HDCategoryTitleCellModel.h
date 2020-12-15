@@ -27,7 +27,7 @@
 @property (nonatomic, strong) UIFont *titleSelectedFont;
 /// mask 启用与否
 @property (nonatomic, assign, getter=isTitleLabelMaskEnabled) BOOL titleLabelMaskEnabled;
-/// 缩放 启用与否
+/// 缩放 启用与否（启用后无法限制标题宽度）
 @property (nonatomic, assign, getter=isTitleLabelZoomEnabled) BOOL titleLabelZoomEnabled;
 /// 标题默认状态缩放系数
 @property (nonatomic, assign) CGFloat titleLabelNormalZoomScale;
