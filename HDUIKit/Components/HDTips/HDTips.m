@@ -247,10 +247,6 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
     } else if (delay > 0) {
         [self hideAnimated:YES afterDelay:delay];
     }
-    // 添加双击手势移除
-    UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tappedHud:)];
-    recognizer.numberOfTapsRequired = 2;
-    [self addGestureRecognizer:recognizer];
 }
 
 #pragma mark - event response
