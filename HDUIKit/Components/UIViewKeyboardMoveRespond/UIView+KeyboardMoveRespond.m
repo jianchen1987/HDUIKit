@@ -97,7 +97,7 @@
         }
     }
 
-    BOOL isVCActive = self.viewController.hd_isViewLoadedAndVisible && self.viewController.isLastVCInNavController;
+    BOOL isVCActive = self.viewController.hd_isViewLoadedAndVisible && (!self.viewController.navigationController || self.viewController.isLastVCInNavController);
     if (isVCActive && minus > 0) {  // 遮住了当前输入框
         hd_dispatch_main_async_safe(^{
             [UIView animateWithDuration:duration
@@ -130,7 +130,7 @@
 
     CGFloat minus = self.hd_distance;
 
-    BOOL isVCActive = self.viewController.hd_isViewLoadedAndVisible && self.viewController.isLastVCInNavController;
+    BOOL isVCActive = self.viewController.hd_isViewLoadedAndVisible && (!self.viewController.navigationController || self.viewController.isLastVCInNavController);
     if (isVCActive && minus > 0) {  // 遮住了当前输入框
         hd_dispatch_main_async_safe(^{
             [UIView animateWithDuration:duration
