@@ -26,7 +26,7 @@
 #pragma mark - life cycle
 - (void)commonInit {
 
-    self.contentView.backgroundColor = UIColor.whiteColor;
+    self.contentView.backgroundColor = UIColor.clearColor;
 
     _containerView = [[UIView alloc] init];
     [self.contentView addSubview:_containerView];
@@ -35,7 +35,7 @@
     [self.contentView addSubview:_logoIV];
 
     _titleLB = [[UILabel alloc] init];
-    _titleLB.font = HDAppTheme.font.standard3;
+    _titleLB.font = HDAppTheme.font.standard4;
     _titleLB.adjustsFontSizeToFitWidth = true;
     _titleLB.minimumScaleFactor = 0.7;
     _titleLB.textColor = HDAppTheme.color.G2;
