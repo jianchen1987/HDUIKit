@@ -24,7 +24,6 @@
         self.buttonHeight = kRealWidth(45);
         self.containerCorner = 10;
         self.minimumLineSpacing = 0;
-        self.collectionCellCol = 4;
         self.cellHeightToWidthRadio = 1.0;
     }
     return self;

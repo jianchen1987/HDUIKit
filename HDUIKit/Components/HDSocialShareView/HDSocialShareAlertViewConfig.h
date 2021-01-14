@@ -21,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat buttonHeight;                  ///< 按钮高度
 @property (nonatomic, assign) CGFloat containerCorner;               ///< 容器圆角
 @property (nonatomic, assign) CGFloat minimumLineSpacing;            ///< 行间距
-@property (nonatomic, assign) NSInteger collectionCellCol;           ///< 列数
 @property (nonatomic, assign) float cellHeightToWidthRadio;          ///< cell 高宽比
 @end
 

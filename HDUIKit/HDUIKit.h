@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.5.11";
+static NSString *const HDUIKit_VERSION = @"1.5.12";
 
 #if __has_include("HDKeyboardManager.h")
 #import "HDKeyboardManager.h"
