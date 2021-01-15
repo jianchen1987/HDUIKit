@@ -8,10 +8,10 @@
 
 #import "HDCodeGenerator.h"
 
-static NSString *const HDInputCorrectionLevelL = @"L";  //!< L: 7%
-static NSString *const HDInputCorrectionLevelM = @"M";  //!< M: 15%
-static NSString *const HDInputCorrectionLevelQ = @"Q";  //!< Q: 25%
-static NSString *const HDInputCorrectionLevelH = @"H";  //!< H: 30%
+HDInputCorrectionLevel const HDInputCorrectionLevelL = @"L";  //!< L: 7%
+HDInputCorrectionLevel const HDInputCorrectionLevelM = @"M";  //!< M: 15%
+HDInputCorrectionLevel const HDInputCorrectionLevelQ = @"Q";  //!< Q: 25%
+HDInputCorrectionLevel const HDInputCorrectionLevelH = @"H";  //!< H: 30%
 
 @implementation HDCodeGenerator
 + (UIImage *)barCodeImageForStr:(NSString *)code size:(CGSize)size {
@@ -30,12 +30,15 @@ static NSString *const HDInputCorrectionLevelH = @"H";  //!< H: 30%
 }
 
 + (UIImage *)qrCodeImageForStr:(NSString *)code size:(CGSize)size {
+    return [self qrCodeImageForStr:code size:size level:HDInputCorrectionLevelH];
+}
 
++ (UIImage *)qrCodeImageForStr:(NSString *)code size:(CGSize)size level:(HDInputCorrectionLevel)level {
     NSData *codeData = [code dataUsingEncoding:NSUTF8StringEncoding];
     // 使用CIQRCodeGenerator创建filter
     CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"
                             withInputParameters:@{@"inputMessage": codeData,
-                                                  @"inputCorrectionLevel": HDInputCorrectionLevelH}];
+                                                  @"inputCorrectionLevel": level}];
     // 由filter.outputImage直接转成的UIImage不太清楚，需要做高清处理
     UIImage *codeImage = [self scaleImage:filter.outputImage toSize:size];
 
@@ -51,7 +54,11 @@ static NSString *const HDInputCorrectionLevelH = @"H";  //!< H: 30%
 }
 
 + (UIImage *)qrCodeImageForStr:(NSString *)code size:(CGSize)size logoImage:(UIImage *)logo logoSize:(CGSize)logoSize logoMargin:(CGFloat)logoMargin {
-    UIImage *qrcode = [self qrCodeImageForStr:code size:size];
+    return [self qrCodeImageForStr:code size:size logoImage:logo logoSize:logoSize logoMargin:logoMargin level:HDInputCorrectionLevelH];
+}
+
++ (UIImage *)qrCodeImageForStr:(NSString *)code size:(CGSize)size logoImage:(UIImage *)logo logoSize:(CGSize)logoSize logoMargin:(CGFloat)logoMargin level:(HDInputCorrectionLevel)level {
+    UIImage *qrcode = [self qrCodeImageForStr:code size:size level:HDInputCorrectionLevelH];
     UIImage *image = [self combinateCodeImage:qrcode withLogo:logo logoSize:logoSize logoMargin:logoMargin];
     return image;
 }
