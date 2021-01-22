@@ -18,8 +18,6 @@
 @interface HDSocialShareAlertView () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UIView *iphoneXSeriousSafeAreaFillView;       ///< iPhoneX 系列底部填充
 @property (nonatomic, strong) UILabel *titleLB;                             ///< 标题
-@property (nonatomic, strong) UIView *titleLeftLine;                        ///< 标题左边线
-@property (nonatomic, strong) UIView *titleRightLine;                       ///< 标题右边线
 @property (nonatomic, strong) UICollectionView *shareCollectionView;        ///< 分享渠道容器
 @property (nonatomic, strong) UICollectionView *functionCollectionView;     ///< 功能按钮容器
 @property (nonatomic, strong) UIButton *cancelButton;                       ///< 取消按钮
@@ -110,8 +108,6 @@
 
     if (HDIsStringNotEmpty(_title)) {
         [self.containerView addSubview:self.titleLB];
-        [self.containerView addSubview:self.titleLeftLine];
-        [self.containerView addSubview:self.titleRightLine];
     }
 
     if (_shareData.count > 0) {
@@ -138,20 +134,7 @@
 
     CGFloat maxY = self.config.contentViewEdgeInsets.top;
     if (_titleLB) {
-        self.titleLB.frame = (CGRect){0, maxY, [self titleLBSize]};
-        self.titleLB.center = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.titleLB.frame));
-        
-        CGFloat titleLeftLineX = self.config.contentViewEdgeInsets.left + 10;
-        CGFloat titleLeftLineW = CGRectGetMinX(self.titleLB.frame) - 20 - titleLeftLineX;
-        self.titleLeftLine.frame = (CGRect){titleLeftLineX, 0, titleLeftLineW, 1};
-        
-        CGFloat titleRightLineX = CGRectGetMaxX(self.titleLB.frame) + 20;
-        CGFloat titleRightLineW = CGRectGetWidth(self.frame) - titleRightLineX - self.config.contentViewEdgeInsets.right - 10;
-        self.titleRightLine.frame = (CGRect){titleRightLineX, 0, titleRightLineW, 1};
-        
-        self.titleLeftLine.center = CGPointMake(CGRectGetMidX(self.titleLeftLine.frame), CGRectGetMidY(self.titleLB.frame));
-        self.titleRightLine.center = CGPointMake(CGRectGetMidX(self.titleRightLine.frame), CGRectGetMidY(self.titleLB.frame));
-        
+        self.titleLB.frame = (CGRect){self.config.contentViewEdgeInsets.left, maxY, [self titleLBSize]};
         maxY = CGRectGetMaxY(self.titleLB.frame);
     }
 
@@ -321,22 +304,6 @@
         _iphoneXSeriousSafeAreaFillView.backgroundColor = self.config.cancelButtonBackgroundColor;
     }
     return _iphoneXSeriousSafeAreaFillView;
-}
-
-- (UIView *)titleLeftLine {
-    if (!_titleLeftLine) {
-        _titleLeftLine = UIView.new;
-        _titleLeftLine.backgroundColor = HexColor(0xD0D0D0);
-    }
-    return _titleLeftLine;
-}
-
-- (UIView *)titleRightLine {
-    if (!_titleRightLine) {
-        _titleRightLine = UIView.new;
-        _titleRightLine.backgroundColor = HexColor(0xD0D0D0);
-    }
-    return _titleRightLine;
 }
 
 @end
