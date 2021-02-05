@@ -130,6 +130,7 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
     self = [super init];
     if (self) {
         self.solidBackgroundColorAlpha = 0.6;
+        self.canBecomeKeyWindow = YES;
     }
     return self;
 }
