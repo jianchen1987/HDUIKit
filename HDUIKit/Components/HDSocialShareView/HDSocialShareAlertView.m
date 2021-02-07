@@ -192,18 +192,23 @@
     HDSocialShareCell *cell = (HDSocialShareCell *)[collectionView cellForItemAtIndexPath:indexPath];
     HDSocialShareCellModel *model = cell.model;
 
-    // cell 回调优先级更高
-    if (model.clickedHandler) {
-        model.clickedHandler(model, indexPath.row);
-    } else {
-        if (collectionView == _shareCollectionView) {
-            !self.clickedShareItemHandler ?: self.clickedShareItemHandler(self, model, indexPath.row);
+    @HDWeakify(self);
+    [self dismissCompletion:^{
+        @HDStrongify(self);
+        // cell 回调优先级更高
+        if (model.clickedHandler) {
+            model.clickedHandler(model, indexPath.row);
         } else {
-            !self.clickedFunctionItemHandler ?: self.clickedFunctionItemHandler(self, model, indexPath.row);
+            if (collectionView == _shareCollectionView) {
+                !self.clickedShareItemHandler ?: self.clickedShareItemHandler(self, model, indexPath.row);
+            } else {
+                !self.clickedFunctionItemHandler ?: self.clickedFunctionItemHandler(self, model, indexPath.row);
+            }
         }
-    }
+    }];
+    
 
-    [self dismiss];
+//    [self dismiss];
 }
 
 #pragma mark - private methods

@@ -45,7 +45,7 @@ static BOOL __shouldFinallyHideBackgroundWindow = true;
 
 - (void)becomeKeyWindow {
     UIWindow *appWindow = [[UIApplication sharedApplication].delegate window];
-    [appWindow makeKeyWindow];
+    [appWindow becomeKeyWindow];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -99,7 +99,7 @@ static BOOL __shouldFinallyHideBackgroundWindow = true;
         [super becomeKeyWindow];
     } else {
         UIWindow *appWindow = [[UIApplication sharedApplication].delegate window];
-        [appWindow makeKeyWindow];
+        [appWindow becomeKeyWindow];
     }
 }
 
@@ -130,7 +130,6 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
     self = [super init];
     if (self) {
         self.solidBackgroundColorAlpha = 0.6;
-        self.canBecomeKeyWindow = YES;
     }
     return self;
 }
@@ -457,7 +456,7 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
     if (!window) {
         window = [UIApplication sharedApplication].windows[0];
     }
-    [window makeKeyAndVisible];
+    [window makeKeyWindow];
     window.hidden = NO;
 }
 
