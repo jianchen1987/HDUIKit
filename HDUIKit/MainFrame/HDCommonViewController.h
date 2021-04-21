@@ -10,10 +10,10 @@
 
 typedef NS_ENUM(NSInteger, HDViewControllerNavigationBarStyle) {
     HDViewControllerNavigationBarStyleWhite = 0,    ///< 白色
-    HDViewControllerNavigationBarStyleTheme,        ///< 主题色
-    HDViewControllerNavigationBarStyleHidden,       ///< 隐藏
-    HDViewControllerNavigationBarStyleTransparent,  ///< 透明的
-    HDViewControllerNavigationBarStyleOther,        ///< 其他，可自定义颜色
+    HDViewControllerNavigationBarStyleTheme = 1,        ///< 主题色
+    HDViewControllerNavigationBarStyleHidden = 2,       ///< 隐藏
+    HDViewControllerNavigationBarStyleTransparent = 3,  ///< 透明的
+    HDViewControllerNavigationBarStyleOther = 4,        ///< 其他，可自定义颜色
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -33,6 +33,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface HDCommonViewController : UIViewController <HDViewControllerNavigationBarStyle>
+
+// 强制刷新导航栏样式
+- (void)forceUpdateNavigationBarStyle;
+
 @end
 
 NS_ASSUME_NONNULL_END

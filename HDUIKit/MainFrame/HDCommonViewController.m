@@ -54,6 +54,11 @@
     self.view.backgroundColor = HDAppTheme.color.G5;
 }
 
+#pragma mark - public methods
+- (void)forceUpdateNavigationBarStyle {
+    [self setupNavigationBarStyle];
+}
+
 #pragma mark - private methods
 - (void)setupNavigationBarStyle {
 
@@ -66,20 +71,24 @@
 
         UIImage *image;
         if (HDViewControllerNavigationBarStyleWhite == style) {
+            self.hd_navigationBar.hidden = false;
             self.hd_navBackgroundColor = UIColor.whiteColor;
             self.hd_navTitleColor = HDAppTheme.color.G1;
             image = [UIImage imageNamed:@"icon_back_black" inBundle:bundle compatibleWithTraitCollection:nil];
         } else if (HDViewControllerNavigationBarStyleTheme == style) {
+            self.hd_navigationBar.hidden = false;
             self.hd_navBackgroundColor = HDAppTheme.color.C1;
             self.hd_navTitleColor = UIColor.whiteColor;
             image = [UIImage imageNamed:@"icon_back_white" inBundle:bundle compatibleWithTraitCollection:nil];
         } else if (HDViewControllerNavigationBarStyleHidden == style) {
             self.hd_navigationBar.hidden = true;
         } else if (HDViewControllerNavigationBarStyleOther == style) {
+            self.hd_navigationBar.hidden = false;
             self.hd_navBackgroundColor = HDAppTheme.color.C1;
             self.hd_navTitleColor = UIColor.whiteColor;
             image = [UIImage imageNamed:@"icon_back_white" inBundle:bundle compatibleWithTraitCollection:nil];
         } else if (HDViewControllerNavigationBarStyleTransparent == style) {
+            self.hd_navigationBar.hidden = false;
             self.hd_navBarAlpha = 0;
             self.hd_navTitleColor = UIColor.whiteColor;
             image = [UIImage imageNamed:@"icon_back_white" inBundle:bundle compatibleWithTraitCollection:nil];
@@ -104,6 +113,8 @@
         self.hd_navigationBar.layer.shadowOpacity = 1;
         self.hd_navigationBar.layer.shadowRadius = 3;
         self.hd_navigationBar.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.hd_navigationBar.bounds].CGPath;
+    } else {
+        self.hd_navigationBar.layer.shadowColor = UIColor.clearColor.CGColor;
     }
 }
 
