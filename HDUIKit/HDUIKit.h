@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.5.17";
+static NSString *const HDUIKit_VERSION = @"1.5.18";
 
 #if __has_include("HDKeyboardManager.h")
 #import "HDKeyboardManager.h"
@@ -134,8 +134,16 @@ static NSString *const HDUIKit_VERSION = @"1.5.17";
 #import "HDSelectCityTableViewCell.h"
 #endif
 
+#if __has_include("HDMarqueeLabel.h")
+#import "HDMarqueeLabel.h"
+#endif
+
 #if __has_include("UIView+KeyboardMoveRespond.h")
 #import "UIView+KeyboardMoveRespond.h"
+#endif
+
+#if __has_include("HDAnnouncementView.h")
+#import "HDAnnouncementView.h"
 #endif
 
 #if __has_include("HDActionAlertView.h")

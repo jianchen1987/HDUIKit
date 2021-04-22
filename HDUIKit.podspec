@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.5.17"
+  s.version          = "1.5.18"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -247,6 +247,16 @@ Pod::Spec.new do |s|
         sss.dependency 'HDUIKit/Components/HDActionAlertView'
         sss.dependency 'HDKitCore/HDFrameLayout'
         sss.resource_bundles = {'HDUIKitTopToastResources' => ['HDUIKit/Components/HDTopToastView/Resources/*.*']}
+      end
+
+      ss.subspec 'HDMarqueeLabel' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDMarqueeLabel'
+      end
+
+      ss.subspec 'HDAnnouncementView' do |sss|
+        sss.source_files = 'HDUIKit/Components/HDAnnouncementView'
+        sss.dependency 'HDUIKit/Components/HDMarqueeLabel'
+        sss.dependency 'Masonry'
       end
 
     end
