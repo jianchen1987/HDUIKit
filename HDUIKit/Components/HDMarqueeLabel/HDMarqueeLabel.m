@@ -8,6 +8,7 @@
 
 #import "HDMarqueeLabel.h"
 #import <QuartzCore/QuartzCore.h>
+#import <HDKitCore/HDAnimationWeakDelegate.h>
 
 // Notification strings
 NSString *const kHDMarqueeLabelControllerRestartNotification = @"HDMarqueeLabelViewControllerRestart";
@@ -37,7 +38,7 @@ typedef void (^MLAnimationCompletionBlock)(BOOL finished);
 
 #ifdef NSFoundationVersionNumber_iOS_9_0
 
-@interface HDMarqueeLabel () <CAAnimationDelegate>
+@interface HDMarqueeLabel () <HDAnimationWeakDelegate>
 #else
 
 @interface HDMarqueeLabel ()
@@ -51,6 +52,7 @@ typedef void (^MLAnimationCompletionBlock)(BOOL finished);
 @property (nonatomic, assign) CGRect homeLabelFrame;
 @property (nonatomic, assign) CGFloat awayOffset;
 @property (nonatomic, assign, readwrite) BOOL isPaused;
+@property (nonatomic, strong) HDAnimationWeakDelegateManager *animationDelegateManager;
 
 // Support
 @property (nonatomic, copy) MLAnimationCompletionBlock scrollCompletionBlock;
@@ -569,7 +571,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         // 2) The instance is still attached to a window - this completion block is called for
         //    many reasons, including if the animation is removed due to the view being removed
         //    from the UIWindow (typically when the view controller is no longer the "top" view)
-        if (self.window && ![weakSelf.subLabel.layer animationForKey:@"position"]) {
+        if (weakSelf.window && ![weakSelf.subLabel.layer animationForKey:@"position"]) {
             // Begin again, if conditions met
             if (weakSelf.labelShouldScroll && !weakSelf.tapToScroll && !weakSelf.holdScrolling) {
                 [weakSelf scrollAwayWithInterval:interval delayAmount:delayAmount];
@@ -762,7 +764,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         colorAnimation.toValue = adjustedColors;
         colorAnimation.duration = 0.25;
         colorAnimation.removedOnCompletion = NO;
-        colorAnimation.delegate = self;
+        colorAnimation.delegate = self.animationDelegateManager;
         [gradientMask addAnimation:colorAnimation forKey:@"setupFade"];
     } else {
         gradientMask.colors = adjustedColors;
@@ -945,7 +947,7 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
 
     // Set values
     animation.values = values;
-    animation.delegate = self;
+    animation.delegate = self.animationDelegateManager;
 
     return animation;
 }
@@ -1374,6 +1376,14 @@ CGPoint MLOffsetCGPoint(CGPoint point, CGFloat offset);
         _gradientColors = [NSArray arrayWithObjects:transparent, opaque, opaque, transparent, nil];
     }
     return _gradientColors;
+}
+
+- (HDAnimationWeakDelegateManager *)animationDelegateManager {
+    if (!_animationDelegateManager) {
+        _animationDelegateManager = HDAnimationWeakDelegateManager.new;
+        _animationDelegateManager.delegate = self;
+    }
+    return _animationDelegateManager;
 }
 
 #pragma mark -
