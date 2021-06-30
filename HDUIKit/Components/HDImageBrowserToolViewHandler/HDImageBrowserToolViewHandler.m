@@ -80,7 +80,15 @@
         [self setPage:browser.currentPage totalPage:browser.dataSourceArray.count];
     }
 }
-
+#pragma mark - public methods
+- (void)showBottomBarView{
+    self.bottomToolBarView.hidden = NO;
+    self.downloadButton.hidden = NO;
+}
+- (void)hideBottomBarView{
+    self.bottomToolBarView.hidden = YES;
+    self.downloadButton.hidden = YES;
+}
 #pragma mark - private methods
 - (void)setPage:(NSInteger)page totalPage:(NSInteger)totalPage {
     if (totalPage <= 1) {

@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) void (^saveImageResultBlock)(UIImage *image, NSError *_Nullable error);
 /// 图片下载成功回调
 @property (nonatomic, copy) void (^downloadImageSuccessBlock)(UIImage *image, NSURL *url);
+/// 显示底部工具栏
+- (void)showBottomBarView;
+/// 隐藏底部工具栏
+- (void)hideBottomBarView;
 @end
 
 NS_ASSUME_NONNULL_END
