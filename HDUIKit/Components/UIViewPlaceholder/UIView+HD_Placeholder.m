@@ -40,7 +40,13 @@
                     collectionView.backgroundView = self.hd_placeholderView;
                 }
             } else {
-                [self.superview insertSubview:self.hd_placeholderView aboveSubview:self];
+                // 父视图为_UIParallaxDimmingView时，说明正在执行页面跳转动画
+                // 不能加到_UIParallaxDimmingView视图上，否则动画结束后，添加的hd_placeholderView就会被移除
+                if ([NSStringFromClass(self.superview.class) isEqualToString:@"_UIParallaxDimmingView"]) {
+                    [self addSubview:self.hd_placeholderView];
+                } else {
+                    [self.superview insertSubview:self.hd_placeholderView aboveSubview:self];
+                }
             }
         } else {
             [self addSubview:self.hd_placeholderView];
