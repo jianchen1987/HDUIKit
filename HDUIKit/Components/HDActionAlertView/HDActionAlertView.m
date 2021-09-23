@@ -330,7 +330,12 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
         viewController.alertView = self;
 
         HDActionAlertWindow *window = [[HDActionAlertWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        window.canBecomeKeyWindow = self.canBecomeKeyWindow;
+        if (@available(iOS 15.0, *)) {
+            // crash
+        } else {
+            window.canBecomeKeyWindow = self.canBecomeKeyWindow;
+        }
+
         window.ignoreBackgroundTouchEvent = self.ignoreBackgroundTouchEvent;
         window.alertView = self;
         window.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
