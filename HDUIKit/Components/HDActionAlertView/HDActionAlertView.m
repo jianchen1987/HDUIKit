@@ -78,7 +78,7 @@ static BOOL __shouldFinallyHideBackgroundWindow = true;
 
 @interface HDActionAlertWindow : UIWindow
 /// 是否可以成为 keyWindow，默认为 false
-@property (nonatomic, assign) BOOL canBecomeKeyWindow;
+@property (nonatomic, assign) BOOL hd_canBecomeKeyWindow;
 /// 弹窗
 @property (nonatomic, weak) HDActionAlertView *alertView;
 /// 背景是否禁用事件（containerView 仍然响应），比如 TopToast 弹窗，背景就不该拦截事件，但本身仍需上滑 dismiss 操作
@@ -95,7 +95,7 @@ static BOOL __shouldFinallyHideBackgroundWindow = true;
 }
 
 - (void)becomeKeyWindow {
-    if (self.canBecomeKeyWindow) {
+    if (self.hd_canBecomeKeyWindow) {
         [super becomeKeyWindow];
     } else {
         UIWindow *appWindow = [[UIApplication sharedApplication].delegate window];
@@ -330,11 +330,8 @@ static NSString *const kHDAlertActionViewTransitionAnimationCompletionKey = @"kH
         viewController.alertView = self;
 
         HDActionAlertWindow *window = [[HDActionAlertWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        if (@available(iOS 15.0, *)) {
-            // crash
-        } else {
-            window.canBecomeKeyWindow = self.canBecomeKeyWindow;
-        }
+        // ios15 兼容
+        window.hd_canBecomeKeyWindow = self.canBecomeKeyWindow;
 
         window.ignoreBackgroundTouchEvent = self.ignoreBackgroundTouchEvent;
         window.alertView = self;
