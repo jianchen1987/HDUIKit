@@ -32,10 +32,15 @@
 
     [self.numberLabel sizeToFit];
     HDCategoryNumberCellModel *myCellModel = (HDCategoryNumberCellModel *)self.cellModel;
-    self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement, myCellModel.numberLabelHeight);
+    //    self.numberLabel.bounds = CGRectMake(0, 0, self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement, myCellModel.numberLabelHeight);
+    self.numberLabel.frame = CGRectMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.numberLabelOffset.x,
+                                        self.titleLabel.frame.origin.y + myCellModel.numberLabelOffset.y,
+                                        self.numberLabel.bounds.size.width + myCellModel.numberLabelWidthIncrement,
+                                        myCellModel.numberLabelHeight);
+
     self.numberLabel.layer.cornerRadius = myCellModel.numberLabelHeight / 2.0;
 
-    self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.numberLabelOffset.x, CGRectGetMinY(self.titleLabel.frame) + myCellModel.numberLabelOffset.y);
+    //    self.numberLabel.center = CGPointMake(CGRectGetMaxX(self.titleLabel.frame) + myCellModel.numberLabelOffset.x, CGRectGetMinY(self.titleLabel.frame) + myCellModel.numberLabelOffset.y);
 }
 
 - (void)reloadData:(HDCategoryBaseCellModel *)cellModel {
