@@ -318,6 +318,13 @@
     }
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(searchBarShouldBeginEditing:)]) {
+        return [self.delegate searchBarTextShouldBeginEditing:self];
+    }
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (self.delegate && [self.delegate respondsToSelector:@selector(searchBarTextDidBeginEditing:)]) {
         return [self.delegate searchBarTextDidBeginEditing:self];

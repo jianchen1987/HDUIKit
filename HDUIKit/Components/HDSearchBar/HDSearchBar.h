@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol HDSearchBarDelegate <NSObject>
 
 @optional
+- (BOOL)searchBarTextShouldBeginEditing:(HDSearchBar *)searchBar;
 - (void)searchBarTextDidBeginEditing:(HDSearchBar *)searchBar;
 - (void)searchBarTextDidEndEditing:(HDSearchBar *)searchBar;
 - (void)searchBarTextDidEndEditing:(HDSearchBar *)searchBar reason:(UITextFieldDidEndEditingReason)reason API_AVAILABLE(ios(10.0));
