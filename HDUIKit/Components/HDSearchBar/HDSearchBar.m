@@ -319,7 +319,7 @@
 }
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    if (self.delegate && [self.delegate respondsToSelector:@selector(searchBarShouldBeginEditing:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(searchBarTextShouldBeginEditing:)]) {
         return [self.delegate searchBarTextShouldBeginEditing:self];
     }
     return YES;
