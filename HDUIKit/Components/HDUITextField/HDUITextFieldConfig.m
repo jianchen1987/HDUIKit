@@ -21,7 +21,6 @@ NSString *const kCharacterSetStringNumberAndLetterAndSpecialCharacters = @"01234
     self = [super init];
     if (self) {
         // 默认值
-        self.textAlignment = NSTextAlignmentLeft;
         self.placeholderColor = HDAppTheme.color.G3;
         self.floatingLabelColor = HDAppTheme.color.G3;
         self.leftViewEdgeInsets = UIEdgeInsetsMake(5, 0, 5, 10);

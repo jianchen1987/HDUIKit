@@ -234,8 +234,7 @@
     _textField.keyboardType = _config.keyboardType;
     _textField.secureTextEntry = _config.secureTextEntry;
     _textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    _textField.textAlignment = _config.textAlignment;
-    
+
     if (_config.clearButtonImage) {
         UIButton *clearBtn = [_textField valueForKey:@"_clearButton"];
         [clearBtn setImage:_config.clearButtonImage forState:UIControlStateNormal];
@@ -254,8 +253,6 @@
     } else if (_config.attributedPlaceholder) {
         _placeholderLabel.attributedText = _config.attributedPlaceholder;
     }
-    _placeholderLabel.textAlignment = _config.textAlignment;
-    
     // 设置图层锚点
     _placeholderLabel.layer.anchorPoint = CGPointMake(0, 0.5);
     _placeholderLabel.userInteractionEnabled = NO;
