@@ -23,6 +23,7 @@ typedef void (^EventCallBackBlock)(void);
 @property (nonatomic, copy) NSString *placeholder;                        ///< 占位文字
 @property (nonatomic, copy) NSString *floatingText;                       ///< 悬浮文字
 @property (nonatomic, strong) NSAttributedString *attributedPlaceholder;  ///< 占位属性文字
+@property (nonatomic, assign) NSTextAlignment textAlignment;              ///< 对齐方式 默认左对齐
 @property (nonatomic, strong) UIColor *textColor;                         ///< 输入框文字颜色
 @property (nonatomic, strong) UIColor *placeholderColor;                  ///< 占位文字颜色
 @property (nonatomic, strong) UIColor *floatingLabelColor;                ///< 悬浮文字颜色
