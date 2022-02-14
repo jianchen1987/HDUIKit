@@ -119,6 +119,9 @@ typedef NS_ENUM(NSUInteger, HDImageCropMode) {
 /// 图片将要被裁剪
 - (void)imageCropViewController:(HDImageCropViewController *)controller willCropImage:(UIImage *)originalImage;
 
+- (NSString *)localizedTitleForChooseButton;
+- (NSString *)localizedTitleForCancelButton;
+
 @end
 
 NS_ASSUME_NONNULL_END

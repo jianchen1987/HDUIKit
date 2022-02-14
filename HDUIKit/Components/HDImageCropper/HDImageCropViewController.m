@@ -104,6 +104,14 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     self.view.backgroundColor = [UIColor blackColor];
     self.view.clipsToBounds = YES;
 
+    if (self.delegate && [self.delegate respondsToSelector:@selector(localizedTitleForChooseButton)]) {
+        [self.chooseButton setTitle:[self.delegate localizedTitleForChooseButton] forState:UIControlStateNormal];
+    }
+
+    if (self.delegate && [self.delegate respondsToSelector:@selector(localizedTitleForCancelButton)]) {
+        [self.chooseButton setTitle:[self.delegate localizedTitleForCancelButton] forState:UIControlStateNormal];
+    }
+
     [self.view addSubview:self.imageScrollView];
     [self.view addSubview:self.overlayView];
     [self.view addSubview:self.cancelButton];
