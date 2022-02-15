@@ -109,7 +109,7 @@ static const CGFloat kLayoutImageScrollViewAnimationDuration = 0.25;
     }
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(localizedTitleForCancelButton)]) {
-        [self.chooseButton setTitle:[self.delegate localizedTitleForCancelButton] forState:UIControlStateNormal];
+        [self.cancelButton setTitle:[self.delegate localizedTitleForCancelButton] forState:UIControlStateNormal];
     }
 
     [self.view addSubview:self.imageScrollView];
