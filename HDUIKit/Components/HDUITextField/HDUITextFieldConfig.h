@@ -70,6 +70,7 @@ typedef void (^EventCallBackBlock)(void);
 @property (nonatomic, strong) UIImage *clearButtonImage;                  ///< 清除按钮图片
 @property (nonatomic, assign) UIKeyboardType keyboardType;                ///< 键盘类型，默认数字
 @property (nonatomic, assign) BOOL secureTextEntry;                       ///< 是否安全输入，默认 NO
+@property (nonatomic, assign) BOOL firstDigitCanNotEnterZero;             ///< 是否需要首位不能输入0
 @property (nonatomic, copy) EventCallBackBlock updatePropertyBlock;       ///< 需要更新属性
 @property (nonatomic, copy) EventCallBackBlock updateConstraintBlock;     ///< 需要更新布局
 @property (nonatomic, copy) EventCallBackBlock showRightViewBlock;        ///< 需要显示右边View

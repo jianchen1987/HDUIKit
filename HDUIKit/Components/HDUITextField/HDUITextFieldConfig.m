@@ -61,6 +61,7 @@ NSString *const kCharacterSetStringNumberAndLetterAndSpecialCharacters = @"01234
         self.keyboardType = UIKeyboardTypeNumberPad;
         self.shouldSeparatedReverse = false;
         self.separatedReverseUnitLength = 3;
+        self.firstDigitCanNotEnterZero = NO;
         self.clearButtonImage = [UIImage imageNamed:@"clear" inBundle:[NSBundle hd_UIKitTextFieldResources] compatibleWithTraitCollection:nil];
 
         __weak __typeof(self) weakSelf = self;

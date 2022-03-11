@@ -520,7 +520,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-HDUIKit_Example/Pods-HDUIKit_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/HDKitCore/HDKitCore.framework",
 				"${BUILT_PRODUCTS_DIR}/HDUIKit/HDUIKit.framework",
-				"${PODS_ROOT}/LookinServer/LookinServer.framework",
+				"${BUILT_PRODUCTS_DIR}/LookinServer/LookinServer.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/YBImageBrowser/YBImageBrowser.framework",

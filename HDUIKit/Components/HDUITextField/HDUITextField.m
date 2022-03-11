@@ -1305,6 +1305,13 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(hd_textField:shouldChangeCharactersInRange:replacementString:)]) {
         return [self.delegate hd_textField:textField shouldChangeCharactersInRange:range replacementString:string];
     }
+    
+    //设置了首位不能输入0
+    if (self.config.firstDigitCanNotEnterZero == YES) {
+        if (range.location == 0 && [string isEqualToString:@"0"]) {
+            return NO;
+        }
+    }
 
     BOOL res = YES;
 
