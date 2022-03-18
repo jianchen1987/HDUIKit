@@ -1312,6 +1312,14 @@
             return NO;
         }
     }
+    
+    //如果是数字加小数点的键盘 小数点是逗号的话  替换
+    if (self.textField.keyboardType == UIKeyboardTypeDecimalPad && [self.config.characterSetString containsString:@","]) {
+        if ([string isEqualToString:@","] && ![textField.text containsString:@"."]) {
+            textField.text = [textField.text stringByAppendingString:@"."];
+            return NO;
+        }
+    }
 
     BOOL res = YES;
 
