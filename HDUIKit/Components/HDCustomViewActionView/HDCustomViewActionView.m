@@ -104,10 +104,17 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
 
     // 给containerview添加子视图
     [self.containerView addSubview:self.titleLabel];
-    self.titleLabel.hidden = HDIsStringEmpty(_config.title);
-    if (!self.titleLabel.isHidden) {
+
+    if (!HDIsObjectNil(_config.attriTitle)) {
+        self.titleLabel.attributedText = _config.attriTitle;
+        self.titleLabel.hidden = NO;
+    } else if (HDIsStringNotEmpty(_config.title)) {
         self.titleLabel.text = _config.title;
+        self.titleLabel.hidden = NO;
+    } else {
+        self.titleLabel.hidden = YES;
     }
+
     [self.containerView addSubview:self.topSepLine];
 
     [self.containerView addSubview:self.button];
