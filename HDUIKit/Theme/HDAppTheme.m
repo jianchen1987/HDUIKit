@@ -144,7 +144,7 @@
 @implementation HDAppThemeValue
 
 - (UIEdgeInsets)padding {
-    return UIEdgeInsetsMake(25, 15, 25, 15);
+    return UIEdgeInsetsMake(25, 12, 25, 12);
 }
 
 - (CGFloat)textFieldHeight {
