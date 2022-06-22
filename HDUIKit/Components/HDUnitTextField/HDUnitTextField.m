@@ -93,6 +93,7 @@
     mBackgroundColor = mBackgroundColor ?: [UIColor clearColor];
     _autocorrectionType = UITextAutocorrectionTypeNo;
     _autocapitalizationType = UITextAutocapitalizationTypeNone;
+    _needListenToClickOntheBlankSpaceEvent = NO;
     self.cursorLayer.backgroundColor = _cursorColor.CGColor;
 
     HDUnitTextFieldTextPosition *point = [HDUnitTextFieldTextPosition positionWithOffset:0];
@@ -304,6 +305,9 @@
         if ([self.delegate respondsToSelector:@selector(unitTextFieldBecomeFirstResponder:)]) {
             [self.delegate unitTextFieldBecomeFirstResponder:self];
         }
+        if (self.needListenToClickOntheBlankSpaceEvent) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidBeginEditingNotification object:self];
+        }
     }
 
     return result;
@@ -323,8 +327,10 @@
         if ([self.delegate respondsToSelector:@selector(unitTextFieldResignFirstResponder:)]) {
             [self.delegate unitTextFieldResignFirstResponder:self];
         }
+        if (self.needListenToClickOntheBlankSpaceEvent) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:UITextFieldTextDidEndEditingNotification object:self];
+        }
     }
-
     return result;
 }
 

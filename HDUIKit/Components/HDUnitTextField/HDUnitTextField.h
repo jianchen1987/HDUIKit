@@ -111,6 +111,11 @@ IB_DESIGNABLE
  */
 @property (nonatomic, assign) IBInspectable CGSize unitSize;
 
+/**
+ 监听点击页面空白事件(配合keyboardManager隐藏键盘)，默认为NO.
+ */
+@property (nonatomic, assign) IBInspectable BOOL needListenToClickOntheBlankSpaceEvent;
+
 - (instancetype)initWithInputUnitCount:(NSUInteger)count;
 - (instancetype)initWithStyle:(HDUnitTextFieldStyle)style inputUnitCount:(NSUInteger)count;
 
