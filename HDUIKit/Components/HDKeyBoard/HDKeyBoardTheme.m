@@ -164,8 +164,8 @@
         self.doneButtonName = @"Done";
         self.doneButtonTitleColor = UIColor.whiteColor;
         self.doneButtonHighlightTitleColor = UIColor.whiteColor;
-        self.doneButtonBgColor = HDAppTheme.color.C1;
-        self.doneButtonHighlightBgColor = [HDAppTheme.color.C1 colorWithAlphaComponent:0.5];
+        self.doneButtonBgColor = HDColor(252, 32, 64, 1);
+        self.doneButtonHighlightBgColor = [HDColor(252, 32, 64, 1) colorWithAlphaComponent:0.5];
     }
     return self;
 }
