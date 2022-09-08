@@ -16,11 +16,13 @@
 #define HDNavigationBarScreenHeight [UIScreen mainScreen].bounds.size.height
 
 // clang-format off
-// iPhoneX、XS、11pro、12mini、13mini（375*812）
-// iPhoneXR、XS MAX、11、11PM(414*896)
-// iPhone12mini、13mini(375*780)
-// iphone12、12pro、13、13pro(390 *884)
-// iphone12pm、13pm(428、926)
+// 全面屏机型尺寸
+// X、XS、11pro、12 mini、13 mini（375*812）
+// XR、XS MAX、11、11 Pro Max(414,896)
+// 12、12Pro、13、13 Pro、14(390,844)
+// 12 Pro Max、13 Pro Max、14 Plus(428,926)
+// 14 Pro(393,852)
+// 14 Pro Max(430,932)
 // 判断是否是刘海屏
 #define HDNavigationBarIsNotchedScreen      ([UIScreen instancesRespondToSelector:@selector(currentMode)] ?\
 (\
