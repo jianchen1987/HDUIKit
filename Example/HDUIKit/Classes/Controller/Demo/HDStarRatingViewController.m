@@ -65,7 +65,7 @@
     starView = addStarRatingView();
     starView.starNum = 8;
     starView.itemMargin = 2;
-    starView.renderColor = UIColor.greenColor;
+//    starView.renderColor = UIColor.greenColor;
     starView.defaultColor = UIColor.redColor;
     starView.starImage = [UIImage imageNamed:@"starUnselected"];
 
@@ -82,20 +82,20 @@
     addLabelWithTitle(@"自定义颜色，修改间距");
     starView = addStarRatingView();
     starView.itemMargin = 20;
-    starView.renderColor = UIColor.redColor;
+//    starView.renderColor = UIColor.redColor;
     starView.defaultColor = UIColor.greenColor;
 
     addLabelWithTitle(@"支持点击、拖动打分，拖动试试");
     starView = addStarRatingView();
     starView.itemMargin = 10;
     starView.starNum = 6;
-    starView.renderColor = UIColor.yellowColor;
+//    starView.renderColor = UIColor.yellowColor;
     starView.defaultColor = UIColor.blackColor;
 
     addLabelWithTitle(@"禁用滑动打分，只能点击打分");
     starView = addStarRatingView();
     starView.starNum = 6;
-    starView.renderColor = UIColor.yellowColor;
+//    starView.renderColor = UIColor.yellowColor;
     starView.defaultColor = UIColor.redColor;
     starView.allowSlideToChangeScore = false;
 
