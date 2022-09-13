@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString *_Nullable (^CountDownChangingHandler)(HDCountDownButton *countDownButton, NSUInteger second);
 typedef NSString *_Nullable (^CountDownFinishedHandler)(HDCountDownButton *countDownButton, NSUInteger second);
+
+typedef NSAttributedString *_Nullable (^CountDownChangingHandlerByAttributedString)(HDCountDownButton *countDownButton, NSUInteger second);
+typedef NSAttributedString *_Nullable (^CountDownFinishedHandlerByAttributedString)(HDCountDownButton *countDownButton, NSUInteger second);
+
 typedef void (^ClickedCountDownButtonHandler)(HDCountDownButton *countDownButton);
 typedef void (^ClickedCountDownStateChanged)(HDCountDownButton *countDownButton, BOOL enabled);
 
@@ -22,6 +26,12 @@ typedef void (^ClickedCountDownStateChanged)(HDCountDownButton *countDownButton,
 @property (nonatomic, copy) CountDownChangingHandler countDownChangingHandler;
 /** 倒计时完成回调，返回值设置按钮标题 */
 @property (nonatomic, copy) CountDownFinishedHandler countDownFinishedHandler;
+
+/** 倒计时改变回调，返回值设置按钮富文本标题 */
+@property (nonatomic, copy) CountDownChangingHandlerByAttributedString countDownChangingHandlerByAttributedString;
+/** 倒计时完成回调，返回值设置按钮富文本标题 */
+@property (nonatomic, copy) CountDownFinishedHandlerByAttributedString countDownFinishedHandlerByAttributedString;
+
 /** 按钮点击回调 */
 @property (nonatomic, copy) ClickedCountDownButtonHandler clickedCountDownButtonHandler;
 /** 按钮是否可用状态改变回调 */

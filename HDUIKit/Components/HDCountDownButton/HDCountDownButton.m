@@ -88,7 +88,16 @@
     if (_second <= 0.0) {
         [self stopCountDown];
     } else {
-        if (self.countDownChangingHandler) {
+        if (self.countDownChangingHandlerByAttributedString){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAttributedString *title = self.countDownChangingHandlerByAttributedString(self, self.second);
+                [self setAttributedTitle:title forState:UIControlStateNormal];
+                [self setAttributedTitle:title forState:UIControlStateDisabled];
+
+                [self fittingGreaterSizeThanNormalState];
+            });
+            
+        }else if (self.countDownChangingHandler) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *title = self.countDownChangingHandler(self, self.second);
                 [self setTitle:title forState:UIControlStateNormal];
@@ -108,7 +117,16 @@
 
 - (void)stopCountDown {
     void (^setTitleHandler)(void) = ^(void) {
-        if (self.countDownFinishedHandler) {
+        
+        if (self.countDownFinishedHandlerByAttributedString) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSAttributedString *title = self.countDownFinishedHandlerByAttributedString(self, self.totalSecond);
+                [self setAttributedTitle:title forState:UIControlStateNormal];
+                [self setAttributedTitle:title forState:UIControlStateDisabled];
+
+                [self fittingGreaterSizeThanNormalState];
+            });
+        }else if (self.countDownFinishedHandler) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSString *title = self.countDownFinishedHandler(self, self.totalSecond);
                 [self setTitle:title forState:UIControlStateNormal];
