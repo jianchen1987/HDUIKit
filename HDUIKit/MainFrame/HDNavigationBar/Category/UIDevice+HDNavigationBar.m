@@ -47,7 +47,6 @@
         NSSet *set = [UIApplication sharedApplication].connectedScenes;
         UIWindowScene *windowScene = [set anyObject];
         UIStatusBarManager *statusBarManager = windowScene.statusBarManager;
-        NSLog(@"%f",statusBarManager.statusBarFrame.size.height);
         return statusBarManager.statusBarFrame.size.height;
     } else {
         return [UIApplication sharedApplication].statusBarFrame.size.height;
