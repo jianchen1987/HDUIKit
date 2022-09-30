@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.7.11";
+static NSString *const HDUIKit_VERSION = @"1.7.12";
 
 #if __has_include("HDKeyboardManager.h")
 #import "HDKeyboardManager.h"
@@ -472,6 +472,10 @@ static NSString *const HDUIKit_VERSION = @"1.7.11";
 
 #if __has_include("HDNavigationBar.h")
 #import "HDNavigationBar.h"
+#endif
+
+#if __has_include("UIDevice+HDNavigationBar.h")
+#import "UIDevice+HDNavigationBar.h"
 #endif
 
 #if __has_include("UIScrollView+HDNavigationBar.h")
