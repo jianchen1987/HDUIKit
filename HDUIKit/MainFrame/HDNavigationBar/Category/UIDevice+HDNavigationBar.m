@@ -10,17 +10,12 @@
 @implementation UIDevice (HDNavigationBar)
 /// 判断是否是刘海屏
 + (BOOL)hd_navigationBarIsNotchedScreen{
-    return [UIDevice hd_safeDistanceTop] > 0;
+    return [UIDevice hd_safeDistanceBottom] > 0;
 }
 /// 顶部安全区高度
 + (CGFloat)hd_safeDistanceTop {
-    if (@available(iOS 13.0, *)) {
-        NSSet *set = [UIApplication sharedApplication].connectedScenes;
-        UIWindowScene *windowScene = [set anyObject];
-        UIWindow *window = windowScene.windows.firstObject;
-        return window.safeAreaInsets.top;
-    } else if (@available(iOS 11.0, *)) {
-        UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = [UIApplication sharedApplication].delegate.window;
         return window.safeAreaInsets.top;
     }
     return 0;
@@ -28,17 +23,13 @@
 
 /// 底部安全区高度
 + (CGFloat)hd_safeDistanceBottom {
-    if (@available(iOS 13.0, *)) {
-        NSSet *set = [UIApplication sharedApplication].connectedScenes;
-        UIWindowScene *windowScene = [set anyObject];
-        UIWindow *window = windowScene.windows.firstObject;
-        return window.safeAreaInsets.bottom;
-    } else if (@available(iOS 11.0, *)) {
-        UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = [UIApplication sharedApplication].delegate.window;
         return window.safeAreaInsets.bottom;
     }
     return 0;
 }
+
 
 
 /// 顶部状态栏高度（包括安全区）
