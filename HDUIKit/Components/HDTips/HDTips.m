@@ -77,7 +77,7 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
 }
 
 - (void)showSuccessNotCreateNew:(nullable id)text {
-    [self showSuccess:text detailText:nil hideAfterDelay:HDTipsAutomaticallyHideToastSeconds needShow:false];
+    [self showSuccess:text detailText:nil hideAfterDelay:HDTipsAutomaticallyHideToastSeconds iconImageName:nil needShow:false];
 }
 
 - (void)showSuccessNotCreateNew:(nullable id)text hideAfterDelay:(NSTimeInterval)delay {
@@ -93,14 +93,24 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
 }
 
 - (void)showSuccess:(NSString *)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay {
-    [self showSuccess:text detailText:detailText hideAfterDelay:delay needShow:true];
+    [self showSuccess:text detailText:detailText hideAfterDelay:delay iconImageName:nil needShow:true];
 }
 
-- (void)showSuccess:(NSString *)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay needShow:(BOOL)needShow {
-    NSBundle *bundle = [NSBundle hd_UIKitTipsResourcesBundle];
-    self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"success" inBundle:bundle compatibleWithTraitCollection:nil]];
+- (void)showSuccess:(id)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay iconImageName:(NSString * _Nullable)imageName {
+    [self showSuccess:text detailText:detailText hideAfterDelay:delay iconImageName:imageName needShow:true];
+}
+
+- (void)showSuccess:(NSString *)text detailText:(NSString *)detailText hideAfterDelay:(NSTimeInterval)delay iconImageName:(NSString * _Nullable)imageName needShow:(BOOL)needShow {
+    if(!imageName) {
+        NSBundle *bundle = [NSBundle hd_UIKitTipsResourcesBundle];
+        self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"success" inBundle:bundle compatibleWithTraitCollection:nil]];
+    }else{
+        self.contentCustomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+    }
     [self showTipWithText:text detailText:detailText hideAfterDelay:delay needShow:needShow];
 }
+
+
 
 #pragma mark - Error
 - (void)showError:(NSString *)text {
@@ -345,6 +355,10 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
     return [self showSuccess:text detailText:nil inView:DefaultTipsParentView hideAfterDelay:delay];
 }
 
++ (HDTips *)showSuccess:(id)text hideAfterDelay:(NSTimeInterval)delay iconImageName:(NSString *)imageName {
+    return [self showSuccess:text detailText:nil inView:DefaultTipsParentView hideAfterDelay:delay iconImageName:imageName];
+}
+
 + (HDTips *)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText {
     return [self showSuccess:text detailText:detailText inView:DefaultTipsParentView hideAfterDelay:HDTipsAutomaticallyHideToastSeconds];
 }
@@ -362,10 +376,15 @@ const NSInteger HDTipsAutomaticallyHideToastSeconds = -1;
 }
 
 + (HDTips *)showSuccess:(NSString *)text detailText:(NSString *)detailText inView:(UIView *)view hideAfterDelay:(NSTimeInterval)delay {
+    return [self showSuccess:text detailText:detailText inView:view hideAfterDelay:delay iconImageName:nil];
+}
+
++ (HDTips *)showSuccess:(id)text detailText:(NSString *)detailText inView:(UIView *)view hideAfterDelay:(NSTimeInterval)delay iconImageName:(NSString *)imageName {
     HDTips *tips = [self createTipsToView:view];
-    [tips showSuccess:text detailText:detailText hideAfterDelay:delay];
+    [tips showSuccess:text detailText:detailText hideAfterDelay:delay iconImageName:imageName needShow:true];
     return tips;
 }
+
 
 #pragma mark - Error
 + (HDTips *)showError:(nullable id)text {

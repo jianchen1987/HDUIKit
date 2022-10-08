@@ -44,6 +44,7 @@ extern const NSInteger HDTipsAutomaticallyHideToastSeconds;
 - (void)showSuccess:(nullable id)text hideAfterDelay:(NSTimeInterval)delay;
 - (void)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText;
 - (void)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText hideAfterDelay:(NSTimeInterval)delay;
+- (void)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText hideAfterDelay:(NSTimeInterval)delay iconImageName:(NSString * _Nullable)imageName;
 
 - (void)showError:(nullable id)text;
 - (void)showError:(nullable id)text hideAfterDelay:(NSTimeInterval)delay;
@@ -88,11 +89,13 @@ extern const NSInteger HDTipsAutomaticallyHideToastSeconds;
 
 + (HDTips *)showSuccess:(nullable id)text;
 + (HDTips *)showSuccess:(nullable id)text hideAfterDelay:(NSTimeInterval)delay;
++ (HDTips *)showSuccess:(nullable id)text hideAfterDelay:(NSTimeInterval)delay iconImageName:(NSString * _Nullable)imageName;
 + (HDTips *)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText;
 + (HDTips *)showSuccess:(nullable id)text inView:(UIView *)view;
 + (HDTips *)showSuccess:(nullable id)text inView:(UIView *)view hideAfterDelay:(NSTimeInterval)delay;
 + (HDTips *)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText inView:(UIView *)view;
 + (HDTips *)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText inView:(UIView *)view hideAfterDelay:(NSTimeInterval)delay;
++ (HDTips *)showSuccess:(nullable id)text detailText:(nullable NSString *)detailText inView:(UIView *)view hideAfterDelay:(NSTimeInterval)delay iconImageName:(NSString * _Nullable)imageName;
 
 + (HDTips *)showError:(nullable id)text;
 + (HDTips *)showError:(nullable id)text hideAfterDelay:(NSTimeInterval)delay;
