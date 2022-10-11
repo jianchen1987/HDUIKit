@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "HDUIKit"
-  s.version          = "1.8.1"
+  s.version          = "1.8.2"
   s.summary          = "混沌 iOS 项目组件库"
   s.description      = <<-DESC
                        HDUIKit 是一系列 iOS 组件的组成，用于快速在其他项目使用或者第三方接入
@@ -149,7 +149,7 @@ Pod::Spec.new do |s|
       end
 
       ss.subspec 'HDCitySelect' do |sss|
-        sss.source_files = 'HDUIKit/Components/HDCitySelect', 'HDUIKit/Components/HDCitySelect/*/*'
+        sss.source_files = 'HDUIKit/Components/HDCitySelect', 'HDUIKit/Components/HDCitySelect/*/*.{h,m}'
         sss.resource_bundles = {'HDUIKITCitySelectResources' => ['HDUIKit/Components/HDCitySelect/Resources/*.*']}
         sss.dependency 'YYModel'
         sss.dependency 'HDKitCore/KVOController'
