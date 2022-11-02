@@ -781,12 +781,6 @@ static NSMutableArray *resortedArrayWithRandomSort(NSMutableArray *array) {
             [_numberPadConfigArr addObject:buttonModel];
         }
 
-        if (self.isNumberPadWithPoint) {
-            buttonModel = [HDKeyBoardButtonModel modelWithIsCapital:NO showText:@"." value:@"." type:HDKeyBoardButtonTypeDigital];
-        } else {
-            buttonModel = [HDKeyBoardButtonModel modelWithIsCapital:NO showText:@"" value:@"" type:HDKeyBoardButtonTypeNone];
-        }
-        [_numberPadConfigArr addObject:buttonModel];
 
         buttonModel = [HDKeyBoardButtonModel modelWithIsCapital:NO showText:@"0" value:@"0" type:HDKeyBoardButtonTypeDigital];
         [_numberPadConfigArr addObject:buttonModel];
@@ -794,6 +788,14 @@ static NSMutableArray *resortedArrayWithRandomSort(NSMutableArray *array) {
         if (self.isRandom) {
             _numberPadConfigArr = resortedArrayWithRandomSort(_numberPadConfigArr);
         }
+        
+        if (self.isNumberPadWithPoint) {
+            buttonModel = [HDKeyBoardButtonModel modelWithIsCapital:NO showText:@"." value:@"." type:HDKeyBoardButtonTypeDigital];
+        } else {
+            buttonModel = [HDKeyBoardButtonModel modelWithIsCapital:NO showText:@"" value:@"" type:HDKeyBoardButtonTypeNone];
+        }
+        [_numberPadConfigArr insertObject:buttonModel atIndex:(_numberPadConfigArr.count - 1)];
+        
 
         buttonModel = [HDKeyBoardButtonModel modelWithIsCapital:NO showText:@"" value:@"" type:HDKeyBoardButtonTypeDelete];
         buttonModel.isFunctional = YES;
