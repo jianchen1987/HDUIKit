@@ -5,12 +5,12 @@
       "scale" : "1x"
     },
     {
-      "filename" : "toast_success@2x.png",
+      "filename" : "toast_right_icon 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "toast_success@3x.png",
+      "filename" : "toast_right_icon.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
