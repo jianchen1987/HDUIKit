@@ -62,6 +62,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) id<HDSearchBarDelegate> delegate;
 /// 输入框
 @property (nonatomic, strong, readonly) UITextField *textField;
+/** 默认显示圆形边框，YES为矩形边框 */
+@property (nonatomic, assign) BOOL showSquareBorder;
 
 /// 显示或隐藏左侧按钮
 /// @param showLeftButton 是否显示

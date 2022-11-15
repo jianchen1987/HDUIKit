@@ -174,7 +174,7 @@
         }
     }
 
-    if (!CGSizeEqualToSize(CGSizeZero, self.contentView.frame.size)) {
+    if (!CGSizeEqualToSize(CGSizeZero, self.contentView.frame.size) && !self.showSquareBorder) {
         self.contentView.layer.cornerRadius = CGRectGetHeight(self.contentView.frame) * 0.5;
     }
 }
