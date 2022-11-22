@@ -64,8 +64,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
     }
 
     if (!self.titleLabel.isHidden) {
-        CGFloat height = kCloseButtonW >= self.titleLBSize.height ? kCloseButtonW : self.titleLBSize.height;
-        containerHeight += (height + self.config.marginTitleToContentView);
+        containerHeight += (self.titleLBSize.height + self.config.marginTitleToContentView);
     } else {
         if (self.config.style == HDCustomViewActionViewStyleClose) {
             containerHeight += (kCloseButtonW + self.config.marginTitleToContentView);
@@ -202,8 +201,7 @@ static CGFloat const kCloseButtonEdgeMargin = 10.0;
                 if (self.titleLabel.isHidden) {
                     make.top.hd_equalTo(self.button.bottom).offset(self.config.marginTitleToContentView);
                 } else {
-                    UIView *view = self.button.height >= self.titleLBSize.height ? self.button : self.titleLabel;
-                    make.top.hd_equalTo(view.bottom).offset(self.config.marginTitleToContentView);
+                    make.top.hd_equalTo(self.titleLabel.bottom).offset(self.config.marginTitleToContentView);
                 }
             } else {
                 if (self.titleLabel.isHidden) {
