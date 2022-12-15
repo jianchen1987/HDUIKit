@@ -10,6 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol HDFloatLayoutViewDelegate <NSObject>
+
+@optional
+/// 更新UI是的回调，需要自行刷新view
+- (void)floatLayoutViewFrameDidChanged;
+
+@end
+
+
+
 /// 用于属性 maximumItemSize，是它的默认值。表示 item 的最大宽高会自动根据当前 floatLayoutView 的内容大小来调整，从而避免 item 内容过多时可能溢出 floatLayoutView。
 extern const CGSize HDFloatLayoutViewAutomaticalMaximumItemSize;
 
@@ -48,6 +58,13 @@ extern const CGSize HDFloatLayoutViewAutomaticalMaximumItemSize;
 /// 全部子View布局时的行数
 /// @param maxSize 最大尺寸，用于计算行数
 - (NSUInteger)fowardingTotalRowCountWithMaxSize:(CGSize)maxSize;
+
+/// 自定义搜索更多按钮
+/// @param moreView 展开按钮
+- (void)setCustomMoreView:(UIButton *)moreView;
+/// 通过代理回调刷新布局
+@property (nonatomic, weak) id<HDFloatLayoutViewDelegate> delegate;
+
 @end
 
 NS_ASSUME_NONNULL_END

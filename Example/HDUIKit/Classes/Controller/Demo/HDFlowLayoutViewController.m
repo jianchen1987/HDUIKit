@@ -6,9 +6,10 @@
 //  Copyright © 2020 wangwanjie. All rights reserved.
 //
 
+
 #import "HDFlowLayoutViewController.h"
 
-@interface HDFlowLayoutViewController ()
+@interface HDFlowLayoutViewController ()<HDFloatLayoutViewDelegate>
 /// floatLayoutView
 @property (nonatomic, strong) HDFloatLayoutView *floatLayoutView;
 @end
@@ -19,30 +20,54 @@
     [super viewDidLoad];
 
     [self.view addSubview:({
-                   HDFloatLayoutView *view = HDFloatLayoutView.new;
+        HDFloatLayoutView *view = HDFloatLayoutView.new;
                    self.floatLayoutView = view;
                    view.padding = UIEdgeInsetsMake(10, 10, 10, 10);
                    view.itemMargins = UIEdgeInsetsMake(0, 0, 8, 8);
-                   view.maxRowCount = 2;
-                   view;
+                    view.maxRowCount = 2;
+                    view;
                })];
+    
+    UIButton *view = UIButton.new;
+//    view.bounds = CGRectMake(0, 0, 30, 30);
+//    view.imagePosition = HDUIButtonImagePositionLeft;
+//    view.contentEdgeInsets = UIEdgeInsetsMake(15, 5, 15, 5);
+//    [view setTitle:@"展开" forState:UIControlStateNormal];
+    view.backgroundColor = UIColor.orangeColor;
+    [view sizeToFit];
+    [view setImage:[UIImage imageNamed:@"search_icon_down"] forState:UIControlStateNormal];
+    [view setImage:[UIImage imageNamed:@"search_icon_close"] forState:UIControlStateSelected];
 
-    HDUIGhostButton *button = HDUIGhostButton.new;
+    [self.floatLayoutView setCustomMoreView:view];
 
-    button.titleLabel.hd_lineSpace = 15;
-    [button setTitle:@"好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的" forState:UIControlStateNormal];
-    // 设置在
-    [button setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
-    button.titleLabel.numberOfLines = 2;
-    [self.view addSubview:button];
+//
+//    HDUIGhostButton *button = HDUIGhostButton.new;
+//
+//    button.titleLabel.hd_lineSpace = 15;
+//    [button setTitle:@"好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的好几个号健身计划风口浪尖黑白短裤丽枫酒店返回的" forState:UIControlStateNormal];
+//    // 设置在
+//    [button setTitleColor:UIColor.greenColor forState:UIControlStateNormal];
+//    button.titleLabel.numberOfLines = 2;
+//    [self.view addSubview:button];
+//
+//    [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+//        make.size.hd_equalTo([button sizeThatFits:CGSizeMake(200, CGFLOAT_MAX)]);
+//        make.centerX.hd_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
+//        make.top.hd_equalTo(400);
+//    }];
 
-    [button hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
-        make.size.hd_equalTo([button sizeThatFits:CGSizeMake(200, CGFLOAT_MAX)]);
-        make.centerX.hd_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
-        make.top.hd_equalTo(400);
-    }];
-
-    NSArray *titles = @[@"入金", @"入金2", @"入金w24", @"入34err金", @"入sdfdsdsf金", @"入sdfggsgg金", @"入金让人同仁堂短头发"];
+    NSArray *titles = @[@"11111",
+                        @"22222",
+                        @"33333",
+                        @"444444444",
+                        @"55555555555",
+                        @"6666666666",
+                        @"77777777",
+                        @"8888888",
+                        @"999999",
+                        @"101010101001010101010010",
+                        @"11111111111111111111111111111",
+    ];
 
     for (NSUInteger i = 0; i < titles.count; i++) {
         NSString *title = titles[i];
@@ -58,13 +83,26 @@
         [self.floatLayoutView addSubview:view];
     }
 
+    
+    
     [self.floatLayoutView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
-        make.size.hd_equalTo([self.floatLayoutView sizeThatFits:CGSizeMake(300, CGFLOAT_MAX)]);
+        make.size.hd_equalTo([self.floatLayoutView sizeThatFits:CGSizeMake(SCREEN_WIDTH, CGFLOAT_MAX)]);
         make.centerX.hd_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
         make.top.hd_equalTo(100);
     }];
-    NSUInteger rowCount = [self.floatLayoutView fowardingTotalRowCountWithMaxSize:CGSizeMake(300, CGFLOAT_MAX)];
+    
+    self.floatLayoutView.delegate = self;
+    
+    NSUInteger rowCount = [self.floatLayoutView fowardingTotalRowCountWithMaxSize:CGSizeMake(SCREEN_WIDTH, CGFLOAT_MAX)];
     HDLog(@"目标行数：%zd", rowCount);
 }
 
+- (void)floatLayoutViewFrameDidChanged {
+//    HDLog(@"%s",__func__);
+    [self.floatLayoutView hd_makeFrameLayout:^(HDFrameLayoutMaker *_Nonnull make) {
+        make.size.hd_equalTo([self.floatLayoutView sizeThatFits:CGSizeMake(SCREEN_WIDTH, CGFLOAT_MAX)]);
+        make.centerX.hd_equalTo(CGRectGetWidth(self.view.frame) * 0.5);
+        make.top.hd_equalTo(100);
+    }];
+}
 @end

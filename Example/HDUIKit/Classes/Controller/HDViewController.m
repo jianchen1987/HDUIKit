@@ -27,6 +27,7 @@
 }
 
 - (void)initDataSource {
+    [self.dataSource addObject:[ExampleItem itemWithDesc:@"流式布局" destVcName:@"HDFlowLayoutViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"搜索框" destVcName:@"HDSearchBarExampleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"分类标题" destVcName:@"HDCategoryTitleExampleViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"自定义内容弹窗" destVcName:@"HDCustomContentActionViewController"]];
@@ -50,7 +51,6 @@
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"万能按钮" destVcName:@"HDUniversalButtonViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"条形/环形进度条" destVcName:@"HDProgressViewViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"AFN超时/重试机制" destVcName:@"HDAFNRetryViewController"]];
-    [self.dataSource addObject:[ExampleItem itemWithDesc:@"流式布局" destVcName:@"HDFlowLayoutViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"一对多代理实现" destVcName:@"HDMultiDelagateViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"全局窗口管理" destVcName:@"HDWindowManageViewController"]];
     [self.dataSource addObject:[ExampleItem itemWithDesc:@"应用内服务器域名切换" destVcName:@"HDSwitchServerViewController"]];
