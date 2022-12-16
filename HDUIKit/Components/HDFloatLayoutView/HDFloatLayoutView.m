@@ -65,6 +65,7 @@ typedef struct {
     
     if(!self.moreView) return; //没有自定义展开按钮
     
+    BOOL showAll = NO;
     if(!self.moreView.selected) { //收起状态
         
         [self addSubview:self.moreView];
@@ -81,6 +82,8 @@ typedef struct {
         }
     }else{ //展开状态
         
+        showAll = YES;
+        
         for (UIButton *view in self.reuseViews) {
             [self addSubview:view];
         }
@@ -91,8 +94,8 @@ typedef struct {
     }
     
     //回调通知主视图刷新UI布局
-    if(self.delegate && [self.delegate respondsToSelector:@selector(floatLayoutViewFrameDidChanged)]) {
-        [self.delegate floatLayoutViewFrameDidChanged];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(floatLayoutViewFrameDidChangedIsShowAll:)]) {
+        [self.delegate floatLayoutViewFrameDidChangedIsShowAll:showAll];
     }
 }
 
@@ -184,7 +187,6 @@ typedef struct {
 
 - (NSArray<UIView *> *)visibleSubviews {
     NSMutableArray<UIView *> *visibleItemViews = [[NSMutableArray alloc] init];
-    
     for (NSInteger i = 0, l = self.subviews.count; i < l; i++) {
         UIView *itemView = self.subviews[i];
         if (!itemView.hidden) {
@@ -202,14 +204,28 @@ typedef struct {
 //设置自定义按钮，高度不能高于子控件
 - (void)setCustomMoreView:(UIButton *)moreView {
     if(!moreView) {
-        self.moreView = nil;
         return;
     }
+    
+    if(self.moreView){
+        [self.moreView removeFromSuperview];
+        self.moreView = nil;
+    }
+    
+    
     if(![moreView isKindOfClass:UIButton.class]) return;
     self.moreView = moreView;
     self.moreView.tag = 99;
+    self.moreView.selected = self.defaultShowAll;
+    if(self.moreView.selected) {
+        _realMaxRowCount = 0;
+        [self.reuseViews removeAllObjects];
+    }else{
+        _realMaxRowCount = self.maxRowCount;
+    }
     [self.moreView addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
+
 
 ///按钮事件
 - (void)moreBtnClick:(UIButton *)btn {

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 /// 更新UI是的回调，需要自行刷新view
-- (void)floatLayoutViewFrameDidChanged;
+- (void)floatLayoutViewFrameDidChangedIsShowAll:(BOOL)isShowAll;
 
 @end
 
@@ -64,6 +64,8 @@ extern const CGSize HDFloatLayoutViewAutomaticalMaximumItemSize;
 - (void)setCustomMoreView:(UIButton *)moreView;
 /// 通过代理回调刷新布局
 @property (nonatomic, weak) id<HDFloatLayoutViewDelegate> delegate;
+
+@property (nonatomic, assign) BOOL defaultShowAll;
 
 @end
 

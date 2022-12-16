@@ -27,7 +27,7 @@
                     view.maxRowCount = 2;
                     view;
                })];
-    
+    self.floatLayoutView.defaultShowAll = YES;
     UIButton *view = UIButton.new;
 //    view.bounds = CGRectMake(0, 0, 30, 30);
 //    view.imagePosition = HDUIButtonImagePositionLeft;
@@ -39,7 +39,7 @@
     [view setImage:[UIImage imageNamed:@"search_icon_close"] forState:UIControlStateSelected];
 
     [self.floatLayoutView setCustomMoreView:view];
-
+ 
 //
 //    HDUIGhostButton *button = HDUIGhostButton.new;
 //
