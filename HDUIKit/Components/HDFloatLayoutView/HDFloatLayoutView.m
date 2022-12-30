@@ -193,6 +193,15 @@ typedef struct {
             [visibleItemViews addObject:itemView];
         }
     }
+    //处理先设置了展开按钮的情况，把展开按钮放最后
+    if(self.moreView && [visibleItemViews containsObject:self.moreView] && visibleItemViews.firstObject == self.moreView) {
+        [self.moreView removeFromSuperview];
+        [self addSubview:self.moreView];
+        
+        [visibleItemViews removeObject:self.moreView];
+        [visibleItemViews addObject:self.moreView];
+        
+    }
     
     return visibleItemViews;
 }
@@ -223,6 +232,7 @@ typedef struct {
     }else{
         _realMaxRowCount = self.maxRowCount;
     }
+    [self addSubview:self.moreView];
     [self.moreView addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
