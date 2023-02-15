@@ -56,6 +56,15 @@
         [self.refreshBtn setTitleColor:self.model.refreshBtnTitleColor forState:UIControlStateNormal];
         self.refreshBtn.titleLabel.font = self.model.refreshBtnTitleFont;
     }
+    
+    if(self.model.refreshBtnGhostColor) {
+        [self.refreshBtn setGhostColor:self.model.refreshBtnGhostColor];
+    }
+    
+    if(self.model.refreshBtnBorderWidth) {
+        [self.refreshBtn setBorderWidth:self.model.refreshBtnBorderWidth];
+    }
+    
     self.refreshBtn.backgroundColor = self.model.refreshBtnBackgroundColor;
     self.refreshBtn.hidden = !self.model.needRefreshBtn;
 

@@ -28,6 +28,8 @@
         self.marginBtnToInfo = kRealWidth(30);
         self.refreshBtnBackgroundColor = HDAppTheme.color.C1;
         self.refreshButtonLabelEdgeInset = UIEdgeInsetsMake(8, 30, 8, 30);
+        self.refreshBtnGhostColor = nil;
+        self.refreshBtnBorderWidth = 0;
     }
     return self;
 }

@@ -27,6 +27,8 @@ typedef void (^ClickOnRefreshButton)(void);
 @property (nonatomic, strong) UIFont *refreshBtnTitleFont;                     ///< 刷新按钮标题颜色
 @property (nonatomic, strong) NSAttributedString *refreshBtnAttributeTitle;    ///< 带属性的标题
 @property (nonatomic, strong) UIColor *refreshBtnBackgroundColor;              ///< 按钮背景色
+@property (nonatomic, strong) UIColor *refreshBtnGhostColor;                   ///< 刷新按钮边框颜色 默认为 nil;
+@property (nonatomic, assign) CGFloat refreshBtnBorderWidth;                   ///< 刷新按钮边框宽度 默认为 0pt
 @property (nonatomic, copy) ClickOnRefreshButton clickOnRefreshButtonHandler;  ///< 点击回调
 
 @property (nonatomic, assign) CGFloat marginInfoToImage;  ///< 信息距离图片距离
