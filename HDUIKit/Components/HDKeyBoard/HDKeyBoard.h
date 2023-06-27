@@ -56,7 +56,7 @@ typedef enum {
 + (nonnull instancetype)keyboardWithType:(HDKeyBoardType)type theme:(HDKeyBoardTheme *_Nullable)theme isRandom:(BOOL)isRandom;
 
 /** 输入源 */
-@property (nonatomic, nullable, strong) UIView *inputSource;
+@property (nonatomic, nullable, weak) UIView *inputSource;
 
 /** 字母键盘是否可以切换到符号键盘，如需要符号键盘并且第一界面就是字母键盘，请设置键盘类型为 HDKeyBoardTypeLetterCapableCanSwitchToASCII */
 @property (nonatomic, assign) BOOL isLetterPadCanSwitchToASCII;
