@@ -16,6 +16,7 @@
 
 // 宽度
 #define kHDAlertViewWidth (kScreenWidth * 0.8)
+#define kHDAlertViewMaxHeight (kScreenHeight * 0.75)
 
 @interface HDAlertView ()
 @property (nonatomic, copy) NSString *title;              ///< 标题
@@ -26,6 +27,9 @@
 @property (nonatomic, strong) UILabel *titleLB;                              ///< 标题
 @property (nonatomic, strong) UILabel *messageLB;                            ///< 内容
 @property (nonatomic, strong) NSMutableArray<HDAlertViewButton *> *buttons;  ///< 按钮
+
+@property (nonatomic, strong) UIScrollView *containerScrollView;
+
 @end
 
 @implementation HDAlertView
@@ -92,10 +96,13 @@
     CGFloat containerHeight = _config.containerViewEdgeInsets.top + _config.containerViewEdgeInsets.bottom;
     if (!self.titleLB.isHidden) {
         containerHeight += [self titleLBSize].height;
+        if(!self.messageLB.isHidden) {
+            containerHeight += _config.marginTitle2Message;
+        }
     }
 
     if (!self.messageLB.isHidden) {
-        containerHeight += [self messageLBSize].height + _config.marginTitle2Message;
+        containerHeight += [self messageLBSize].height;
     }
 
     if (self.buttons.count > 0) {
@@ -106,7 +113,29 @@
         containerHeight = _config.containerMinHeight;
     }
 
+    if(containerHeight > kHDAlertViewMaxHeight){
+
+        CGFloat contentSizeHeight = containerHeight;
+        if (self.buttons.count > 0) {
+            contentSizeHeight -= ([self buttonsSize].height + _config.marginMessageToButton);
+        }
+
+
+        self.containerScrollView.contentSize = CGSizeMake(0, contentSizeHeight);
+        containerHeight = kHDAlertViewMaxHeight;
+        
+    }
+    self.containerScrollView.frame = CGRectMake(0, 0, [self containerViewWidth], containerHeight);
+    
+
+    
+    if (self.buttons.count > 0) {
+        self.containerScrollView.frame = CGRectMake(0, 0, [self containerViewWidth], containerHeight - ([self buttonsSize].height + _config.marginMessageToButton));
+    }
+    
+    
     CGFloat top = (kScreenHeight - containerHeight) * 0.5;
+
     self.containerView.frame = CGRectMake(left, top, [self containerViewWidth], containerHeight);
 }
 
@@ -119,21 +148,23 @@
 - (void)setupContainerSubViews {
 
     // 给containerview添加子视图
-    [self.containerView addSubview:self.titleLB];
+    
+    [self.containerView addSubview:self.containerScrollView];
+    
+    [self.containerScrollView addSubview:self.titleLB];
     self.titleLB.text = _title;
     self.titleLB.hidden = HDIsStringEmpty(_title);
 
     if (_contentView) {  // 自定义上部
-        [self.containerView addSubview:self.contentView];
+        [self.containerScrollView addSubview:self.contentView];
 
         for (HDAlertViewButton *button in self.buttons) {
             [self.containerView addSubview:button];
         }
-
         return;
     }
 
-    [self.containerView addSubview:self.messageLB];
+    [self.containerScrollView addSubview:self.messageLB];
     self.messageLB.text = _message;
     self.messageLB.hidden = HDIsStringEmpty(_message);
 
@@ -189,7 +220,11 @@
 
             if (self.buttons.count > 0) {
                 HDAlertViewButton *topButton = self.buttons[0];
-                self.messageLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self messageLBSize].width) * 0.5, (CGRectGetMinY(topButton.frame) - [self messageLBSize].height) * 0.5, [self messageLBSize]};
+                if(CGRectGetHeight(self.containerView.frame) >= kHDAlertViewMaxHeight){
+                    self.messageLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self messageLBSize].width) * 0.5, _config.containerViewEdgeInsets.top, [self messageLBSize]};
+                }else{
+                    self.messageLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self messageLBSize].width) * 0.5, (CGRectGetMinY(topButton.frame) - [self messageLBSize].height) * 0.5, [self messageLBSize]};
+                }
             } else {
                 self.messageLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self messageLBSize].width) * 0.5, (CGRectGetHeight(self.containerView.frame) - [self messageLBSize].height) * 0.5, [self messageLBSize]};
             }
@@ -199,7 +234,11 @@
         if (!self.messageLB.isHidden) {
             if (self.buttons.count > 0) {
                 HDAlertViewButton *topButton = self.buttons[0];
-                self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, (CGRectGetMinY(topButton.frame) - [self titleLBSize].height - [self messageLBSize].height - _config.marginTitle2Message) * 0.5, [self titleLBSize]};
+                if(CGRectGetHeight(self.containerView.frame) >= kHDAlertViewMaxHeight){
+                    self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, _config.containerViewEdgeInsets.top, [self titleLBSize]};
+                }else{
+                    self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, (CGRectGetMinY(topButton.frame) - [self titleLBSize].height - [self messageLBSize].height - _config.marginTitle2Message) * 0.5, [self titleLBSize]};
+                }
             } else {
                 self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, (CGRectGetHeight(self.containerView.frame) - [self titleLBSize].height - [self messageLBSize].height - _config.marginTitle2Message) * 0.5, [self titleLBSize]};
             }
@@ -209,7 +248,12 @@
         } else {
             if (self.buttons.count > 0) {
                 HDAlertViewButton *topButton = self.buttons[0];
-                self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, (CGRectGetMinY(topButton.frame) - [self titleLBSize].height) * 0.5, [self titleLBSize]};
+                if(CGRectGetHeight(self.containerView.frame) >= kHDAlertViewMaxHeight){
+                    self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, _config.containerViewEdgeInsets.top, [self titleLBSize]};
+                }else{
+                    self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, (CGRectGetMinY(topButton.frame) - [self titleLBSize].height) * 0.5, [self titleLBSize]};
+                }
+                
             } else {
                 self.titleLB.frame = (CGRect){(CGRectGetWidth(self.containerView.frame) - [self titleLBSize].width) * 0.5, (CGRectGetHeight(self.containerView.frame) - [self titleLBSize].height) * 0.5, [self titleLBSize]};
             }
@@ -293,5 +337,18 @@
         _messageLB.font = _config.messageFont;
     }
     return _messageLB;
+}
+
+- (UIScrollView *)containerScrollView {
+    if(!_containerScrollView) {
+        _containerScrollView = UIScrollView.new;
+        if (@available(iOS 11.0, *)) {
+            _containerScrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
+        if (@available(iOS 13.0, *)) {
+            _containerScrollView.automaticallyAdjustsScrollIndicatorInsets = false;
+        }
+    }
+    return _containerScrollView;;
 }
 @end
