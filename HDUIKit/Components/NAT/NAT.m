@@ -16,6 +16,8 @@
 
 + (HDTopToastView *)showToastWithTitle:(NSString *)title content:(NSString *)content type:(HDTopToastType)type config:(HDTopToastViewConfig *_Nullable)config {
     HDTopToastView *toast = [HDTopToastView toastViewWithTitle:title message:content type:type config:config];
+    // 内容一样不用重复弹出
+    toast.identitableString = content;
     [toast show];
     return toast;
 }
