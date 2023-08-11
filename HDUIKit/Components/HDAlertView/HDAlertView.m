@@ -82,7 +82,9 @@
         if (!self.titleLB.isHidden) {
             containerHeight += [self titleLBSize].height + _config.containerViewEdgeInsets.top;
         }
-
+        
+        self.containerScrollView.frame = CGRectMake(0, 0, [self containerViewWidth], containerHeight);
+        
         if (self.buttons.count > 0) {
             containerHeight += [self buttonsSize].height + _config.containerViewEdgeInsets.bottom;
         }
