@@ -116,25 +116,17 @@
     }
 
     if(containerHeight > kHDAlertViewMaxHeight){
-
         CGFloat contentSizeHeight = containerHeight;
         if (self.buttons.count > 0) {
-            contentSizeHeight -= ([self buttonsSize].height + _config.marginMessageToButton);
+            contentSizeHeight -= [self buttonsSize].height;
         }
-
-
         self.containerScrollView.contentSize = CGSizeMake(0, contentSizeHeight);
         containerHeight = kHDAlertViewMaxHeight;
-        
     }
     self.containerScrollView.frame = CGRectMake(0, 0, [self containerViewWidth], containerHeight);
-    
-
-    
     if (self.buttons.count > 0) {
-        self.containerScrollView.frame = CGRectMake(0, 0, [self containerViewWidth], containerHeight - ([self buttonsSize].height + _config.marginMessageToButton));
+        self.containerScrollView.frame = CGRectMake(0, 0, [self containerViewWidth], containerHeight - [self buttonsSize].height);
     }
-    
     
     CGFloat top = (kScreenHeight - containerHeight) * 0.5;
 
