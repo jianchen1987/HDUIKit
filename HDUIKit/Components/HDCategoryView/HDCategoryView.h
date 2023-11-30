@@ -11,6 +11,7 @@
 #import "HDCategoryIndicatorView.h"
 #import "HDCategoryNumberView.h"
 #import "HDCategoryTitleView.h"
+#import "HDCategoryIconTitleView.h"
 
 #import "HDCategoryFactory.h"
 #import "HDCategoryIndicatorProtocol.h"
