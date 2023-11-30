@@ -65,10 +65,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-
-    // 因为titleLabel是通过约束布局的，在layoutSubviews方法中，它的frame并没有确定。像子类HDCategoryNumberCell中的numberLabel需要依赖于titleLabel的frame进行布局。所以这里必须立马触发self.contentView的视图布局。
-    [self.contentView setNeedsLayout];
-    [self.contentView layoutIfNeeded];
+    
     HDCategoryTitleCellModel *myCellModel = (HDCategoryTitleCellModel *)self.cellModel;
     switch (myCellModel.titleLabelAnchorPointStyle) {
         case HDCategoryTitleLabelAnchorPointStyleCenter:
@@ -85,6 +82,10 @@
         default:
             break;
     }
+    
+    // 因为titleLabel是通过约束布局的，在layoutSubviews方法中，它的frame并没有确定。像子类HDCategoryNumberCell中的numberLabel需要依赖于titleLabel的frame进行布局。所以这里必须立马触发self.contentView的视图布局。
+    [self.contentView setNeedsLayout];
+    [self.contentView layoutIfNeeded];
 }
 
 - (void)reloadData:(HDCategoryBaseCellModel *)cellModel {

@@ -12,7 +12,7 @@
 
 @interface HDCategoryTitleExampleViewController () <HDCategoryViewDelegate, HDCategoryListContainerViewDelegate>
 /// 标题滚动 View
-@property (nonatomic, strong) HDCategoryDotView *categoryTitleView;
+@property (nonatomic, strong) HDCategoryIconTitleView *categoryTitleView;
 /// 标题滚动关联的列表容器
 @property (nonatomic, strong) HDCategoryListContainerView *listContainerView;
 /// 所有标题
@@ -32,7 +32,7 @@
     [self.categoryTitleView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.hd_navigationBar.mas_bottom);
-        make.height.mas_equalTo(kRealWidth(40));
+        make.height.mas_equalTo(85);
     }];
     [self.listContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.categoryTitleView);
@@ -63,23 +63,25 @@
 }
 
 #pragma mark - lazy load
-- (HDCategoryDotView *)categoryTitleView {
+- (HDCategoryIconTitleView *)categoryTitleView {
     if (!_categoryTitleView) {
-        _categoryTitleView = HDCategoryDotView.new;
+        _categoryTitleView = HDCategoryIconTitleView.new;
         _categoryTitleView.titles = [self.configList mapObjectsUsingBlock:^id _Nonnull(HDOrderListChildViewControllerConfig *_Nonnull obj, NSUInteger idx) {
             return obj.title;
         }];
 
-        _categoryTitleView.dotStates = [self.configList mapObjectsUsingBlock:^id _Nonnull(id _Nonnull obj, NSUInteger idx) {
-            if (idx == 2) {
-                return @(1);
-            }
-            return @(0);
+        _categoryTitleView.icons = [self.configList mapObjectsUsingBlock:^id _Nonnull(id _Nonnull obj, NSUInteger idx) {
+            return @"https://www.baidu.com";
         }];
 
         _categoryTitleView.listContainer = self.listContainerView;
         _categoryTitleView.delegate = self;
-
+//        _categoryTitleView.titleLabelAnchorPointStyle = HDCategoryTitleLabelAnchorPointStyleBottom;
+        _categoryTitleView.titleLabelZoomEnabled = YES;
+        _categoryTitleView.titleNumberOfLines = 2;
+        _categoryTitleView.titleLabelVerticalOffset = 22;
+        _categoryTitleView.relativePosition = HDCategoryIconRelativePositionTop;
+        _categoryTitleView.iconSize = CGSizeMake(44, 44);
         _categoryTitleView.backgroundColor = UIColor.whiteColor;
         HDCategoryIndicatorLineView *lineView = [[HDCategoryIndicatorLineView alloc] init];
         lineView.lineStyle = HDCategoryIndicatorLineStyle_LengthenOffset;
@@ -105,12 +107,12 @@
 
         vc = HDCategoryContentViewController.new;
         vc.orderState = 2;
-        config = [HDOrderListChildViewControllerConfig configWithTitle:@"处理中" vc:vc];
+        config = [HDOrderListChildViewControllerConfig configWithTitle:@"处理中处理中处理中" vc:vc];
         [configList addObject:config];
 
         vc = HDCategoryContentViewController.new;
         vc.orderState = 3;
-        config = [HDOrderListChildViewControllerConfig configWithTitle:@"未评价" vc:vc];
+        config = [HDOrderListChildViewControllerConfig configWithTitle:@"Welcome to china hahahah" vc:vc];
         [configList addObject:config];
 
         vc = HDCategoryContentViewController.new;
