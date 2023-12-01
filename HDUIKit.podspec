@@ -240,7 +240,7 @@ Pod::Spec.new do |s|
       end
 
       ss.subspec 'HDCategoryView' do |sss|
-        sss.source_files = 'HDUIKit/Components/HDCategoryView', 'HDUIKit/Components/HDCategoryView/**/*'
+        sss.source_files = 'HDUIKit/Components/HDCategoryView', 'HDUIKit/Components/HDCategoryView/**/*.{h,m}'
         sss.dependency 'SDWebImage', '~> 5.10'
         sss.dependency 'HDKitCore/Core'
       end

@@ -290,6 +290,18 @@ static NSString *const HDUIKit_VERSION = @"1.10.1";
 #import "HDCategoryNumberCellModel.h"
 #endif
 
+#if __has_include("HDCategoryIconTitleCell.h")
+#import "HDCategoryIconTitleCell.h"
+#endif
+
+#if __has_include("HDCategoryIconTitleView.h")
+#import "HDCategoryIconTitleView.h"
+#endif
+
+#if __has_include("HDCategoryIconTitleCellModel.h")
+#import "HDCategoryIconTitleCellModel.h"
+#endif
+
 #if __has_include("HDCategoryCollectionView.h")
 #import "HDCategoryCollectionView.h"
 #endif
