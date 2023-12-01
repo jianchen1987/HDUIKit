@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 /// 版本号
-static NSString *const HDUIKit_VERSION = @"1.10.1";
+static NSString *const HDUIKit_VERSION = @"1.10.2";
 
 #if __has_include("HDKeyboardManager.h")
 #import "HDKeyboardManager.h"
@@ -278,18 +278,6 @@ static NSString *const HDUIKit_VERSION = @"1.10.1";
 #import "HDCategoryTitleCell.h"
 #endif
 
-#if __has_include("HDCategoryNumberView.h")
-#import "HDCategoryNumberView.h"
-#endif
-
-#if __has_include("HDCategoryNumberCell.h")
-#import "HDCategoryNumberCell.h"
-#endif
-
-#if __has_include("HDCategoryNumberCellModel.h")
-#import "HDCategoryNumberCellModel.h"
-#endif
-
 #if __has_include("HDCategoryIconTitleCell.h")
 #import "HDCategoryIconTitleCell.h"
 #endif
@@ -300,6 +288,18 @@ static NSString *const HDUIKit_VERSION = @"1.10.1";
 
 #if __has_include("HDCategoryIconTitleCellModel.h")
 #import "HDCategoryIconTitleCellModel.h"
+#endif
+
+#if __has_include("HDCategoryNumberView.h")
+#import "HDCategoryNumberView.h"
+#endif
+
+#if __has_include("HDCategoryNumberCell.h")
+#import "HDCategoryNumberCell.h"
+#endif
+
+#if __has_include("HDCategoryNumberCellModel.h")
+#import "HDCategoryNumberCellModel.h"
 #endif
 
 #if __has_include("HDCategoryCollectionView.h")
