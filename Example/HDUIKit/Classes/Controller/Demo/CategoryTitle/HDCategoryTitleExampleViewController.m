@@ -32,7 +32,7 @@
     [self.categoryTitleView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(self.hd_navigationBar.mas_bottom);
-        make.height.mas_equalTo(85);
+        make.height.mas_equalTo(128);
     }];
     [self.listContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.categoryTitleView);
@@ -71,15 +71,15 @@
         }];
 
         _categoryTitleView.icons = [self.configList mapObjectsUsingBlock:^id _Nonnull(id _Nonnull obj, NSUInteger idx) {
-            return @"https://www.baidu.com";
+            return @"";
         }];
 
         _categoryTitleView.listContainer = self.listContainerView;
         _categoryTitleView.delegate = self;
-//        _categoryTitleView.titleLabelAnchorPointStyle = HDCategoryTitleLabelAnchorPointStyleBottom;
-        _categoryTitleView.titleLabelZoomEnabled = YES;
         _categoryTitleView.titleNumberOfLines = 2;
-        _categoryTitleView.titleLabelVerticalOffset = 22;
+        _categoryTitleView.titleLabelZoomEnabled = NO;
+        _categoryTitleView.cellWidth = 65;
+        _categoryTitleView.cellSpacing = 8;
         _categoryTitleView.relativePosition = HDCategoryIconRelativePositionTop;
         _categoryTitleView.iconSize = CGSizeMake(44, 44);
         _categoryTitleView.backgroundColor = UIColor.whiteColor;
