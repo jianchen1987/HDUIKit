@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSLayoutConstraint *titleLabelTop;
 @property (nonatomic, strong) NSLayoutConstraint *iconImageViewCenterX;
 @property (nonatomic, strong) NSLayoutConstraint *iconImageViewTop;
+@property (nonatomic, strong) NSLayoutConstraint *iconImageViewWidth;
+@property (nonatomic, strong) NSLayoutConstraint *iconImageViewHeight;
 
 @end
 
@@ -70,6 +72,12 @@
         self.iconImageViewTop = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:8];
         self.iconImageViewTop.active = YES;
         
+        self.iconImageViewWidth = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:myCellModel.iconSize.width];
+        self.iconImageViewWidth.active = YES;
+        
+        self.iconImageViewHeight = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:myCellModel.iconSize.height];
+        self.iconImageViewHeight.active = YES;
+        
     } else {
         self.titleLabelTop = [NSLayoutConstraint constraintWithItem:self.titleLabel
                                                           attribute:NSLayoutAttributeTop
@@ -79,6 +87,8 @@
                                                          multiplier:1
                                                            constant:8];
         self.titleLabelTop.active = YES;
+        self.iconImageViewWidth.active = NO;
+        self.iconImageViewHeight.active = NO;
     }
     
 
