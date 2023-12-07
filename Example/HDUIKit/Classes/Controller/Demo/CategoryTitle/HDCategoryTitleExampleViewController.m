@@ -71,15 +71,16 @@
         }];
 
         _categoryTitleView.icons = [self.configList mapObjectsUsingBlock:^id _Nonnull(id _Nonnull obj, NSUInteger idx) {
-            return @"";
+            return @"https://img-uat.tinhnow.com/wownow/files/uat/app/MEF/BF/BD/004c4acad38741e8b7bab9aa11bcccc5.png?WxH=200x200";
         }];
 
         _categoryTitleView.listContainer = self.listContainerView;
         _categoryTitleView.delegate = self;
         _categoryTitleView.titleNumberOfLines = 2;
         _categoryTitleView.titleLabelZoomEnabled = NO;
-        _categoryTitleView.cellWidth = 65;
-        _categoryTitleView.cellSpacing = 8;
+//        _categoryTitleView.selectedAnimationEnabled = YES;
+        _categoryTitleView.cellWidth = 70;
+        _categoryTitleView.cellSpacing = 12;
         _categoryTitleView.relativePosition = HDCategoryIconRelativePositionTop;
         _categoryTitleView.iconSize = CGSizeMake(44, 44);
         _categoryTitleView.backgroundColor = UIColor.whiteColor;

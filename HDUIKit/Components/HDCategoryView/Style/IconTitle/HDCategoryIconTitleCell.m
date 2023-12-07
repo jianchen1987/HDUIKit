@@ -63,22 +63,50 @@
     [super reloadData:cellModel];
 
     HDCategoryIconTitleCellModel *myCellModel = (HDCategoryIconTitleCellModel *)cellModel;
+    
     if([myCellModel.iconUrl isKindOfClass:NSString.class] && myCellModel.iconUrl.length > 0 ) {
         [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:myCellModel.iconUrl]
                               placeholderImage:[HDHelper placeholderImageWithSize:myCellModel.iconSize logoWidth:myCellModel.iconSize.height / 2.0]];
         
         self.iconImageView.layer.cornerRadius = myCellModel.iconCornerRadius;
         
-        self.iconImageViewTop = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:8];
+        [self.iconImageView removeConstraint:self.iconImageViewTop];
+        self.iconImageViewTop = [NSLayoutConstraint constraintWithItem:self.iconImageView
+                                                             attribute:NSLayoutAttributeTop
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:self.contentView
+                                                             attribute:NSLayoutAttributeTop
+                                                            multiplier:1 constant:8];
         self.iconImageViewTop.active = YES;
         
-        self.iconImageViewWidth = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:myCellModel.iconSize.width];
+        [self.iconImageView removeConstraint:self.iconImageViewWidth];
+        self.iconImageViewWidth = [NSLayoutConstraint constraintWithItem:self.iconImageView
+                                                               attribute:NSLayoutAttributeWidth
+                                                               relatedBy:NSLayoutRelationEqual
+                                                                  toItem:nil
+                                                               attribute:NSLayoutAttributeNotAnAttribute
+                                                              multiplier:1
+                                                                constant:myCellModel.iconSize.width];//myCellModel.isSelected ? myCellModel.iconSize.width * 1.3 : myCellModel.iconSize.width];
         self.iconImageViewWidth.active = YES;
         
-        self.iconImageViewHeight = [NSLayoutConstraint constraintWithItem:self.iconImageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:myCellModel.iconSize.height];
+        [self.iconImageView removeConstraint:self.iconImageViewHeight];
+        self.iconImageViewHeight = [NSLayoutConstraint constraintWithItem:self.iconImageView
+                                                                attribute:NSLayoutAttributeHeight
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:nil
+                                                                attribute:NSLayoutAttributeNotAnAttribute
+                                                               multiplier:1
+                                                                 constant:myCellModel.iconSize.height];//myCellModel.isSelected ? myCellModel.iconSize.height * 1.3 : myCellModel.iconSize.height];
         self.iconImageViewHeight.active = YES;
         
+        if(myCellModel.isSelected) {
+            self.iconImageView.alpha = 1;
+        } else {
+            self.iconImageView.alpha = 0.5;
+        }
+        
     } else {
+        [self.titleLabel removeConstraint:self.titleLabelTop];
         self.titleLabelTop = [NSLayoutConstraint constraintWithItem:self.titleLabel
                                                           attribute:NSLayoutAttributeTop
                                                           relatedBy:NSLayoutRelationEqual
