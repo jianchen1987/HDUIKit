@@ -99,11 +99,11 @@
                                                                  constant:myCellModel.iconSize.height];//myCellModel.isSelected ? myCellModel.iconSize.height * 1.3 : myCellModel.iconSize.height];
         self.iconImageViewHeight.active = YES;
         
-        if(myCellModel.isSelected) {
-            self.iconImageView.alpha = 1;
-        } else {
-            self.iconImageView.alpha = 0.5;
-        }
+//        if(myCellModel.isSelected) {
+//            self.iconImageView.alpha = 1;
+//        } else {
+//            self.iconImageView.alpha = 0.5;
+//        }
         
     } else {
         [self.titleLabel removeConstraint:self.titleLabelTop];
